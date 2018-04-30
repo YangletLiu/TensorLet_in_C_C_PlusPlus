@@ -6,7 +6,7 @@
 #include <iostream>
 using namespace std;
 
-//定义三维张量，初始化为0
+
 Tensor::Tensor(int n1, int n2, int n3) : n1(n1), n2(n2),n3(n3)
 {
     allocSpace();
@@ -22,7 +22,7 @@ Tensor::Tensor(int n1, int n2, int n3) : n1(n1), n2(n2),n3(n3)
 
 /******Tensor privative helper functions******
 *********************************************/
-//分配内存空间（三维动态数组）
+
 void Tensor::allocSpace()
 {
     p =new double**[n1];
