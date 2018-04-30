@@ -16,7 +16,7 @@ public:
 
 private:
     int n1,n2,n3;
-    double ***p;   //不能重复声明
+    double ***p;   
     void allocSpace();
 };
 
