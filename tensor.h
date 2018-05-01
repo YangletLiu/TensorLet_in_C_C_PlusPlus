@@ -11,12 +11,27 @@ using namespace std;
 
 class Tensor{
 public:
-    Tensor(int,int,int);
-    inline double& operator()(int x, int y, int z) { return p[x][y][z]; }
+    Tensor(int,int,int); //创建三维张量
+    Tensor zeros(int, int, int); //零张量
+    Tensor Identity(int, int, int); //零张量
 
-private:
+    inline double& operator()(int x, int y, int z) {
+        if (x<n1 && y<n2 && z<n3) {
+            return p[x][y][z];
+        }
+        else {
+            cout<<"Warning: Index beyond range."<<endl;
+            exit(0);
+        }
+    }
+
+    friend double norm(Tensor);
+    friend Tensor Transpose(Tensor);
+    friend double dotProduct(Tensor,Tensor);
+
+    private:
     int n1,n2,n3;
-    double ***p;   
+    double ***p;
     void allocSpace();
 };
 
