@@ -4,12 +4,12 @@ using namespace std;
 
 int main() {
     Tensor a(5,5,5),b(2,3,4), c(4,3,2), z(1,2,3);
-    z=z.zeros(2,3,4);
-    b=b.Identity(3,3,3);
-    b=Transpose(b);
+    z=z.zeros(2,3,4);  //零张量
+    b=b.Identity(3,3,3); //单位张量
+    b=Transpose(b); //转置
     b(1,2,2)=2;
     c=b;    //类的相等
-    double x=dotProduct(b,c);
+    double x=dotProduct(b,c); //张量内积
     cout<<x<<endl;
 
 //    for(int k=0; k<3; ++k) {
