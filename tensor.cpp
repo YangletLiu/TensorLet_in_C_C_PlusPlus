@@ -19,6 +19,24 @@ Tensor::Tensor(int n1, int n2, int n3) : n1(n1), n2(n2),n3(n3)
         }
     }
 }
+
+Tensor::Tensor() :n1(1),n2(1),n3(1){
+    allocSpace();
+    p[0][0][0]=1;
+}
+
+Tensor::~Tensor() {
+    for (int i=0; i<n1;i++) {
+        for (int j=0;j<n2;j++){
+            delete[] p[i][j];
+        }
+        delete[] p[i];
+    }
+    delete[] p;
+    p=NULL;
+    cout<<"destructing T"<<endl;
+}
+
 //zeros 张量
 Tensor Tensor::zeros(int n1, int n2, int n3) {
     Tensor tem(n1,n2,n3);
@@ -29,6 +47,7 @@ Tensor Tensor::zeros(int n1, int n2, int n3) {
             }
         }
     }
+    cout<<"hh"<<endl;
     return tem;
 }
 
@@ -117,6 +136,10 @@ void Tensor::allocSpace()
         }
     }
 }
+
+
+
+
 
 //提取某一坐标值
 //double& Tensor::operator()(int x, int y, int z)
