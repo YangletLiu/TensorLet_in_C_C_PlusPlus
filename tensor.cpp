@@ -24,7 +24,7 @@ Tensor::Tensor() :n1(1),n2(1),n3(1){
     allocSpace();
     p[0][0][0]=1;
 }
-
+//析构函数
 Tensor::~Tensor() {
     for (int i=0; i<n1;i++) {
         for (int j=0;j<n2;j++){
@@ -34,9 +34,121 @@ Tensor::~Tensor() {
     }
     delete[] p;
     p=NULL;
-    cout<<"destructing T"<<endl;
+//    cout<<"destructing T"<<endl;
 }
 
+Tensor::Tensor(const Tensor & T) {
+    allocSpace();
+    for (int i=0; i< T.n1; ++i){
+        for(int j=0;j<T.n2;++j){
+            for(int k=0; k<T.n3;++k){
+                p[i][j][k]=T.p[i][j][k];
+            }
+        }
+    }
+}
+
+
+//重载运算符
+Tensor &Tensor::operator=(const Tensor & T) {
+    if(this == &T){
+        return *this;
+    }
+    if(n1 != T.n1 || n2 != T.n2 || n3 != T.n3){
+        for (int i=0; i<n1;i++) {
+            for (int j=0;j<n2;j++){
+                delete[] p[i][j];
+            }
+            delete[] p[i];
+        }
+        delete[] p;
+        n1=T.n1;n2=T.n2;n3=T.n3;
+        allocSpace();
+    }
+    for (int i=0; i<n1; ++i){
+        for (int j=0; j<n2;++j){
+            for(int k=0;k<n3;++k){
+                p[i][j][k]=T.p[i][j][k];
+            }
+        }
+    }
+    return *this;
+}
+
+Tensor &Tensor::operator+=(const Tensor & T) {
+    if (n1 == T.n1 && n2 == T.n2 && n3 == T.n3){
+    for (int i=0; i<T.n1; ++i){
+        for (int j=0; j<T.n2;++j){
+            for(int k=0;k<T.n3;++k){
+                p[i][j][k]+=T.p[i][j][k];
+            }
+        }
+    }
+    return *this;}
+    else{
+        cout<<"check size match"<<endl;
+        exit(0);
+    }
+}
+
+Tensor &Tensor::operator-=(const Tensor & T) {
+    if (n1 == T.n1 && n2 == T.n2 && n3 == T.n3){
+        for (int i=0; i<T.n1; ++i){
+            for (int j=0; j<T.n2;++j){
+                for(int k=0;k<T.n3;++k){
+                    p[i][j][k]-=T.p[i][j][k];
+                }
+            }
+        }
+        return *this;}
+    else{
+        cout<<"check size match"<<endl;
+        exit(0);
+    }
+}
+
+Tensor &Tensor::operator*=(const Tensor & T) {
+    if (n1 == T.n1 && n2 == T.n2 && n3 == T.n3){
+        for (int i=0; i<T.n1; ++i){
+            for (int j=0; j<T.n2;++j){
+                for(int k=0;k<T.n3;++k){
+                    p[i][j][k]*=T.p[i][j][k];
+                }
+            }
+        }
+        return *this;}
+    else{
+        cout<<"check size match"<<endl;
+        exit(0);
+    }
+}
+
+Tensor &Tensor::operator*=(double num) {
+    for (int i=0; i<n1; ++i){
+        for (int j=0; j<n2;++j){
+            for(int k=0;k<n3;++k){
+                p[i][j][k]*=num;
+            }
+        }
+    }
+    return *this;
+}
+
+Tensor &Tensor::operator/=(double num) {
+    if (num != 0){
+        for (int i=0; i<n1; ++i){
+            for (int j=0; j<n2;++j){
+                for(int k=0;k<n3;++k){
+                    p[i][j][k]/=num;
+                }
+            }
+        }
+    }
+    else {
+        cout << "divide number is zero."<< endl;
+        exit(0);
+    }
+}
 //zeros 张量
 Tensor Tensor::zeros(int n1, int n2, int n3) {
     Tensor tem(n1,n2,n3);
@@ -47,7 +159,7 @@ Tensor Tensor::zeros(int n1, int n2, int n3) {
             }
         }
     }
-    cout<<"hh"<<endl;
+    cout<<"zeros Tensor"<<endl;
     return tem;
 }
 
@@ -74,9 +186,17 @@ Tensor Tensor::Identity(int n1, int n2, int n3) {
             exit(0);
         }
     }
+//size
+int* size(const Tensor & a) {
+    static int p[3]; //为什么加了static就行了。。。
+    p[0]=a.n1;
+    p[1]=a.n2;
+    p[2]=a.n3;
+    return p;
+}
 
 //求范数
-double norm(Tensor a) {
+double norm(Tensor &a) {
     double norm=0;
         for (int i = 0; i < a.n1; ++i) {
             for (int j = 0; j < a.n2; ++j) {
@@ -89,7 +209,7 @@ double norm(Tensor a) {
     }       //写在类外时，不能在前面加friend.   //为什么要写两个Tensor,第一个tensor是表示类型
 
 //转置运算；不支持复数暂时
-Tensor Transpose(Tensor a) {
+Tensor Transpose(Tensor &a) {
     Tensor tem=a;
     for (int i = 0; i < a.n1; ++i) {
         for (int j = 0; j < a.n2; ++j) {
@@ -136,6 +256,10 @@ void Tensor::allocSpace()
         }
     }
 }
+
+
+
+
 
 
 

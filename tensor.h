@@ -14,9 +14,14 @@ public:
     Tensor(int,int,int); //创建三维张量
     Tensor();
     ~Tensor();
-    static Tensor zeros(int, int, int); //零张量
-    static Tensor Identity(int, int, int); //零张量
-
+    Tensor(const Tensor&);
+    Tensor& operator=(const Tensor&);
+    Tensor& operator+=(const Tensor&);
+    Tensor& operator-=(const Tensor&);
+    Tensor& operator*=(const Tensor&);
+    Tensor& operator*=(double);
+    Tensor& operator/=(double);
+    //返回值
     inline double& operator()(int x, int y, int z) {
         if (x<n1 && y<n2 && z<n3) {
             return p[x][y][z];
@@ -27,8 +32,13 @@ public:
         }
     }
 
-    friend double norm(Tensor);
-    friend Tensor Transpose(Tensor);
+    //初始化
+    static Tensor zeros(int, int, int); //零张量
+    static Tensor Identity(int, int, int); //零张量
+
+    friend int *size(const Tensor &);
+    friend double norm(Tensor &);
+    friend Tensor Transpose(Tensor &);
     friend double dotProduct(Tensor,Tensor);
 
     private:
