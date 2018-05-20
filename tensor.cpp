@@ -14,7 +14,7 @@ Tensor::Tensor(int n1, int n2, int n3) : n1(n1), n2(n2),n3(n3)
     for (int i = 0; i < n1; ++i) {
         for (int j = 0; j < n2; ++j) {
             for(int k=0; k<n3; ++k) {
-                p[i][j][k] = 2.1;
+                p[i][j][k] = 1;
             }
         }
     }
@@ -194,6 +194,69 @@ int* size(const Tensor & a) {
     p[2]=a.n3;
     return p;
 }
+//diber
+double *fiber(const Tensor & t, int m, int n ,int a) {
+    if(a==1){
+        double *c=new double [t.n1];
+        for (int i=0; i<t.n1;++i){
+                c[i]=t.p[i][m][n];
+            }
+            return c;
+        }
+    if(a==2){
+        double *c=new double [t.n2];
+        for (int i=0; i<t.n1;++i){
+            c[i]=t.p[i][m][n];
+        }
+        return c;
+    }
+    if(a==3){
+        double *c=new double [t.n3];
+        for (int i=0; i<t.n1;++i){
+            c[i]=t.p[i][m][n];
+        }
+        return c;
+    }
+}
+
+double **slice(const Tensor & t, int m, int a) {
+    if(a==1){
+        double **c=new double*  [t.n2];
+        for (int i=0;i<t.n2;++i){
+            c[i]=new double [t.n3];
+        }
+        for (int i=0;i<t.n2;++i){
+            for (int j=0;j<t.n3;++j){
+                c[i][j]=t.p[m][i][j];
+            }
+        }
+        return c;
+    }
+    if(a==2){
+        double **c=new double* [t.n1];
+        for (int i=0;i<t.n1;++i){
+            c[i]=new double [t.n3];
+        }
+        for (int i=0;i<t.n1;++i){
+            for (int j=0;j<t.n3;++j){
+                c[i][j]=t.p[i][m][j];
+            }
+        }
+        return c;
+    }
+    if(a==3){
+        double **c=new double* [t.n1];
+        for (int i=0;i<t.n1;++i){
+            c[i]=new double [t.n2];
+        }
+        for (int i=0;i<t.n1;++i){
+            for (int j=0;j<t.n2;++j){
+                c[i][j]=t.p[i][j][m];
+            }
+        }
+        return c;
+    }
+}
 
 //求范数
 double norm(Tensor &a) {
@@ -241,6 +304,26 @@ double dotProduct(Tensor a, Tensor b) {
     return sum;
 }
 
+Tensor tprod(Tensor & a, Tensor & b) {
+    Tensor tmp(a.n1,b.n2,a.n3);
+    tmp=tmp.zeros(a.n1,b.n2,a.n3);
+    if (a.n2==b.n1 && a.n3==b.n3){
+        for(int k=0;k<a.n3;++k){
+            for (int i=0;i<a.n1;i++){
+                for (int j=0;j<b.n2;++j){
+                    double s=0;
+                    for (int l=0;l<a.n2;++l){
+                        s=s+a.p[i][l][k]*b.p[l][j][k];
+                    }
+                    tmp.p[i][j][k]=s;
+                }
+            }
+        }
+        return tmp;
+    }
+
+}
+
 /*********************************************
  ******Tensor privative helper functions******
  *********************************************/
@@ -256,6 +339,8 @@ void Tensor::allocSpace()
         }
     }
 }
+
+
 
 
 
