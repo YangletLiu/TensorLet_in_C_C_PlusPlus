@@ -7,7 +7,7 @@ int main() {
 
     cout<<a(1,2,4)<<endl;
 
-//    z=z.zeros(2,3,4);   //为什么会被析构了。。。
+//    z=z.zeros(2,3,4);   
  //   cout<<z(0,1,2)<<endl;
       //z=b.Identity(2,2,3);
  //   cout<<b(0,1,2)<<endl;
