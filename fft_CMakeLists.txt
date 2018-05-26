@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.10)
+project(fft)
+
+include_directories(/usr//local/fftw/include)
+link_directories(/usr/local/fftw/lib)
+link_libraries(libfftw3.a libfftw3f.a)
+
+set(CMAKE_CXX_STANDARD 11)
+
+add_executable(fft main.cpp)
