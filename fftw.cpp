@@ -69,7 +69,6 @@ double *** loadfile(int &n1, int &n2, int &n3, char *path){
         }
     }
 
-//释放空间 内存泄漏。。。还会影响运行时间==
     for(int i=0; i<n1; i++) {
         for (int j = 0; j < n2; j++) {
             delete [] p0[i][j];
@@ -134,7 +133,7 @@ int main(int argc, char * argv[]){
             for(int k=0;k <N0; k++){
                 v_t[i][j][k]=out[k][0];
                 v_t1[i][j][k]=out[k][1];
-            }               //局部变量归零了？？
+            }              
         }
     }
 
@@ -156,7 +155,7 @@ int main(int argc, char * argv[]){
 
     t1=gettime();
 
-    p_fft=fftw_plan_dft_c2r_1d(n3,out,in,FFTW_ESTIMATE);   //不是局部变量为0 而是 变换参数为N0 是n3！！！ 输出维度的长度
+    p_fft=fftw_plan_dft_c2r_1d(n3,out,in,FFTW_ESTIMATE);   
 
     //fftw_execute(p_fft);
 
@@ -169,10 +168,10 @@ int main(int argc, char * argv[]){
                 out[k][1] = v_t1[i][j][k];
             }
             fftw_execute_dft_c2r(p_fft,out,in);
-//            v_o[i][j] = in;   //指针传递？？
+//            v_o[i][j] = in;  
             for(int k=0;k <n3; k++){
                 v_o[i][j][k] = 1.0/n3*in[k];
-            }               //局部变量归零了？？
+            }              
         }
     }
     t2=gettime();
