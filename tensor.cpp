@@ -188,7 +188,7 @@ Tensor Tensor::Identity(int n1, int n2, int n3) {
     }
 //size
 int* size(const Tensor & a) {
-    static int p[3]; //为什么加了static就行了。。。
+    static int p[3]; 
     p[0]=a.n1;
     p[1]=a.n2;
     p[2]=a.n3;
@@ -269,9 +269,9 @@ double norm(Tensor &a) {
             }
         }
         return norm;
-    }       //写在类外时，不能在前面加friend.   //为什么要写两个Tensor,第一个tensor是表示类型
+    }       
 
-//转置运算；不支持复数暂时
+//转置运算；
 Tensor Transpose(Tensor &a) {
     Tensor tem=a;
     for (int i = 0; i < a.n1; ++i) {
@@ -345,11 +345,6 @@ void Tensor::allocSpace()
 
 
 
-
-
-
-
-
 //提取某一坐标值
 //double& Tensor::operator()(int x, int y, int z)
 //{
@@ -364,7 +359,6 @@ void Tensor::allocSpace()
 //        }
 //}
 
-//注释快捷键 ctrl + /
 
 //展示单位张量的值
 //for(int k=0; k<3; ++k) {
