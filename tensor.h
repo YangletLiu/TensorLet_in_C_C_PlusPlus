@@ -7,7 +7,10 @@
 
 #include "string.h"
 #include <iostream>
+#include <armadillo>
 using namespace std;
+using namespace arma;
+
 
 class Tensor{
 public:
@@ -43,13 +46,23 @@ public:
     friend Tensor Transpose(Tensor &);
     friend double dotProduct(Tensor,Tensor);
     friend Tensor tprod(Tensor &,Tensor &);
-
-    private:
+    friend mat ten2mat(Tensor &, int);
+    friend vec ten2vec(Tensor &);
+//    private:
     int n1,n2,n3;
     double ***p;
     void allocSpace();
 };
 
+struct TM{
+    Tensor & core;
+    mat u1,u2,u3;
+};
+
+TM HOSVD(Tensor &, int , int , int );
+
+//n-mode product
+mat ttm(Tensor &, mat &, int);
 
 
 #endif //TENSOR_TENSOR_H
