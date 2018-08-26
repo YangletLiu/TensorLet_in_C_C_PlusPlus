@@ -200,21 +200,21 @@ vec fiber(const Tensor & t, int m, int n ,int order) {
     if(order==1){
         vec c(t.n1);
         for (int i=0; i<t.n1;++i){
-                c[i]=t.p[i][m][n];
+                c(i)=t.p[i][m][n];
             }
             return c;
         }
     if(order==2){
         vec c(t.n2);
         for (int i=0; i<t.n1;++i){
-            c[i]=t.p[i][m][n];
+            c(i)=t.p[i][m][n];
         }
         return c;
     }
     if(order==3){
         vec c(t.n3);
         for (int i=0; i<t.n1;++i){
-            c[i]=t.p[i][m][n];
+            c(i)=t.p[i][m][n];
         }
         return c;
     }
@@ -226,7 +226,7 @@ mat slice(const Tensor & t, int m, int order) {
         mat c(t.n2,t.n3);
         for (int i=0;i<t.n2;++i){
             for (int j=0;j<t.n3;++j){
-                c[i][j]=t.p[m][i][j];
+                c(i,j)=t.p[m][i][j];
             }
         }
         return c;
@@ -235,7 +235,7 @@ mat slice(const Tensor & t, int m, int order) {
         mat c(t.n1,t.n3);
         for (int i=0;i<t.n1;++i){
             for (int j=0;j<t.n3;++j){
-                c[i][j]=t.p[i][m][j];
+                c(i,j)=t.p[i][m][j];
             }
         }
         return c;
@@ -244,7 +244,7 @@ mat slice(const Tensor & t, int m, int order) {
         mat c(t.n1,t.n2);
         for (int i=0;i<t.n1;++i){
             for (int j=0;j<t.n2;++j){
-                c[i][j]=t.p[i][j][m];
+                c(i,j)=t.p[i][j][m];
             }
         }
         return c;
@@ -395,6 +395,7 @@ TM HOSVD(Tensor & a, int  r1, int  r2, int r3){
     mat U;//U,V均为正交矩阵
     vec S;//S为奇异值构成的列向量
     eig_sym(S,U,tmp);
+    cout << size(U) <<endl;
 
     m2 = ten2mat(a,2);
     mat trans_m2 = m2.t();
@@ -408,16 +409,19 @@ TM HOSVD(Tensor & a, int  r1, int  r2, int r3){
 //    eig_sym(S,U,tmp);
 
     m3 = ten2mat(a,3);
-    mat trans_m3 = m2.t();
-    tmp = m2*trans_m2;
+    mat trans_m3 = m3.t();
+    tmp = m3*trans_m3;
+
     eig_sym(S,U,tmp);
-    m3.reset();
-    trans_m3.reset();
+//    m3.reset();
+//    trans_m3.reset();
 
 //    mat trans_m3 = m3.t();
 //    tmp = m3*trans_m3;
 //    eig_sym(S,U,tmp);
+    mat c=ttm(a,U,3);
 
+    cout <<c <<endl;
     TM A{g,m1,U,U};
 
     return A;
