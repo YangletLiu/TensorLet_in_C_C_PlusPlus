@@ -14,7 +14,7 @@ Tensor::Tensor(int n1, int n2, int n3) : n1(n1), n2(n2),n3(n3)
     for (int i = 0; i < n1; ++i) {
         for (int j = 0; j < n2; ++j) {
             for(int k=0; k<n3; ++k) {
-                p[i][j][k] = 1;
+                p[i][j][k] = i+2*j+3*k;
             }
         }
     }
@@ -47,7 +47,6 @@ Tensor::Tensor(const Tensor & T) {
         }
     }
 }
-
 
 //重载运算符
 Tensor &Tensor::operator=(const Tensor & T) {
@@ -149,6 +148,7 @@ Tensor &Tensor::operator/=(double num) {
         exit(0);
     }
 }
+
 //zeros 张量
 Tensor Tensor::zeros(int n1, int n2, int n3) {
     Tensor tem(n1,n2,n3);
@@ -159,7 +159,6 @@ Tensor Tensor::zeros(int n1, int n2, int n3) {
             }
         }
     }
-    cout<<"zeros Tensor"<<endl;
     return tem;
 }
 
@@ -186,6 +185,7 @@ Tensor Tensor::Identity(int n1, int n2, int n3) {
             exit(0);
         }
     }
+
 //size
 int* size(const Tensor & a) {
     static int p[3]; //为什么加了static就行了。。。
@@ -194,24 +194,25 @@ int* size(const Tensor & a) {
     p[2]=a.n3;
     return p;
 }
-//diber
-double *fiber(const Tensor & t, int m, int n ,int a) {
-    if(a==1){
-        double *c=new double [t.n1];
+
+//fiber
+vec fiber(const Tensor & t, int m, int n ,int order) {
+    if(order==1){
+        vec c(t.n1);
         for (int i=0; i<t.n1;++i){
                 c[i]=t.p[i][m][n];
             }
             return c;
         }
-    if(a==2){
-        double *c=new double [t.n2];
+    if(order==2){
+        vec c(t.n2);
         for (int i=0; i<t.n1;++i){
             c[i]=t.p[i][m][n];
         }
         return c;
     }
-    if(a==3){
-        double *c=new double [t.n3];
+    if(order==3){
+        vec c(t.n3);
         for (int i=0; i<t.n1;++i){
             c[i]=t.p[i][m][n];
         }
@@ -219,12 +220,10 @@ double *fiber(const Tensor & t, int m, int n ,int a) {
     }
 }
 
-double **slice(const Tensor & t, int m, int a) {
-    if(a==1){
-        double **c=new double*  [t.n2];
-        for (int i=0;i<t.n2;++i){
-            c[i]=new double [t.n3];
-        }
+//slice
+mat slice(const Tensor & t, int m, int order) {
+    if(order==1){
+        mat c(t.n2,t.n3);
         for (int i=0;i<t.n2;++i){
             for (int j=0;j<t.n3;++j){
                 c[i][j]=t.p[m][i][j];
@@ -232,11 +231,8 @@ double **slice(const Tensor & t, int m, int a) {
         }
         return c;
     }
-    if(a==2){
-        double **c=new double* [t.n1];
-        for (int i=0;i<t.n1;++i){
-            c[i]=new double [t.n3];
-        }
+    if(order==2){
+        mat c(t.n1,t.n3);
         for (int i=0;i<t.n1;++i){
             for (int j=0;j<t.n3;++j){
                 c[i][j]=t.p[i][m][j];
@@ -244,11 +240,8 @@ double **slice(const Tensor & t, int m, int a) {
         }
         return c;
     }
-    if(a==3){
-        double **c=new double* [t.n1];
-        for (int i=0;i<t.n1;++i){
-            c[i]=new double [t.n2];
-        }
+    if(order==3){
+        mat c(t.n1,t.n2);
         for (int i=0;i<t.n1;++i){
             for (int j=0;j<t.n2;++j){
                 c[i][j]=t.p[i][j][m];
@@ -257,6 +250,64 @@ double **slice(const Tensor & t, int m, int a) {
         return c;
     }
 }
+
+//tensor 转 matrix
+mat ten2mat(Tensor & a , int b) {
+    int m,len;
+    if (b==1){ m=a.n1;len = a.n2*a.n3;
+        mat result = zeros(m,len);
+        for (int k = 0;  k < a.n3;k++){
+            for (int i = 0; i < a.n1; i++){
+                for (int j = 0; j < a.n2; j++ ){
+                    int J = a.n2;
+                    result(i,j+k*J) = a.p[i][j][k];
+                }
+            }
+        }
+        return result;
+    }
+    else if (b == 2){ m=a.n2;len = a.n1*a.n3;
+        mat result = zeros(m,len);
+        for (int i = 0; i < a.n1; i++){
+            for (int k = 0;  k < a.n3;k++){
+                for (int j = 0; j < a.n2; j++ ){
+                    int J = a.n1;
+                    result(j,i+k*J) = a.p[i][j][k];
+                }
+            }
+        }
+        return result;
+    }
+    else { m=a.n3;len = a.n1*a.n2;
+        mat result = zeros(m,len);
+        for (int j = 0; j < a.n2; j++ ){
+            for (int k = 0;  k < a.n3;k++){
+                for (int i = 0; i < a.n1; i++){
+                    int J = a.n1;
+                    result(k,i+j*J) = a.p[i][j][k];
+                }
+            }
+        }
+        return result;
+    }
+}
+
+//tensor 转 vector
+vec ten2vec(Tensor & a) {
+    int len = a.n1*a.n2*a.n3;
+    vec result(len);
+    for (int i = 0;  i < a.n1;i++){
+        for (int j = 0; j < a.n2; j++){
+            for (int k = 0; k < a.n3; k++ ){
+                int I = a.n1;
+                int J = a.n1*a.n2;
+                result(i+j*I+k*J) = a.p[i][j][k];
+            }
+        }
+    }
+    return result;
+}
+
 
 //求范数
 double norm(Tensor &a) {
@@ -285,7 +336,7 @@ Tensor Transpose(Tensor &a) {
     return tem;
 }
 
-//Innerproduct
+//Inner product
 double dotProduct(Tensor a, Tensor b) {
     double sum = 0;
     if(a.n1==b.n1 && a.n2==b.n2 && a.n3==b.n3) {
@@ -324,6 +375,60 @@ Tensor tprod(Tensor & a, Tensor & b) {
 
 }
 
+TM HOSVD(Tensor & a, int  r1, int  r2, int r3){
+    int n1=a.n1;
+    int n2=a.n2;
+    int n3=a.n3;
+    Tensor g(r1,r2,r3);
+    mat m1(n1,n2*n3);
+    mat m2(n2,n1*n3);
+    mat m3(n3,n1*n2);
+
+    m1 = ten2mat(a,1);
+    mat trans_m1 = m1.t();
+//    cout << m1 <<endl;
+//    cout << trans_m1 <<endl;
+    mat tmp = m1*trans_m1;
+    m1.reset(); //直接改变矩阵大小 不需要删除堆栈？？内存管理好神奇。。。
+    trans_m1.reset();
+
+    mat U;//U,V均为正交矩阵
+    vec S;//S为奇异值构成的列向量
+    eig_sym(S,U,tmp);
+
+    m2 = ten2mat(a,2);
+    mat trans_m2 = m2.t();
+    tmp = m2*trans_m2;
+    eig_sym(S,U,tmp);
+    m2.reset();
+    trans_m2.reset();
+
+//    mat trans_m2 = m2.t();
+//    tmp = m2*trans_m2;
+//    eig_sym(S,U,tmp);
+
+    m3 = ten2mat(a,3);
+    mat trans_m3 = m2.t();
+    tmp = m2*trans_m2;
+    eig_sym(S,U,tmp);
+    m3.reset();
+    trans_m3.reset();
+
+//    mat trans_m3 = m3.t();
+//    tmp = m3*trans_m3;
+//    eig_sym(S,U,tmp);
+
+    TM A{g,m1,U,U};
+
+    return A;
+}
+
+mat ttm(Tensor & a, mat & b, int c) {
+    mat result;
+    mat a_c = ten2mat(a,c);
+    result = b*a_c;
+    return result;
+}
 /*********************************************
  ******Tensor privative helper functions******
  *********************************************/
@@ -339,16 +444,6 @@ void Tensor::allocSpace()
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 //提取某一坐标值
 //double& Tensor::operator()(int x, int y, int z)
