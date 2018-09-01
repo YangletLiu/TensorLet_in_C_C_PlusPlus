@@ -40,8 +40,8 @@ public:
     static Tensor Identity(int, int, int); //零张量
 
     friend int *size(const Tensor &);
-    friend double *fiber(const Tensor &,int,int,int);
-    friend double **slice(const Tensor &,int,int);
+    friend vec fiber(const Tensor &,int,int,int);
+    friend mat slice(const Tensor &,int,int);
     friend double norm(Tensor &);
     friend Tensor Transpose(Tensor &);
     friend double dotProduct(Tensor,Tensor);

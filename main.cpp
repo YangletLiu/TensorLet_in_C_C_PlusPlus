@@ -65,7 +65,7 @@ int main() {
     cout<<t(1,2,3)<<endl;
     cout<<norm(a)<<endl;
     cout<<fiber(a,1,2,2)<<endl;
-    cout<<slice(a,1,1)[0][0]<<endl;
+    cout<<slice(a,1,1)(0,0)<<endl;
 
     return 0;
 
