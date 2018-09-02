@@ -69,7 +69,6 @@ vec ten2vec(Tensor<T> & a);
 template<class T>
 double norm(Tensor<T> &a);       //写在类外时，不能在前面加friend.   //为什么要写两个Tensor,第一个tensor是表示类型
 
-
 //转置运算；不支持复数暂时
 template<class T>
 Tensor<T> Transpose(Tensor<T> &a);
@@ -84,14 +83,14 @@ Tensor<T> tprod(Tensor<T1> &a, Tensor<T2> &b);
 
 //返回结构
 template<class T>
-struct TM{
+struct tuckercore{
     Tensor<T> & core;
     mat u1,u2,u3;
 };
 
 //HOSVD
 template<class T>
-TM<T> HOSVD(Tensor <T> & a, int  r1, int  r2, int r3);
+tuckercore<T> HOSVD(Tensor <T> & a, int  r1, int  r2, int r3);
 
 //n-mode product
 template<class T>
@@ -108,7 +107,7 @@ Tensor<T>::Tensor(int n1, int n2, int n3) : n1(n1), n2(n2),n3(n3)
     for (int i = 0; i < n1; ++i) {
         for (int j = 0; j < n2; ++j) {
             for(int k=0; k<n3; ++k) {
-                p[i][j][k] = 1.0;
+                p[i][j][k] = randn();  //randi...
             }
         }
     }
@@ -482,53 +481,123 @@ Tensor<T1> tprod(Tensor<T1> &a, Tensor<T2> &b) {
 }
 
 template<class T>
-TM <T> HOSVD(Tensor<T> &a, int r1, int r2, int r3) {
-    int n1=a.n1;
-    int n2=a.n2;
-    int n3=a.n3;
-    Tensor<T> g(r1,r2,r3);
-    mat m1(n1,n2*n3);
+tuckercore <T> HOSVD(Tensor<T> &a, int r1, int r2, int r3) {
+    int n1=a.n1; int n2=a.n2; int n3=a.n3;
+    mat tmp(n3,n3);
+    mat cal(n1,n3);
+    tmp.zeros();
 
-    m1 = ten2mat(a,1);
-    mat trans_m1 = m1.t();
-//    cout << m1 <<endl;
-//    cout << trans_m1 <<endl;
-    mat tmp = m1*trans_m1;
-    m1.reset(); //直接改变矩阵大小 不需要删除堆栈？？内存管理好神奇。。。
-    trans_m1.reset();
+    for (int i=0; i< n2;i++){
+        cal = slice(a,i,2);
+        tmp = tmp + cal.t()*cal; //slice computing
+    }
 
     mat U;//U,V均为正交矩阵
     vec S;//S为奇异值构成的列向量
+    mat U3(n3,r3);
     eig_sym(S,U,tmp);
+    U3 = U.cols(n3-r3,n3-1);
 
-    mat m2(n2,n1*n3);
-    m2 = ten2mat(a,2);
-    mat trans_m2 = m2.t();
-    tmp = m2*trans_m2;
-    eig_sym(S,U,tmp);
-    m2.reset();
-    trans_m2.reset();
+    tmp.resize(n1,n1);
+    cal.resize(n1,n2);
+    tmp.zeros();
+//    m1.reset(); //直接改变矩阵大小 不需要删除堆栈？？内存管理好神奇。。。
 
-//    mat trans_m2 = m2.t();
-//    tmp = m2*trans_m2;
-//    eig_sym(S,U,tmp);
-    mat m3(n3,n1*n2);
-    m3 = ten2mat(a,3);
-    mat trans_m3 = m3.t();
-    tmp = m3*trans_m3;
+    for (int i=0; i< n3;i++){
+        cal = slice(a,i,3);
+        tmp = tmp + cal*cal.t();
+    }
 
     eig_sym(S,U,tmp);
-//    m3.reset();
-//    trans_m3.reset();
+    mat U1(n1,r1);
+    U1 = U.cols(n1-r1,n1-1);
 
-//    mat trans_m3 = m3.t();
-//    tmp = m3*trans_m3;
-//    eig_sym(S,U,tmp);
-    mat c=ttm(a,U,3);
+    tmp.resize(n2,n2);
+    tmp.zeros();
+    for (int i=0; i< n3;i++){
+        cal = slice(a,i,3);
+        tmp = tmp + cal.t()*cal;
+    }
 
-    TM<T> A{g,m1,U,U};
+    eig_sym(S,U,tmp);
+    mat U2(n2,r2);
+    U2 = U.cols(n2-r2,n2-1);
 
+//    S.reset();U.reset();
+    Tensor<T>  g_tmp(r1,r2,n3);
+    tmp.resize(r1,r2);
+    for (int i=0; i< n3;i++){
+        cal = slice(a,i,3);
+        tmp = U1.t()*cal*U2;
+        slice(g_tmp,i,3) = tmp;
+    }
+//    tmp.reset();
+
+    Tensor<T> g(r1,r2,n3);
+    cal.resize(r1,r2);
+    for (int i=0; i< r2;i++){
+        cal = slice(g_tmp,i,2);
+        slice(g,i,2)= cal.t()*U3.t(); //slice computing
+    }
+
+    tuckercore<T> A{g,U1,U2,U3};
     return A;
+}
+
+template <class T>
+mat cp_als(Tensor<T> &a, int r){
+    int n1=a.n1; int n2=a.n2; int n3=a.n3;
+    mat A=randu(n1,r); mat B=randu(n2,r); mat C=randu(n3,r);
+
+    mat cal(n1,n2); mat tmp(n1,r); mat krtmp(n2,r);
+
+    for (int turn=0; turn<100;turn++) {
+        tmp.zeros();
+        for (int j = 0; j < n3; j++) {
+            for (int i = 0; i < r; i++) {
+                krtmp.col(i) = C(j, i) * B.col(i);
+            }
+            cal = slice(a, j, 3);
+            tmp = tmp + cal * krtmp; //slice computing
+        }
+        A = tmp * inv((C.t() * C) % (B.t() * B));
+        A = normalise(A);
+
+        tmp.set_size(n2, r);
+        tmp.zeros();
+        krtmp.set_size(n1, r);
+        for (int j = 0; j < n3; j++) {
+            for (int i = 0; i < r; i++) {
+                krtmp.col(i) = C(j, i) * A.col(i);
+            }
+            cal = slice(a, j, 3);
+            tmp = tmp + cal.t() * krtmp; //slice computing
+        }
+        B = tmp * inv((C.t() * C) % (A.t() * A));
+        B = normalise(B);
+
+        tmp.set_size(n3, r);
+        tmp.zeros();
+        krtmp.set_size(n1, r);
+        for (int j = 0; j < n2; j++) {
+            for (int i = 0; i < r; i++) {
+                krtmp.col(i) = B(j, i) * A.col(i);
+            }
+            cal = slice(a, j, 2);
+            tmp = tmp + cal.t() * krtmp; //slice computing
+        }
+        C = tmp * inv((B.t() * B) % (A.t() * A));
+        if (turn != 99){
+            C = normalise(C);
+        }
+    }
+
+
+    cout << A <<endl;
+    cout << B <<endl;
+    cout << C <<endl;
+
+    return B;
 }
 
 template<class T>

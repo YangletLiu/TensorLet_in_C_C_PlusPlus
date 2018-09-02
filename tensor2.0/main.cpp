@@ -22,33 +22,44 @@ using namespace arma;
 
 int main() {
     double t0,t1;
-    Tensor<double> a(20,20,20);
+    Tensor<double> a(3,3,3);
+//    Tensor<double> g(1,1,1);
+//    mat u1(2,1);
+//    mat u2(2,1);
+//    mat u3(2,1);
+//    tuckercore<double> A{g,u1,u2,u3};
+//
     t0=gettime();
-    HOSVD(a,10,10,10);
+        HOSVD(a,1,1,1);
     t1=gettime();
 
     cout << "time:" <<t1-t0 <<endl;
-    Tensor<double> b(2,3,5),d(5,5,5), z(2,3,4),t(5,5,5);
-    cout<<a(1,2,4)<<endl;
-    cout<<z(0,1,2)<<endl;
+    cp_als(a,5);
+//    Tensor<double> b(2,3,5),d(5,5,5), z(2,3,4),t(5,5,5);
+//    cout<<z(0,1,2)<<endl;
+//
+//    z=z.zeros(2,3,4);
+//    cout<<z(0,1,2)+123<<endl;
+//
+//    int *c=getsize(b);
+//    cout<<c[0]<<endl; //tensor大小
+//    cout<<sizeof(a)<<endl;
+//    cout<<norm(a)<<endl;
+//
+//    cout << "Hello, World!" << endl;
+//    cout<<t(1,2,3)<<endl;
+//    cout<<norm(a)<<endl;
 
-    z=z.zeros(2,3,4);
-    cout<<z(0,1,2)+123<<endl;
-
-    a*=1;
-    int *c=getsize(b);
-    cout<<c[0]<<endl; //tensor大小
-    cout<<sizeof(a)<<endl;
-    cout<<norm(a)<<endl;
-    cout<<a(1,2,4)+3<<endl;
-
-    cout << "Hello, World!" << endl;
-    t=tprod(a,d);
-    cout<<t(1,2,3)<<endl;
-    cout<<norm(a)<<endl;
-    cout<<fiber(a,1,2,2)<<endl;
-    cout<<slice(a,1,1)(0,0)<<endl;
-
+//slice
+//    cout<<fiber(a,1,2,2)<<endl;
+    mat m1 = ten2mat(a,1);
+//    mat m2 = ten2mat(a,2);
+    mat m3 = ten2mat(a,3);
+    cout << m1 << endl;
+//    cout<<slice(a,0,3)<<endl;
+    cout << m3 << endl;
+//    cout << m2 << endl;
+    cout<<slice(a,0,2)<<endl;
     return 0;
 
 }
