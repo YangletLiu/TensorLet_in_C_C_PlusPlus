@@ -39,15 +39,15 @@ public:
     static Tensor zeros(int, int, int); //零张量
     static Tensor Identity(int, int, int); //零张量
 
-    friend int *size(const Tensor &);
-    friend vec fiber(const Tensor &,int,int,int);
-    friend mat slice(const Tensor &,int,int);
+    friend int *size(const Tensor &);  //size
+    friend vec fiber(const Tensor &,int,int,int); //fiber
+    friend mat slice(const Tensor &,int,int); //slice
     friend double norm(Tensor &);
-    friend Tensor Transpose(Tensor &);
-    friend double dotProduct(Tensor,Tensor);
-    friend Tensor tprod(Tensor &,Tensor &);
-    friend mat ten2mat(Tensor &, int);
-    friend vec ten2vec(Tensor &);
+    friend Tensor Transpose(Tensor &); 
+    friend double dotProduct(Tensor,Tensor); //内积
+    friend Tensor tprod(Tensor &,Tensor &); //t-product
+    friend mat ten2mat(Tensor &, int); //tensor 转 矩阵
+    friend vec ten2vec(Tensor &); //转向量
 //    private:
     int n1,n2,n3;
     double ***p;
@@ -57,9 +57,9 @@ public:
 struct TM{
     Tensor & core;
     mat u1,u2,u3;
-};
+}; //tucker core
 
-TM HOSVD(Tensor &, int , int , int );
+TM HOSVD(Tensor &, int , int , int ); //hosvd algorithm
 
 //n-mode product
 mat ttm(Tensor &, mat &, int);
