@@ -2,7 +2,6 @@
 #include <iostream>
 #include <armadillo>
 #include <vector>
-
 #include <complex>
 #include <fftw3.h>
 #include "mkl.h"
@@ -22,19 +21,30 @@ using namespace arma;
 
 int main() {
     double t0,t1;
-    Tensor<double> a(3,3,3);
+    int I=100;
+    int R=0.2*I;
+    Tensor<float> a(I,I,I);
+    for (int i = 0; i < a.n1; ++i) {
+        for (int j = 0; j < a.n2; ++j) {
+            for(int k=0; k<a.n3; ++k) {
+                a(i,j,k) = randu();
+            }
+        }
+    }
+    cout << sizeof(a(1,1,1)) << endl;
 //    Tensor<double> g(1,1,1);
 //    mat u1(2,1);
 //    mat u2(2,1);
 //    mat u3(2,1);
 //    tuckercore<double> A{g,u1,u2,u3};
 //
+    cout << "time:" <<endl;
     t0=gettime();
-        HOSVD(a,1,1,1);
+        HOSVD(a,R,R,R);
+//    cp_als(a,R);
     t1=gettime();
 
     cout << "time:" <<t1-t0 <<endl;
-    cp_als(a,5);
 //    Tensor<double> b(2,3,5),d(5,5,5), z(2,3,4),t(5,5,5);
 //    cout<<z(0,1,2)<<endl;
 //
@@ -50,16 +60,19 @@ int main() {
 //    cout<<t(1,2,3)<<endl;
 //    cout<<norm(a)<<endl;
 
+
+//    mat m1 = ten2mat(a,1);
+//    cout << m1 << endl;
+//
+//    mat m2 = ten2mat(a,2);
+//    cout << m2 << endl;
+//
+//    mat m3 = ten2mat(a,3);
+//    cout << m3 << endl;
+
+//    cout<<slice(a,0,2)<<endl;
 //slice
 //    cout<<fiber(a,1,2,2)<<endl;
-    mat m1 = ten2mat(a,1);
-//    mat m2 = ten2mat(a,2);
-    mat m3 = ten2mat(a,3);
-    cout << m1 << endl;
-//    cout<<slice(a,0,3)<<endl;
-    cout << m3 << endl;
-//    cout << m2 << endl;
-    cout<<slice(a,0,2)<<endl;
     return 0;
 
 }
