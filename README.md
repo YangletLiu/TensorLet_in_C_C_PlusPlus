@@ -1,6 +1,4 @@
-# Tensor decompositions
-A C++ library for popular tensor decompositions.
-
+# A C++ library for popular tensor decompositions
 
 ## API functions
 
@@ -10,7 +8,7 @@ cp_als function for CP decomposition;
 HOSVD(Tensor a, r1,r2,r3);  
 HOSVD function fot Tucker decomposition;  
 
-T-SVD directory implement T-SVD algorithm;  
+T-SVD algorithm is implemented in T-SVD directory ;  
 
 float directory adopt float preccision for CP, Tucker and T-SVD;  
 
