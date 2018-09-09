@@ -1,0 +1,11 @@
+tensor2.0
+
+cp_als function for CP decomposition;
+
+HOSVD function fot Tucker decomposition;
+
+T-SVD directory implement T-SVD algorithm;
+
+float directory adopt float preccision for CP, Tucker and T-SVD;
+
+mat-Py directory is the corresponding Python and MATLAB implementation.
