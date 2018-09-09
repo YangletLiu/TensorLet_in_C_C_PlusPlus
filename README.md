@@ -1,7 +1,7 @@
 # A C++ library for popular tensor decompositions
 
 ## Documentation
-All template function are implemented in tensor2.0 directory;  
+All template functions are implemented in tensor2.0 directory;  
 
 T-SVD algorithm is independently implemented in T-SVD directory ;  
 
@@ -13,6 +13,7 @@ HOSVD(Tensor a, r1,r2,r3);
 
 You can simply run main function in T-SVD directory to test T-SVD algorithm.
 
+For more API details, please refer to the tensor.h file.
 
 For the float preccision version, you can go to float directory;  
 
