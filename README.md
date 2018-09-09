@@ -4,7 +4,7 @@ A C++ library for popular tensor decompositions.
 
 ## API functions
 
-cp_als(tensor a, rank r);  
+cp_als(Tensor a, rank r);  
 cp_als function for CP decomposition;
 
 HOSVD(Tensor a, r1,r2,r3);  
