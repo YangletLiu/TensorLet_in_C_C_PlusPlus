@@ -7,7 +7,7 @@ You can implement CP decomposition using cp_als function:
 cp_als(Tensor a, rank r);  
 
 You can implement Tucker decomposition using HOSVD function:    
-HOSVD(Tensor a, r1,r2,r3);  
+HOSVD(Tensor a, r1, r2, r3);  
 
 You can simply run main function in T-SVD directory to test T-SVD algorithm.  
 
