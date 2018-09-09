@@ -1,6 +1,23 @@
-# Transform-based-Tensor-Model
-A C++ library for transform-based tensor model
+# Tensor decompositions
+A C++ library for popular tensor decompositions.
 
+
+## API functions
+
+cp_als(tensor a, rank r);
+cp_als function for CP decomposition;
+
+HOSVD(Tensor a, r1,r2,r3);
+HOSVD function fot Tucker decomposition;
+
+T-SVD directory implement T-SVD algorithm;
+
+float directory adopt float preccision for CP, Tucker and T-SVD;
+
+mat-Py directory is the corresponding Python and MATLAB implementation.
+
+
+### References
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
 
 [2] Kilmer, M. E., Braman, K., Hao, N., & Hoover, R. C. (2013). Third-order tensors as operators on matrices: A theoretical and computational framework with applications in imaging. SIAM Journal on Matrix Analysis and Applications, 34(1), 148-172.
