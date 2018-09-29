@@ -3,7 +3,8 @@
 ## Documentation
 CP and Tucker decomposition are implemented in the main directory. T-SVD algorithm is independently implemented in T-SVD directory ;
 
-## CP decomposition realized in cp_als.cpp file.  
+## CP decomposition  
+CP decomposition is realized in cp_als.cpp file.   
 You can call cp_als function like:   
 
         cp_mats A = cp_als(Tensor<T> a, rank r);    
@@ -15,7 +16,8 @@ The struct type is defined as:
   };  
 where matrix A,B and C are the corresponding factors.
   
-### Tucker decomposition realized in cp_als.cpp file.
+### Tucker decomposition
+Tucker decomposition is realized in cp_als.cpp file.  
 You can call hosvd function like: 
 
         tucker_core A = hosvd(Tensor<T> a, rank r);    
@@ -28,12 +30,14 @@ The struct type tucker_core is defined as:
 where matrix A,B and C are the corresponding factors.   
 
 You can run the test.cpp file to test the algorithms.
-You can simply run main function in T-SVD directory to test T-SVD algorithm.  
 
-For more API details, please refer to the tensor.h file. It provied the definitation of Tensor<T> and illustrations for all functions. The corresponding functions is realized in tensor.cpp file.
+### T-SVD decomposition
+You can simply run main function in T-SVD directory to test T-SVD algorithm. The cpp file for T-SVD, like cp_als.cpp, will be provided in the near furture.
 
-###mat-Py directory is the corresponding Python and MATLAB implementation.    
+### API 
+For more API details, please refer to the tensor.h file, where all definitations and corresponding illustrations is provied therein. The corresponding functions is realized in tensor.cpp file.
 
+###mat-Py directory is the corresponding Python and MATLAB implementation. 
 
 ### References
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
