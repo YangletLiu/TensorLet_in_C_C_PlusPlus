@@ -24,7 +24,7 @@ tucker_core<T> hosvd(Tensor<T> &a, int r1, int r2, int r3) {
 
     Mat<T> U;//U,V均为正交矩阵
     Col<T> S;//S为奇异值构成的列向量
-    Col<T> U3(n3,r3);
+    Mat<T> U3(n3,r3);
     eig_sym(S,U,tmp);
     U3 = U.cols(n3-r3,n3-1);
 
