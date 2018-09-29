@@ -17,9 +17,10 @@ class Tensor{
 public:
 
     Tensor<T>(int,int,int); //创建三维张量
-    Tensor<T>();
-    ~Tensor<T>();
+    Tensor<T>();  
+    ~Tensor<T>();  //析构函数
 
+//重载运算符
     Tensor<T> & operator=(const Tensor&);
     Tensor<T>& operator+=(const Tensor&);
     Tensor<T>& operator-=(const Tensor&);
@@ -39,7 +40,6 @@ public:
 
     static Tensor<T> rand(int, int, int); //零张量
     static Tensor<T> Identity(int, int, int); //零张量
-//    Tensor<T>(int,int,int,int); //创建三维张量
 
     //    private:
     int n1,n2,n3;
@@ -69,9 +69,9 @@ Col<T> ten2vec(Tensor<T> & a);
 
 //norm
 template<class T>
-double norm(Tensor<T> &a);       //写在类外时，不能在前面加friend.   //为什么要写两个Tensor,第一个tensor是表示类型
+double norm(Tensor<T> &a);      
 
-//转置运算；不支持复数暂时
+//张量转置运算
 template<class T>
 Tensor<T> Transpose(Tensor<T> &a);
 
@@ -91,18 +91,11 @@ mat ttm(Tensor<T> & a, mat & b, int c);
 /**************************************
 *******Realization of functions********
 **************************************/
-//定义三维张量，初始化为0
+//定义三维张量
 template <class T>
 Tensor<T>::Tensor(int n1, int n2, int n3) : n1(n1), n2(n2),n3(n3)
 {
-    allocSpace();
-//    for (int i = 0; i < n1; ++i) {
-//        for (int j = 0; j < n2; ++j) {
-//            for(int k=0; k<n3; ++k) {
-//                p[i][j][k] = 0;  //randi...
-//            }
-//        }
-//    }
+    allocSpace(); 
 }
 
 //析构函数
@@ -116,7 +109,6 @@ Tensor<T>::~Tensor() {
     }
     delete[] p;
     p=NULL;
-//    cout<<"destructing T"<<endl;
 }
 
 template<class T>
@@ -286,7 +278,7 @@ Tensor<T> Tensor<T>::Identity(int n1, int n2, int n3) {
 
 template<class T>
 int *getsize(const Tensor<T> &a) {
-    static int p[3]; //为什么加了static就行了。。。
+    static int p[3]; 
     p[0]=a.n1;
     p[1]=a.n2;
     p[2]=a.n3;
@@ -374,42 +366,5 @@ Mat<T> ten2mat(Tensor<T> &a, int b) {
         return result;
     }
 }
-
-
-
-//template<class T>
-//Tensor<T>::Tensor(int n1, int n2, int n3, int n4): n1(n1), n2(n2),n3(n3) {
-//    if(n4==0) {
-//        allocSpace();
-//        for (int i = 0; i < n1; ++i) {
-//            for (int j = 0; j < n2; ++j) {
-//                for(int k=0; k<n3; ++k) {
-//                    p[i][j][k] = 0;  //randi...
-//                }
-//            }
-//        }
-//    }
-//    if(n4==1){
-//        if(n1==n2){
-//            allocSpace();
-//            for (int i = 0; i < n1; ++i) {
-//                for (int j = 0; j < n2; ++j) {
-//                    for(int k=0; k<n3; ++k) {
-//                        if(k==0 && i==j) {
-//                            p[i][j][k] = 1;
-//                        }
-//                        else {
-//                            p[i][j][k]=0;
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        else{
-//            cout<<"Warning: no identity tensor";
-//            exit(0);
-//        }
-//    }
-//}
 
 #endif //TENSOR_TENSOR_H
