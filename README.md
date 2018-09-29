@@ -1,7 +1,7 @@
 # A C++ library for popular tensor decompositions
 
 ## Documentation
-CP and Tucker decomposition are implemented in the main directory. T-SVD algorithm is independently implemented in T-SVD directory ;    
+CP and Tucker decomposition are implemented in the main directory. T-SVD algorithm is independently implemented in T-SVD directory ;
 
 ##CP decomposition realized in cp_als.cpp file.  
 You can call cp_als function like:   
@@ -13,7 +13,7 @@ The struct type is defined as:
   struct cp_mats{  
       Mat<T> A,B,C;  
   };  
-where matrix A,B and C are the corresponding factors.  
+where matrix A,B and C are the corresponding factors.
   
 ###Tucker decomposition realized in cp_als.cpp file.
 You can call hosvd function like: 
