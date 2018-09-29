@@ -1,8 +1,5 @@
 # A C++ library for popular tensor decompositions
 
-## Documentation
-CP and Tucker decomposition are implemented in the main directory. T-SVD algorithm is independently implemented in T-SVD directory ;
-
 ## CP decomposition  
 CP decomposition is realized in cp_als.cpp file.   
 You can call cp_als function like:   
