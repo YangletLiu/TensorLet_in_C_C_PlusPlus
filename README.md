@@ -1,19 +1,36 @@
 # A C++ library for popular tensor decompositions
 
 ## Documentation
-All template functions are implemented in tensor2.0 directory. T-SVD algorithm is independently implemented in T-SVD directory ;  
+CP and Tucker decomposition are implemented in the main directory. T-SVD algorithm is independently implemented in T-SVD directory ;  
 
-You can implement CP decomposition using cp_als function:    
-cp_als(Tensor a, rank r);  
+CP decomposition realized in cp_als.cpp file.
+You can call cp_als function like: 
 
-You can implement Tucker decomposition using HOSVD function:    
-HOSVD(Tensor a, r1, r2, r3);  
+ ##       cp_mats A = cp_als(Tensor<T> a, rank r);  
 
+The struct type is defined as:
+template<class T>
+struct cp_mats{
+    Mat<T> A,B,C;
+};
+where matrix A,B and C are the corresponding factors.
+  
+Tucker decomposition realized in cp_als.cpp file.
+You can call hosvd function like: 
+
+ ##       tucker_core A = hosvd(Tensor<T> a, rank r);  
+
+The struct type tucker_core is defined as:
+template<class T>
+struct tucker_core{
+    Mat<T> u1, u2, u3;
+};
+where matrix A,B and C are the corresponding factors. 
+
+You can run the test.cpp file to test the algorithms.
 You can simply run main function in T-SVD directory to test T-SVD algorithm.  
 
-For more API details, please refer to the tensor.h file.  
-
-For the float preccision version, you can go to float directory;    
+For more API details, please refer to the tensor.h file. It provied the class of Tensor<T> and related operations. The corresponding functions is realized in tensor.cpp file.
 
 mat-Py directory is the corresponding Python and MATLAB implementation.    
 
