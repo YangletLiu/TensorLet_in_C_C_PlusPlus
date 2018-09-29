@@ -10,10 +10,10 @@ You can call cp_als function like:
         cp_mats A = cp_als(Tensor<T> a, rank r);    
 
 The struct type is defined as:  
-  template\<class T\>  
-  struct cp_mats{  
-      Mat\<T\> A,B,C;  
-  };  
+        template\<class T\>  
+        struct cp_mats{  
+                Mat\<T\> A,B,C;  
+        };  
 where matrix A,B and C are the corresponding factors.   
 
 You can run the test.cpp file to test the algorithm.
@@ -26,10 +26,10 @@ You can call hosvd function like:
         tucker_core A = hosvd(Tensor<T> a, rank r);    
 
 The struct type tucker_core is defined as:  
-  template\<class T\>    
-  struct tucker_core{  
-      Mat\<T\> u1, u2, u3;  
-  };  
+        template\<class T\>    
+        struct tucker_core{  
+                Mat\<T\> u1, u2, u3;  
+        };  
 where matrix A,B and C are the corresponding factors.   
 
 You can run the test.cpp file to test the algorithm.
