@@ -42,7 +42,7 @@ You can simply run main function in T-SVD directory to test T-SVD algorithm. The
 ### API Reference
 For more API details, please refer to the tensor.h file, where all definitations and corresponding illustrations is provied therein. The corresponding functions is realized in tensor.cpp file.
 
-###mat-Py directory is the corresponding Python and MATLAB implementation. 
+### mat-Py directory is the corresponding Python and MATLAB implementation. 
 
 ### References
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
