@@ -10,7 +10,7 @@ You can call cp_als function like:
         cp_mats A = cp_als(Tensor<T> a, rank r);    
 
 The struct type is defined as:  
-  template<class T>  
+  template &lt class T&gt  
   struct cp_mats{  
       Mat<T> A,B,C;  
   };  
