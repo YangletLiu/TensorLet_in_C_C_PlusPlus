@@ -14,8 +14,11 @@ The struct type is defined as:
   struct cp_mats{  
       Mat<T> A,B,C;  
   };  
-where matrix A,B and C are the corresponding factors.
-  
+where matrix A,B and C are the corresponding factors.   
+
+You can run the test.cpp file to test the algorithm.
+
+
 ### Tucker decomposition
 Tucker decomposition is realized in cp_als.cpp file.  
 You can call hosvd function like: 
@@ -29,7 +32,7 @@ The struct type tucker_core is defined as:
   };  
 where matrix A,B and C are the corresponding factors.   
 
-You can run the test.cpp file to test the algorithms.
+You can run the test.cpp file to test the algorithm.
 
 ### T-SVD decomposition
 You can simply run main function in T-SVD directory to test T-SVD algorithm. The cpp file for T-SVD, like cp_als.cpp, will be provided in the near furture.
