@@ -53,19 +53,19 @@ int * getsize(const Tensor<T> &a);
 
 //fiber
 template <class T>
-vec fiber(const Tensor<T> & t, int m, int n ,int order);
+Col<T> fiber(const Tensor<T> & t, int m, int n ,int order);
 
 //slice
 template <class T>
-fmat slice(const Tensor<T> & t, int m, int order);
+Mat<T> slice(const Tensor<T> & t, int m, int order);
 
 //tensor 转 matrix
 template<class T>
-mat ten2mat(Tensor<T> & a , int b);
+Mat<T> ten2mat(Tensor<T> & a , int b);
 
 //tensor 转 vector
 template<class T>
-vec ten2vec(Tensor<T> & a);
+Col<T> ten2vec(Tensor<T> & a);
 
 //norm
 template<class T>
@@ -96,49 +96,14 @@ template <class T>
 Tensor<T>::Tensor(int n1, int n2, int n3) : n1(n1), n2(n2),n3(n3)
 {
     allocSpace();
-    for (int i = 0; i < n1; ++i) {
-        for (int j = 0; j < n2; ++j) {
-            for(int k=0; k<n3; ++k) {
-                p[i][j][k] = 0;  //randi...
-            }
-        }
-    }
+//    for (int i = 0; i < n1; ++i) {
+//        for (int j = 0; j < n2; ++j) {
+//            for(int k=0; k<n3; ++k) {
+//                p[i][j][k] = 0;  //randi...
+//            }
+//        }
+//    }
 }
-
-//template<class T>
-//Tensor<T>::Tensor(int n1, int n2, int n3, int n4): n1(n1), n2(n2),n3(n3) {
-//    if(n4==0) {
-//        allocSpace();
-//        for (int i = 0; i < n1; ++i) {
-//            for (int j = 0; j < n2; ++j) {
-//                for(int k=0; k<n3; ++k) {
-//                    p[i][j][k] = 0;  //randi...
-//                }
-//            }
-//        }
-//    }
-//    if(n4==1){
-//        if(n1==n2){
-//            allocSpace();
-//            for (int i = 0; i < n1; ++i) {
-//                for (int j = 0; j < n2; ++j) {
-//                    for(int k=0; k<n3; ++k) {
-//                        if(k==0 && i==j) {
-//                            p[i][j][k] = 1;
-//                        }
-//                        else {
-//                            p[i][j][k]=0;
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        else{
-//            cout<<"Warning: no identity tensor";
-//            exit(0);
-//        }
-//    }
-//}
 
 //析构函数
 template <class T>
@@ -329,23 +294,23 @@ int *getsize(const Tensor<T> &a) {
 }
 
 template<class T>
-vec fiber(const Tensor<T> &t, int m, int n, int order) {
+Col<T> fiber(const Tensor<T> &t, int m, int n, int order) {
     if(order==1){
-        vec c(t.n1);
+        Col<T> c(t.n1);
         for (int i=0; i<t.n1;++i){
             c(i)=t.p[i][m][n];
         }
         return c;
     }
     if(order==2){
-        vec c(t.n2);
+        Col<T> c(t.n2);
         for (int i=0; i<t.n1;++i){
             c(i)=t.p[i][m][n];
         }
         return c;
     }
     if(order==3){
-        vec c(t.n3);
+        Col<T> c(t.n3);
         for (int i=0; i<t.n1;++i){
             c(i)=t.p[i][m][n];
         }
@@ -354,9 +319,9 @@ vec fiber(const Tensor<T> &t, int m, int n, int order) {
 }
 
 template<class T>
-vec ten2vec(Tensor<T> &a) {
+Col<T> ten2vec(Tensor<T> &a) {
     int len = a.n1*a.n2*a.n3;
-    vec result(len);
+    Col<T> result(len);
     for (int i = 0;  i < a.n1;i++){
         for (int j = 0; j < a.n2; j++){
             for (int k = 0; k < a.n3; k++ ){
@@ -370,10 +335,10 @@ vec ten2vec(Tensor<T> &a) {
 }
 
 template<class T>
-mat ten2mat(Tensor<T> &a, int b) {
+Mat<T> ten2mat(Tensor<T> &a, int b) {
     int m,len;
     if (b==1){ m=a.n1;len = a.n2*a.n3;
-        mat result = zeros(m,len);
+        Mat<T> result = zeros<Mat<T>>(m,len);
         for (int k = 0;  k < a.n3;k++){
             for (int i = 0; i < a.n1; i++){
                 for (int j = 0; j < a.n2; j++ ){
@@ -385,7 +350,7 @@ mat ten2mat(Tensor<T> &a, int b) {
         return result;
     }
     else if (b == 2){ m=a.n2;len = a.n1*a.n3;
-        mat result = zeros(m,len);
+        Mat<T> result = zeros<Mat<T>>(m,len);
         for (int i = 0; i < a.n1; i++){
             for (int k = 0;  k < a.n3;k++){
                 for (int j = 0; j < a.n2; j++ ){
@@ -397,7 +362,7 @@ mat ten2mat(Tensor<T> &a, int b) {
         return result;
     }
     else { m=a.n3;len = a.n1*a.n2;
-        mat result = zeros(m,len);
+        Mat<T> result = zeros<Mat<T>>(m,len);
         for (int j = 0; j < a.n2; j++ ){
             for (int k = 0;  k < a.n3;k++){
                 for (int i = 0; i < a.n1; i++){
@@ -410,80 +375,41 @@ mat ten2mat(Tensor<T> &a, int b) {
     }
 }
 
-template<class T>
-double norm(Tensor<T> &a) {
-    double norm=0;
-    for (int i = 0; i < a.n1; ++i) {
-        for (int j = 0; j < a.n2; ++j) {
-            for(int k=0; k< a.n3; ++k) {
-                norm=norm+a.p[i][j][k]*a.p[i][j][k];
-            }
-        }
-    }
-    return norm;
-}
 
-template<class T>
-Tensor<T> Transpose(Tensor<T> &a) {
-    Tensor<T> tem=a;
-    for (int i = 0; i < a.n1; ++i) {
-        for (int j = 0; j < a.n2; ++j) {
-            for(int k=0; k< a.n3; ++k) {
-                if (k==0) tem.p[i][j][k]=a.p[j][i][k];
-                else tem.p[i][j][k]=a.p[j][i][a.n3-k];
-            }
-        }
-    }
-    return tem;
-}
 
-template<class T1, class T2>
-double dotProduct(Tensor<T1> a, Tensor<T2> b) {
-    double sum = 0;
-    if(a.n1==b.n1 && a.n2==b.n2 && a.n3==b.n3) {
-        for (int i = 0; i < a.n1; ++i) {
-            for (int j = 0; j < a.n2; ++j) {
-                for (int k = 0; k < a.n3; ++k) {
-                    sum = sum + a.p[i][j][k] * b.p[i][j][k];
-                }
-            }
-        }
-    }
-    else{
-        cout<<"Warning: The size is not match."<<endl;
-        exit(0);
-    }
-    return sum;
-}
-
-template<class T1, class T2>
-Tensor<T1> tprod(Tensor<T1> &a, Tensor<T2> &b) {
-    Tensor<T1> tmp(a.n1,b.n2,a.n3);
-    tmp=tmp.zeros(a.n1,b.n2,a.n3);
-    if (a.n2==b.n1 && a.n3==b.n3){
-        for(int k=0;k<a.n3;++k){
-            for (int i=0;i<a.n1;i++){
-                for (int j=0;j<b.n2;++j){
-                    double s=0;
-                    for (int l=0;l<a.n2;++l){
-                        s=s+a.p[i][l][k]*b.p[l][j][k];
-                    }
-                    tmp.p[i][j][k]=s;
-                }
-            }
-        }
-        return tmp;
-    }
-
-}
-
-template<class T>
-mat ttm(Tensor<T> &a, mat &b, int c) {
-    mat result;
-    mat a_c = ten2mat(a,c);
-    result = b*a_c;
-    return result;
-}
-
+//template<class T>
+//Tensor<T>::Tensor(int n1, int n2, int n3, int n4): n1(n1), n2(n2),n3(n3) {
+//    if(n4==0) {
+//        allocSpace();
+//        for (int i = 0; i < n1; ++i) {
+//            for (int j = 0; j < n2; ++j) {
+//                for(int k=0; k<n3; ++k) {
+//                    p[i][j][k] = 0;  //randi...
+//                }
+//            }
+//        }
+//    }
+//    if(n4==1){
+//        if(n1==n2){
+//            allocSpace();
+//            for (int i = 0; i < n1; ++i) {
+//                for (int j = 0; j < n2; ++j) {
+//                    for(int k=0; k<n3; ++k) {
+//                        if(k==0 && i==j) {
+//                            p[i][j][k] = 1;
+//                        }
+//                        else {
+//                            p[i][j][k]=0;
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        else{
+//            cout<<"Warning: no identity tensor";
+//            exit(0);
+//        }
+//    }
+//}
 
 #endif //TENSOR_TENSOR_H

@@ -8,11 +8,16 @@
 using namespace std;
 
 template<class T>
-fmat cp_als(Tensor<T> &a, int r) {
-    int n1=a.n1; int n2=a.n2; int n3=a.n3;
-    fmat A=randu<fmat>(n1,r); fmat B=randu<fmat>(n2,r); fmat C=randu<fmat>(n3,r); //randu(fmat)
+struct cp_mats{
+    Mat<T> A,B,C;
+};
 
-    fmat cal(n1,n2); fmat tmp(n1,r); fmat krtmp(n2,r);
+template<class T>
+cp_mats<float> cp_als(Tensor<T> &a, int r) {
+    int n1=a.n1; int n2=a.n2; int n3=a.n3;
+    Mat<T> A=randu<Mat<T>>(n1,r); Mat<T> B=randu<Mat<T>>(n2,r); Mat<T> C=randu<Mat<T>>(n3,r); //randu(Mat<T>)
+
+    Mat<T> cal(n1,n2); Mat<T> tmp(n1,r); Mat<T> krtmp(n2,r);
 
     for (int turn=0; turn<1;turn++) {
         tmp.zeros();
@@ -55,6 +60,11 @@ fmat cp_als(Tensor<T> &a, int r) {
         }
     }
 
+    cp_mats<T> rrrr;
+    rrrr.A =A;
+    rrrr.B =B;
+    rrrr.C =C;
+
 //    Tensor<T> t_con(n1,n2,n3);
 //
 //    for (int i=0;i<n1;i++){
@@ -76,5 +86,5 @@ fmat cp_als(Tensor<T> &a, int r) {
 //    cout << B << endl;
 //    cout << C << endl;
 
-    return B;
+    return rrrr;
 }

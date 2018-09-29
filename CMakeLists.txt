@@ -18,6 +18,15 @@ link_directories(/usr/local/fftw/lib)
 link_libraries(libfftw3.a libfftw3f.a)
 
 
+FIND_PACKAGE( OpenMP REQUIRED)
+if(OPENMP_FOUND)
+    message("OPENMP FOUND")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+endif()
+
+
 add_executable(tensor
         cmake-build-debug/cmake_install.cmake
         cmake-build-debug/CMakeCache.txt
@@ -27,4 +36,4 @@ add_executable(tensor
         CMakeLists.txt
         main.cpp
         tensor.cpp
-        tensor.h cp_als.cpp HOSVD.cpp)
+        tensor.h cp_als.cpp HOSVD.cpp tsvd.cpp cpals.cpp tucker_hosvd.cpp)
