@@ -1,7 +1,7 @@
 # A C++ library for popular tensor decompositions
 
 # Environment requirement
-Users need to install the following packages and add them into specific path according to your CMakeLists.txt file.
+Users need to install the following packages and add them to specific paths according to your CMakeLists.txt file.
 
 1. cmake version 3.12 or greater
 2. Basic matrix library, Armadillo: http://arma.sourceforge.net/
