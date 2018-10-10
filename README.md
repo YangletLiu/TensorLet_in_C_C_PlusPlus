@@ -1,6 +1,6 @@
 # A C++ library for popular tensor decompositions
 
-# Environment requirement
+## Environment requirement
 Users need to install the following packages and add them to specific paths according to your CMakeLists.txt file.
 
 1. cmake version 3.12 or greater
