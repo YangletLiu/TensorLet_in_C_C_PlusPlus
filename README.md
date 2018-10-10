@@ -1,13 +1,14 @@
 # A C++ library for popular tensor decompositions
 
 # Environment requirement
-Users need to install the following packages for testing:
+Users need to install the following packages and add them into specific path according to your CMakeLists.txt file.
 
 1. cmake version 3.12 or greater
 2. Basic matrix library, Armadillo: http://arma.sourceforge.net/
 3. Intel Math Kernel Library (MKL): https://software.intel.com/en-us/mkl
 4. Fastest Fourier Transform in the West (FFTW): http://www.fftw.org/  
 (Optional) OpenMP   
+
 We tested our code on Ubuntu Linux.
 
 
