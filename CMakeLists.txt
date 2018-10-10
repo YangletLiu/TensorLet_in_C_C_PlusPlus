@@ -27,13 +27,8 @@ if(OPENMP_FOUND)
 endif()
 
 
+
 add_executable(tensor
-        cmake-build-debug/cmake_install.cmake
-        cmake-build-debug/CMakeCache.txt
-        cmake-build-debug/Makefile
-        cmake-build-debug/tensor
-        cmake-build-debug/tensor.cbp
-        CMakeLists.txt
         main.cpp
         tensor.cpp
-        tensor.h cp_als.cpp HOSVD.cpp tsvd.cpp cpals.cpp tucker_hosvd.cpp)
+        tensor.h cp_als.cpp tucker_hosvd.cpp)
