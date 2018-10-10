@@ -7,7 +7,7 @@
 #include "mkl.h"
 
 
-#include <omp.h>
+//#include <omp.h>
 
 #include "tensor.h"
 #include "tensor.cpp"
