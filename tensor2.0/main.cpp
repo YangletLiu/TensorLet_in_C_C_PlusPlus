@@ -3,6 +3,7 @@
 #include "cpgen.cpp"
 #include "cp_als.cpp"
 #include "tucker_hosvd.cpp"
+#include "tensor_hooi.cpp"
 #include "tsvd.cpp"
 
 double gettime(){
@@ -19,16 +20,15 @@ int s(Cube<T> &a) {
 int main(){
     int n1,n2,n3;
     double t0,t1;
-    int I=100;
+    int I=800;
     int R=0.2*I;
-    R=40;
-//    bool cc= true;
-//    mat cccc(1,2);
+    //    bool cc= true;
 
-    n1=I; n2=I; n3=256;
+    n1=I; n2=I; n3=I;
 
     cube a = randu<cube>(n1,n2,n3);
     cout << a.slice_memptr(0) << endl;
+//    cout << a.subcube(0,0,1,2,2,3);
 
 //    t0=gettime();
 //    cube b = cpgen<double>(n1,n2,n3,R);
@@ -62,10 +62,10 @@ int main(){
 //    t1=gettime();
 //    cout << "time:" <<t1-t0 <<endl;
 
-//    int iter=10;
+//    int iter=1;
 //    t0=gettime();
 //    cp_mats<double> B;
-//    B = cp_als(b, R,iter);
+//    B = cp_als(a, R,iter);
 //    t1=gettime();
 //    cout << "time:" <<t1-t0 <<endl;
 
@@ -76,10 +76,16 @@ int main(){
 //    cout << "time:" <<t1-t0 <<endl;
 
     t0=gettime();
-    tsvd_core<double> result_tucker;
-    result_tucker = tsvd(a);
+    tucker_core1<double> result_tucker;
+    result_tucker = hooi(a,R,R,R);
     t1=gettime();
     cout << "time:" <<t1-t0 <<endl;
+
+//    t0=gettime();
+//    tsvd_core<double> result_tucker;
+//    result_tucker = tsvd(a);
+//    t1=gettime();
+//    cout << "time:" <<t1-t0 <<endl;
 
 
     return 0;
