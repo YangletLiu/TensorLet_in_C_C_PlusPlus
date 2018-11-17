@@ -20,7 +20,6 @@ OpenBLAS:if u already get the git account number.do following:
 		3)sudo make FC=gfortran  
 		4)sudo make install  
                 
-
 ## CP decomposition  
 CP decomposition is realized in cp_als.cpp file.   
 You can call cp_als function like:   
@@ -36,7 +35,6 @@ The struct type is defined as:
 where matrix A,B and C are the corresponding factors.   
 
 The type \<T\> can be float and double, you can run the test.cpp file to test the algorithm.
-
 
 ### Tucker decomposition
 Tucker decomposition is realized in cp_als.cpp file.  
