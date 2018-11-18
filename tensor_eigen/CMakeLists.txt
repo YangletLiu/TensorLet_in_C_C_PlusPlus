@@ -24,4 +24,4 @@ if(OPENMP_FOUND)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 
-add_executable(tensor_eigen main.cpp)
+add_executable(tensor_eigen main.cpp time.cpp tensor.h)
