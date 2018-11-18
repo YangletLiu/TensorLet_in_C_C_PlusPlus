@@ -2,7 +2,7 @@
 #define TENSOR_TRAIN
 
 #include "tensor.h"
-#include "cp_als.cpp"
+#include "../tensor_armadillo/cp_als.cpp"
 
 #define DEBUG(str) cout<<str<<endl;
 namespace yph
