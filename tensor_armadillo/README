@@ -4,6 +4,8 @@ cp_als: cp decomposition
 
 tucker_hosvd: tucker decomposition
 
+tucker_hooi: HOOI algorithm for tucker decomposition  
+
 tsvd: T-SVD decomposition
 
 cpgen: generate low rank tensor for cp decomposition
