@@ -2,7 +2,9 @@
 #define TENSOR_TRAIN
 
 #include "tensor.h"
+#include "cp_als.cpp"
 
+#define DEBUG(str) cout<<str<<endl;
 namespace yph
 {
 template <class T>
@@ -30,8 +32,8 @@ class TensorTrain
 
     void updateDelta(int newDelta);
 
-    const int &numel();
-    const int &size(int mode);
+    const int numel();
+    const int size(int mode);
 
     friend TensorTrain<T> operator+(const TensorTrain<T> &t1, const TensorTrain<T> &t2);
     friend void multiContraction();
@@ -39,10 +41,19 @@ class TensorTrain
 };
 
 template <class T>
+T normFrobenius(const Cube<T> &t){
+    T res;
+    for(auto &x : t){
+        res += x*x;
+    }
+    return res;
+}
+
+template <class T>
 TensorTrain<T>::TensorTrain(const Cube<T> &t, const double &epsilon)
 {
     tensor = t;
-    delta = epsilon * norm(t, "fro") / sqrt(modeNum - 1);
+    delta = epsilon * normFrobenius(t) / sqrt(3 - 1);
     calculateTTcores();
 }
 
@@ -50,7 +61,7 @@ template <class T>
 TensorTrain<T>::TensorTrain(const TensorTrain<T> &t)
 {
     tensor = t.getTensor();
-    for (int i = 0; i < 3; ++)
+    for (int i = 0; i < 3; ++i)
     {
         cores[i] = t.getCore(i);
     }
@@ -65,10 +76,10 @@ template <class T>
 TensorTrain<T>::TensorTrain(const TensorTrain<T> &t, double newDelta)
 {
     Mat<T> temp;
-    for (int k = 2; k > 0; --1)
+    for (int k = 2; k > 0; --k)
     {
     }
-    qr()
+    //qr()
 }
 
 template <class T>
@@ -94,7 +105,7 @@ inline const double &TensorTrain<T>::getDelta()
 }
 
 template <class T>
-inline const Cube<T> &TensorTrain<T>::getCore(int index)
+inline const Cube<T> &TensorTrain<T>::getCores(int index)
 {
     return cores[index];
 }
@@ -105,7 +116,7 @@ inline const int &TensorTrain<T>::getTTRank(int index)
 }
 
 template <class T>
-inline const int &TensorTrain<T>::numel()
+inline const int TensorTrain<T>::numel()
 {
     return tensor.n_elem;
 }
@@ -124,38 +135,11 @@ inline const int TensorTrain<T>::size(int mode)
     }
 }
 
-template <class T>
-void TensorTrain<T>::calculateTTcores()
-{
-    ttRank[0] = 1;
-    ttRank[3] = 1;
-    Cube<T> tempTensor = tensor;
-    Mat<T> tempMat;
-    for (int i = 1; i < 3; ++i)
-    {
-        int rowSize = ttRank[i - 1] * modeSize[i - 1];
-        tempMat = ten2mat(tempTensor, rowSize, numel(tensor));
-        Mat<T> U, S, V;
-        int r;
-        deltaSVD(tempMat, U, S, V, r, delta);
-        ttRank[i] = r;
-        mat2ten(U, cores[i - 1], ttRank[i - 1], modeSize[i - 1], ttRank[i]); // need to implement
-        tempTensor = S * V.t();
-    }
-    cores[modeNum - 1] = tempTensor;
-}
-
-template <class T>
-void TensorTrain<T>::updateDelta(int newDelta)
-{
-    *this = TensorTrain(*this, newDelta);
-}
-
 // need to testify
 template <class T>
 Mat<T> ten2mat(const Cube<T> &t, const int &row, const int &col)
 {
-    if (t.numel() != row * col)
+    if (t.n_elem != row * col)
     {
         cout << "参数设置错误与张量大小不匹配" << endl;
     }
@@ -170,7 +154,7 @@ Mat<T> ten2mat(const Cube<T> &t, const int &row, const int &col)
             for (int k = 0; k < t.n_slices; ++k)
             {
                 pos = i + j * m + k * m * n;
-                re[pos % row][floor(pos / row)] = t(i, j, k);
+                re(pos % row, int(floor(pos / row))) = t(i, j, k);
             }
         }
     }
@@ -215,18 +199,9 @@ void mat2ten(const Mat<T> &mat, Cube<T> &re, const int &row, const int &col, con
         for (int j = 0; j < n; ++j)
         {
             pos = i + j * m;
-            re[pos % row][floor(pos / row) % col][floor(pos / (row * col))] = mat(i, j);
+            re(pos % row, int(floor(pos / row)) % col, int(floor(pos / (row * col)))) = mat(i, j);
         }
     }
-}
-// -------------------------------------------------------------
-template <class T>
-void deltaSVD(Mat<T> mat, Mat<T> &U, Mat<T> &S, Mat<T> &V, int &r, const double &delta)
-{
-    Col<T> s = zeros<Col<T>>(min(mat.n_rows, mat.n_cols));
-    svd(U, s, V, mat); // use V.t() to get trans
-    truncation(s, r, delta);
-    S = diagmat(s);
 }
 
 template <class T>
@@ -247,6 +222,53 @@ void truncation(Col<T> &s, int &r, const double &delta)
         }
     }
 }
+
+template <class T>
+void deltaSVD(Mat<T> mat, Mat<T> &U, Mat<T> &S, Mat<T> &V, int &r, const double &delta)
+{
+    Col<T> s = zeros<Col<T>>(min(mat.n_rows, mat.n_cols));
+    svd(U, s, V, mat); // use V.t() to get trans
+    U.print("U");
+    s.print("S");
+    V.print("V");
+    DEBUG("after svd");
+    truncation(s, r, delta);
+    DEBUG("after truncation");
+    S = diagmat(s);
+}
+
+template <class T>
+void TensorTrain<T>::calculateTTcores()
+{
+    ttRank[0] = 1;
+    ttRank[3] = 1;
+    Cube<T> tempTensor = tensor;
+    Mat<T> tempMat;
+    DEBUG("start calculate cores");
+    for (int i = 1; i < 3; ++i)
+    {
+        DEBUG("step");
+        DEBUG(i);
+        int rowSize = ttRank[i - 1] * this->size(i);
+        tempMat = ten2mat(tempTensor, rowSize, tempTensor.n_elem / rowSize);
+        Mat<T> U, S, V;
+        int r;
+        DEBUG("before svd");
+        deltaSVD(tempMat, U, S, V, r, delta);
+        ttRank[i] = r;
+        mat2ten(U, cores[i - 1], ttRank[i - 1], this->size(i), ttRank[i]); // need to implement
+        tempMat = S * V.t();
+        mat2ten(tempMat, tempTensor, tempMat.n_elem, 1, 1);
+    }
+    cores[2] = tempTensor;
+}
+
+template <class T>
+void TensorTrain<T>::updateDelta(int newDelta)
+{
+    *this = TensorTrain(*this, newDelta);
+}
+
 template <class T>
 TensorTrain<T> operator+(const TensorTrain<T> &t1, const TensorTrain<T> &t2)
 {
