@@ -4,14 +4,14 @@
 Users need to install the following packages and add them to specific paths according to your CMakeLists.txt file.
 
 1. cmake version 3.12 or greater
-2. Basic matrix library, Armadillo: http://arma.sourceforge.net/
-3. Intel Math Kernel Library (MKL): https://software.intel.com/en-us/mkl
+2. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
+3. Intel Math Kernel Library (MKL): https://software.intel.com/en-us/mkl  
 4. Fastest Fourier Transform in the West (FFTW): http://www.fftw.org/  
 (Optional) OpenMP   
 
 We tested our code on Ubuntu Linux. Main steps for installation are listed:  
 MKL install for ubuntu： https://blog.csdn.net/huang826336127/article/details/78759506#commentBox  
-Basic matrix liv Armadillo：https://blog.csdn.net/fiona_ffflll/article/details/40661535  
+Eigen is head_only library, you only need to include specific head file.
 fftw3：root@sudo apt-get install fftw3 fftw3-dev pkg-config  
 
 OpenBLAS:if u already get the git account number.do following:  
