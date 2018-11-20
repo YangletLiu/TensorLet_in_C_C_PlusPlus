@@ -23,7 +23,7 @@ where matrix A,B and C are the corresponding factors.
 
 You can call cp_als function like:   
 
-        cp_mats A = cp_als(Tensor<T> a, rank r);    
+        cp_mats A = cp_als(Cube<T> &a, int r);    
 	
 The type \<T\> can be float and double, you can run the test.cpp file to test the algorithm.
 
@@ -39,11 +39,11 @@ The struct type tucker_core is defined as:
 
 You can call hosvd function like: 
 
-        tucker_core A = hosvd(Tensor<T> a, rank r);    
+        tucker_core A = hosvd(Cube<T> &a, int r1, int r2, int r3);    
 	
 You can call hooi function like:   
 
-        tucker_core A = hooi(Tensor<T> a, rank r);      
+        tucker_core A = hooi(Cube<T> &a, int r1, int r2, int r3, T tol);      
 
 The type \<T\> can be float and double, you can run the test.cpp file to test the algorithm.
 
@@ -52,6 +52,7 @@ You can simply run main function in T-SVD directory to test T-SVD algorithm. The
 
 ### API Reference
 For more API details, please refer to the tensor.h file, where all definitations and corresponding illustrations is provied therein. The corresponding functions is realized in tensor.cpp file.
+
 
 ### References
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
