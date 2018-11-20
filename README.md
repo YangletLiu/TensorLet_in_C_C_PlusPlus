@@ -9,16 +9,7 @@ Users need to install the following packages and add them to specific paths acco
 4. Fastest Fourier Transform in the West (FFTW): http://www.fftw.org/  
 (Optional) OpenMP   
 
-We tested our code on Ubuntu Linux. Main steps for installation are listed:  
-MKL install for ubuntu： https://blog.csdn.net/huang826336127/article/details/78759506#commentBox  
-Eigen is head_only library, you only need to include specific head file.
-fftw3：root@sudo apt-get install fftw3 fftw3-dev pkg-config  
-
-OpenBLAS:if u already get the git account number.do following:  
-		1)git clone git://github.com/xianyi/OpenBLAS  
-		2)cd OpenBLAS  
-		3)sudo make FC=gfortran  
-		4)sudo make install  
+We tested our code on Ubuntu Linux. 
                 
 ## CANDECOMP/PARAFAC decomposition  
 CP decomposition via alternating least squares (ALS), which is realized in cp_als.cpp file.    
