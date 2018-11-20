@@ -21,20 +21,19 @@ OpenBLAS:if u already get the git account number.do following:
 		4)sudo make install  
                 
 ## CANDECOMP/PARAFAC decomposition  
-CP decomposition via alternating least squares (ALS)
-CP decomposition is realized in cp_als.cpp file.   
-You can call cp_als function like:   
-
-        cp_mats A = cp_als(Tensor<T> a, rank r);    
+CP decomposition via alternating least squares (ALS), which is realized in cp_als.cpp file.    
 
 The struct type is defined as:  
 >template\<class T\>  
 >struct cp_mats{  
 >&emsp;&emsp;    Mat\<T\> A,B,C;  
 >};  
-
 where matrix A,B and C are the corresponding factors.   
 
+You can call cp_als function like:   
+
+        cp_mats A = cp_als(Tensor<T> a, rank r);    
+	
 The type \<T\> can be float and double, you can run the test.cpp file to test the algorithm.
 
 ### Tucker decomposition
