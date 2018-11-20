@@ -20,7 +20,8 @@ OpenBLAS:if u already get the git account number.do following:
 		3)sudo make FC=gfortran  
 		4)sudo make install  
                 
-## CP decomposition  
+## CANDECOMP/PARAFAC decomposition  
+CP decomposition via alternating least squares (ALS)
 CP decomposition is realized in cp_als.cpp file.   
 You can call cp_als function like:   
 
@@ -37,18 +38,22 @@ where matrix A,B and C are the corresponding factors.
 The type \<T\> can be float and double, you can run the test.cpp file to test the algorithm.
 
 ### Tucker decomposition
-Tucker decomposition is realized in cp_als.cpp file.  
-You can call hosvd function like: 
-
-        tucker_core A = hosvd(Tensor<T> a, rank r);    
+Tucker decomposition via Higher Order SVD (HOSVD), which is realized in tucker_hosvd.cpp file.  
+Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is realized in tucker_hooi.cpp file.    
 
 The struct type tucker_core is defined as:  
 >template\<class T\>    
 >struct tucker_core{  
->&emsp;&emsp;  Mat\<T\> u1, u2, u3;  
+>&emsp;&emsp;  Cube<T> g, Mat\<T\> u1, u2, u3;  
 >};  
 
-where matrix A,B and C are the corresponding factors.   
+You can call hosvd function like: 
+
+        tucker_core A = hosvd(Tensor<T> a, rank r);    
+	
+You can call hooi function like:   
+
+        tucker_core A = hooi(Tensor<T> a, rank r);      
 
 The type \<T\> can be float and double, you can run the test.cpp file to test the algorithm.
 
