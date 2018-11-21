@@ -23,7 +23,7 @@ where matrix A,B and C are the corresponding factors.
 
 You can call cp_als function like:   
 
-        cp_mats<T> cp_als(Cube<T> &a, int r,int max_iter);    
+        cp_mats<T> cp_als(Cube<T> &a, int r,int max_iter， T tol);    
 	
 The type \<T\> can be float and double, you can run the test.cpp file to test the algorithm.
 
@@ -53,6 +53,12 @@ You can simply run main function in T-SVD directory to test T-SVD algorithm. The
 ### API Reference
 For more API details, please refer to the tensor.h file, where all definitations and corresponding illustrations is provied therein. The corresponding functions is realized in tensor.cpp file.
 
+### cp_mats<T> cp_als(Cube<T> &a, int r,int max_iter, T tol);       
+Parameters: Cube<T>: tensor; 
+rank, int r: Number of components.   
+max_iter : int: Maximum number of iteration   
+tol : float, optional  
+(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.
 
 ### References
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
