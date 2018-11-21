@@ -23,7 +23,7 @@ where matrix A,B and C are the corresponding factors.
 
 You can call cp_als function like:   
 
-        cp_mats A = cp_als(Cube<T> &a, int r);    
+        cp_mats<T> cp_als(Cube<T> &a, int r,int max_iter);    
 	
 The type \<T\> can be float and double, you can run the test.cpp file to test the algorithm.
 
