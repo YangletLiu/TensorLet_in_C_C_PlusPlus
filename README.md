@@ -1,4 +1,4 @@
-# A C++ library for popular tensor decompositions
+# TensorLet: A C++ library for popular tensor decompositions
 
 ## Pre-requisite
 Users need to install the following packages and add them to specific paths according to your CMakeLists.txt file.
