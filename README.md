@@ -56,10 +56,10 @@ For more API details, please refer to the tensor.h file, where all definitations
 cp_mats<T> cp_als(Cube<T> &a, int r,int max_iter, T tol);       
 ### Parameters: 
 	Cube<T>: tensor; 
-rank, int r: Number of components.   
-max_iter : int: Maximum number of iteration   
-tol : float, optional  
-(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.
+	rank, int r: Number of components.   
+	max_iter : int: Maximum number of iteration   
+	tol : float, optional  
+	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.
 
 ### References
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
