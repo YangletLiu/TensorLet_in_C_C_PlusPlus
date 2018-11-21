@@ -56,9 +56,9 @@ For more API details, please refer to the tensor.h file, where all definitations
 cp_mats<T> cp_als(Cube<T> &a, int r,int max_iter, T tol);       
 ### Parameters: 
 	Cube<T>: tensor; 
-	rank, int r: Number of components.   
-	max_iter : int: Maximum number of iteration   
-	tol : float, optional  
+	int r: rank, number of components;   
+	int max_iter: Maximum number of iteration;   
+	tol: float, optional  
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.
 
 ### References
