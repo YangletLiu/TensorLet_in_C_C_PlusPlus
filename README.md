@@ -53,7 +53,7 @@ You can simply run main function in T-SVD directory to test T-SVD algorithm. The
 ### API Reference
 For more API details, please refer to the tensor.h file, where all definitations and corresponding illustrations is provied therein. The corresponding functions is realized in tensor.cpp file.
 
-## cp_mats<T> cp_als(Cube<T> &a, int r,int max_iter, T tol);       
+## cp_mats<T> cp_als(Cube<T> &a, int r, int max_iter, T tol);       
 ### Parameters: 
 	Cube<T>: tensor; 
 	int r: rank, number of components;   
