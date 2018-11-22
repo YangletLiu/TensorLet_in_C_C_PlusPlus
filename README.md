@@ -8,7 +8,7 @@ Users need to install the following packages and add them to specific paths acco
 3. cmake version 3.12 or greater: https://cmake.org/  
 (Optional) OpenMP   
 <!--
-4. Fastest Fourier Transform in the West (FFTW): http://www.fftw.org/
+4. Fastest Fourier Transform in the West (FFTW): http://www.fftw.org/  
 -->
 [//]: # (This may be the most platform independent comment)
 
