@@ -23,7 +23,7 @@ where matrix A,B and C are the corresponding factors.
 
 You can call cp_als function like:   
 
-        cp_mats<T> cp_als(Cube<T> &a, int r,int max_iter， T tol);    
+        cp_mats<T> cp_als(Tensor3D<T> &a, int rank, int max_iter，T tol);    
 	
 The type \<T\> can be float and double, you can run the test.cpp file to test the algorithm.
 
@@ -34,16 +34,16 @@ Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is real
 The struct type tucker_core is defined as:  
 >template\<class T\>    
 >struct tucker_core{  
->&emsp;&emsp;  Cube<T> g, Mat\<T\> u1, u2, u3;  
+>&emsp;&emsp;  Tensor3D<T> g, Mat\<T\> u1, u2, u3;  
 >};  
 
 You can call hosvd function like: 
 
-        tucker_core A = hosvd(Cube<T> &a, int r1, int r2, int r3);    
+        tucker_core A = hosvd(Tensor3D<T> &a, int ranks[3]);    
 	
 You can call hooi function like:   
 
-        tucker_core A = hooi(Cube<T> &a, int r1, int r2, int r3, T tol);      
+        tucker_core A = hooi(Tensor3D<T> &a, int ranks[3], T tol);      
 
 The type \<T\> can be float and double, you can run the test.cpp file to test the algorithm.
 
@@ -61,15 +61,15 @@ For more API details, please refer to the tensor.h file, where all definitations
 	tol: float, optional  
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.
 
-## tucker_core A = hosvd(Cube<T> &a, int r1, int r2, int r3);      
+## tucker_core A = hosvd(Cube<T> &a, int ranks[3]);      
 ### Parameters:	
 	Cube<T>: tensor;  
-	ranks: int r1, r2,r3, size of the core tensor, (len(ranks) == tensor.ndim);  
+	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
 
-## tucker_core A = hooi(Cube<T> &a, int r1, int r2, int r3, T tol);    
+## tucker_core A = hooi(Cube<T> &a, int ranks[3], T tol);    
 ### Parameters:	
 	Cube<T>: tensor;  
-	ranks: int r1, r2,r3, size of the core tensor, (len(ranks) == tensor.ndim);  
+	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
 	init : {‘svd’, ‘random’}, optional;  
 	tol : float, optional  
 	tolerance: the algorithm stops when the variation in the reconstruction error is less than the tolerance  
