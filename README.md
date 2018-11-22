@@ -34,7 +34,7 @@ Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is real
 The struct type tucker_core is defined as:  
 >template\<class T\>    
 >struct tucker_core{  
->&emsp;&emsp;  Tensor3D<T> g, Mat\<T\> u1, u2, u3;  
+>&emsp;&emsp;  Tensor3D\<T\> g, Mat\<T\> u1, u2, u3;  
 >};  
 
 You can call hosvd function like: 
