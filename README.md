@@ -10,8 +10,9 @@ Users need to install the following packages and add them to specific paths acco
 (Optional) OpenMP   
 
 We tested our code on Ubuntu Linux. 
-                
-## CANDECOMP/PARAFAC decomposition  
+
+## User guide
+### CANDECOMP/PARAFAC decomposition 
 CP decomposition via alternating least squares (ALS), which is realized in cp_als.cpp file.    
 
 The struct type is defined as:  
@@ -50,7 +51,7 @@ The type \<T\> can be float and double, you can run the test.cpp file to test th
 ### T-SVD decomposition
 You can simply run main function in T-SVD directory to test T-SVD algorithm. The cpp file for T-SVD, like cp_als.cpp, will be provided in the near furture.
 
-### API Reference
+## API Reference
 For more API details, please refer to the tensor.h file, where all definitations and corresponding illustrations is provied therein. The corresponding functions is realized in tensor.cpp file.
 
 ## cp_mats\<T\> cp_als(Tensor3D\<T\> &a, int rank, int max_iter，T tol);       
@@ -74,7 +75,7 @@ For more API details, please refer to the tensor.h file, where all definitations
 	tol : float, optional  
 	tolerance: the algorithm stops when the variation in the reconstruction error is less than the tolerance  
 
-### References
+## References
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
 
 [2] Kilmer, M. E., Braman, K., Hao, N., & Hoover, R. C. (2013). Third-order tensors as operators on matrices: A theoretical and computational framework with applications in imaging. SIAM Journal on Matrix Analysis and Applications, 34(1), 148-172.
