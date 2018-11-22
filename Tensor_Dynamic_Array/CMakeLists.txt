@@ -7,8 +7,6 @@ include_directories(.)
 
 include_directories(${ARMADILLO_INCLUDE_DIRS})
 link_libraries(armadillo gfortran)
-#link_libraries(armadillo openblas)
-
 
 include_directories(/opt/intel/mkl/include)
 link_directories(/opt/intel/mkl/lib/intel64)
@@ -29,13 +27,8 @@ if(OPENMP_FOUND)
 endif()
 
 
+
 add_executable(tensor
-        cmake-build-debug/cmake_install.cmake
-        cmake-build-debug/CMakeCache.txt
-        cmake-build-debug/Makefile
-        cmake-build-debug/tensor
-        cmake-build-debug/tensor.cbp
-        CMakeLists.txt
         main.cpp
         tensor.cpp
-        tensor.h cp_als.cpp tsvd.cpp tucker_hosvd.cpp cpgen.cpp ten2mat.cpp)
+        tensor.h cp_als.cpp tucker_hosvd.cpp)
