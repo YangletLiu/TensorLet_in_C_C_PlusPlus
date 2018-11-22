@@ -61,12 +61,12 @@ For more API details, please refer to the tensor.h file, where all definitations
 	tol: float, optional  
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.
 
-## tucker_core<T> A = hosvd(Tensor3D<T> &a, int ranks[3]);      
+## tucker_core<T> hosvd(Tensor3D<T> &a, int ranks[3]);      
 ### Parameters:	
 	Tensor3D<T>: tensor;  
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
 
-## tucker_core<T> A = hooi(Tensor3D<T> &a, int ranks[3], T tol);    
+## tucker_core<T> hooi(Tensor3D<T> &a, int ranks[3], T tol);    
 ### Parameters:	
 	Tensor3D<T>: tensor;  
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
