@@ -2,8 +2,7 @@
 // Created by jcfei on 18-9-26.
 //
 
-//#include "tensor.h"
-#include "ten2mat.cpp"
+#include "tensor.h"
 #include <omp.h>
 
 
@@ -19,13 +18,11 @@ tucker_core<T> hosvd(Cube<T> &a, int r1, int r2, int r3) {
 
     int n1=a.n_rows; int n2=a.n_cols; int n3=a.n_slices;
 
-    Mat<T> tmp(n1,n1);
 //mode-1
-    a.reshape(n1,n2*n3,1);
 //    reshape(a,n1*n2,n3,1);
-    Mat<T> a1 = a.slice(0);
-//    reshape(a,n1,n2,n3);
-    a.reshape(n1,n2,n3);
+    Mat<T> a1 = reshape(a,n1,n2*n3,1);
+
+    Mat<T> tmp(n1,n1);
     tmp= a1*a1.t();
 
     Mat<T> U;//U,V均为正交矩阵

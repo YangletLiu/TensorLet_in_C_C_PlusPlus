@@ -28,4 +28,5 @@
 using namespace std;
 using namespace arma;
 
+
 #endif //TENSOR_TENSOR_H

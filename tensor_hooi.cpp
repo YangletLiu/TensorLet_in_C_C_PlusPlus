@@ -87,7 +87,3 @@ tucker_core1<T> hooi(Cube<T> &a, int r1, int r2, int r3) {
     return A;
 }
 
-
-//    inplace_trans(U3);
-//    m1.reset(); //直接改变矩阵大小...
-//    a.for_each([](Mat<T> tmp){ return cal += tmp.t()*tmp;});
