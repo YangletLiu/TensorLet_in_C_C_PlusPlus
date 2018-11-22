@@ -174,15 +174,11 @@ cp_mats<T> cp_als(Cube<T> &a, int r,int max_iter) {
 
         C = tmp * pinv(tmpp);
 
-        cout << sqrt(accu(C)) << endl;
-
         Mat<T> X_con = kr_tmp * C.t();
         X_con = X_con - a3;
 
         double error;
         error = sqrt(accu(X_con%X_con));
-
-        cout << error << endl;
 
         if (turn < max_iter-1){
             C = normalise(C);
@@ -282,7 +278,6 @@ cp_mats<T> cp_als(Cube<T> &a, int r,int max_iter, T expected_error) {
 
         T error;
         error = sqrt(accu(X_con%X_con));
-        cout << error << endl;
 
         if (error <= expected_error){
             cp_mats<T> result0;
