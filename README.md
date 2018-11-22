@@ -39,11 +39,11 @@ The struct type tucker_core is defined as:
 
 You can call hosvd function like: 
 
-        tucker_core A = hosvd(Tensor3D<T> &a, int ranks[3]);    
+        tucker_core<T> A = hosvd(Tensor3D<T> &a, int ranks[3]);    
 	
 You can call hooi function like:   
 
-        tucker_core A = hooi(Tensor3D<T> &a, int ranks[3], T tol);      
+        tucker_core<T> A = hooi(Tensor3D<T> &a, int ranks[3], T tol);      
 
 The type \<T\> can be float and double, you can run the test.cpp file to test the algorithm.
 
@@ -53,20 +53,20 @@ You can simply run main function in T-SVD directory to test T-SVD algorithm. The
 ### API Reference
 For more API details, please refer to the tensor.h file, where all definitations and corresponding illustrations is provied therein. The corresponding functions is realized in tensor.cpp file.
 
-## cp_mats<T> cp_als(Tensor3D<T> &a, int r, int max_iter, T tol);       
+## cp_mats<T> cp_als(Tensor3D<T> &a, int rank, int max_iter，T tol);       
 ### Parameters: 
 	Tensor3D<T>: tensor; 
-	int r: rank, number of components;   
+	int rank: number of components;   
 	int max_iter: Maximum number of iteration;   
 	tol: float, optional  
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.
 
-## tucker_core A = hosvd(Tensor3D<T> &a, int ranks[3]);      
+## tucker_core<T> A = hosvd(Tensor3D<T> &a, int ranks[3]);      
 ### Parameters:	
 	Tensor3D<T>: tensor;  
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
 
-## tucker_core A = hooi(Tensor3D<T> &a, int ranks[3], T tol);    
+## tucker_core<T> A = hooi(Tensor3D<T> &a, int ranks[3], T tol);    
 ### Parameters:	
 	Tensor3D<T>: tensor;  
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
