@@ -62,29 +62,29 @@ You can call tsvd function like:
 	tsvd<T> A = tsvd(Tensor3D\<T\> &a);
  
 ## API Reference
-## cp_mats\<T\> cp_als(Tensor3D\<T\> &a, int rank, int max_iter，T tol);       
+## cp_mats\<T\> cp_als(Tensor3D\<T\> &a, int rank, int max_iter，T tol);    
+### Source: cp_als.cpp  
 ### Parameters: 
 	Tensor3D<T>: tensor; 
 	int rank: number of components;   
 	int max_iter: Maximum number of iteration;   
 	tol: float, optional  
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.  
-### Source: cp_als.cpp 
 
 ## tucker_core\<T\> hosvd(Tensor3D\<T\> &a, int ranks[3]);      
+### Source: tucker_hosvd.cpp  
 ### Parameters:	
 	Tensor3D<T>: tensor;  
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
-### Source: tucker_hosvd.cpp 
 
-## tucker_core\<T\> hooi(Tensor3D\<T\> &a, int ranks[3], T tol);    
+## tucker_core\<T\> hooi(Tensor3D\<T\> &a, int ranks[3], T tol);  
+### Source: tucker_hooi.cpp  
 ### Parameters:	
 	Tensor3D<T>: tensor;  
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
 	init : {‘svd’, ‘random’}, optional;  
 	tol : float, optional  
 	tolerance: the algorithm stops when the variation in the reconstruction error is less than the tolerance  
-### Source: tucker_hooi.cpp 
 
 For more details, please refer to the corresponding source files, where all definitations and corresponding illustrations is provied therein.
 
