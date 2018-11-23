@@ -55,24 +55,27 @@ The type \<T\> can be float and double, you can run the test.cpp file to test th
 T-SVD algorithm is implemented in tsvd.cpp file.
 >template\<class T\>    
 >struct tsvd{  
->&emsp;&emsp;  Tensor3D\<T\> U, \( \sigma \ ), V;  
+>&emsp;&emsp;  Tensor3D\<T\> U, Sigma, V;  
 >};  
 
+You can call tsvd function like:   
+	tsvd<T> A = tsvd(Tensor3D\<T\> &a);
+ 
 ## API Reference
-For more API details, please refer to the tensor.h file, where all definitations and corresponding illustrations is provied therein. The corresponding functions is realized in tensor.cpp file.
-
 ## cp_mats\<T\> cp_als(Tensor3D\<T\> &a, int rank, int max_iter，T tol);       
 ### Parameters: 
 	Tensor3D<T>: tensor; 
 	int rank: number of components;   
 	int max_iter: Maximum number of iteration;   
 	tol: float, optional  
-	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.
+	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.  
+### Source: cp_als.cpp 
 
 ## tucker_core\<T\> hosvd(Tensor3D\<T\> &a, int ranks[3]);      
 ### Parameters:	
 	Tensor3D<T>: tensor;  
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
+### Source: tucker_hosvd.cpp 
 
 ## tucker_core\<T\> hooi(Tensor3D\<T\> &a, int ranks[3], T tol);    
 ### Parameters:	
@@ -81,6 +84,9 @@ For more API details, please refer to the tensor.h file, where all definitations
 	init : {‘svd’, ‘random’}, optional;  
 	tol : float, optional  
 	tolerance: the algorithm stops when the variation in the reconstruction error is less than the tolerance  
+### Source: tucker_hooi.cpp 
+
+For more details, please refer to the corresponding source files, where all definitations and corresponding illustrations is provied therein.
 
 ## References
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
