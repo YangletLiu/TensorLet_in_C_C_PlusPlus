@@ -52,7 +52,11 @@ You can call hooi function like:
 The type \<T\> can be float and double, you can run the test.cpp file to test the algorithm.
 
 ### T-SVD decomposition
-You can simply run main function in T-SVD directory to test T-SVD algorithm. The cpp file for T-SVD, like cp_als.cpp, will be provided in the near furture.
+T-SVD algorithm is implemented in tsvd.cpp file.
+>template\<class T\>    
+>struct tsvd{  
+>&emsp;&emsp;  Tensor3D\<T\> U, Tensor3D\<T\> \Sigma Tensor3D\<T\> V;  
+>};  
 
 ## API Reference
 For more API details, please refer to the tensor.h file, where all definitations and corresponding illustrations is provied therein. The corresponding functions is realized in tensor.cpp file.
