@@ -60,7 +60,7 @@ T-SVD algorithm is implemented in tsvd.cpp file.
 
 You can call tsvd function like:   
 	
-	tsvd<T> A = tsvd(Tensor3D\<T\> &a);
+	tsvd<T> A = tsvd(Tensor3D\<T\> &a);           
  
 ## API Reference
 ## cp_mats\<T\> cp_als(Tensor3D\<T\> &a, int rank, int max_iter，T tol);    
