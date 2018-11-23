@@ -55,7 +55,7 @@ The type \<T\> can be float and double, you can run the test.cpp file to test th
 T-SVD algorithm is implemented in tsvd.cpp file.
 >template\<class T\>    
 >struct tsvd{  
->&emsp;&emsp;  Tensor3D\<T\> U, Tensor3D\<T\> \Sigma Tensor3D\<T\> V;  
+>&emsp;&emsp;  Tensor3D\<T\> U, \sigma, V;  
 >};  
 
 ## API Reference
