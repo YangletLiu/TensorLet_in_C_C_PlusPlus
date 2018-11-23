@@ -87,6 +87,11 @@ You can call tsvd function like:
 	tol : float, optional  
 	tolerance: the algorithm stops when the variation in the reconstruction error is less than the tolerance  
 
+## tsvd\<T\> tsvd(Tensor3D\<T\> &a);      
+### Source: tsvd.cpp  
+### Parameters:	
+	Tensor3D<T>: tensor;  
+	
 For more details, please refer to the corresponding source files, where all definitations and corresponding illustrations is provied therein.
 
 ## References
