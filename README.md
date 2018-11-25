@@ -62,6 +62,15 @@ You can call tsvd function like:
 	
         tsvd<T> A = tsvd(Tensor3D<T> &a);      
 
+### Tensor Train decomposition 
+Tensor Train decomposition via alternating least squares (ALS), which is realized in the Tensor-Train directory.      
+
+You can find TensorTrain class in train.h file in the Tensor-Train directory.  
+
+You can call cp_als function like:   
+
+        TensorTrain<T> A = tensorTrain(Tensor3D<T> &a, Tol);    
+	
 ## API Reference
 ## cp_mats\<T\> cp_als(Tensor3D\<T\> &a, int rank, int max_iter，T tol);    
 ### Source: cp_als.cpp  
@@ -94,6 +103,12 @@ You can call tsvd function like:
 	
 For more details, please refer to the corresponding source files, where all definitations and corresponding illustrations is provied therein.
 
+### Tensor Train decomposition 
+### Source: Tensor-Train/train.h    
+### Parameters:	
+	Tensor3D<T>: tensor;  
+        TensorTrain<T> A = tensorTrain(Tensor3D<T> &a, Tol);    
+	
 ## References
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
 
