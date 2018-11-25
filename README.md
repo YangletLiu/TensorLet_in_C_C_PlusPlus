@@ -4,10 +4,14 @@
 Users need to install the following packages and add them to specific paths according to your CMakeLists.txt file.
 
 1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
+
 2. Intel Math Kernel Library (MKL): https://software.intel.com/en-us/mkl  
-3. cmake version 3.12 or greater: https://cmake.org/  
+Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized specifically for Intel processors. Core math functions include BLAS, LAPACK, ScaLAPACK, sparse solvers, fast Fourier transforms, and vector math. We use MKL as basic matrix library for high performance.  
+
 (Optional) OpenMP   
 <!--
+3. cmake version 3.12 or greater: https://cmake.org/  
+
 4. Fastest Fourier Transform in the West (FFTW): http://www.fftw.org/  
 -->
 [//]: # (This may be the most platform independent comment)
