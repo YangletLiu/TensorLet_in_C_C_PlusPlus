@@ -87,6 +87,12 @@ You can call cp_als function like:
 	int max_iter: Maximum number of iteration;   
 	tol: float, optional  
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.  
+### Output:
+>template\<class T\>  
+>struct cp_mats{  
+>&emsp;&emsp;    Mat\<T\> A,B,C;  
+>};  
+where matrix A,B and C are the corresponding factors.   
 
 ## tucker_core\<T\> hosvd(Tensor3D\<T\> &a, int ranks[3]);      
 ### Source: tucker_hosvd.cpp  
@@ -103,18 +109,30 @@ You can call cp_als function like:
 	tol : float, optional  
 	tolerance: the algorithm stops when the variation in the reconstruction error is less than the tolerance  
 
+### Output:
+>template\<class T\>    
+>struct tucker_core{  
+>&emsp;&emsp;  Tensor3D\<T\> g, Mat\<T\> u1, u2, u3;  
+>};  
+
 ## tsvd\<T\> tsvd(Tensor3D\<T\> &a);      
 ### Source: tsvd.cpp  
 ### Parameters:	
 	Tensor3D<T>: tensor;  
 	
+### Output:
+>struct tsvd{  
+>&emsp;&emsp;  Tensor3D\<T\> U, Sigma, V;  
+>};  	
+
 For more details, please refer to the corresponding source files, where all definitations and corresponding illustrations is provied therein.
 
 ### Tensor Train decomposition 
 ### Source: Tensor-Train/train.h    
 ### Parameters:	
 	Tensor3D<T>: tensor;  
-        TensorTrain<T> A = tensorTrain(Tensor3D<T> &a, Tol);    
+### Output:
+	class TensorTrain<T> 
 	
 ## References
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
