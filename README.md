@@ -110,10 +110,10 @@ You can call cp_als function like:
 	tolerance: the algorithm stops when the variation in the reconstruction error is less than the tolerance  
 
 ### Output:
->template\<class T\>    
->struct tucker_core{  
->&emsp;&emsp;  Tensor3D\<T\> g, Mat\<T\> u1, u2, u3;  
->};  
+	>template\<class T\>    
+	>struct tucker_core{  
+	>&emsp;&emsp;  Tensor3D\<T\> g, Mat\<T\> u1, u2, u3;  
+	>};  
 
 ## tsvd\<T\> tsvd(Tensor3D\<T\> &a);      
 ### Source: tsvd.cpp  
@@ -121,9 +121,9 @@ You can call cp_als function like:
 	Tensor3D<T>: tensor;  
 	
 ### Output:
->struct tsvd{  
->&emsp;&emsp;  Tensor3D\<T\> U, Sigma, V;  
->};  	
+	>struct tsvd{  
+	>&emsp;&emsp;  Tensor3D\<T\> U, Sigma, V;  
+	>};  	
 
 For more details, please refer to the corresponding source files, where all definitations and corresponding illustrations is provied therein.
 
