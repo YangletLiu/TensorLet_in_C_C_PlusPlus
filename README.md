@@ -9,7 +9,9 @@ Users need to install the following packages and add them to specific paths acco
 
 3. (Optional) OpenMP: https://www.openmp.org/  
 
-Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized specifically for Intel processors. Core math functions include BLAS, LAPACK, ScaLAPACK, sparse solvers, fast Fourier transforms, and vector math. We use MKL as basic matrix library for high performance.   
+Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized specifically for Intel processors. Core math functions include BLAS, LAPACK, ScaLAPACK, sparse solvers, fast Fourier transforms, and vector math. 
+
+We use MKL as basic matrix library for high performance and test our code on Ubuntu Linux. 
 
 <!--
 3. cmake version 3.12 or greater: https://cmake.org/  
@@ -18,7 +20,6 @@ Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized speci
 -->
 [//]: # (This may be the most platform independent comment)
 
-We tested our code on Ubuntu Linux. 
 
 ## User guide
 ### CANDECOMP/PARAFAC decomposition 
