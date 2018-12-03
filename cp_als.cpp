@@ -99,17 +99,11 @@ cp_mats<T> cp_als(Cube<T> &a, int r) {
     return result0;
 }
 
-
 template<class T>
 cp_mats<T> cp_als(Cube<T> &a, int r,int max_iter) {
     int n1=a.n_rows; int n2=a.n_cols; int n3=a.n_slices;  //dimension
 
     Mat<T> A(n1,r); Mat<T> B=randu<Mat<T>>(n2,r); Mat<T> C=randu<Mat<T>>(n3,r); //random A,B,C
-
-//    Mat<T> a1(n1,n2*n3);
-//    a.reshape(n1,n2*n3,1);
-//    a1 = a.slice(0);
-//    a.reshape(n1,n2,n3);
 
     Mat<T> cal(n1,n2); Mat<T> tmp(n1,r);
     for (int turn=0; turn< max_iter;turn++) {
