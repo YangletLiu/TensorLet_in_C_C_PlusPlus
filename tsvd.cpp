@@ -4,11 +4,7 @@
 
 #include <fstream>
 #include "tensor.h"
-//返回结构
-template<class T>
-struct tsvd_core{
-    Cube<T> U,Theta,V;
-};
+
 
 template <class T>
 tsvd_core<T> tsvd(Cube<T> a){

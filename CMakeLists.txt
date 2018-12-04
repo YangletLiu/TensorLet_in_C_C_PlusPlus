@@ -32,4 +32,4 @@ endif()
 add_executable(tensor
         main.cpp
         tensor_hooi.cpp
-        cp_als.cpp tsvd.cpp tucker_hosvd.cpp cpgen.cpp tensor.h)
+        cp_als.cpp tsvd.cpp tucker_hosvd.cpp cpgen.cpp tensor.h runningtime.h)

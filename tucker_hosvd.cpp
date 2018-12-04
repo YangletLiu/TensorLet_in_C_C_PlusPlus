@@ -5,14 +5,6 @@
 #include "tensor.h"
 #include <omp.h>
 
-
-//返回结构
-template<class T>
-struct tucker_core{
-    Cube<T> core;
-    Mat<T> u1,u2,u3;
-};
-
 template<class T>
 tucker_core<T> hosvd(Cube<T> &a, int r1, int r2, int r3) {
 

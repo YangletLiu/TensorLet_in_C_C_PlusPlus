@@ -1,4 +1,5 @@
 #include "tensor.h"
+#include "runningtime.h"
 
 #include "ten2mat.cpp"
 #include "cpgen.cpp"
@@ -6,12 +7,6 @@
 #include "tucker_hosvd.cpp"
 #include "tensor_hooi.cpp"
 #include "tsvd.cpp"
-
-double gettime(){
-    struct timeval tv;
-    gettimeofday(&tv,NULL);
-    return (tv.tv_sec*1000+tv.tv_usec/1000.0)/1000.0; //time:s
-};
 
 
 int main(){
@@ -33,13 +28,13 @@ int main(){
 //    cout << "time :" << t1-t0 << endl;
 
 
-//    int iter=10;
-//    double ccc =0.05;
-//    t0=gettime();
-//    cp_mats<double> B;
-//    B = cp_als(a, R,iter,ccc);
-//    t1=gettime();
-//    cout << "time:" <<t1-t0 <<endl;
+    int iter=10;
+    double ccc =0.05;
+    t0=gettime();
+    cp_mats<double> B;
+    B = cp_als(a, R,iter,ccc);
+    t1=gettime();
+    cout << "time:" <<t1-t0 <<endl;
 
 //    R=1;
 //    t0=gettime();
@@ -49,11 +44,11 @@ int main(){
 //    cout << "time:" << t1-t0 << endl;
 
 
-    t0=gettime();
-    tucker_core<double> result_tucker;
-    result_tucker = hosvd(a,R,R,R);
-    t1=gettime();
-    cout << "time:" <<t1-t0 <<endl;
+//    t0=gettime();
+//    tucker_core<double> result_tucker;
+//    result_tucker = hosvd(a,R,R,R);
+//    t1=gettime();
+//    cout << "time:" <<t1-t0 <<endl;
 
 //    t0=gettime();
 //    tsvd_core<double> result_tucker;

@@ -5,11 +5,6 @@
 #include "tensor.h"
 
 template<class T>
-struct cp_mats{
-    Mat<T> A,B,C;
-};
-
-template<class T>
 cp_mats<T> cp_als(Cube<T> &a, int r) {
     int n1=a.n_rows; int n2=a.n_cols; int n3=a.n_slices;  //dimension
 

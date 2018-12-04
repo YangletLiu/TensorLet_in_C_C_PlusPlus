@@ -9,13 +9,7 @@
 using namespace std;
 
 template<class T>
-struct tucker_core1{
-    Cube<T> core;
-    Mat<T> u1,u2,u3;
-};
-
-template<class T>
-tucker_core1<T> hooi(Cube<T> &a, int r1, int r2, int r3) {
+tucker_core<T> hooi(Cube<T> &a, int r1, int r2, int r3) {
     int n1=a.n_rows; int n2=a.n_cols; int n3=a.n_slices;
 
     Mat<T> tmp(n1,n1);
@@ -79,7 +73,7 @@ tucker_core1<T> hooi(Cube<T> &a, int r1, int r2, int r3) {
         g.slice(k) = reshape(ctmp,r1,r2);
     }
 
-    tucker_core1<T> A;
+    tucker_core<T> A;
     A.u1 = U1;
     A.u2 = U2;
     A.u3 = U3;

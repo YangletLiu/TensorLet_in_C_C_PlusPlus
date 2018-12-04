@@ -29,4 +29,23 @@ using namespace std;
 using namespace arma;
 
 
+// cp 结构
+template<class T>
+struct cp_mats{
+    Mat<T> A,B,C;
+};
+
+//tucker 返回结构
+template<class T>
+struct tucker_core{
+    Cube<T> core;
+    Mat<T> u1,u2,u3;
+};
+
+//tsvd 返回结构
+template<class T>
+struct tsvd_core{
+    Cube<T> U,Theta,V;
+};
+
 #endif //TENSOR_TENSOR_H
