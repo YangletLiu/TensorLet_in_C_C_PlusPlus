@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.12)
-project(tensor_eigen)
+project(tensor)
 
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 include_directories(/usr/include/eigen3)
+
 
 include_directories(/opt/intel/mkl/include)
 link_directories(/opt/intel/mkl/lib/intel64)
@@ -24,4 +25,8 @@ if(OPENMP_FOUND)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 
-add_executable(tensor_eigen main.cpp time.cpp tensor.h)
+
+add_executable(tensor
+        main.cpp
+        tensor_hooi.cpp
+        cp_als.cpp tsvd.cpp tucker_hosvd.cpp cp_gen.cpp tensor.h runningtime.h)
