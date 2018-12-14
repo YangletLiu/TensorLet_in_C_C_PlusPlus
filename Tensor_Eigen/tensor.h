@@ -52,4 +52,10 @@ struct tsvd_core{
     Tensor<T,3> U,Theta,V;
 };
 
+//tt 返回结构
+template<class T>
+struct tt{
+    Tensor<T,3> U,Theta,V;
+};
+
 #endif //TENSOR_TENSOR_H

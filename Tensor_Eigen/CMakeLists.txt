@@ -29,4 +29,4 @@ endif()
 add_executable(tensor
         main.cpp
         tensor_hooi.cpp
-        cp_als.cpp tsvd.cpp tucker_hosvd.cpp cp_gen.cpp tensor.h runningtime.h)
+        cp_als.cpp tsvd.cpp tucker_hosvd.cpp cp_gen.cpp tensor.h runningtime.h tt.cpp)
