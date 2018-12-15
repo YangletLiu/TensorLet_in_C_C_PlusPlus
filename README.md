@@ -89,8 +89,8 @@ You can call cp_als function like:
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.  
 ### Output:
 	template<class T>  
-	struct cp_mats{  
-	&emsp;&emsp;    Mat<T> A,B,C;  
+	struct cp_decomposition{  
+	    Mat<T> A,B,C;  
 	};  
 	where matrix A,B and C are the corresponding factors.   
 
@@ -112,16 +112,16 @@ You can call cp_als function like:
 ### Output:
 	template<class T>    
 	struct tucker_core{  
-	   Tensor3D<T> g, Mat<T> u1, u2, u3;  
+	   Tensor3D<T> g; Mat<T> u1, u2, u3;  
 	};  
 
-## tsvd\<T\> tsvd(Tensor3D\<T\> &a);      
+## tsvd\<T\> tSVD(Tensor3D\<T\> &a);      
 ### Source: tsvd.cpp  
 ### Parameters:	
 	Tensor3D<T>: tensor;  
 	
 ### Output:
-	struct tsvd{  
+	struct tSVD_decomposition{  
 	   Tensor3D<T> U, Sigma, V;  
 	};  	
 
