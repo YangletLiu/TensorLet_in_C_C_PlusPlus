@@ -26,9 +26,9 @@ We use MKL as basic matrix library for high performance and test our code on Ubu
 CP decomposition via alternating least squares (ALS), which is realized in cp_als.cpp file.    
 
 The decomposition components of CP is defined as:  
->template\<class T\>  
+>template\<class type\>  
 >struct cp_core{  
->&emsp;&emsp;    Mat\<T\> A,B,C;  
+>&emsp;&emsp;    Mat\<type\> A,B,C;  
 >};  
 where matrix A,B and C are the corresponding factors.   
 
@@ -43,9 +43,9 @@ Tucker decomposition via Higher Order SVD (HOSVD), which is realized in tucker_h
 Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is realized in tucker_hooi.cpp file.    
 
 The decomposition components of tucker is defined as:  
->template\<class T\>    
+>template\<class type\>    
 >struct tucker_core{  
->&emsp;&emsp;  Tensor3D\<T\> g, Mat\<T\> u1, u2, u3;  
+>&emsp;&emsp;  Tensor3D\<type\> g, Mat\<type\> u1, u2, u3;  
 >};  
 
 You can call hosvd function like: 
@@ -62,9 +62,9 @@ The type double can replace with float, you can run the test.cpp file to test th
 tSVD algorithm is implemented in tsvd.cpp file.
 
 The decomposition components of tSVD is defined as:  
->template\<class T\>    
+>template\<class type\>    
 >struct tsvd_core{  
->&emsp;&emsp;  Tensor3D\<T\> U, Sigma, V;  
+>&emsp;&emsp;  Tensor3D\<type\> U, Sigma, V;  
 >};  
 
 You can call tsvd function like:   
@@ -83,7 +83,7 @@ You can call cp_als function like:
        tensortrain_core<double> A = tensortrain(Tensor3D<double> &a, tol);      
 	
 ## API Reference
-## cp_core\<T\> cp_als(Tensor3D\<T\>& tensor, int rank, int max_iter，T tol);    
+## cp_core\<type\> cp_als(Tensor3D\<type\>& tensor, int rank, int max_iter，type tol);    
 ### Source: cp_als.cpp  
 ### Parameters: 
 	tensor: the address of tensor; 
@@ -92,13 +92,13 @@ You can call cp_als function like:
 	tol: float, optional  
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.  
 ### Output:
-	template<class T>  
+	template<class type>  
 	struct cp_core{  
-	    Mat<T> A,B,C;  
+	    Mat<type> A,B,C;  
 	};  
 	where matrix A,B and C are the corresponding factors.   
 
-## tucker_core\<T\> tucker_hosvd(Tensor3D\<T\> &tensor, int ranks[3]);      
+## tucker_core\<type\> tucker_hosvd(Tensor3D\<type\> &tensor, int ranks[3]);      
 ### Source: tucker_hosvd.cpp  
 ### Parameters:	
 	tensor: the address of tensor; 
@@ -107,26 +107,26 @@ You can call cp_als function like:
 ## tucker_core\<T\> tucker_hooi(Tensor3D\<T\> &a, int ranks[3], T tol);  
 ### Source: tucker_hooi.cpp  
 ### Parameters:	
-	Tensor3D<T>: tensor;  
+	Tensor3D<type>: tensor;  
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
 	init : {‘svd’, ‘random’}, optional;  
 	tol : float, optional  
 	tolerance: the algorithm stops when the variation in the reconstruction error is less than the tolerance  
 
 ### Output:
-	template<class T>    
+	template<class type>    
 	struct tucker_core{  
-	   Tensor3D<T> g; Mat<T> u1, u2, u3;  
+	   Tensor3D<type> g; Mat<type> u1, u2, u3;  
 	};  
 
-## tsvd_core\<T\> tSVD(Tensor3D\<T\> &a);      
+## tsvd_core\<type\> tSVD(Tensor3D\<type\> &a);      
 ### Source: tsvd.cpp  
 ### Parameters:	
-	Tensor3D<T>: tensor;  
+	Tensor3D<type>: tensor;  
 	
 ### Output:
 	struct tsvd_core{  
-	   Tensor3D<T> U, Sigma, V;  
+	   Tensor3D<type> U, Sigma, V;  
 	};  	
 
 For more details, please refer to the corresponding source files, where all definitations and corresponding illustrations is provied therein.
@@ -134,9 +134,9 @@ For more details, please refer to the corresponding source files, where all defi
 ### Tensor Train decomposition 
 ### Source: Tensor-Train/train.h    
 ### Parameters:	
-	Tensor3D<T>: tensor;  
+	Tensor3D<type>: tensor;  
 ### Output:
-	class TensorTrain<T> 
+	class TensorTrain<type> 
 	
 ## References
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
