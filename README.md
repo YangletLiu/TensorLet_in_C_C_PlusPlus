@@ -34,7 +34,7 @@ where matrix A,B and C are the corresponding factors.
 
 You can call cp_als function like:   
 
-        cp_mats<double> cp_als(Tensor3D<double> &a, int rank, int max_iter，double tol);    
+        cp_core<double> cp_als(Tensor3D<double> &a, int rank, int max_iter，double tol);    
 	
 The type double can replace with float, you can run the test.cpp file to test the algorithm.
 
@@ -50,11 +50,11 @@ The struct type tucker_core is defined as:
 
 You can call hosvd function like: 
 
-        tucker_core<double> A = hosvd(Tensor3D<double> &a, int ranks[3]);    
+        tucker_core<double> A = tucker_hosvd(Tensor3D<double> &a, int ranks[3]);    
 	
 You can call hooi function like:   
 
-        tucker_core<double> A = hooi(Tensor3D<double> &a, int ranks[3], double tol);      
+        tucker_core<double> A = tucker_hooi(Tensor3D<double> &a, int ranks[3], double tol);      
 
 The type double can replace with float, you can run the test.cpp file to test the algorithm.
 
@@ -67,7 +67,7 @@ tSVD algorithm is implemented in tsvd.cpp file.
 
 You can call tsvd function like:   
 	
-        tsvd<double> A = tsvd(Tensor3D<double> &a);      
+        tsvd_core<double> A = tsvd(Tensor3D<double> &a);      
 
 ### Tensor Train decomposition 
 Tensor Train decomposition via alternating least squares (ALS), which is realized in the Tensor-Train directory.      
@@ -76,7 +76,7 @@ You can find TensorTrain class in train.h file in the Tensor-Train directory.
 
 You can call cp_als function like:   
 
-        TensorTrain<double> A = TensorTrain(Tensor3D<double> &a, tol);    
+        TensorTrain_core<double> A = tensortrain(Tensor3D<double> &a, tol);    
 	
 ## API Reference
 ## cp_mats\<T\> cp_als(Tensor3D\<T\>& a, int rank, int max_iter，T tol);    
