@@ -25,7 +25,7 @@ We use MKL as basic matrix library for high performance and test our code on Ubu
 ### CANDECOMP/PARAFAC decomposition 
 CP decomposition via alternating least squares (ALS), which is realized in cp_als.cpp file.    
 
-The struct type is defined as:  
+The decomposition components of CP is defined as:  
 >template\<class T\>  
 >struct cp_core{  
 >&emsp;&emsp;    Mat\<T\> A,B,C;  
@@ -42,7 +42,7 @@ The type double can replace with float, you can run the test.cpp file to test th
 Tucker decomposition via Higher Order SVD (HOSVD), which is realized in tucker_hosvd.cpp file.  
 Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is realized in tucker_hooi.cpp file.    
 
-The struct type tucker_core is defined as:  
+The decomposition components of tucker is defined as:  
 >template\<class T\>    
 >struct tucker_core{  
 >&emsp;&emsp;  Tensor3D\<T\> g, Mat\<T\> u1, u2, u3;  
@@ -60,6 +60,8 @@ The type double can replace with float, you can run the test.cpp file to test th
 
 ### tSVD decomposition
 tSVD algorithm is implemented in tsvd.cpp file.
+
+The decomposition components of tSVD is defined as:  
 >template\<class T\>    
 >struct tsvd_core{  
 >&emsp;&emsp;  Tensor3D\<T\> U, Sigma, V;  
@@ -70,13 +72,15 @@ You can call tsvd function like:
         tsvd_core<double> A = tsvd(Tensor3D<double> &a);      
 
 ### Tensor Train decomposition 
-Tensor Train decomposition via alternating least squares (ALS), which is realized in the Tensor-Train directory.      
+Tensor Train decomposition via alternating least squares (ALS), which is realized in the Tensor-Train directory.        
 
-You can find TensorTrain class in train.h file in the Tensor-Train directory.  
+You can find TensorTrain class in train.h file in the Tensor-Train directory.    
 
-You can call cp_als function like:   
+The decomposition components of tensortrain is defined as:    
 
-       tensortrain_core<double> A = tensortrain(Tensor3D<double> &a, tol);    
+You can call cp_als function like:     
+
+       tensortrain_core<double> A = tensortrain(Tensor3D<double> &a, tol);      
 	
 ## API Reference
 ## cp_core\<T\> cp_als(Tensor3D\<T\>& tensor, int rank, int max_iter，T tol);    
