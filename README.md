@@ -54,7 +54,7 @@ You can call hosvd function like:
 	
 You can call hooi function like:   
 
-        tucker_core<double> A = hooi(Tensor3D<double> &a, int ranks[3], T tol);      
+        tucker_core<double> A = hooi(Tensor3D<double> &a, int ranks[3], double tol);      
 
 The type double can replace with float, you can run the test.cpp file to test the algorithm.
 
@@ -76,7 +76,7 @@ You can find TensorTrain class in train.h file in the Tensor-Train directory.
 
 You can call cp_als function like:   
 
-        TensorTrain<double> A = tensorTrain(Tensor3D<double> &a, Tol);    
+        TensorTrain<double> A = tensorTrain(Tensor3D<double> &a, tol);    
 	
 ## API Reference
 ## cp_mats\<T\> cp_als(Tensor3D\<T\> &a, int rank, int max_iter，T tol);    
