@@ -79,7 +79,7 @@ You can call cp_als function like:
         TensorTrain_core<double> A = tensortrain(Tensor3D<double> &a, tol);    
 	
 ## API Reference
-## cp_mats\<T\> cp_als(Tensor3D\<T\>& a, int rank, int max_iter，T tol);    
+## cp_core\<T\> cp_als(Tensor3D\<T\>& a, int rank, int max_iter，T tol);    
 ### Source: cp_als.cpp  
 ### Parameters: 
 	Tensor3D<T> &: tensor; 
@@ -115,7 +115,7 @@ You can call cp_als function like:
 	   Tensor3D<T> g; Mat<T> u1, u2, u3;  
 	};  
 
-## tsvd\<T\> tSVD(Tensor3D\<T\> &a);      
+## tsvd_core\<T\> tSVD(Tensor3D\<T\> &a);      
 ### Source: tsvd.cpp  
 ### Parameters:	
 	Tensor3D<T>: tensor;  
