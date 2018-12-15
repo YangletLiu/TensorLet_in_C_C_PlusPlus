@@ -88,10 +88,10 @@ You can call cp_als function like:
 	tol: float, optional  
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.  
 ### Output:
-	>template\<class T\>  
-	>struct cp_mats{  
-	>&emsp;&emsp;    Mat\<T\> A,B,C;  
-	>};  
+	template<class T>  
+	struct cp_mats{  
+	&emsp;&emsp;    Mat<T> A,B,C;  
+	};  
 	where matrix A,B and C are the corresponding factors.   
 
 ## tucker_core\<T\> hosvd(Tensor3D\<T\> &a, int ranks[3]);      
