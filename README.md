@@ -102,7 +102,7 @@ You can call cp_als function like:
 ### Source: tucker_hosvd.cpp  
 ### Parameters:	
 	tensor: the address of tensor; 
-	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
+	ranks: int array; size of the core tensor, (len(ranks) == tensor.ndim);  
 
 ## tucker_core\<T\> tucker_hooi(Tensor3D\<T\> &a, int ranks[3], T tol);  
 ### Source: tucker_hooi.cpp  
