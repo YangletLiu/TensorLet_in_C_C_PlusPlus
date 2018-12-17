@@ -104,7 +104,7 @@ You can call cp_als function like:
 	tensor: the address of tensor; 
 	ranks: int array; size of the core tensor, (len(ranks) == tensor.ndim);  
 
-## tucker_decomposition\<T\> tucker_hooi(Tensor3D\<T\> &a, int ranks[3], T tol);  
+## tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\> &a, int ranks[3], T tol);  
 ### Source: tucker_hooi.cpp  
 ### Parameters:	
 	Tensor3D<type>: tensor;  
