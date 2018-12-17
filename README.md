@@ -145,6 +145,7 @@ You can call cp_als function like:
 
 <details>	
 <summary> tSVD decomposition API </summary>
+	
 ## tsvd_decomposition\<type\> tSVD(Tensor3D\<type\> &a);      
 ### Source: tsvd.cpp  
 ### Parameters:	
