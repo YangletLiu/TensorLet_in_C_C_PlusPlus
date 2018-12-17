@@ -27,14 +27,14 @@ CP decomposition via alternating least squares (ALS), which is realized in cp_al
 
 The decomposition components of CP is defined as:  
 >template\<class type\>  
->class cp_core{  
+>class cp_decomposition{  
 >&emsp;&emsp;    Mat\<type\> A,B,C;  
 >};  
 where Mat\<type\> is dense matrix class and matrix A,B and C are the corresponding factors.   
 
 You can call cp_als function like:   
 
-        cp_core<double> cp_decomposition(Tensor3D<double> &a, int rank, int max_iter，double tol);    
+        cp_decomposition<double> cp_decomposition(Tensor3D<double> &a, int rank, int max_iter，double tol);    
 	
 The type double can replace with float, you can run the test.cpp file to test the algorithm.
 
@@ -44,17 +44,17 @@ Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is real
 
 The decomposition components of tucker is defined as:  
 >template\<class type\>    
->struct tucker_core{  
+>class tucker_decomposition{  
 >&emsp;&emsp;  Tensor3D\<type\> g, Mat\<type\> u1, u2, u3;  
 >};  
 
 You can call hosvd function like: 
 
-        tucker_core<double> A = tucker_hosvd(Tensor3D<double> &a, int ranks[3]);    
+        tucker_decomposition<double> A = tucker_hosvd(Tensor3D<double> &a, int ranks[3]);    
 	
 You can call hooi function like:   
 
-        tucker_core<double> A = tucker_hooi(Tensor3D<double> &a, int ranks[3], double tol);      
+        tucker_decomposition<double> A = tucker_hooi(Tensor3D<double> &a, int ranks[3], double tol);      
 
 The type double can replace with float, you can run the test.cpp file to test the algorithm.
 
@@ -63,13 +63,13 @@ tSVD algorithm is implemented in tsvd.cpp file.
 
 The decomposition components of tSVD is defined as:  
 >template\<class type\>    
->struct tsvd_core{  
+>class tsvd_decomposition{  
 >&emsp;&emsp;  Tensor3D\<type\> U, Sigma, V;  
 >};  
 
 You can call tsvd function like:   
 	
-        tsvd_core<double> A = tsvd(Tensor3D<double> &a);      
+        tsvd_decomposition<double> A = tsvd_decomposition(Tensor3D<double> &a);      
 
 ### Tensor Train decomposition 
 Tensor Train decomposition via alternating least squares (ALS), which is realized in the Tensor-Train directory.        
@@ -80,10 +80,10 @@ The decomposition components of tensortrain is defined as:
 
 You can call cp_als function like:     
 
-       tensortrain_core<double> A = tensortrain(Tensor3D<double> &a, tol);      
+       tensortrain_decomposition<double> A = tensortrain_decomposition(Tensor3D<double> &a, tol);      
 	
 ## API Reference
-## cp_core\<type\> cp_als(Tensor3D\<type\>& tensor, int rank, int max_iter，type tol);    
+## cp_decomposition\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter，type tol);    
 ### Source: cp_als.cpp  
 ### Parameters: 
 	tensor: the address of tensor; 
@@ -93,18 +93,18 @@ You can call cp_als function like:
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.  
 ### Output:
 	template<class type>  
-	struct cp_core{  
+	class cp_decomposition{  
 	    Mat<type> A,B,C;  
 	};  
 	where matrix A,B and C are the corresponding factors.   
 
-## tucker_core\<type\> tucker_hosvd(Tensor3D\<type\> &tensor, int ranks[3]);      
+## tucker_decomposition\<type\> tucker_hosvd(Tensor3D\<type\> &tensor, int ranks[3]);      
 ### Source: tucker_hosvd.cpp  
 ### Parameters:	
 	tensor: the address of tensor; 
 	ranks: int array; size of the core tensor, (len(ranks) == tensor.ndim);  
 
-## tucker_core\<T\> tucker_hooi(Tensor3D\<T\> &a, int ranks[3], T tol);  
+## tucker_decomposition\<T\> tucker_hooi(Tensor3D\<T\> &a, int ranks[3], T tol);  
 ### Source: tucker_hooi.cpp  
 ### Parameters:	
 	Tensor3D<type>: tensor;  
@@ -115,17 +115,17 @@ You can call cp_als function like:
 
 ### Output:
 	template<class type>    
-	struct tucker_core{  
+	class tucker_decomposition{  
 	   Tensor3D<type> g; Mat<type> u1, u2, u3;  
 	};  
 
-## tsvd_core\<type\> tSVD(Tensor3D\<type\> &a);      
+## tsvd_decomposition\<type\> tSVD(Tensor3D\<type\> &a);      
 ### Source: tsvd.cpp  
 ### Parameters:	
 	Tensor3D<type>: tensor;  
 	
 ### Output:
-	struct tsvd_core{  
+	class tsvd_decomposition{  
 	   Tensor3D<type> U, Sigma, V;  
 	};  	
 
