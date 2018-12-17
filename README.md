@@ -1,10 +1,7 @@
 # TensorLet: A C++ library for popular tensor decompositions
 
 <details>	
-<summary>
-
-## Pre-requisite
-</summary>
+<summary> Pre-requisite </summary>
 Users need to install the following packages and add them to specific paths according to your CMakeLists.txt file.
 
 1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
@@ -26,7 +23,10 @@ We use MKL as basic matrix library for high performance and test our code on Ubu
 
 </details>
 
-## User guide
+
+<details>	
+<summary> User guide </summary>
+	
 ### CANDECOMP/PARAFAC decomposition 
 CP decomposition via alternating least squares (ALS), which is realized in cp_als.cpp file.    
 
@@ -86,7 +86,9 @@ The decomposition components of tensortrain is defined as:
 You can call cp_als function like:     
 
        tensortrain_decomposition<double> A = tensortrain_decomposition(Tensor3D<double> &a, tol);      
-	
+</details>
+
+
 ## API Reference
 ## cp_decomposition\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter，type tol);    
 ### Source: cp_als.cpp  
