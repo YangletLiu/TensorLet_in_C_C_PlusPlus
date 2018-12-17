@@ -138,8 +138,8 @@ For more details, please refer to the corresponding source files, where all defi
 ### Output:
 	class TensorTrain<type> 
 	
-region 1 {	
-## References
+<details>	
+   <summary>## References</summary>
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
 
 [2] Kilmer, M. E., Braman, K., Hao, N., & Hoover, R. C. (2013). Third-order tensors as operators on matrices: A theoretical and computational framework with applications in imaging. SIAM Journal on Matrix Analysis and Applications, 34(1), 148-172.
@@ -156,7 +156,7 @@ region 1 {
 
 [8] Ravindran N, Sidiropoulos N D, Smith S, et al. Memory-efficient parallel computation of tensor and matrix products for big tensor decomposition[C]//Signals, Systems and Computers, 2014 48th Asilomar Conference on. IEEE, 2014: 581-585.
 
-} region
+</details>
 
 <details>
   <summary>什么是iuap design</summary>
