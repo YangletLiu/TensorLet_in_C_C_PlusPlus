@@ -27,14 +27,14 @@ CP decomposition via alternating least squares (ALS), which is realized in cp_al
 
 The decomposition components of CP is defined as:  
 >template\<class type\>  
->struct cp_core{  
+>class cp_core{  
 >&emsp;&emsp;    Mat\<type\> A,B,C;  
 >};  
-where matrix A,B and C are the corresponding factors.   
+where Mat\<type\> is dense matrix class and matrix A,B and C are the corresponding factors.   
 
 You can call cp_als function like:   
 
-        cp_core<double> cp_als(Tensor3D<double> &a, int rank, int max_iter，double tol);    
+        cp_core<double> cp_decomposition(Tensor3D<double> &a, int rank, int max_iter，double tol);    
 	
 The type double can replace with float, you can run the test.cpp file to test the algorithm.
 
