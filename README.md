@@ -1,6 +1,10 @@
 # TensorLet: A C++ library for popular tensor decompositions
 
+<details>	
+<summary>
+
 ## Pre-requisite
+</summary>
 Users need to install the following packages and add them to specific paths according to your CMakeLists.txt file.
 
 1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
@@ -20,6 +24,7 @@ We use MKL as basic matrix library for high performance and test our code on Ubu
 -->
 [//]: # (This may be the most platform independent comment)
 
+</details>
 
 ## User guide
 ### CANDECOMP/PARAFAC decomposition 
@@ -139,8 +144,9 @@ For more details, please refer to the corresponding source files, where all defi
 	class TensorTrain<type> 
 	
 <details>	
-<summary> 
-<span style="font-size:2rem;">**References**</span>
+<summary>
+
+## References
 </summary>
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
 
