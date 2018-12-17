@@ -89,7 +89,9 @@ You can call cp_als function like:
 </details>
 
 
-## API Reference
+<details>	
+<summary> API Reference </summary>
+
 ## cp_decomposition\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter，type tol);    
 ### Source: cp_als.cpp  
 ### Parameters: 
@@ -144,10 +146,11 @@ For more details, please refer to the corresponding source files, where all defi
 	Tensor3D<type>: tensor;  
 ### Output:
 	class TensorTrain<type> 
-	
+</details>
+
+
 <details>	
 <summary>
-
 ## References
 </summary>
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
