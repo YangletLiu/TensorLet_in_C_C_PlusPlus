@@ -23,11 +23,11 @@ We use MKL as basic matrix library for high performance and test our code on Ubu
 
 </details>
 
+## User guide
 
 <details>	
-<summary> User guide </summary>
-	
-### CANDECOMP/PARAFAC decomposition 
+<summary> CANDECOMP/PARAFAC decomposition </summary>
+
 CP decomposition via alternating least squares (ALS), which is realized in cp_als.cpp file.    
 
 The decomposition components of CP is defined as:  
@@ -42,8 +42,11 @@ You can call cp_als function like:
         cp_decomposition<double> cp_decomposition(Tensor3D<double> &a, int rank, int max_iter，double tol);    
 	
 The type double can replace with float, you can run the test.cpp file to test the algorithm.
+</details>
 
-### Tucker decomposition
+<details>	
+<summary> Tucker decomposition </summary>
+
 Tucker decomposition via Higher Order SVD (HOSVD), which is realized in tucker_hosvd.cpp file.  
 Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is realized in tucker_hooi.cpp file.    
 
@@ -62,8 +65,11 @@ You can call hooi function like:
         tucker_decomposition<double> A = tucker_hooi(Tensor3D<double> &a, int ranks[3], double tol);      
 
 The type double can replace with float, you can run the test.cpp file to test the algorithm.
+</details>
 
-### tSVD decomposition
+<details>	
+<summary> tSVD decomposition </summary>
+
 tSVD algorithm is implemented in tsvd.cpp file.
 
 The decomposition components of tSVD is defined as:  
@@ -75,8 +81,11 @@ The decomposition components of tSVD is defined as:
 You can call tsvd function like:   
 	
         tsvd_decomposition<double> A = tsvd_decomposition(Tensor3D<double> &a);      
+</details>
 
-### Tensor Train decomposition 
+<details>	
+<summary> Tensor Train decomposition  </summary>
+
 Tensor Train decomposition via alternating least squares (ALS), which is realized in the Tensor-Train directory.        
 
 You can find TensorTrain class in train.h file in the Tensor-Train directory.    
