@@ -119,17 +119,13 @@ You can call cp_als function like:
 </details>
 
 <details>	
-<summary> Tucker decomposition via High Order SVD (HOSVD) </summary>
+<summary> Tucker decomposition via High Order SVD (HOSVD) and High-Order Orthogonal Iteration (HOOI) </summary>
 	
 ## tucker_decomposition\<type\> tucker_hosvd(Tensor3D\<type\> &tensor, int ranks[3]);      
 ### Source: tucker_hosvd.cpp  
 ### Parameters:	
 	tensor: the address of tensor; 
 	ranks: int array; size of the core tensor, (len(ranks) == tensor.ndim);  
-</details>
-
-<details>	
-<summary> Tucker decomposition via High-Order Orthogonal Iteration (HOOI) </summary>
 	
 ## tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\> &a, int ranks[3], T tol);  
 ### Source: tucker_hooi.cpp  
@@ -162,14 +158,17 @@ You can call cp_als function like:
 For more details, please refer to the corresponding source files, where all definitations and corresponding illustrations is provied therein.
 </details>
 
+<details>	
+<summary> Tensor Train decomposition  </summary>
+	
 ### Tensor Train decomposition 
 ### Source: Tensor-Train/train.h    
 ### Parameters:	
 	Tensor3D<type>: tensor;  
 ### Output:
 	class TensorTrain<type> 
+	
 </details>
-
 
 ## References
 <details>	
