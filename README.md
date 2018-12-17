@@ -138,6 +138,7 @@ For more details, please refer to the corresponding source files, where all defi
 ### Output:
 	class TensorTrain<type> 
 	
+region{	
 ## References
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
 
@@ -154,3 +155,4 @@ For more details, please refer to the corresponding source files, where all defi
 [7] Liavas A P, Sidiropoulos N D. Parallel algorithms for constrained tensor factorization via alternating direction method of multipliers[J]. IEEE Transactions on Signal Processing, 2015, 63(20): 5450-5463.
 
 [8] Ravindran N, Sidiropoulos N D, Smith S, et al. Memory-efficient parallel computation of tensor and matrix products for big tensor decomposition[C]//Signals, Systems and Computers, 2014 48th Asilomar Conference on. IEEE, 2014: 581-585.
+}
