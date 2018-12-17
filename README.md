@@ -139,9 +139,8 @@ For more details, please refer to the corresponding source files, where all defi
 	class TensorTrain<type> 
 	
 <details>	
-<summary>
-
-## References
+<summary> 
+## References >
 </summary>
 [1] Xiao-Yang Liu and Xiaodong Wang. Fourth-order Tensors with Multidimensional Discrete Transforms, 2017. https://arxiv.org/abs/1705.01576
 
