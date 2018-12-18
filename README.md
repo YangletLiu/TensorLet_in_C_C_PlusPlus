@@ -102,7 +102,7 @@ You can call cp_als function like:
 <details>	
 <summary> CANDECOMP/PARAFAC decomposition via alternating least squares (ALS) </summary>
 
-## cp_decomposition\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter，type tol);    
+### cp_decomposition\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter，type tol);    
 ### Source: cp_als.cpp  
 ### Parameters: 
 	tensor: the address of tensor; 
@@ -121,13 +121,13 @@ You can call cp_als function like:
 <details>	
 <summary> Tucker decomposition via High Order SVD (HOSVD) and High-Order Orthogonal Iteration (HOOI) </summary>
 	
-## tucker_decomposition\<type\> tucker_hosvd(Tensor3D\<type\> &tensor, int ranks[3]);      
+### tucker_decomposition\<type\> tucker_hosvd(Tensor3D\<type\> &tensor, int ranks[3]);      
 ### Source: tucker_hosvd.cpp  
 ### Parameters:	
 	tensor: the address of tensor; 
 	ranks: int array; size of the core tensor, (len(ranks) == tensor.ndim);  
 	
-## tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\> &a, int ranks[3], T tol);  
+### tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\> &a, int ranks[3], T tol);  
 ### Source: tucker_hooi.cpp  
 ### Parameters:	
 	Tensor3D<type>: tensor;  
@@ -146,7 +146,7 @@ You can call cp_als function like:
 <details>	
 <summary> tSVD decomposition API </summary>
 	
-## tsvd_decomposition\<type\> tSVD(Tensor3D\<type\> &a);      
+### tsvd_decomposition\<type\> tSVD(Tensor3D\<type\> &a);      
 ### Source: tsvd.cpp  
 ### Parameters:	
 	Tensor3D<type>: tensor;  
