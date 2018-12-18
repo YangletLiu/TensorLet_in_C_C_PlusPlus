@@ -28,7 +28,7 @@ We use MKL as basic matrix library for high performance and test our code on Ubu
 <details>	
 <summary> CANDECOMP/PARAFAC decomposition </summary>
 
-CP decomposition via alternating least squares (ALS), which is realized in cp_als.cpp file.    
+CP decomposition via alternating least squares (ALS), which is realized in cp_als.cpp.    
 
 The decomposition components of CP is defined as:  
 >template\<class type\>  
@@ -47,8 +47,8 @@ The type double can replace with float, you can run the test.cpp file to test th
 <details>	
 <summary> Tucker decomposition </summary>
 
-Tucker decomposition via Higher Order SVD (HOSVD), which is realized in tucker_hosvd.cpp file.  
-Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is realized in tucker_hooi.cpp file.    
+Tucker decomposition via Higher Order SVD (HOSVD), which is realized in tucker_hosvd.cpp.  
+Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is realized in tucker_hooi.cpp.    
 
 The decomposition components of tucker is defined as:  
 >template\<class type\>    
@@ -70,7 +70,7 @@ The type double can replace with float, you can run the test.cpp file to test th
 <details>	
 <summary> tSVD decomposition </summary>
 
-tSVD algorithm is implemented in tsvd.cpp file.
+tSVD algorithm is implemented in tsvd.cpp.
 
 The decomposition components of tSVD is defined as:  
 >template\<class type\>    
@@ -103,7 +103,7 @@ You can call cp_als function like:
 <summary> CANDECOMP/PARAFAC decomposition via alternating least squares (ALS) </summary>
 
 ### cp_decomposition\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter，type tol);    
-#### Source: CP decomposition is realized in cp_als.cpp file.    
+#### Source: CP decomposition is realized in cp_als.cpp.    
 ### Parameters: 
 	tensor: the address of tensor; 
 	rank: int, number of components;   
@@ -122,13 +122,13 @@ You can call cp_als function like:
 <summary> Tucker decomposition via High Order SVD (HOSVD) and High-Order Orthogonal Iteration (HOOI) </summary>
 	
 ### tucker_decomposition\<type\> tucker_hosvd(Tensor3D\<type\> &tensor, int ranks[3]);      
-### Source: tucker_hosvd.cpp  
+#### Source: Tucker decomposition is realized in tucker_hosvd.cpp and tucker_hooi.cpp.     
+
 ### Parameters:	
 	tensor: the address of tensor; 
 	ranks: int array; size of the core tensor, (len(ranks) == tensor.ndim);  
 	
 ### tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\> &a, int ranks[3], T tol);  
-### Source: tucker_hooi.cpp  
 ### Parameters:	
 	Tensor3D<type>: tensor;  
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
@@ -147,7 +147,8 @@ You can call cp_als function like:
 <summary> tSVD decomposition API </summary>
 	
 ### tsvd_decomposition\<type\> tSVD(Tensor3D\<type\> &a);      
-### Source: tsvd.cpp  
+#### Source: tSVD is realized in tsvd.cpp.     
+
 ### Parameters:	
 	Tensor3D<type>: tensor;  
 	
@@ -163,7 +164,7 @@ For more details, please refer to the corresponding source files, where all defi
 <summary> Tensor Train decomposition  </summary>
 	
 ### Tensor Train decomposition 
-### Source: Tensor-Train/train.h    
+#### Source: Tensor Train decomposition is realized in Tensor-Train/train.h.     
 ### Parameters:	
 	Tensor3D<type>: tensor;  
 ### Output:
