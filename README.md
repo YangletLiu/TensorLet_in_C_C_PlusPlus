@@ -193,15 +193,3 @@ Main references
 [8] Ravindran N, Sidiropoulos N D, Smith S, et al. Memory-efficient parallel computation of tensor and matrix products for big tensor decomposition[C]//Signals, Systems and Computers, 2014 48th Asilomar Conference on. IEEE, 2014: 581-585.
 
 </details>
-
-
-<div class="section" id="references">
-<h2>4.3. References</h2>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> T.G.Kolda and B.W.Bader, “Tensor Decompositions and Applications”,
-SIAM REVIEW, vol. 51, n. 3, pp. 455-500, 2009.</td></tr>
-</tbody>
-</table>
-</div>
