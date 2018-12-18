@@ -193,3 +193,42 @@ Main references
 [8] Ravindran N, Sidiropoulos N D, Smith S, et al. Memory-efficient parallel computation of tensor and matrix products for big tensor decomposition[C]//Signals, Systems and Computers, 2014 48th Asilomar Conference on. IEEE, 2014: 581-585.
 
 </details>
+
+
+	<div id="NavbarMenu" class="navbar-menu">
+		<div class="navbar-start">
+
+			<a class="navbar-item" href="../installation.html">
+				Install
+			</a>
+			<a class="navbar-item" href="index.html">
+				User guide
+			</a>
+			<a class="navbar-item" href="../modules/api.html">
+				API
+			</a>
+			<a class="navbar-item" href="../auto_examples/index.html">
+				Examples
+			</a>
+			<a class="navbar-item" href="../authors.html">
+				People
+			</a>
+			<a class="navbar-item" href="https://github.com/JeanKossaifi/tensorly-notebooks" target="_blank">
+				Notebooks
+			</a>
+
+		</div>
+
+		<div class="navbar-end">
+			<a class="navbar-item is-tab tooltip is-hidden-touch" href="../index.html">
+				<i class="fa fa-home" aria-hidden="true"></i>
+				<span class="tooltiptext">Home page</span>
+			</a>
+
+			<a class="navbar-item is-tab tooltip is-hidden-touch" href="https://github.com/tensorly/tensorly" target="_blank">
+				<span class="tooltiptext">Open project on Github</span>
+				<span class="icon"><i class="fa fa-github"></i></span>
+			</a>
+
+		</div>
+    </div>
