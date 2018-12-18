@@ -1,4 +1,4 @@
-# TensorLet: A C++ library for popular tensor decompositions
+## TensorLet: A C++ library for popular tensor decompositions
 
 ## Pre-requisite
 <details>	
