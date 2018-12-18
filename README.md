@@ -103,7 +103,7 @@ You can call cp_als function like:
 <summary> CANDECOMP/PARAFAC decomposition via alternating least squares (ALS) </summary>
 
 ### cp_decomposition\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter，type tol);    
-### Source: cp_als.cpp  
+#### Source: CP decomposition is realized in cp_als.cpp file.    
 ### Parameters: 
 	tensor: the address of tensor; 
 	rank: int, number of components;   
