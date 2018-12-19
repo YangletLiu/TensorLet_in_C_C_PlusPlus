@@ -68,11 +68,11 @@ The type double can replace with float, you can run the test.cpp file to test th
 </details>
 
 <details>	
-<summary> tSVD decomposition </summary>
+<summary> t-SVD decomposition </summary>
 
-tSVD algorithm is implemented in tsvd.cpp.
+t-SVD algorithm is implemented in t-SVD.cpp.
 
-The decomposition components of tSVD is defined as:  
+The decomposition components of t-SVD is defined as:  
 >template\<class type\>    
 >class tsvd_decomposition{  
 >&emsp;&emsp;  Tensor3D\<type\> U, Sigma, V;  
@@ -144,10 +144,10 @@ You can call cp_als function like:
 </details>
 
 <details>	
-<summary> tSVD decomposition API </summary>
+<summary> t-SVD decomposition API </summary>
 	
 ### tsvd_decomposition\<type\> tSVD(Tensor3D\<type\> &tensor);      
-#### Source: tSVD is realized in tsvd.cpp.     
+#### Source: t-SVD is realized in t-SVD.cpp.     
 
 ### Parameters:	
 	tensor: the address of tensor; 
