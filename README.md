@@ -128,9 +128,9 @@ You can call cp_als function like:
 	tensor: the address of tensor; 
 	ranks: int array; size of the core tensor, (len(ranks) == tensor.ndim);  
 	
-### tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\> &a, int ranks[3], T tol);  
+### tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\> &tensor, int ranks[3], T tol);  
 ### Parameters:	
-	Tensor3D<type>: tensor;  
+	tensor: the address of tensor; 
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
 	init : {‘svd’, ‘random’}, optional;  
 	tol : float, optional  
@@ -146,11 +146,11 @@ You can call cp_als function like:
 <details>	
 <summary> tSVD decomposition API </summary>
 	
-### tsvd_decomposition\<type\> tSVD(Tensor3D\<type\> &a);      
+### tsvd_decomposition\<type\> tSVD(Tensor3D\<type\> &tensor);      
 #### Source: tSVD is realized in tsvd.cpp.     
 
 ### Parameters:	
-	Tensor3D<type>: tensor;  
+	tensor: the address of tensor; 
 	
 ### Output:
 	class tsvd_decomposition{  
@@ -166,7 +166,7 @@ For more details, please refer to the corresponding source files, where all defi
 ### Tensor Train decomposition 
 #### Source: Tensor Train decomposition is realized in Tensor-Train/train.h.     
 ### Parameters:	
-	Tensor3D<type>: tensor;  
+	tensor: the address of tensor; 
 ### Output:
 	class TensorTrain<type> 
 	
