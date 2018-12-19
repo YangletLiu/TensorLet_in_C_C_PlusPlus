@@ -95,6 +95,7 @@ The decomposition components of tensortrain is defined as:
 You can call cp_als function like:     
 
        tensortrain_decomposition<double> A = tensortrain_decomposition(Tensor3D<double> &a, tol);      
+
 </details>
 
 ## API Reference
