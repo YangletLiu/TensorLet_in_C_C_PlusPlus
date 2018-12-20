@@ -33,7 +33,7 @@ CP decomposition via alternating least squares (ALS), which is realized in cp_al
 The decomposition components of CP is defined as:  
 >template\<class type\>  
 >class cp_decomposition{  
->&emsp;&emsp;    Mat\<type\> A,B,C;  
+>&emsp;&emsp;    Mat\<type\> factor[3];  
 >};  
 where Mat\<type\> is dense matrix class and matrix A,B and C are the corresponding factors.   
 
@@ -114,7 +114,7 @@ You can call cp_als function like:
 ### Output:
 	template<class type>  
 	class cp_decomposition{  
-	    Mat<type> A,B,C;  
+	    Mat\<type\> factor[3];  
 	};  
 	where matrix A,B and C are the corresponding factors.   
 </details>
