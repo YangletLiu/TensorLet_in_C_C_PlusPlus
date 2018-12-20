@@ -35,7 +35,7 @@ The decomposition components of CP is defined as:
 >class cp_decomposition{  
 >&emsp;&emsp;    Mat\<type\> factor[3];  
 >};  
-where Mat\<type\> is dense matrix class and matrix A,B and C are the corresponding factors.   
+where Mat\<type\> is dense matrix class and factor is the matrix list of the corresponding CP decomposition factors.   
 
 You can call cp_als function like:   
 
@@ -53,8 +53,9 @@ Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is real
 The decomposition components of tucker is defined as:  
 >template\<class type\>    
 >class tucker_decomposition{  
->&emsp;&emsp;  Tensor3D\<type\> core, Mat\<type\> u1, u2, u3;  
+>&emsp;&emsp;  Tensor3D\<type\> core, Mat\<type\> factor[3];   
 >};  
+where Tensor3D\<type\> is third-order tensor class and factor is the matrix list of the corresponding Tucker decomposition factors.   
 
 You can call hosvd function like: 
 
@@ -140,7 +141,7 @@ You can call cp_als function like:
 ### Output:
 	template<class type>    
 	class tucker_decomposition{  
-	   Tensor3D<type> core; Mat<type> u1, u2, u3;  
+	   Tensor3D<type> core; Mat\<type\> factor[3];   
 	};  
 </details>
 
