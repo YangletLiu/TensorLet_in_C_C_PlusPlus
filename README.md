@@ -53,7 +53,7 @@ Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is real
 The decomposition components of tucker is defined as:  
 >template\<class type\>    
 >class tucker_decomposition{  
->&emsp;&emsp;  Tensor3D\<type\> g, Mat\<type\> u1, u2, u3;  
+>&emsp;&emsp;  Tensor3D\<type\> core, Mat\<type\> u1, u2, u3;  
 >};  
 
 You can call hosvd function like: 
@@ -140,7 +140,7 @@ You can call cp_als function like:
 ### Output:
 	template<class type>    
 	class tucker_decomposition{  
-	   Tensor3D<type> g; Mat<type> u1, u2, u3;  
+	   Tensor3D<type> core; Mat<type> u1, u2, u3;  
 	};  
 </details>
 
