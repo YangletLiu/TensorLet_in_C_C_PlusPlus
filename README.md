@@ -182,7 +182,13 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
 
 ### Class Tensor3D
 
-### Class Tensor3D
+### Class cp_decomposition
+
+### Class tucker_decomposition
+
+### Class tsvd_decomposition
+
+### Class tensortrain_decomposition
 
 </details>
 
