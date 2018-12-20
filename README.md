@@ -115,7 +115,7 @@ You can call cp_als function like:
 ### Output:
 	template<class type>  
 	class cp_decomposition{  
-	    Mat\<type\> factor[3];  
+	    Mat<type> factor[3];  
 	};  
 	where matrix A,B and C are the corresponding factors.   
 </details>
@@ -141,7 +141,7 @@ You can call cp_als function like:
 ### Output:
 	template<class type>    
 	class tucker_decomposition{  
-	   Tensor3D<type> core; Mat\<type\> factor[3];   
+	   Tensor3D<type> core; Mat<type> factor[3];   
 	};  
 </details>
 
