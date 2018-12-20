@@ -130,7 +130,7 @@ You can call cp_als function like:
 	tensor: the address of tensor; 
 	ranks: int array; size of the core tensor, (len(ranks) == tensor.ndim);  
 	
-### tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\> &tensor, int ranks[3], T tol);  
+### tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\> &tensor, int ranks[3], int max_iter, T tol);  
 ### Parameters:	
 	tensor: the address of tensor; 
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
