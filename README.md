@@ -182,10 +182,7 @@ For more details, please refer to the corresponding source files, where all defi
 </details>
 
 ## Class List
-<details>	
-<summary>
 Here are the classes, structs, unions and interfaces with brief descriptions:
-</summary>
 
 <details>	
 <summary>
@@ -246,7 +243,6 @@ tt_to_unfolded(core, factors[, mode, …])	Converts the TT decomposition into an
 tt_to_vec(core, factors[, skip_factor, …])	Converts a TT decomposition into a vectorised tensor  
 </details>
 
-</details>
 
 
 ## References
