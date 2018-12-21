@@ -206,9 +206,9 @@ cp_decomposition<type>
 </summary>
 	
 ##### Public Member Functions  
-kruskal_to_tensor(factors[, weights])	Turns the Khatri-product of matrices into a full tensor  
-kruskal_to_unfolded(factors, mode)	Turns the khatri-product of matrices into an unfolded tensor  
-kruskal_to_vec(factors)	Turns the khatri-product of matrices into a vector  
+cp_to_tensor(cp_decomposition &)	Turns the Khatri-product of matrices into a full tensor  
+cp_to_unfolded(cp_decomposition &, int mode)	Turns the khatri-product of matrices into an unfolded tensor  
+cp_to_vec(cp_decomposition &)	Turns the khatri-product of matrices into a vector  
 </details>
 
 <details>	
@@ -217,9 +217,9 @@ tucker_decomposition<type>
 </summary>
 	
 ##### Public Member Functions  
-tucker_to_tensor(core, factors[, …])	Converts the Tucker tensor into a full tensor  
-tucker_to_unfolded(core, factors[, mode, …])	Converts the Tucker decomposition into an unfolded tensor (i.e.  
-tucker_to_vec(core, factors[, skip_factor, …])	Converts a Tucker decomposition into a vectorised tensor  
+tucker_to_tensor(tucker_decomposition &)	Converts the Tucker tensor into a full tensor  
+tucker_to_unfolded(tucker_decomposition &)	Converts the Tucker decomposition into an unfolded tensor (i.e.  
+tucker_to_vec(tucker_decomposition &)	Converts a Tucker decomposition into a vectorised tensor  
 </details>
 
 <details>	
@@ -228,9 +228,9 @@ tsvd_decomposition<type>
 </summary>
 	
 ##### Public Member Functions   
-tsvd_to_tensor(core, factors[, …])	Converts the t-SVD tensor into a full tensor  
-tsvd_to_unfolded(core, factors[, mode, …])	Converts the t-SVD decomposition into an unfolded tensor (i.e.  
-tsvd_to_vec(core, factors[, skip_factor, …])	Converts a t-SVD decomposition into a vectorised tensor  
+tsvd_to_tensor(tsvd_decomposition &)	Converts the t-SVD tensor into a full tensor  
+tsvd_to_unfolded(tsvd_decomposition &)	Converts the t-SVD decomposition into an unfolded tensor (i.e.  
+tsvd_to_vec(tsvd_decomposition &)	Converts a t-SVD decomposition into a vectorised tensor  
 </details>
 
 <details>	
@@ -239,9 +239,9 @@ tensortrain_decomposition<type>
 </summary>
 	
 ##### Public Member Functions  
-tt_to_tensor(core, factors[, …])	Converts the TT tensor into a full tensor  
-tt_to_unfolded(core, factors[, mode, …])	Converts the TT decomposition into an unfolded tensor (i.e.  
-tt_to_vec(core, factors[, skip_factor, …])	Converts a TT decomposition into a vectorised tensor  
+tt_to_tensor(tensortrain_decomposition &)	Converts the TT tensor into a full tensor  
+tt_to_unfolded(tensortrain_decomposition &)	Converts the TT decomposition into an unfolded tensor (i.e.  
+tt_to_vec(tensortrain_decomposition &)	Converts a TT decomposition into a vectorised tensor  
 </details>
 
 
