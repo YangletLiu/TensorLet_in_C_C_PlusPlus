@@ -41,7 +41,7 @@ The factor is the matrix list of the corresponding CP decomposition factors.
 
 You can call cp_als function like:   
 
-        cp_decomposition<double> cp_decomposition(Tensor3D<double> &a, int rank, int max_iter，double tol);    
+        cp_decomposition<double> A = cp_decomposition(Tensor3D<double> &tensor, int rank, int max_iter，double tol);    
 
 where Tensor3D\<type\> is third-order tensor class.
 </details>
