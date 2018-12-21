@@ -112,7 +112,7 @@ You can call cp_als function like:
 	max_iter: int, maximum number of iteration;   
 	tol: float, optional  
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.  
-### Output:
+### Returns:
 	cp_decomposition<type>: abstract data type（ADT） for the CP decomposition result.    
 	template<class type>  
 	class cp_decomposition{  
@@ -140,7 +140,7 @@ You can call cp_als function like:
 	tol : float, optional  
 	tolerance: the algorithm stops when the variation in the reconstruction error is less than the tolerance  
 
-### Output:
+### Returns:
 	tucker_decomposition<type>: abstract data type（ADT） for the Tucker decomposition result.    
 	template<class type>    
 	class tucker_decomposition{  
@@ -157,7 +157,7 @@ You can call cp_als function like:
 ### Parameters:	
 	tensor: the address of tensor; 
 	
-### Output:
+### Returns:
 	tsvd_decomposition<type>: abstract data type（ADT） for the t-SVD decomposition result.    
 	class tsvd_decomposition{  
 	   Tensor3D<type> U, Sigma, V;  
@@ -173,7 +173,7 @@ For more details, please refer to the corresponding source files, where all defi
 #### Source: Tensor Train decomposition is realized in Tensor-Train/train.h.     
 ### Parameters:	
 	tensor: the address of tensor; 
-### Output:
+### Returns:
 	tensortrain_decomposition<type>: abstract data type（ADT） for the Tensor Train decomposition result.    
 	class tensortrain_decomposition<type> 
 	
