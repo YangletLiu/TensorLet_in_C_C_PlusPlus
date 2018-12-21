@@ -57,7 +57,7 @@ The decomposition components of tucker is defined as:
 >class tucker_decomposition{  
 >&emsp;&emsp;  Tensor3D\<type\> core, Mat\<type\> factor[3];   
 >};  
-where factor is the matrix list of the corresponding Tucker decomposition factors.   
+where factor is the matrix list of the corresponding Tucker decomposition.   
 
 You can call hosvd function like: 
 
@@ -119,7 +119,8 @@ You can call cp_als function like:
 	class cp_decomposition{  
 	    Mat<type> factor[3];  
 	};  
-	where matrix A,B and C are the corresponding factors.   
+	where factor is the matrix list of the corresponding CP decomposition.   
+
 </details>
 
 <details>	
