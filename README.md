@@ -24,6 +24,8 @@ We use MKL as basic matrix library for high performance and test our code on Ubu
 </details>
 
 ## User guide
+In TensorLet, all third order tensors are objects of the Tensor3D template class.
+
 
 <details>	
 <summary> CANDECOMP/PARAFAC decomposition </summary>
@@ -186,6 +188,12 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
 </summary>
 
 ### Tensor3D\<type\>
+
+Tensor3D::unfold(tensor, mode)	Returns the mode-mode unfolding of tensor with modes starting at 0.  
+Tensor3D::fold(unfolded_tensor, mode, shape)	Refolds the mode-mode unfolding into a tensor of shape shape  
+Tensor3D::tens2vec(tensor)	Vectorises a tensor  
+Tensor3D::vec2ten(vec, shape)	Folds a vectorised tensor back into a tensor of shape shape  
+Tensor3D::inner(tensor1, tensor2)	Generalised inner products between tensors  
 
 ### cp_decomposition\<type\>
 
