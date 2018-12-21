@@ -35,13 +35,15 @@ The decomposition components of CP is defined as:
 >class cp_decomposition{  
 >&emsp;&emsp;    Mat\<type\> factor[3];  
 >};  
-where Mat\<type\> is dense matrix class and factor is the matrix list of the corresponding CP decomposition factors.   
+where Mat\<type\> is dense matrix class. 
+The type double can replace with float, you can run the test.cpp file to test the algorithm.
+The factor is the matrix list of the corresponding CP decomposition factors.   
 
 You can call cp_als function like:   
 
         cp_decomposition<double> cp_decomposition(Tensor3D<double> &a, int rank, int max_iter，double tol);    
-	
-The type double can replace with float, you can run the test.cpp file to test the algorithm.
+
+where Tensor3D\<type\> is third-order tensor class.
 </details>
 
 <details>	
@@ -55,7 +57,7 @@ The decomposition components of tucker is defined as:
 >class tucker_decomposition{  
 >&emsp;&emsp;  Tensor3D\<type\> core, Mat\<type\> factor[3];   
 >};  
-where Tensor3D\<type\> is third-order tensor class and factor is the matrix list of the corresponding Tucker decomposition factors.   
+where factor is the matrix list of the corresponding Tucker decomposition factors.   
 
 You can call hosvd function like: 
 
