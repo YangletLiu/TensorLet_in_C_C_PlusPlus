@@ -187,14 +187,12 @@ For more details, please refer to the corresponding source files, where all defi
 Here are the classes, structs, unions and interfaces with brief descriptions:
 </summary>
 
-### Tensor3D\<type\>
-
 <details>	
 <summary>
+### Tensor3D\<type\>
+</summary>
 	
 #### Public Member Functions
-</summary>
-
 Tensor3D::unfold(tensor, mode)	Returns the mode-mode unfolding of tensor with modes starting at 0.  
 Tensor3D::fold(unfolded_tensor, mode, shape)	Refolds the mode-mode unfolding into a tensor of shape shape  
 Tensor3D::tens2vec(tensor)	Vectorises a tensor  
