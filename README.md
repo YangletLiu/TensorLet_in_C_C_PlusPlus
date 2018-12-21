@@ -35,9 +35,8 @@ The decomposition components of CP is defined as:
 >class cp_decomposition{  
 >&emsp;&emsp;    Mat\<type\> factor[3];  
 >};  
-where Mat\<type\> is dense matrix class. 
-The type double can replace with float, you can run the test.cpp file to test the algorithm.
-The factor is the matrix list of the corresponding CP decomposition factors.   
+where Mat\<type\> is dense matrix class. The template variable 'type' represents the data type of tensor and be double and float.
+The factor is the matrix list of the corresponding CP decomposition.   
 
 You can call cp_als function like:   
 
@@ -67,7 +66,6 @@ You can call hooi function like:
 
         tucker_decomposition<double> A = tucker_hooi(Tensor3D<double> &a, int ranks[3], double tol);      
 
-The type double can replace with float, you can run the test.cpp file to test the algorithm.
 </details>
 
 <details>	
