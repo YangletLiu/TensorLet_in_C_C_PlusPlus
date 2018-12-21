@@ -194,17 +194,34 @@ Tensor3D::unfold(tensor, mode)	Returns the mode-mode unfolding of tensor with mo
 Tensor3D::fold(unfolded_tensor, mode, shape)	Refolds the mode-mode unfolding into a tensor of shape shape  
 Tensor3D::tens2vec(tensor)	Vectorises a tensor  
 Tensor3D::vec2ten(vec, shape)	Folds a vectorised tensor back into a tensor of shape shape  
+Tensor3D::frobenius_norm(tensor1, tensor2)	the Frobenius norm of tensors   
 Tensor3D::inner(tensor1, tensor2)	Generalised inner products between tensors  
 Tensor3D::n_mode_prod(tensor, matrix, mode)	n-mode product of a tensor and a matrix or vector at the specified mode  
 
 
 ### cp_decomposition\<type\>
+#### Public Member Functions
+kruskal_to_tensor(factors[, weights])	Turns the Khatri-product of matrices into a full tensor
+kruskal_to_unfolded(factors, mode)	Turns the khatri-product of matrices into an unfolded tensor
+kruskal_to_vec(factors)	Turns the khatri-product of matrices into a vector
 
 ### tucker_decomposition\<type\>
+#### Public Member Functions
+tucker_to_tensor(core, factors[, …])	Converts the Tucker tensor into a full tensor
+tucker_to_unfolded(core, factors[, mode, …])	Converts the Tucker decomposition into an unfolded tensor (i.e.
+tucker_to_vec(core, factors[, skip_factor, …])	Converts a Tucker decomposition into a vectorised tensor
 
 ### tsvd_decomposition\<type\>
+#### Public Member Functions
+tsvd_to_tensor(core, factors[, …])	Converts the t-SVD tensor into a full tensor
+tsvd_to_unfolded(core, factors[, mode, …])	Converts the t-SVD decomposition into an unfolded tensor (i.e.
+tsvd_to_vec(core, factors[, skip_factor, …])	Converts a t-SVD decomposition into a vectorised tensor
 
 ### tensortrain_decomposition\<type\>
+#### Public Member Functions
+tt_to_tensor(core, factors[, …])	Converts the TT tensor into a full tensor
+tt_to_unfolded(core, factors[, mode, …])	Converts the TT decomposition into an unfolded tensor (i.e.
+tt_to_vec(core, factors[, skip_factor, …])	Converts a TT decomposition into a vectorised tensor
 
 </details>
 
