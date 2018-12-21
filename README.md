@@ -189,7 +189,12 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
 
 ### Tensor3D\<type\>
 
+<details>	
+<summary>
+	
 #### Public Member Functions
+</summary>
+
 Tensor3D::unfold(tensor, mode)	Returns the mode-mode unfolding of tensor with modes starting at 0.  
 Tensor3D::fold(unfolded_tensor, mode, shape)	Refolds the mode-mode unfolding into a tensor of shape shape  
 Tensor3D::tens2vec(tensor)	Vectorises a tensor  
@@ -197,6 +202,7 @@ Tensor3D::vec2ten(vec, shape)	Folds a vectorised tensor back into a tensor of sh
 Tensor3D::frobenius_norm(tensor1, tensor2)	the Frobenius norm of tensors   
 Tensor3D::inner(tensor1, tensor2)	Generalised inner products between tensors  
 Tensor3D::n_mode_prod(tensor, matrix, mode)	n-mode product of a tensor and a matrix or vector at the specified mode  
+</details>
 
 
 ### cp_decomposition\<type\>
