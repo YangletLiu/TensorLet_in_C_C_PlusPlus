@@ -189,6 +189,12 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
 Tensor3D<type>
 </summary>
 In TensorLet, all third order tensors are objects of the Tensor3D template class.
+	
+##### Data Members
+
+int shape[3]; // the dimension of the third order tensor;  
+type * p; // a pointer point to tensor.  
+
 
 ##### Public Member Functions
 Tensor3D::unfold(tensor, mode)	Returns the mode-mode unfolding of tensor with modes starting at 0.  
