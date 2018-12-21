@@ -35,14 +35,14 @@ The decomposition components of CP is defined as:
 >class cp_decomposition{  
 >&emsp;&emsp;    Mat\<type\> factor[3];  
 >};  
-where Mat\<type\> is dense matrix class. The template variable 'type' represents the data type of tensor and be double and float.
+where Mat\<type\> is dense matrix class. The template parameter 'type' represents the data type of tensor and be double and float.
 The factor is the matrix list of the corresponding CP decomposition.   
 
 You can call cp_als function like:   
 
         cp_decomposition<double> A = cp_decomposition(Tensor3D<double> &tensor, int rank, int max_iter，double tol);    
 
-where Tensor3D\<type\> is third-order tensor class.
+where Tensor3D\<type\> represents the third-order tensor class.
 </details>
 
 <details>	
@@ -113,6 +113,7 @@ You can call cp_als function like:
 	tol: float, optional  
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.  
 ### Output:
+	cp_decomposition: abstract data type（ADT） for the CP decomposition result.    
 	template<class type>  
 	class cp_decomposition{  
 	    Mat<type> factor[3];  
