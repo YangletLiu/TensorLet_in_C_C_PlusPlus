@@ -182,15 +182,15 @@ For more details, please refer to the corresponding source files, where all defi
 Here are the classes, structs, unions and interfaces with brief descriptions:
 </summary>
 
-### Class Tensor3D
+### Tensor3D\<type\>
 
-### Class cp_decomposition
+### cp_decomposition\<type\>
 
-### Class tucker_decomposition
+### tucker_decomposition\<type\>
 
-### Class tsvd_decomposition
+### tsvd_decomposition\<type\>
 
-### Class tensortrain_decomposition
+### tensortrain_decomposition\<type\>
 
 </details>
 
