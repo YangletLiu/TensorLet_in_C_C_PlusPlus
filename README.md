@@ -195,7 +195,6 @@ In TensorLet, all third order tensors are objects of the Tensor3D template class
 int shape[3]; // the dimension of the third order tensor;  
 type * p; // a pointer point to tensor.  
 
-
 ##### Public Member Functions
 Tensor3D::unfold(tensor, mode)	Returns the mode-mode unfolding of tensor with modes starting at 0.  
 Tensor3D::fold(unfolded_tensor, mode, shape)	Refolds the mode-mode unfolding into a tensor of shape shape  
