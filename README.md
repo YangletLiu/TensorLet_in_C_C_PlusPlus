@@ -26,7 +26,7 @@ Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized speci
 </details>
 
 ## User guide
-In TensorLet, all third order tensors are objects of the Tensor3D template class.   
+In TensorLet, all third order tensors are objects of the Tensor3D template class. You can refer to Class list for more details.
 
 <details>	
 <summary> CANDECOMP/PARAFAC decomposition </summary>
