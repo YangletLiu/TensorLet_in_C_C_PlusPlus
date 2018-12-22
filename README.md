@@ -39,7 +39,7 @@ The decomposition components of CP is defined as:
 >&emsp;&emsp;    Mat\<type\> factor[3];  
 >};  
 where, Mat\<type\> is dense matrix class provided by the third party library Eigen/MKL;      
-The template parameter 'type' represents the data type of tensor and be double and float;  
+The template parameter <type> represents the data type of tensor and be <double> and <float>;  
 The factor is the matrix list of the corresponding CP decomposition.   
 
 You can call cp_als function like:   
