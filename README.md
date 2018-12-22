@@ -203,6 +203,7 @@ Tensor3D::vec2ten(vec, shape)	Folds a vectorised tensor back into a tensor of sh
 Tensor3D::frobenius_norm(tensor1, tensor2)	the Frobenius norm of tensors   
 Tensor3D::inner(tensor1, tensor2)	Generalised inner products between tensors  
 Tensor3D::n_mode_prod(tensor, matrix, mode)	n-mode product of a tensor and a matrix or vector at the specified mode 
+Tensor3D::t_prod(tensor1, tensor2)	t-product between tensors
 
 </details>
 
