@@ -62,11 +62,11 @@ where factor is the matrix list of the corresponding Tucker decomposition.
 
 You can call hosvd function like: 
 
-        tucker_decomposition<double> A = tucker_hosvd(Tensor3D<double> &a, int ranks[3]);    
+        tucker_decomposition<double> A = tucker_hosvd(Tensor3D<double> &tensor, int ranks[3]);    
 	
 You can call hooi function like:   
 
-        tucker_decomposition<double> A = tucker_hooi(Tensor3D<double> &a, int ranks[3], double tol);      
+        tucker_decomposition<double> A = tucker_hooi(Tensor3D<double> &tensor, int ranks[3], double tol);      
 
 </details>
 
@@ -83,7 +83,7 @@ The decomposition components of t-SVD is defined as:
 
 You can call tsvd function like:   
 	
-        tsvd_decomposition<double> A = tsvd_decomposition(Tensor3D<double> &a);      
+        tsvd_decomposition<double> A = tsvd_decomposition(Tensor3D<double> &tensor);      
 </details>
 
 <details>	
@@ -97,7 +97,7 @@ The decomposition components of tensortrain is defined as:
 
 You can call cp_als function like:     
 
-       tensortrain_decomposition<double> A = tensortrain_decomposition(Tensor3D<double> &a, tol);      
+       tensortrain_decomposition<double> A = tensortrain_decomposition(Tensor3D<double> &tensor, tol);      
 
 </details>
 
