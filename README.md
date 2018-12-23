@@ -1,7 +1,7 @@
 ## TensorLet: A C++ library for popular tensor decompositions
 
 <details>	
-<summary> Pre-requisite </summary>
+<summary> **Pre-requisite** </summary>
 Users need to install the following packages:   
 	
 1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
