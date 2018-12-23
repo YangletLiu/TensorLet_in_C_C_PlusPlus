@@ -289,7 +289,7 @@ Main references
 
 
 
-* [横线](User guide)
+* [User guide](#User guide)
 * [标题](#标题)
 * [文本](#文本)
     * 普通文本
