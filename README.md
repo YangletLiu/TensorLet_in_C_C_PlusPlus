@@ -2,7 +2,8 @@
 
 <details>	
 <summary> Pre-requisite </summary>
-Users need to install the following packages:            
+Users need to install the following packages:   
+	
 1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
 
 2. Intel Math Kernel Library (MKL): https://software.intel.com/en-us/mkl  
