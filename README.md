@@ -289,9 +289,9 @@ Main references
 </details>
 
 * [TensorLet](#readme)
-* [Installation](#Installation)
-* [User guide](#user-guide)
-* [API Reference](#api-reference)
-* [Class List](#class-list)
-* [References](#references)
+	* [Installation](#Installation)
+	* [User guide](#user-guide)
+	* [API Reference](#api-reference)
+	* [Class List](#class-list)
+	* [References](#references)
 
