@@ -10,27 +10,27 @@ Users need to install the following packages
 3. (Optional) OpenMP: https://www.openmp.org/  
 </details>
 
-	<details>	
-	<summary> Installation </summary>
+<details>	
+<summary> Installation </summary>
 
-	We use MKL as basic matrix library for high performance and test our code on Ubuntu Linux.   
+We use MKL as basic matrix library for high performance and test our code on Ubuntu Linux.   
 
-	Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized specifically for Intel processors. Core math functions include BLAS, LAPACK, ScaLAPACK, sparse solvers, fast Fourier transforms, and vector math.    
+Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized specifically for Intel processors. Core math functions include BLAS, LAPACK, ScaLAPACK, sparse solvers, fast Fourier transforms, and vector math.    
 
-	You need to add them to specific paths according to your CMakeLists.txt file. For example, you can link MKL in  CMakeLists.txt file,     
-	"include_directories(/opt/intel/mkl/include)  
-	link_directories(/opt/intel/mkl/lib/intel64)  
-	link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"  
+You need to add them to specific paths according to your CMakeLists.txt file. For example, you can link MKL in  CMakeLists.txt file,     
+"include_directories(/opt/intel/mkl/include)  
+link_directories(/opt/intel/mkl/lib/intel64)  
+link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"  
 
-	You can refer to the installation instructions in Installation folder.   
-	<!--
-	3. cmake version 3.12 or greater: https://cmake.org/    
+You can refer to the installation instructions in Installation folder.   
+<!--
+3. cmake version 3.12 or greater: https://cmake.org/    
 
-	4. Fastest Fourier Transform in the West (FFTW): http://www.fftw.org/    
-	-->
-	[//]: # (This may be the most platform independent comment)  
+4. Fastest Fourier Transform in the West (FFTW): http://www.fftw.org/    
+-->
+[//]: # (This may be the most platform independent comment)  
 
-	</details>
+</details>
 
 ## User guide
 In TensorLet, all third order tensors are objects of the Tensor3D template class. You can refer to Class list for more details.
