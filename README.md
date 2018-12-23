@@ -1,7 +1,8 @@
 ## TensorLet: A C++ library for popular tensor decompositions
 
-### Pre-requisite
 <details>	
+	
+### Pre-requisite
 <summary> Users need to install the following packages </summary>
 
 1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
@@ -9,9 +10,11 @@
 2. Intel Math Kernel Library (MKL): https://software.intel.com/en-us/mkl  
 
 3. (Optional) OpenMP: https://www.openmp.org/  
+</details>
 
+<details>	
+	
 ### Installation
-
 You need to add them to specific paths according to your CMakeLists.txt file. For example, you can link MKL in  CMakeLists.txt file,     
 "include_directories(/opt/intel/mkl/include)  
 link_directories(/opt/intel/mkl/lib/intel64)  
