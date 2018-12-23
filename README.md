@@ -287,7 +287,7 @@ Main references
 
 </details>
 
-* [user guide](#Userguide)
+* [User guide](#user-guide)
 * [横线](#横线)
 * [userguide](#user guide)
 
