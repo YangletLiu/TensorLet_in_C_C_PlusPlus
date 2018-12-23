@@ -1,5 +1,6 @@
 ## TensorLet: A C++ library for popular tensor decompositions
 
+## Installation
 <details>	
 <summary> Pre-requisite </summary>
 Users need to install the following packages:   
@@ -12,7 +13,7 @@ Users need to install the following packages:
 </details>
 
 <details>	
-<summary> Installation </summary>
+<summary> Instructions </summary>
 
 We use MKL as basic matrix library for high performance and test our code on Ubuntu Linux.   
 
@@ -288,6 +289,7 @@ Main references
 </details>
 
 * [TensorLet](#readme)
+* [Installation](#Installation)
 * [User guide](#user-guide)
 * [API Reference](#api-reference)
 * [Class List](#class-list)
