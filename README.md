@@ -287,7 +287,9 @@ Main references
 
 </details>
 
+|`[回到顶部](#readme)`|[回到顶部](#readme)|
 * [User guide](#user-guide)
-* [横线](#横线)
-* [userguide](#user guide)
+* [API Reference](#api-reference)
+* [Class List](#class-list)
+* [References](#references)
 
