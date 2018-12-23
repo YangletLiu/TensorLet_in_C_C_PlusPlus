@@ -1,5 +1,12 @@
 ## TensorLet: A C++ library for popular tensor decompositions
 
+* [TensorLet](#readme)
+	* [Installation](#Installation)
+	* [User guide](#user-guide)
+	* [API Reference](#api-reference)
+	* [Class List](#class-list)
+	* [References](#references)
+	
 ## Installation
 <details>	
 <summary> Pre-requisite </summary>
@@ -288,10 +295,4 @@ Main references
 
 </details>
 
-* [TensorLet](#readme)
-	* [Installation](#Installation)
-	* [User guide](#user-guide)
-	* [API Reference](#api-reference)
-	* [Class List](#class-list)
-	* [References](#references)
 
