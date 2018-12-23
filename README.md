@@ -2,13 +2,19 @@
 
 ## Pre-requisite
 <details>	
-<summary> Users need to install the following packages and add them to specific paths according to your CMakeLists.txt file. </summary>
+<summary> Users need to install the following packages </summary>
 
 1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
 
 2. Intel Math Kernel Library (MKL): https://software.intel.com/en-us/mkl  
 
 3. (Optional) OpenMP: https://www.openmp.org/  
+
+You need to add them to specific paths according to your CMakeLists.txt file. For example, you can link MKL in  CMakeLists.txt file,     
+"include_directories(/opt/intel/mkl/include)
+link_directories(/opt/intel/mkl/lib/intel64)
+link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"
+
 
 You can refer to the installation instructions in Installation folder.   
 
