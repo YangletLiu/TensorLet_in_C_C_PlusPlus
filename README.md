@@ -10,28 +10,27 @@
 ## Installation
 <details>	
 <summary> Pre-requisite </summary>
-Users need to install the following packages:   
+Users need the following packages:   
 	
 1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
 
 2. Intel Math Kernel Library (MKL): https://software.intel.com/en-us/mkl  
 
 3. (Optional) OpenMP: https://www.openmp.org/  
+We use MKL as basic matrix library for high performance and test our code on Ubuntu.  
+
+Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized specifically for Intel processors. Core math functions include BLAS, LAPACK, ScaLAPACK, sparse solvers, fast Fourier transforms, and vector math.    
 </details>
 
 <details>	
 <summary> Instructions </summary>
-
-We use MKL as basic matrix library for high performance and test our code on Ubuntu Linux.   
-
-Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized specifically for Intel processors. Core math functions include BLAS, LAPACK, ScaLAPACK, sparse solvers, fast Fourier transforms, and vector math.    
+We suggest users use TensorLet on Ubuntu and you can refer to the installation instructions in Installation folder.   
 
 You need to add them to specific paths according to your CMakeLists.txt file. For example, you can link MKL in  CMakeLists.txt file,     
 "include_directories(/opt/intel/mkl/include)  
 link_directories(/opt/intel/mkl/lib/intel64)  
 link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"  
 
-You can refer to the installation instructions in Installation folder.   
 <!--
 3. cmake version 3.12 or greater: https://cmake.org/    
 
