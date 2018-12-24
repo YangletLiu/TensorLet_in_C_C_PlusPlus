@@ -2,7 +2,6 @@
 
 * [TensorLet](#readme)
 	* [Installation](#Installation)
-		*  Pre-requisite
 	* [User guide](#user-guide)
 	* [API Reference](#api-reference)
 	* [Class List](#class-list)
