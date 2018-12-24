@@ -51,7 +51,9 @@ In TensorLet, all third order tensors are objects of the Tensor3D template class
 	Tensor3D<double> tensor = random(10,10,10);    
 #### Unfolding
 	Mat<double> A = tensor.unfold(1) // mode-1 unfolding  
-	
+	Mat<double> B = tensor.unfold(2) // mode-2 unfolding  
+	Mat<double> C = tensor.unfold(3) // mode-3 unfolding  
+
 </details>
 
 <details>	
