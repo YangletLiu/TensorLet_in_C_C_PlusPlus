@@ -247,6 +247,7 @@ cp_decomposition<type>
 cp_to_tensor(cp_decomposition &)	Turns the Khatri-product of matrices into a full tensor  
 cp_to_unfolded(cp_decomposition &, int mode)	Turns the khatri-product of matrices into an unfolded tensor  
 cp_to_vec(cp_decomposition &)	Turns the khatri-product of matrices into a vector  
+cp_gen(cp_decomposition &)  Generate a r-rank CP tensor  
 </details>
 
 <details>	
