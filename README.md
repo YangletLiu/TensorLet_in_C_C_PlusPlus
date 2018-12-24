@@ -60,7 +60,8 @@ The factor is the matrix list of the corresponding CP decomposition.
 
 You can call cp_als function like:   
 
-        cp_decomposition<double> A = cp_decomposition(Tensor3D<double> &tensor, int rank, int max_iter，double tol);    
+        Tensor3D<double> tensor = random(10,10,10);
+	cp_decomposition<double> A = cp_decomposition(tensor, int rank = 3, int max_iter = 1，double tol = 1e-6);    
 
 where Tensor3D\<type\> represents the third-order tensor class.
 </details>
