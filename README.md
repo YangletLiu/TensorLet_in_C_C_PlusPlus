@@ -206,7 +206,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
 <summary>
 Tensor3D<type>
 </summary>
-In TensorLet, all third order tensors are objects of the Tensor3D template class.
+In TensorLet, all third order tensors are objects of the Tensor3D template class. You can refer to Tensor3D.h file.
 	
 ##### Data Members
 
