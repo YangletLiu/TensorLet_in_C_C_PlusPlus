@@ -48,8 +48,9 @@ In TensorLet, all third order tensors are objects of the Tensor3D template class
 <summary> Tensor basics </summary>
 
 #### Creating a tensor
-	Tensor3D<double> tensor = random(10,10,10);  
-
+	Tensor3D<double> tensor = random(10,10,10);    
+#### Unfolding
+	Mat<double> A = tensor.unfold(1) // mode-1 unfolding  
 	
 </details>
 
