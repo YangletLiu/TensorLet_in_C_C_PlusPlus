@@ -45,6 +45,15 @@ link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"
 In TensorLet, all third order tensors are objects of the Tensor3D template class. You can refer to Class list for more details.
 
 <details>	
+<summary> Tensor basics </summary>
+
+#### Creating a tensor
+	Tensor3D<double> tensor = random(10,10,10);  
+
+	
+</details>
+
+<details>	
 <summary> CANDECOMP/PARAFAC decomposition </summary>
 
 CP decomposition via alternating least squares (ALS), which is realized in cp_als.cpp.    
