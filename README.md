@@ -25,7 +25,7 @@ Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized speci
 
 <details>	
 <summary> Instructions </summary>
-We recommend users use TensorLet on Ubuntu and you can refer to the installation instructions in Installation folder.   
+We recommend users use TensorLet on Ubuntu and you can refer to the installation instructions in Installation folder.     
 
 You need to add them to specific paths according to your CMakeLists.txt file.    
 For example, you can link MKL in  CMakeLists.txt file like:      
@@ -145,7 +145,7 @@ You can call cp_als function like:
 <details>	
 <summary> CANDECOMP/PARAFAC decomposition via alternating least squares (ALS) </summary>
 
-### cp_decomposition\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter，type tol);    
+### cp_decomposition\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter, type tol);    
 #### Source: CP decomposition is realized in cp_als.cpp.    
 ### Parameters: 
 	tensor: the address of tensor; 
@@ -192,7 +192,7 @@ You can call cp_als function like:
 <details>	
 <summary> t-SVD decomposition API </summary>
 	
-### tsvd_decomposition\<type\> tSVD(Tensor3D\<type\> &tensor);      
+### tsvd_decomposition\<type\> tsvd(Tensor3D\<type\> &tensor);      
 #### Source: t-SVD is realized in t-SVD.cpp.     
 
 ### Parameters:	
@@ -240,8 +240,8 @@ int shape[3]; // the dimension of the third order tensor;
 type * p; // a pointer point to tensor.  
 
 ##### Public Member Functions
-Mat& Tensor3D::unfold(tensor, mode)	Returns the mode-mode unfolding of tensor with modes starting at 0.  
-Tensor3D& Tensor3D::fold(unfolded_tensor, mode, shape)	Refolds the mode-mode unfolding into a tensor of shape shape  
+Mat& Tensor3D::tens2mat(tensor, mode)	Returns the mode-mode unfolding of tensor with modes starting at 0.  
+Tensor3D& Tensor3D::mat2tens(unfolded_tensor, mode, shape)	Refolds the mode-mode unfolding into a tensor of shape shape  
 Mat& Tensor3D::tens2vec(tensor)	Vectorises a tensor  
 Tensor3D& Tensor3D::vec2ten(vec, shape)	Folds a vectorised tensor back into a tensor of shape shape  
 double Tensor3D::frobenius_norm(tensor1, tensor2)	the Frobenius norm of tensors   
