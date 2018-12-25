@@ -12,7 +12,7 @@
 <summary> Pre-requisite </summary>
 Users need the following packages:   
 	
-1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
+1. Basic matrix library, Armadillo: http://arma.sourceforge.net/  
 
 2. Intel Math Kernel Library (MKL): https://software.intel.com/en-us/mkl  
 
@@ -48,7 +48,7 @@ In TensorLet, all third order tensors are objects of the Tensor3D template class
 <summary> Tensor basics </summary>
 
 #### Creating a tensor
-	Tensor3D<double> tensor = random(10,10,10);    
+	Cube<double> tensor = random(10,10,10);    
 #### Unfolding
 	Mat<double> A = tensor.unfold(1) // mode-1 unfolding  
 	Mat<double> B = tensor.unfold(2) // mode-2 unfolding  
@@ -72,7 +72,7 @@ The factor is the matrix list of the corresponding CP decomposition.
 
 You can call cp_als function like:   
 
-	Tensor3D<double> tensor = random(10,10,10);  
+	Cube<double> tensor = random(10,10,10);  
 	cp_decomposition<double> A = cp_decomposition(tensor, int rank = 3, int max_iter = 1，double tol = 1e-6);    
 
 where Tensor3D\<type\> represents the third-order tensor class.
@@ -87,17 +87,17 @@ Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is real
 The decomposition components of tucker is defined as:  
 >template\<class type\>    
 >class tucker_decomposition{  
->&emsp;&emsp;  Tensor3D\<type\> core, Mat\<type\> factor[3];   
+>&emsp;&emsp;  Cube\<type\> core, Mat\<type\> factor[3];   
 >};  
 where factor is the matrix list of the corresponding Tucker decomposition.   
 
 You can call hosvd function like: 
 
-        tucker_decomposition<double> A = tucker_hosvd(Tensor3D<double> &tensor, int ranks[3]);    
+        tucker_decomposition<double> A = tucker_hosvd(Cube<double> &tensor, int ranks[3]);    
 	
 You can call hooi function like:   
 
-        tucker_decomposition<double> A = tucker_hooi(Tensor3D<double> &tensor, int ranks[3], double tol);      
+        tucker_decomposition<double> A = tucker_hooi(Cube<double> &tensor, int ranks[3], double tol);      
 
 </details>
 
@@ -109,12 +109,12 @@ t-SVD algorithm is implemented in t-SVD.cpp.
 The decomposition components of t-SVD is defined as:  
 >template\<class type\>    
 >class tsvd_decomposition{  
->&emsp;&emsp;  Tensor3D\<type\> U, Sigma, V;  
+>&emsp;&emsp;  Cube\<type\> U, Sigma, V;  
 >};  
 
 You can call tsvd function like:   
 	
-        tsvd_decomposition<double> A = tsvd_decomposition(Tensor3D<double> &tensor);      
+        tsvd_decomposition<double> A = tsvd_decomposition(Cube<double> &tensor);      
 </details>
 
 <details>	
@@ -127,13 +127,13 @@ You can find TensorTrain class in train.h file in the Tensor-Train directory.
 The decomposition components of tensortrain is defined as:    
 >template\<class type\>    
 >class tensortrain_decomposition{  
->&emsp;&emsp;  Tensor3D\<type\> U;  
+>&emsp;&emsp;  Cube\<type\> U;  
 >&emsp;&emsp;  Mat<type> G1,G2;  
 >};  
 
 You can call cp_als function like:     
 
-       tensortrain_decomposition<double> A = tensortrain_decomposition(Tensor3D<double> &tensor, tol);      
+       tensortrain_decomposition<double> A = tensortrain_decomposition(Cube<double> &tensor, tol);      
 
 </details>
 
@@ -142,7 +142,7 @@ You can call cp_als function like:
 <details>	
 <summary> CANDECOMP/PARAFAC decomposition via alternating least squares (ALS) </summary>
 
-### cp_decomposition\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter，type tol);    
+### cp_decomposition\<type\> cp_decomposition(Cube\<type\>& tensor, int rank, int max_iter，type tol);    
 #### Source: CP decomposition is realized in cp_als.cpp.    
 ### Parameters: 
 	tensor: the address of tensor; 
@@ -163,14 +163,14 @@ You can call cp_als function like:
 <details>	
 <summary> Tucker decomposition via High Order SVD (HOSVD) and High-Order Orthogonal Iteration (HOOI) </summary>
 	
-### tucker_decomposition\<type\> tucker_hosvd(Tensor3D\<type\> &tensor, int ranks[3]);      
+### tucker_decomposition\<type\> tucker_hosvd(Cube\<type\> &tensor, int ranks[3]);      
 #### Source: Tucker decomposition is realized in tucker_hosvd.cpp and tucker_hooi.cpp.     
 
 ### Parameters:	
 	tensor: the address of tensor; 
 	ranks: int array; size of the core tensor, (len(ranks) == tensor.ndim);  
 	
-### tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\> &tensor, int ranks[3], int max_iter, T tol);  
+### tucker_decomposition\<type\> tucker_hooi(Cube\<type\> &tensor, int ranks[3], int max_iter, T tol);  
 ### Parameters:	
 	tensor: the address of tensor; 
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
@@ -182,14 +182,14 @@ You can call cp_als function like:
 	tucker_decomposition<type>: abstract data type（ADT） for the Tucker decomposition result.    
 	template<class type>    
 	class tucker_decomposition{  
-	   Tensor3D<type> core; Mat<type> factor[3];   
+	   Cube<type> core; Mat<type> factor[3];   
 	};  
 </details>
 
 <details>	
 <summary> t-SVD decomposition API </summary>
 	
-### tsvd_decomposition\<type\> tSVD(Tensor3D\<type\> &tensor);      
+### tsvd_decomposition\<type\> tSVD(Cube\<type\> &tensor);      
 #### Source: t-SVD is realized in t-SVD.cpp.     
 
 ### Parameters:	
@@ -198,7 +198,7 @@ You can call cp_als function like:
 ### Returns:
 	tsvd_decomposition<type>: abstract data type（ADT） for the t-SVD decomposition result.    
 	class tsvd_decomposition{  
-	   Tensor3D<type> U, Sigma, V;  
+	   Cube<type> U, Sigma, V;  
 	};  	
 
 For more details, please refer to the corresponding source files, where all definitations and corresponding illustrations is provied therein.
@@ -207,7 +207,7 @@ For more details, please refer to the corresponding source files, where all defi
 <details>	
 <summary> Tensor Train decomposition  </summary>
 	
-### tensortrain_decomposition\<type\> tensortrain_decomposition(Tensor3D\<type\> &tensor, tol);      
+### tensortrain_decomposition\<type\> tensortrain_decomposition(Cube\<type\> &tensor, tol);      
 
 #### Source: Tensor Train decomposition is realized in Tensor-Train/train.h.    
 
@@ -216,83 +216,14 @@ For more details, please refer to the corresponding source files, where all defi
 ### Returns:
 	tensortrain_decomposition<type>: abstract data type（ADT） for the Tensor Train decomposition result.    
 	class tensortrain_decomposition{  
-	   Tensor3D<type> U;    
+	   Cube<type> U;    
 	   Mat<type> G1,G2;  
 	};  	
 
 </details>
 
 ## Class List
-Here are the classes, structs, unions and interfaces with brief descriptions:
-
-<details>	
-<summary>
-Tensor3D<type>
-</summary>
-In TensorLet, all third order tensors are objects of the Tensor3D template class. You can refer to Tensor3D.h file.
-	
-##### Data Members
-
-int shape[3]; // the dimension of the third order tensor;  
-type * p; // a pointer point to tensor.  
-
-##### Public Member Functions
-Mat& Tensor3D::unfold(tensor, mode)	Returns the mode-mode unfolding of tensor with modes starting at 0.  
-Tensor3D& Tensor3D::fold(unfolded_tensor, mode, shape)	Refolds the mode-mode unfolding into a tensor of shape shape  
-Mat& Tensor3D::tens2vec(tensor)	Vectorises a tensor  
-Tensor3D& Tensor3D::vec2ten(vec, shape)	Folds a vectorised tensor back into a tensor of shape shape  
-double Tensor3D::frobenius_norm(tensor1, tensor2)	the Frobenius norm of tensors   
-double Tensor3D::inner(tensor1, tensor2)	Generalised inner products between tensors  
-Mat& Tensor3D::n_mode_prod(tensor, matrix, mode)	n-mode product of a tensor and a matrix or vector at the specified mode 
-Tensor3D& Tensor3D::t_prod(tensor1, tensor2)	t-product between tensors
-
-</details>
-
-<details>	
-<summary>
-cp_decomposition<type>
-</summary>
-	
-##### Public Member Functions  
-Tensor3D & cp_to_tensor(cp_decomposition &)	Turns the Khatri-product of matrices into a full tensor  
-Mat & cp_to_unfolded(cp_decomposition &, int mode)	Turns the khatri-product of matrices into an unfolded tensor  
-Mat & cp_to_vec(cp_decomposition &)	Turns the khatri-product of matrices into a vector  
-Tensor3D& cp_gen(cp_decomposition &)  Generate a r-rank CP tensor  
-</details>
-
-<details>	
-<summary>
-tucker_decomposition<type>
-</summary>
-	
-##### Public Member Functions  
-Tensor3D& tucker_to_tensor(tucker_decomposition &)	Converts the Tucker tensor into a full tensor  
-Mat & tucker_to_unfolded(tucker_decomposition &)	Converts the Tucker decomposition into an unfolded tensor (i.e.  
-Mat & tucker_to_vec(tucker_decomposition &)	Converts a Tucker decomposition into a vectorised tensor  
-</details>
-
-<details>	
-<summary>
-tsvd_decomposition<type>
-</summary>
-	
-##### Public Member Functions   
-Tensor3D& tsvd_to_tensor(tsvd_decomposition &)	Converts the t-SVD tensor into a full tensor  
-Mat& tsvd_to_unfolded(tsvd_decomposition &)	Converts the t-SVD decomposition into an unfolded tensor (i.e.  
-Mat& tsvd_to_vec(tsvd_decomposition &)	Converts a t-SVD decomposition into a vectorised tensor  
-</details>
-
-<details>	
-<summary>
-tensortrain_decomposition<type>
-</summary>
-	
-##### Public Member Functions  
-Tensor3D& tt_to_tensor(tensortrain_decomposition &)	Converts the TT tensor into a full tensor  
-Mat& tt_to_unfolded(tensortrain_decomposition &)	Converts the TT decomposition into an unfolded tensor (i.e.  
-Mat& tt_to_vec(tensortrain_decomposition &)	Converts a TT decomposition into a vectorised tensor  
-
-</details>
+In TensorLet_Armadillo, all third order tensors are objects of the Cube template class. You can refer to Armadillo library.
 
 
 
