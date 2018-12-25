@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="tensor"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tensor">
+				<Option output="/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/tensor" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/jcfei/Desktop/TensorLet_C_copy/."/>
+					<Add directory="/opt/intel/mkl/include"/>
+					<Add directory="/usr/local/fftw/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 tensor"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tensor/fast">
+				<Option output="/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/tensor" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/jcfei/Desktop/TensorLet_C_copy/."/>
+					<Add directory="/opt/intel/mkl/include"/>
+					<Add directory="/usr/local/fftw/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 tensor/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C_copy/cp_als.cpp">
+			<Option target="tensor"/>
+		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C_copy/cpgen.cpp">
+			<Option target="tensor"/>
+		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C_copy/main.cpp">
+			<Option target="tensor"/>
+		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C_copy/runningtime.h">
+			<Option target="tensor"/>
+		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C_copy/tensor.h">
+			<Option target="tensor"/>
+		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C_copy/tensor_hooi.cpp">
+			<Option target="tensor"/>
+		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C_copy/tsvd.cpp">
+			<Option target="tensor"/>
+		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C_copy/tucker_hosvd.cpp">
+			<Option target="tensor"/>
+		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C_copy/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

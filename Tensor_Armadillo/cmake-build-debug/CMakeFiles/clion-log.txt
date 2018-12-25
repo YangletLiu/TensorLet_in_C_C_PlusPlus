@@ -1,0 +1,8 @@
+/home/jcfei/opt/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/jcfei/Desktop/TensorLet_C_copy
+-- Found OpenMP_C: -fopenmp  
+-- Found OpenMP_CXX: -fopenmp  
+-- Found OpenMP: TRUE   
+OPENMP FOUND
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jcfei/Desktop/TensorLet_C_copy/cmake-build-debug
