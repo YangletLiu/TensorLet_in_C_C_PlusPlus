@@ -125,6 +125,11 @@ Tensor Train decomposition via alternating least squares (ALS), which is realize
 You can find TensorTrain class in train.h file in the Tensor-Train directory.    
 
 The decomposition components of tensortrain is defined as:    
+>template\<class type\>    
+>class tensortrain_decomposition{  
+>&emsp;&emsp;  Tensor3D\<type\> U;  
+>&emsp;&emsp;  Mat<type> G1,G2;  
+>};  
 
 You can call cp_als function like:     
 
@@ -208,8 +213,11 @@ For more details, please refer to the corresponding source files, where all defi
 	tensor: the address of tensor; 
 ### Returns:
 	tensortrain_decomposition<type>: abstract data type（ADT） for the Tensor Train decomposition result.    
-	class tensortrain_decomposition<type> 
-	
+	class tensortrain_decomposition{  
+	   Tensor3D<type> U;    
+	   Mat<type> G1,G2;  
+	};  	
+
 </details>
 
 ## Class List
@@ -227,14 +235,14 @@ int shape[3]; // the dimension of the third order tensor;
 type * p; // a pointer point to tensor.  
 
 ##### Public Member Functions
-Tensor3D::unfold(tensor, mode)	Returns the mode-mode unfolding of tensor with modes starting at 0.  
-Tensor3D::fold(unfolded_tensor, mode, shape)	Refolds the mode-mode unfolding into a tensor of shape shape  
-Tensor3D::tens2vec(tensor)	Vectorises a tensor  
-Tensor3D::vec2ten(vec, shape)	Folds a vectorised tensor back into a tensor of shape shape  
-Tensor3D::frobenius_norm(tensor1, tensor2)	the Frobenius norm of tensors   
-Tensor3D::inner(tensor1, tensor2)	Generalised inner products between tensors  
-Tensor3D::n_mode_prod(tensor, matrix, mode)	n-mode product of a tensor and a matrix or vector at the specified mode 
-Tensor3D::t_prod(tensor1, tensor2)	t-product between tensors
+Mat& Tensor3D::unfold(tensor, mode)	Returns the mode-mode unfolding of tensor with modes starting at 0.  
+Tensor3D& Tensor3D::fold(unfolded_tensor, mode, shape)	Refolds the mode-mode unfolding into a tensor of shape shape  
+Mat& Tensor3D::tens2vec(tensor)	Vectorises a tensor  
+Tensor3D& Tensor3D::vec2ten(vec, shape)	Folds a vectorised tensor back into a tensor of shape shape  
+double Tensor3D::frobenius_norm(tensor1, tensor2)	the Frobenius norm of tensors   
+double Tensor3D::inner(tensor1, tensor2)	Generalised inner products between tensors  
+Mat& Tensor3D::n_mode_prod(tensor, matrix, mode)	n-mode product of a tensor and a matrix or vector at the specified mode 
+Tensor3D& Tensor3D::t_prod(tensor1, tensor2)	t-product between tensors
 
 </details>
 
@@ -244,10 +252,10 @@ cp_decomposition<type>
 </summary>
 	
 ##### Public Member Functions  
-cp_to_tensor(cp_decomposition &)	Turns the Khatri-product of matrices into a full tensor  
-cp_to_unfolded(cp_decomposition &, int mode)	Turns the khatri-product of matrices into an unfolded tensor  
-cp_to_vec(cp_decomposition &)	Turns the khatri-product of matrices into a vector  
-cp_gen(cp_decomposition &)  Generate a r-rank CP tensor  
+Tensor3D & cp_to_tensor(cp_decomposition &)	Turns the Khatri-product of matrices into a full tensor  
+Mat & cp_to_unfolded(cp_decomposition &, int mode)	Turns the khatri-product of matrices into an unfolded tensor  
+Mat & cp_to_vec(cp_decomposition &)	Turns the khatri-product of matrices into a vector  
+Tensor3D& cp_gen(cp_decomposition &)  Generate a r-rank CP tensor  
 </details>
 
 <details>	
@@ -256,9 +264,9 @@ tucker_decomposition<type>
 </summary>
 	
 ##### Public Member Functions  
-tucker_to_tensor(tucker_decomposition &)	Converts the Tucker tensor into a full tensor  
-tucker_to_unfolded(tucker_decomposition &)	Converts the Tucker decomposition into an unfolded tensor (i.e.  
-tucker_to_vec(tucker_decomposition &)	Converts a Tucker decomposition into a vectorised tensor  
+Tensor3D& tucker_to_tensor(tucker_decomposition &)	Converts the Tucker tensor into a full tensor  
+Mat & tucker_to_unfolded(tucker_decomposition &)	Converts the Tucker decomposition into an unfolded tensor (i.e.  
+Mat & tucker_to_vec(tucker_decomposition &)	Converts a Tucker decomposition into a vectorised tensor  
 </details>
 
 <details>	
@@ -267,9 +275,9 @@ tsvd_decomposition<type>
 </summary>
 	
 ##### Public Member Functions   
-tsvd_to_tensor(tsvd_decomposition &)	Converts the t-SVD tensor into a full tensor  
-tsvd_to_unfolded(tsvd_decomposition &)	Converts the t-SVD decomposition into an unfolded tensor (i.e.  
-tsvd_to_vec(tsvd_decomposition &)	Converts a t-SVD decomposition into a vectorised tensor  
+Tensor3D& tsvd_to_tensor(tsvd_decomposition &)	Converts the t-SVD tensor into a full tensor  
+Mat& tsvd_to_unfolded(tsvd_decomposition &)	Converts the t-SVD decomposition into an unfolded tensor (i.e.  
+Mat& tsvd_to_vec(tsvd_decomposition &)	Converts a t-SVD decomposition into a vectorised tensor  
 </details>
 
 <details>	
@@ -278,9 +286,9 @@ tensortrain_decomposition<type>
 </summary>
 	
 ##### Public Member Functions  
-tt_to_tensor(tensortrain_decomposition &)	Converts the TT tensor into a full tensor  
-tt_to_unfolded(tensortrain_decomposition &)	Converts the TT decomposition into an unfolded tensor (i.e.  
-tt_to_vec(tensortrain_decomposition &)	Converts a TT decomposition into a vectorised tensor  
+Tensor3D& tt_to_tensor(tensortrain_decomposition &)	Converts the TT tensor into a full tensor  
+Mat& tt_to_unfolded(tensortrain_decomposition &)	Converts the TT decomposition into an unfolded tensor (i.e.  
+Mat& tt_to_vec(tensortrain_decomposition &)	Converts a TT decomposition into a vectorised tensor  
 
 </details>
 
