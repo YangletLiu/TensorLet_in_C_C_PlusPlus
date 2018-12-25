@@ -27,7 +27,8 @@ Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized speci
 <summary> Instructions </summary>
 We recommend users use TensorLet on Ubuntu and you can refer to the installation instructions in Installation folder.   
 
-You need to add them to specific paths according to your CMakeLists.txt file. For example, you can link MKL in  CMakeLists.txt file,     
+You need to add them to specific paths according to your CMakeLists.txt file.    
+For example, you can link MKL in  CMakeLists.txt file like:      
 "include_directories(/opt/intel/mkl/include)  
 link_directories(/opt/intel/mkl/lib/intel64)  
 link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"  
