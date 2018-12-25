@@ -207,8 +207,10 @@ For more details, please refer to the corresponding source files, where all defi
 <details>	
 <summary> Tensor Train decomposition  </summary>
 	
-### Tensor Train decomposition 
-#### Source: Tensor Train decomposition is realized in Tensor-Train/train.h.     
+### tensortrain_decomposition\<type\> tensortrain_decomposition(Tensor3D\<type\> &tensor, tol);      
+
+#### Source: Tensor Train decomposition is realized in Tensor-Train/train.h.    
+
 ### Parameters:	
 	tensor: the address of tensor; 
 ### Returns:
