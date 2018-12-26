@@ -3,8 +3,8 @@
 * [TensorLet](#readme)
 	* [Installation](#Installation)
 	* [User guide](#user-guide)
-	* [API Reference](#api-reference)
-	* [Class List](#class-list)
+	* [API reference](#api-reference)
+	* [Class list](#class-list)
 	* [References](#references)
 	
 ## Installation
@@ -141,7 +141,7 @@ You can call cp_als function like:
 
 </details>
 
-## API Reference
+## API reference
 
 <details>	
 <summary> CANDECOMP/PARAFAC decomposition via alternating least squares (ALS) </summary>
@@ -226,7 +226,7 @@ For more details, please refer to the corresponding source files, where all defi
 
 </details>
 
-## Class List
+## Class list
 Here are the classes, structs, unions and interfaces with brief descriptions:
 
 <details>	
