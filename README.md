@@ -18,6 +18,8 @@ Users need the following packages:
 
 3. OpenMP: https://www.openmp.org/  
 
+4. cmake version 3.12 or greater: https://cmake.org/     
+
 We use MKL as basic matrix library for high performance and test our code on Ubuntu.  
 
 Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized specifically for Intel processors. Core math functions include BLAS, LAPACK, ScaLAPACK, sparse solvers, fast Fourier transforms, and vector math.    
@@ -34,8 +36,6 @@ link_directories(/opt/intel/mkl/lib/intel64)
 link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"  
 
 <!--
-3. cmake version 3.12 or greater: https://cmake.org/    
-
 4. Fastest Fourier Transform in the West (FFTW): http://www.fftw.org/    
 -->
 [//]: # (This may be the most platform independent comment)  
@@ -43,6 +43,9 @@ link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"
 </details>
 
 ## User guide
+TensorLet provides basic tensor algebraic operations, such as addition and different multiplication methods.  In TensorLet, we implement four popular tensor decomposition methods, CANDECOMP/PARAFAC (CP) decomposition, Tucker decomposition, t-SVD and Tensor-Train decomposition.  
+
+
 In TensorLet, all third order tensors are objects of the Tensor3D template class. You can refer to Class list for more details.
 
 <details>	
