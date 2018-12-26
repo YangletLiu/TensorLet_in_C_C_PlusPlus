@@ -10,7 +10,7 @@
 ## Installation
 <details>	
 <summary> Pre-requisite </summary>
-</br>
+-----------
 Users need the following packages:   
 	
 1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
@@ -28,7 +28,7 @@ Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized speci
 
 <details>	
 <summary> Instructions </summary>
-</br>
+-----------
 We recommend users use TensorLet on Ubuntu and you can refer to the installation instructions in Installation folder.     
 
 You need to add them to specific paths according to your CMakeLists.txt file.    
@@ -71,7 +71,7 @@ The decomposition components of CP is defined as:
 >&emsp;&emsp;    Mat\<type\> factor[3];  
 >};  
 where, Mat\<type\> is dense matrix class provided by the third party library Eigen/MKL;      
-The template parameter "type" represents the data type of tensor and be + "double" and + "float";  
+The template parameter "type" represents the data type of tensor and be "double" and "float";  
 The factor is the matrix list of the corresponding CP decomposition.   
 
 You can call cp_als function like:   
