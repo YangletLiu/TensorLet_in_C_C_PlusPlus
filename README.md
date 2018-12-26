@@ -47,15 +47,13 @@ link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"
 
 <details>	
 <summary> Tensor basics </summary>
-TensorLet provides basic tensor algebraic operations, such as addition and different multiplication methods. In TensorLet, all third order tensors are objects of the Tensor3D template class. You can refer to Class list for more details.
+TensorLet provides basic tensor algebraic operations, such as addition and different multiplication methods. In TensorLet, all third order tensors are objects of the Tensor3D template class and all matrix are objects of the Mat template class. You can refer to Class list for more details.
 	
-#### Creating a tensor
-	Tensor3D<double> tensor = random(10,10,10);    
-#### Unfolding
-	Mat<double> A = tensor.unfold(1) // mode-1 unfolding  
-	Mat<double> B = tensor.unfold(2) // mode-2 unfolding  
-	Mat<double> C = tensor.unfold(3) // mode-3 unfolding  
-
+#### Examples
+	Tensor3D<double> tensor = random(10,10,10);	// Creating a tensor
+	Mat<double> A = tensor.unfold(1);	// mode-1 unfolding  
+	Mat<double> B = tensor.unfold(2);	// mode-2 unfolding  
+	Mat<double> C = tensor.unfold(3);	// mode-3 unfolding  
 </details>
 
 <details>	
