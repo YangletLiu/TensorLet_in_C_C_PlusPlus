@@ -16,7 +16,7 @@ Users need the following packages:
 
 2. Intel Math Kernel Library (MKL): https://software.intel.com/en-us/mkl  
 
-3. (Optional) OpenMP: https://www.openmp.org/  
+3. OpenMP: https://www.openmp.org/  
 
 We use MKL as basic matrix library for high performance and test our code on Ubuntu.  
 
