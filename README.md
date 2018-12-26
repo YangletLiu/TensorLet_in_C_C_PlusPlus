@@ -51,7 +51,7 @@ For example, you can link MKL in  CMakeLists.txt file like:
 <details>	
 <summary> Tensor basics </summary>
 	
-TensorLet provides basic tensor algebraic operations, such as addition and different multiplication methods. In TensorLet, all third order tensors are objects of the Tensor3D template class and all matrix are objects of the Mat template class. You can refer to Class list for more details.
+##### TensorLet provides basic tensor algebraic operations, such as addition and different multiplication methods. In TensorLet, all third order tensors are objects of the Tensor3D template class and all matrix are objects of the Mat template class. You can refer to Class list for more details.
 	
 #### Examples
 	Tensor3D<double> tensor = random(10,10,10);	// Creating a tensor
@@ -63,7 +63,7 @@ TensorLet provides basic tensor algebraic operations, such as addition and diffe
 <details>	
 <summary> CANDECOMP/PARAFAC decomposition </summary>
 
-CP decomposition via alternating least squares (ALS), which is realized in cp_als.cpp.    
+##### CP decomposition via alternating least squares (ALS), which is realized in cp_als.cpp.    
 
 The decomposition components of CP is defined as:  
 >template\<class type\>  
@@ -85,8 +85,8 @@ where Tensor3D\<type\> represents the third-order tensor class.
 <details>	
 <summary> Tucker decomposition </summary>
 
-Tucker decomposition via Higher Order SVD (HOSVD), which is realized in tucker_hosvd.cpp.  
-Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is realized in tucker_hooi.cpp.    
+##### Tucker decomposition via Higher Order SVD (HOSVD), which is realized in tucker_hosvd.cpp.  
+##### Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is realized in tucker_hooi.cpp.    
 
 The decomposition components of tucker is defined as:  
 >template\<class type\>    
@@ -110,7 +110,7 @@ You can call hooi function like:
 <details>	
 <summary> t-SVD decomposition </summary>
 
-t-SVD algorithm is implemented in t-SVD.cpp.
+##### t-SVD algorithm is implemented in t-SVD.cpp.
 
 The decomposition components of t-SVD is defined as:  
 >template\<class type\>    
@@ -126,9 +126,7 @@ You can call tsvd function like:
 <details>	
 <summary> Tensor Train decomposition  </summary>
 
-Tensor Train decomposition via alternating least squares (ALS), which is realized in the Tensor-Train directory.        
-
-You can find TensorTrain class in train.h file in the Tensor-Train directory.    
+##### Tensor Train decomposition via alternating least squares (ALS), which is realized in train.h file in the Tensor-Train directory.        
 
 The decomposition components of tensortrain is defined as:    
 >template\<class type\>    
