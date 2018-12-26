@@ -191,7 +191,7 @@ You can call cp_als function like:
 </details>
 
 <details>	
-<summary> t-SVD decomposition API </summary>
+<summary> t-SVD decomposition </summary>
 	
 #### tsvd_decomposition\<type\> tsvd(Tensor3D\<type\> &tensor);      
 ##### Source: t-SVD is realized in t-SVD.cpp.     
