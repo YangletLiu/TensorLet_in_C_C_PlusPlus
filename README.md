@@ -33,9 +33,10 @@ We recommend users use TensorLet on Ubuntu and you can refer to the installation
 
 You need to add them to specific paths according to your CMakeLists.txt file.    
 For example, you can link MKL in  CMakeLists.txt file like:      
-"include_directories(/opt/intel/mkl/include)  
-link_directories(/opt/intel/mkl/lib/intel64)  
-link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"  
+
+	"include_directories(/opt/intel/mkl/include)  
+	link_directories(/opt/intel/mkl/lib/intel64)  
+	link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"  
 
 <!--
 4. Fastest Fourier Transform in the West (FFTW): http://www.fftw.org/    
