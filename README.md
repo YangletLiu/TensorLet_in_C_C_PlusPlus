@@ -43,7 +43,7 @@ link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"
 </details>
 
 ## User guide
-##### In TensorLet, we implement four popular tensor decomposition methods, CANDECOMP/PARAFAC (CP) decomposition, Tucker decomposition, t-SVD and Tensor-Train decomposition.  
+#### In TensorLet, we implement four popular tensor decomposition methods, CANDECOMP/PARAFAC (CP) decomposition, Tucker decomposition, t-SVD and Tensor-Train decomposition.  
 
 <details>	
 <summary> Tensor basics </summary>
