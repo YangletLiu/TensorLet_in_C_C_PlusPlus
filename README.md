@@ -146,8 +146,8 @@ You can call cp_als function like:
 <details>	
 <summary> CANDECOMP/PARAFAC decomposition via alternating least squares (ALS) </summary>
 
-### cp_decomposition\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter, type tol);    
-#### Source: CP decomposition is realized in cp_als.cpp.    
+#### cp_decomposition\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter, type tol);    
+##### Source: CP decomposition is realized in cp_als.cpp.    
 ### Parameters: 
 	tensor: the address of tensor; 
 	rank: int, number of components;   
@@ -167,14 +167,14 @@ You can call cp_als function like:
 <details>	
 <summary> Tucker decomposition via High Order SVD (HOSVD) and High-Order Orthogonal Iteration (HOOI) </summary>
 	
-### tucker_decomposition\<type\> tucker_hosvd(Tensor3D\<type\> &tensor, int ranks[3]);      
-#### Source: Tucker decomposition is realized in tucker_hosvd.cpp and tucker_hooi.cpp.     
+#### tucker_decomposition\<type\> tucker_hosvd(Tensor3D\<type\> &tensor, int ranks[3]);      
+##### Source: Tucker decomposition is realized in tucker_hosvd.cpp and tucker_hooi.cpp.     
 
 ### Parameters:	
 	tensor: the address of tensor; 
 	ranks: int array; size of the core tensor, (len(ranks) == tensor.ndim);  
 	
-### tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\> &tensor, int ranks[3], int max_iter, T tol);  
+#### tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\> &tensor, int ranks[3], int max_iter, T tol);  
 ### Parameters:	
 	tensor: the address of tensor; 
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
@@ -193,8 +193,8 @@ You can call cp_als function like:
 <details>	
 <summary> t-SVD decomposition API </summary>
 	
-### tsvd_decomposition\<type\> tsvd(Tensor3D\<type\> &tensor);      
-#### Source: t-SVD is realized in t-SVD.cpp.     
+#### tsvd_decomposition\<type\> tsvd(Tensor3D\<type\> &tensor);      
+##### Source: t-SVD is realized in t-SVD.cpp.     
 
 ### Parameters:	
 	tensor: the address of tensor; 
@@ -211,9 +211,9 @@ For more details, please refer to the corresponding source files, where all defi
 <details>	
 <summary> Tensor Train decomposition  </summary>
 	
-### tensortrain_decomposition\<type\> tensortrain_decomposition(Tensor3D\<type\> &tensor, tol);      
+#### tensortrain_decomposition\<type\> tensortrain_decomposition(Tensor3D\<type\> &tensor, tol);      
 
-#### Source: Tensor Train decomposition is realized in Tensor-Train/train.h.    
+##### Source: Tensor Train decomposition is realized in Tensor-Train/train.h.    
 
 ### Parameters:	
 	tensor: the address of tensor; 
