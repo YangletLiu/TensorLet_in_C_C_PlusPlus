@@ -5,10 +5,11 @@
 #ifndef TENSOR_INTERFACE_H
 #define TENSOR_INTERFACE_H
 
-
+// 矩阵类声明
 template <class datatype>
 class Mat;
 
+// Tensor3D类声明
 template <class datatype>
 class Tensor3D {
 private:
@@ -53,7 +54,7 @@ Mat<datatype>& n_mode_prod(const Tensor3D<datatype>&, Mat<datatype>&, int mode);
 template <class datatype>
 Tensor3D<datatype>& t_prod(const Tensor3D<datatype>&,const Tensor3D<datatype>&);
 
-
+// 张量分解名字空间
 namespace tensorlet_decomposition{
     //CP 结构
     template <class datatype>
@@ -98,6 +99,7 @@ namespace tensorlet_decomposition{
     tt_decomposition<datatype> & tt(Tensor3D<datatype>& tensor);
 
 /******************************************************************************************************/
+    //生成低秩张量
     template <class datatype>
     Tensor3D<datatype> & cp_gen(cp_decomposition<datatype>& a);
 
