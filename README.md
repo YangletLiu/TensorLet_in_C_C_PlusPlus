@@ -43,14 +43,14 @@ link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"
 </details>
 
 ## User guide
-TensorLet provides basic tensor algebraic operations, such as addition and different multiplication methods.  In TensorLet, we implement four popular tensor decomposition methods, CANDECOMP/PARAFAC (CP) decomposition, Tucker decomposition, t-SVD and Tensor-Train decomposition.  
-
+### In TensorLet, we implement four popular tensor decomposition methods, CANDECOMP/PARAFAC (CP) decomposition, Tucker decomposition, t-SVD and Tensor-Train decomposition.  
 
 In TensorLet, all third order tensors are objects of the Tensor3D template class. You can refer to Class list for more details.
 
 <details>	
 <summary> Tensor basics </summary>
-
+TensorLet provides basic tensor algebraic operations, such as addition and different multiplication methods.  
+	
 #### Creating a tensor
 	Tensor3D<double> tensor = random(10,10,10);    
 #### Unfolding
