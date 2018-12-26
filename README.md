@@ -121,7 +121,7 @@ The decomposition components of t-SVD is defined as:
 You can call tsvd function like:   
 	
 	Tensor3D<double> tensor = random(10,10,10);  
-        tsvd_decomposition<double> A = tsvd_decomposition(Tensor3D<double> &tensor);      
+	tsvd_decomposition<double> A = tsvd_decomposition(tensor);      
 </details>
 
 <details>	
@@ -136,10 +136,10 @@ The decomposition components of tensortrain is defined as:
 >&emsp;&emsp;  Mat<type> G1,G2;  
 >};  
 
-You can call cp_als function like:     
+You can call tensortrain decomposition like:     
 	
 	Tensor3D<double> tensor = random(10,10,10);  
-       	tensortrain_decomposition<double> A = tensortrain_decomposition(Tensor3D<double> &tensor, tol);      
+	tensortrain_decomposition<double> A = tensortrain_decomposition(tensor, tol);      
 
 </details>
 
