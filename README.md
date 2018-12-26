@@ -9,8 +9,8 @@
 	
 ## Installation
 <details>	
-<summary> Pre-requisite </summary>
-------     
+<summary> Pre-requisite </summary>  
+
 Users need the following packages:   
 	
 1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
@@ -27,8 +27,8 @@ Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized speci
 </details>
 
 <details>	
-<summary> Instructions </summary>
-------    
+<summary> Instructions </summary>  
+
 We recommend users use TensorLet on Ubuntu and you can refer to the installation instructions in Installation folder.     
 
 You need to add them to specific paths according to your CMakeLists.txt file.    
