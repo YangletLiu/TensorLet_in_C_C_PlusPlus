@@ -46,7 +46,7 @@ For example, you can link MKL in  CMakeLists.txt file like:
 </details>
 
 ## User guide
-#### In TensorLet, we implement four popular tensor decomposition methods, CANDECOMP/PARAFAC (CP) decomposition, Tucker decomposition, t-SVD and Tensor-Train decomposition.  
+#### In TensorLet, we implement four popular tensor decomposition methods, CANDECOMP/PARAFAC (CP) decomposition, Tucker decomposition, t-SVD and Tensor-Train (TT) decomposition.  
 
 <details>	
 <summary> Tensor basics </summary>
