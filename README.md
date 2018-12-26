@@ -10,6 +10,7 @@
 ## Installation
 <details>	
 <summary> Pre-requisite </summary>
+	
 Users need the following packages:   
 	
 1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
@@ -27,6 +28,7 @@ Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized speci
 
 <details>	
 <summary> Instructions </summary>
+	
 We recommend users use TensorLet on Ubuntu and you can refer to the installation instructions in Installation folder.     
 
 You need to add them to specific paths according to your CMakeLists.txt file.    
@@ -47,6 +49,7 @@ link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)"
 
 <details>	
 <summary> Tensor basics </summary>
+	
 TensorLet provides basic tensor algebraic operations, such as addition and different multiplication methods. In TensorLet, all third order tensors are objects of the Tensor3D template class and all matrix are objects of the Mat template class. You can refer to Class list for more details.
 	
 #### Examples
