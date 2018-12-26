@@ -51,7 +51,7 @@ For example, you can link MKL in  CMakeLists.txt file like:
 <details>	
 <summary> Tensor basics </summary>
 	
-##### TensorLet provides basic tensor algebraic operations, such as addition and different multiplication methods. In TensorLet, all third order tensors are objects of the Tensor3D template class and all matrix are objects of the Mat template class. You can refer to Class list for more details.
+##### TensorLet provides basic tensor algebraic operations, such as addition and different multiplication methods. In TensorLet, all third order tensors are objects of the Tensor3D template class and all matrix are objects of the Mat template class, which provided by the third party library Eigen/MKL. You can refer to Class list for more details.
 	
 #### Examples
 	Tensor3D<double> tensor = random(10,10,10);	// Creating a tensor
@@ -70,7 +70,7 @@ The decomposition components of CP is defined as:
 >class cp_decomposition{  
 >&emsp;&emsp;    Mat\<type\> factor[3];  
 >};  
-where, Mat\<type\> is dense matrix class provided by the third party library Eigen/MKL;      
+
 The template parameter "type" represents the data type of tensor and be "double" and "float";  
 The factor is the matrix list of the corresponding CP decomposition.   
 
