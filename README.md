@@ -169,14 +169,14 @@ You can call tensortrain decomposition like:
 <details>	
 <summary> Tucker decomposition via High Order SVD (HOSVD) and High-Order Orthogonal Iteration (HOOI) </summary>
 	
-#### tucker_decomposition\<type\> tucker_hosvd(Tensor3D\<type\> &tensor, int ranks[3]);      
+#### tucker_decomposition\<type\> tucker_hosvd(Tensor3D\<type\>& tensor, int ranks[3]);      
 ##### Source: Tucker decomposition is realized in tucker_hosvd.cpp and tucker_hooi.cpp.     
 
 ### Parameters:	
 	tensor: the address of tensor; 
 	ranks: int array; size of the core tensor, (len(ranks) == tensor.ndim);  
 	
-#### tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\> &tensor, int ranks[3], int max_iter, T tol);  
+#### tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\>& tensor, int ranks[3], int max_iter, T tol);  
 ### Parameters:	
 	tensor: the address of tensor; 
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
@@ -195,7 +195,7 @@ You can call tensortrain decomposition like:
 <details>	
 <summary> t-SVD decomposition </summary>
 	
-#### tsvd_decomposition\<type\> tsvd(Tensor3D\<type\> &tensor);      
+#### tsvd_decomposition\<type\> tsvd(Tensor3D\<type\>& tensor);      
 ##### Source: t-SVD is realized in t-SVD.cpp.     
 
 ### Parameters:	
@@ -213,12 +213,14 @@ For more details, please refer to the corresponding source files, where all defi
 <details>	
 <summary> Tensor Train decomposition  </summary>
 	
-#### tensortrain_decomposition\<type\> tensortrain_decomposition(Tensor3D\<type\> &tensor, tol);      
+#### tensortrain_decomposition\<type\> tensortrain_decomposition(Tensor3D\<type\>& tensor, double tol);      
 
 ##### Source: Tensor Train decomposition is realized in Tensor-Train/train.h.    
 
 ### Parameters:	
+
 	tensor: the address of tensor; 
+	tol: tolerance;
 ### Returns:
 	tensortrain_decomposition<type>: abstract data type（ADT） for the Tensor Train decomposition result.    
 	class tensortrain_decomposition{  
@@ -260,9 +262,9 @@ cp_decomposition<type>
 </summary>
 	
 ##### Public Member Functions  
-Tensor3D & cp_to_tensor(cp_decomposition &)	Turns the Khatri-product of matrices into a full tensor  
-Mat & cp_to_unfolded(cp_decomposition &, int mode)	Turns the khatri-product of matrices into an unfolded tensor  
-Mat & cp_to_vec(cp_decomposition &)	Turns the khatri-product of matrices into a vector  
+Tensor3D& cp_to_tensor(cp_decomposition &)	Turns the Khatri-product of matrices into a full tensor  
+Mat& cp_to_unfolded(cp_decomposition &, int mode)	Turns the khatri-product of matrices into an unfolded tensor  
+Mat& cp_to_vec(cp_decomposition &)	Turns the khatri-product of matrices into a vector  
 Tensor3D& cp_gen(cp_decomposition &)  Generate a r-rank CP tensor  
 </details>
 
@@ -273,8 +275,8 @@ tucker_decomposition<type>
 	
 ##### Public Member Functions  
 Tensor3D& tucker_to_tensor(tucker_decomposition &)	Converts the Tucker tensor into a full tensor  
-Mat & tucker_to_unfolded(tucker_decomposition &)	Converts the Tucker decomposition into an unfolded tensor (i.e.  
-Mat & tucker_to_vec(tucker_decomposition &)	Converts a Tucker decomposition into a vectorised tensor  
+Mat& tucker_to_unfolded(tucker_decomposition &)	Converts the Tucker decomposition into an unfolded tensor (i.e.  
+Mat& tucker_to_vec(tucker_decomposition &)	Converts a Tucker decomposition into a vectorised tensor  
 </details>
 
 <details>	
