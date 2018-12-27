@@ -103,7 +103,7 @@ You can call hosvd function like:
 You can call hooi function like:   
 
 	Tensor3D<double> tensor = random(10,10,10);    
-	tucker_decomposition<double> A = tucker_hooi(Tensor3D<double> &tensor, int ranks[3], double tol);      
+	tucker_decomposition<double> A = tucker_hooi(tensor, int ranks[3], double tol);      
 
 </details>
 
