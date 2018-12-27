@@ -1,5 +1,7 @@
 ## TensorLet: A C++ library for popular tensor decompositions
 
+#### In TensorLet, we implement four popular tensor decomposition methods, CANDECOMP/PARAFAC (CP) decomposition, Tucker decomposition, t-SVD and Tensor-Train (TT) decomposition.  
+
 * [TensorLet](#readme)
 	* [Installation](#Installation)
 	* [User guide](#user-guide)
@@ -46,8 +48,6 @@ For example, you can link MKL in  CMakeLists.txt file like:
 </details>
 
 ## User guide
-#### In TensorLet, we implement four popular tensor decomposition methods, CANDECOMP/PARAFAC (CP) decomposition, Tucker decomposition, t-SVD and Tensor-Train (TT) decomposition.  
-
 <details>	
 <summary> Tensor basics </summary>
 	
