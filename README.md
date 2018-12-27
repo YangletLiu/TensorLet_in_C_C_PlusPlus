@@ -91,7 +91,7 @@ where Tensor3D\<type\> represents the third-order tensor class.
 The decomposition components of tucker is defined as:  
 >template\<class type\>    
 >class tucker_decomposition{  
->&emsp;&emsp;  Tensor3D\<type\> core, Mat\<type\> factor[3];   
+>&emsp;&emsp;  Tensor3D\<type\> core; Mat\<type\> factor[3];   
 >};  
 where factor is the matrix list of the corresponding Tucker decomposition.   
 
