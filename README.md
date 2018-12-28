@@ -245,6 +245,12 @@ int shape[3]; // the dimension of the third order tensor;
 type * p; // a pointer point to tensor.  
 
 ##### Public Member Functions
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
+
 Mat& Tensor3D::tens2mat(tensor, mode)	Returns the mode-mode unfolding of tensor with modes starting at 0.  
 Tensor3D& Tensor3D::mat2tens(unfolded_tensor, mode, shape)	Refolds the mode-mode unfolding into a tensor of shape shape  
 Mat& Tensor3D::tens2vec(tensor)	Vectorises a tensor  
