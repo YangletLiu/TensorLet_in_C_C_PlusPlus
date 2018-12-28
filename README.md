@@ -266,10 +266,13 @@ cp_decomposition<type>
 </summary>
 	
 ##### Public Member Functions  
-Tensor3D& cp_to_tensor(cp_decomposition &)	Turns the Khatri-product of matrices into a full tensor  
-Mat& cp_to_unfolded(cp_decomposition &, int mode)	Turns the khatri-product of matrices into an unfolded tensor  
-Mat& cp_to_vec(cp_decomposition &)	Turns the khatri-product of matrices into a vector  
-Tensor3D& cp_gen(cp_decomposition &)  Generate a r-rank CP tensor  
+| Member Functions  | Description |
+| ------------- | ------------- |
+| cp_to_tensor  | Turns the Khatri-product of matrices into a full tensor |
+| cp_to_unfolded  | Turns the khatri-product of matrices into an unfolded tensor|
+| cp_to_vec  | Turns the khatri-product of matrices into a vector  |
+| cp_gen  | Generate a r-rank CP tensor  |
+
 </details>
 
 <details>	
@@ -278,9 +281,12 @@ tucker_decomposition<type>
 </summary>
 	
 ##### Public Member Functions  
-Tensor3D& tucker_to_tensor(tucker_decomposition &)	Converts the Tucker tensor into a full tensor  
-Mat& tucker_to_unfolded(tucker_decomposition &)	Converts the Tucker decomposition into an unfolded tensor (i.e.  
-Mat& tucker_to_vec(tucker_decomposition &)	Converts a Tucker decomposition into a vectorised tensor  
+| Member Functions  | Description |
+| ------------- | ------------- |
+| tucker_to_tensor  | Converts the Tucker tensor into a full tensor |
+| tucker_to_unfolded  | Converts the Tucker decomposition into an unfolded tensor |
+| tucker_to_vec  | Converts a Tucker decomposition into a vectorised tensor |
+
 </details>
 
 <details>	
@@ -289,9 +295,12 @@ tsvd_decomposition<type>
 </summary>
 	
 ##### Public Member Functions   
-Tensor3D& tsvd_to_tensor(tsvd_decomposition &)	Converts the t-SVD tensor into a full tensor  
-Mat& tsvd_to_unfolded(tsvd_decomposition &)	Converts the t-SVD decomposition into an unfolded tensor (i.e.  
-Mat& tsvd_to_vec(tsvd_decomposition &)	Converts a t-SVD decomposition into a vectorised tensor  
+| Member Functions  | Description |
+| ------------- | ------------- |
+| tsvd_to_tensor  | Converts the t-SVD tensor into a full tensor |
+| tsvd_to_unfolded  | Converts the t-SVD decomposition into an unfolded tensor |
+| tsvd_to_vec  | Converts a t-SVD decomposition into a vectorised tensor |
+
 </details>
 
 <details>	
@@ -300,9 +309,12 @@ tensortrain_decomposition<type>
 </summary>
 	
 ##### Public Member Functions  
-Tensor3D& tt_to_tensor(tensortrain_decomposition &)	Converts the TT tensor into a full tensor  
-Mat& tt_to_unfolded(tensortrain_decomposition &)	Converts the TT decomposition into an unfolded tensor (i.e.  
-Mat& tt_to_vec(tensortrain_decomposition &)	Converts a TT decomposition into a vectorised tensor  
+
+| Member Functions  | Description |
+| ------------- | ------------- |
+| tt_to_tensor  | Converts the TT tensor into a full tensor |
+| tt_to_unfolded  | Converts the TT decomposition into an unfolded tensor |
+| tt_to_vec  | Converts a TT decomposition into a vectorised tensor |
 
 </details>
 
