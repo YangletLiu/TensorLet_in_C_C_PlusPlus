@@ -254,10 +254,6 @@ type * p; // a pointer point to tensor.
 | tens2vec  | 	Vectorises a tensor    |
 | vec2tens  | Folds a vectorised tensor back into a tensor of shape shape |
 
-double Tensor3D::inner(tensor1, tensor2)	Generalised inner products between tensors  
-Mat& Tensor3D::n_mode_prod(tensor, matrix, mode)	n-mode product of a tensor and a matrix or vector at the specified mode 
-Tensor3D& Tensor3D::t_prod(tensor1, tensor2)	t-product between tensors
-
 </details>
 
 <details>	
@@ -319,6 +315,19 @@ tensortrain_decomposition<type>
 </details>
 
 
+<details>	
+<summary>
+Functions of Tensors
+</summary>
+
+| Functions  | Description |
+| ------------- | ------------- |
+| inner  | Generalised inner products between tensors |
+|  element_wise | Generalised element-wise products between tensors |
+| n_mode_prod  | n-mode product of a tensor and a matrix or vector at the specified mode |
+| t_prod  | t-product between tensors |
+
+</details>
 
 ## References
 <details>	
