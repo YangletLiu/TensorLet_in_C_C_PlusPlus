@@ -247,15 +247,13 @@ type * p; // a pointer point to tensor.
 ##### Public Member Functions
 | Member Functions  | Description |
 | ------------- | ------------- |
+| frobenius_norm  | the Frobenius norm of tensors |
+| size  | Get the dimension of tensor |
 | tens2mat  | Returns the mode-mode unfolding of tensor with modes starting at 0  |
 | mat2tens  | Refolds the mode-mode unfolding into a tensor of shape shape  |
+| tens2vec  | 	Vectorises a tensor    |
+| vec2tens  | Folds a vectorised tensor back into a tensor of shape shape |
 
-
-Mat& Tensor3D::tens2mat(tensor, mode)	Returns the mode-mode unfolding of tensor with modes starting at 0.  
-Tensor3D& Tensor3D::mat2tens(unfolded_tensor, mode, shape)	Refolds the mode-mode unfolding into a tensor of shape shape  
-Mat& Tensor3D::tens2vec(tensor)	Vectorises a tensor  
-Tensor3D& Tensor3D::vec2ten(vec, shape)	Folds a vectorised tensor back into a tensor of shape shape  
-double Tensor3D::frobenius_norm(tensor1, tensor2)	the Frobenius norm of tensors   
 double Tensor3D::inner(tensor1, tensor2)	Generalised inner products between tensors  
 Mat& Tensor3D::n_mode_prod(tensor, matrix, mode)	n-mode product of a tensor and a matrix or vector at the specified mode 
 Tensor3D& Tensor3D::t_prod(tensor1, tensor2)	t-product between tensors
