@@ -250,7 +250,6 @@ type * p; // a pointer point to tensor.
 | frobenius_norm  | the Frobenius norm of tensors |
 | size  | Get the dimension of tensor |
 | slice  | Return specific slice of tensor |
-
 | tens2mat  | Returns the mode-mode unfolding of tensor with modes starting at 0  |
 | mat2tens  | Refolds the mode-mode unfolding into a tensor of shape shape  |
 | tens2vec  | 	Vectorises a tensor    |
