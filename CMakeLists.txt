@@ -9,11 +9,9 @@ include_directories(${ARMADILLO_INCLUDE_DIRS})
 link_libraries(armadillo gfortran)
 #link_libraries(armadillo openblas)
 
-
 include_directories(/opt/intel/mkl/include)
 link_directories(/opt/intel/mkl/lib/intel64)
 link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)
-
 
 include_directories(/usr/local/fftw/include)
 link_directories(/usr/local/fftw/lib)
@@ -32,4 +30,4 @@ endif()
 add_executable(tensor
         main.cpp
         tensor_hooi.cpp
-        cp_als.cpp tsvd.cpp tucker_hosvd.cpp cpgen.cpp tensor.h runningtime.h)
+        cp_als.cpp t_svd.cpp tucker_hosvd.cpp cpgen.cpp tensor.h runningtime.h)

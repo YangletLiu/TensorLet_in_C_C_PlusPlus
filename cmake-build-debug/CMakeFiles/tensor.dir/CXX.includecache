@@ -6,45 +6,51 @@
 
 #IncludeRegexTransform: 
 
-/home/jcfei/Desktop/TensorLet_C_copy/cp_als.cpp
+/home/jcfei/Desktop/TensorLet_C/cp_als.cpp
 tensor.h
-/home/jcfei/Desktop/TensorLet_C_copy/tensor.h
+/home/jcfei/Desktop/TensorLet_C/tensor.h
 
-/home/jcfei/Desktop/TensorLet_C_copy/cpgen.cpp
+/home/jcfei/Desktop/TensorLet_C/cpgen.cpp
 tensor.h
-/home/jcfei/Desktop/TensorLet_C_copy/tensor.h
+/home/jcfei/Desktop/TensorLet_C/tensor.h
 iostream
 -
 cmath
 -
 
-/home/jcfei/Desktop/TensorLet_C_copy/main.cpp
+/home/jcfei/Desktop/TensorLet_C/main.cpp
 tensor.h
-/home/jcfei/Desktop/TensorLet_C_copy/tensor.h
+/home/jcfei/Desktop/TensorLet_C/tensor.h
 runningtime.h
-/home/jcfei/Desktop/TensorLet_C_copy/runningtime.h
+/home/jcfei/Desktop/TensorLet_C/runningtime.h
 ten2mat.cpp
-/home/jcfei/Desktop/TensorLet_C_copy/ten2mat.cpp
+/home/jcfei/Desktop/TensorLet_C/ten2mat.cpp
 cpgen.cpp
-/home/jcfei/Desktop/TensorLet_C_copy/cpgen.cpp
+/home/jcfei/Desktop/TensorLet_C/cpgen.cpp
 cp_als.cpp
-/home/jcfei/Desktop/TensorLet_C_copy/cp_als.cpp
+/home/jcfei/Desktop/TensorLet_C/cp_als.cpp
 tucker_hosvd.cpp
-/home/jcfei/Desktop/TensorLet_C_copy/tucker_hosvd.cpp
+/home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp
 tensor_hooi.cpp
-/home/jcfei/Desktop/TensorLet_C_copy/tensor_hooi.cpp
-tsvd.cpp
-/home/jcfei/Desktop/TensorLet_C_copy/tsvd.cpp
+/home/jcfei/Desktop/TensorLet_C/tensor_hooi.cpp
+t_svd.cpp
+/home/jcfei/Desktop/TensorLet_C/t_svd.cpp
 
-/home/jcfei/Desktop/TensorLet_C_copy/runningtime.h
+/home/jcfei/Desktop/TensorLet_C/runningtime.h
 time.h
-/home/jcfei/Desktop/TensorLet_C_copy/time.h
+/home/jcfei/Desktop/TensorLet_C/time.h
 
-/home/jcfei/Desktop/TensorLet_C_copy/ten2mat.cpp
+/home/jcfei/Desktop/TensorLet_C/t_svd.cpp
+fstream
+-
 tensor.h
-/home/jcfei/Desktop/TensorLet_C_copy/tensor.h
+/home/jcfei/Desktop/TensorLet_C/tensor.h
 
-/home/jcfei/Desktop/TensorLet_C_copy/tensor.h
+/home/jcfei/Desktop/TensorLet_C/ten2mat.cpp
+tensor.h
+/home/jcfei/Desktop/TensorLet_C/tensor.h
+
+/home/jcfei/Desktop/TensorLet_C/tensor.h
 string
 -
 iostream
@@ -68,31 +74,25 @@ string
 fftw3.h
 -
 mkl.h
-/home/jcfei/Desktop/TensorLet_C_copy/mkl.h
+/home/jcfei/Desktop/TensorLet_C/mkl.h
 time.h
-/home/jcfei/Desktop/TensorLet_C_copy/time.h
+/home/jcfei/Desktop/TensorLet_C/time.h
 omp.h
 -
 armadillo
 -
 
-/home/jcfei/Desktop/TensorLet_C_copy/tensor_hooi.cpp
+/home/jcfei/Desktop/TensorLet_C/tensor_hooi.cpp
 iostream
 -
 cmath
 -
 tensor.h
-/home/jcfei/Desktop/TensorLet_C_copy/tensor.h
+/home/jcfei/Desktop/TensorLet_C/tensor.h
 
-/home/jcfei/Desktop/TensorLet_C_copy/tsvd.cpp
-fstream
--
+/home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp
 tensor.h
-/home/jcfei/Desktop/TensorLet_C_copy/tensor.h
-
-/home/jcfei/Desktop/TensorLet_C_copy/tucker_hosvd.cpp
-tensor.h
-/home/jcfei/Desktop/TensorLet_C_copy/tensor.h
+/home/jcfei/Desktop/TensorLet_C/tensor.h
 omp.h
 -
 

@@ -6,7 +6,7 @@
 #include "cp_als.cpp"
 #include "tucker_hosvd.cpp"
 #include "tensor_hooi.cpp"
-#include "tsvd.cpp"
+#include "t_svd.cpp"
 
 
 int main(){
