@@ -90,6 +90,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C/Tensor3D.h">
+			<Option target="tensor"/>
+		</Unit>
 		<Unit filename="/home/jcfei/Desktop/TensorLet_C/cp_als.cpp">
 			<Option target="tensor"/>
 		</Unit>

@@ -85,6 +85,7 @@ CMakeFiles/tensor.dir/cpgen.cpp.o: /opt/intel/mkl/include/mkl_vsl_functions.h
 CMakeFiles/tensor.dir/cpgen.cpp.o: /opt/intel/mkl/include/mkl_vsl_types.h
 CMakeFiles/tensor.dir/cpgen.cpp.o: /usr/local/fftw/include/fftw3.h
 
+CMakeFiles/tensor.dir/main.cpp.o: ../Tensor3D.h
 CMakeFiles/tensor.dir/main.cpp.o: ../cp_als.cpp
 CMakeFiles/tensor.dir/main.cpp.o: ../cpgen.cpp
 CMakeFiles/tensor.dir/main.cpp.o: ../main.cpp

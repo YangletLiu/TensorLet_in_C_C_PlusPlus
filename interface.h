@@ -5,57 +5,11 @@
 #ifndef TENSOR_INTERFACE_H
 #define TENSOR_INTERFACE_H
 
+#include "Tensor3D.h"
+
 // 矩阵类声明
 template <class datatype>
 class Mat;
-
-// Tensor3D类声明
-template <class datatype>
-class Tensor3D {
-private:
-    int shape[3];
-    datatype * pointer;
-public:
-    Tensor3D();
-    Tensor3D(int *);
-    Tensor3D(int, int, int);
-    Tensor3D(const Tensor3D &);
-    ~Tensor3D();
-
-    Tensor3D& operator=(const Tensor3D&);
-    Tensor3D& operator+=(const Tensor3D&);
-    Tensor3D& operator-=(const Tensor3D&);
-    Tensor3D& operator*=(const Tensor3D&);
-
-    inline datatype& operator()(int i, int j, int k);
-
-    Tensor3D& rand_tensor(int *);
-//    Tensor3D& cp_tensor(int rank);
-//    Tensor3D& tucker_tensor(int *);
-
-    int* getsize(const Tensor3D<datatype> &a);
-
-    double frobenius_norm(const Tensor3D<datatype>&);
-
-
-    Mat<datatype>& tens2mat(const Tensor3D<datatype>&, int mode);
-    Tensor3D<datatype>& mat2tens(const Mat<datatype>&, int mode);
-//    Mat<datatype>& tens2vec(const Tensor3D<datatype>&, int mode);
-//    Tensor3D<datatype>& vec2tens(const Mat<datatype>&, int mode);
-
-};
-
-template <class datatype>
-double inner(const Tensor3D<datatype>&,const Tensor3D<datatype>&);
-
-template <class datatype>
-double element_wise(const Tensor3D<datatype>&,const Tensor3D<datatype>&);
-
-template <class datatype>
-Mat<datatype>& n_mode_prod(const Tensor3D<datatype>&, Mat<datatype>&, int mode);
-
-template <class datatype>
-Tensor3D<datatype>& t_prod(const Tensor3D<datatype>&,const Tensor3D<datatype>&);
 
 // 张量分解名字空间
 namespace tensorlet_decomposition{

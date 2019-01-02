@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/jcfei/Desktop/TensorLet_C/Tensor3D.h
+tensor.h
+/home/jcfei/Desktop/TensorLet_C/tensor.h
+
 /home/jcfei/Desktop/TensorLet_C/cp_als.cpp
 tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
@@ -35,6 +39,12 @@ tensor_hooi.cpp
 /home/jcfei/Desktop/TensorLet_C/tensor_hooi.cpp
 t_svd.cpp
 /home/jcfei/Desktop/TensorLet_C/t_svd.cpp
+Tensor3D.h
+/home/jcfei/Desktop/TensorLet_C/Tensor3D.h
+stdio.h
+-
+mkl.h
+-
 
 /home/jcfei/Desktop/TensorLet_C/runningtime.h
 time.h
