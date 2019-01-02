@@ -39,6 +39,8 @@ t_svd.cpp
 /home/jcfei/Desktop/TensorLet_C/runningtime.h
 time.h
 /home/jcfei/Desktop/TensorLet_C/time.h
+sys/time.h
+/home/jcfei/Desktop/TensorLet_C/sys/time.h
 
 /home/jcfei/Desktop/TensorLet_C/t_svd.cpp
 fstream
@@ -79,22 +81,10 @@ time.h
 /home/jcfei/Desktop/TensorLet_C/time.h
 omp.h
 -
-armadillo
--
 
 /home/jcfei/Desktop/TensorLet_C/tensor_hooi.cpp
-iostream
--
-cmath
--
-tensor.h
-/home/jcfei/Desktop/TensorLet_C/tensor.h
 
 /home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp
-tensor.h
-/home/jcfei/Desktop/TensorLet_C/tensor.h
-omp.h
--
 
 /opt/intel/mkl/include/mkl.h
 mkl_version.h

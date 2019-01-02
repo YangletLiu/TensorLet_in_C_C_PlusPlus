@@ -5,10 +5,6 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-include_directories(${ARMADILLO_INCLUDE_DIRS})
-link_libraries(armadillo gfortran)
-#link_libraries(armadillo openblas)
-
 include_directories(/opt/intel/mkl/include)
 link_directories(/opt/intel/mkl/lib/intel64)
 link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)

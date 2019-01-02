@@ -6,6 +6,7 @@
 #define TENSOR_FUNCTION_H
 
 #include "time.h"
+#include "sys/time.h"
 
 double gettime();
 
