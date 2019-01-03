@@ -18,18 +18,20 @@ int main(){
 
     MKL_INT n1,n2,n3;
     double t0,t1;
-    int I=100;
-    int R=10;
-    //    bool cc= true;
+    int aa[3]={10,10,10};
 
-    n1=I; n2=2*I; n3=I;
-
-    int iter=10;
     double ccc =0.05;
     t0=gettime();
-    Tensor3D<double> a(1000,1000,1000);
-    double *cc = (double*)mkl_calloc(100000000,sizeof(double),64);  //返回成功为1
+    Tensor3D<double> a(1000,1000,100);
+    Tensor3D<double> b(aa);
+    cout << "n" << b.getsize()[2];
+
+    t1=gettime();
+    double *cc = (double*)mkl_calloc(1000000,sizeof(double),64);  //返回成功为1
+    cout << "time:" <<t1-t0 <<endl;
+
     cout << cc << endl;
+
     cout << "sizeof(double)" << sizeof(double) << endl;
     cout << sizeof(cc) << endl;
 

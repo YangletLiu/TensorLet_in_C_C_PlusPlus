@@ -10,7 +10,7 @@
 template <class datatype>
 class Tensor3D{
 private:
-    MKL_INT shape[3];
+    MKL_INT *shape;
     datatype * pointer;
 public:
     Tensor3D();
@@ -57,6 +57,7 @@ Tensor3D<datatype>::Tensor3D(MKL_INT n1, MKL_INT n2, MKL_INT n3){
     shape[1] = n2;
     shape[2] = n3;
     pointer = (datatype*)mkl_malloc(n1*n2*n3*sizeof(datatype),64);
+    if(pointer==NULL) cout << "Out of Memory" << endl;
 }
 
 template <class datatype>
