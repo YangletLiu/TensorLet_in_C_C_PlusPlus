@@ -17,7 +17,7 @@ public:
 
     Tensor3D(int []);
     Tensor3D(int, int, int);
-    Tensor3D(const Tensor3D &);
+    Tensor3D(const Tensor3D&);
     ~Tensor3D();
 
     Tensor3D& operator=(const Tensor3D&);
@@ -43,8 +43,10 @@ public:
 
 };
 
+// Constructors
 template <class datatype>
 Tensor3D<datatype>::Tensor3D(){
+    shape = new MKL_INT[3];
     shape[0] = 1;
     shape[1] = 1;
     shape[2] = 1;
@@ -53,6 +55,7 @@ Tensor3D<datatype>::Tensor3D(){
 
 template <class datatype>
 Tensor3D<datatype>::Tensor3D(MKL_INT n1, MKL_INT n2, MKL_INT n3){
+    shape = new MKL_INT[3];
     shape[0] = n1;
     shape[1] = n2;
     shape[2] = n3;
@@ -62,8 +65,16 @@ Tensor3D<datatype>::Tensor3D(MKL_INT n1, MKL_INT n2, MKL_INT n3){
 
 template <class datatype>
 Tensor3D<datatype>::Tensor3D(MKL_INT a[]){
+    shape = new MKL_INT[3];
     shape = a;
     pointer = (datatype*)mkl_malloc(shape[0]*shape[1]*shape[2]*sizeof(datatype),64);
+}
+
+//Destructor
+template<class datatype>
+Tensor3D<datatype>::~Tensor3D() {
+    mkl_free(pointer);
+    delete shape;
 }
 
 template<class datatype>
@@ -71,9 +82,15 @@ MKL_INT *Tensor3D<datatype>::getsize() {
     return this->shape;
 }
 
+//Copy function
 template<class datatype>
-Tensor3D<datatype>::~Tensor3D() {
-    mkl_free(pointer);
+Tensor3D<datatype>::Tensor3D(const Tensor3D& a) {
+    shape = new MKL_INT[3];
+    shape[0]= a.shape[0];
+    shape[1]= a.shape[1];
+    shape[2]= a.shape[2];
+    pointer = (datatype*)mkl_malloc(shape[0]*shape[1]*shape[2]*sizeof(datatype),64);
+    pointer = a.pointer;
 }
 
 

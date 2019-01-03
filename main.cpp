@@ -21,25 +21,29 @@ int main(){
     int aa[3]={10,10,10};
 
     double ccc =0.05;
-    t0=gettime();
-    Tensor3D<double> a(1000,1000,100);
-    Tensor3D<double> b(aa);
-    cout << "n" << b.getsize()[2];
+    cout << "inhao" << endl;
 
+    t0=gettime();
+    Tensor3D<double> a(100,100,100);
+
+    Tensor3D<double> b(aa);
     t1=gettime();
-    double *cc = (double*)mkl_calloc(1000000,sizeof(double),64);  //返回成功为1
     cout << "time:" <<t1-t0 <<endl;
 
-    cout << cc << endl;
+    cout << sizeof(a) << endl;
+    cout << "n" << b.getsize()[2];
+    double *cc = (double*)mkl_calloc(100000,sizeof(double),64);  //返回成功为1
 
     cout << "sizeof(double)" << sizeof(double) << endl;
-    cout << sizeof(cc) << endl;
 
-    t1=gettime();
-    cout << sizeof(a) << endl;
-    cout << "time:" <<t1-t0 <<endl;
+    cout << sizeof(cc) << endl;
+    cout << cc << endl;
+
+
     cout << a.getsize()[2];
 
+    Tensor3D<double> vd(a);
+    cout << vd.getsize()[1];
     return 0;
 }
 
