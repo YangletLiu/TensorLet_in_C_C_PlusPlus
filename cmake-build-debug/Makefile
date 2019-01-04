@@ -123,6 +123,33 @@ tensor/fast:
 	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/build
 .PHONY : tensor/fast
 
+Tensor3D.o: Tensor3D.cpp.o
+
+.PHONY : Tensor3D.o
+
+# target to build an object file
+Tensor3D.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/Tensor3D.cpp.o
+.PHONY : Tensor3D.cpp.o
+
+Tensor3D.i: Tensor3D.cpp.i
+
+.PHONY : Tensor3D.i
+
+# target to preprocess a source file
+Tensor3D.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/Tensor3D.cpp.i
+.PHONY : Tensor3D.cpp.i
+
+Tensor3D.s: Tensor3D.cpp.s
+
+.PHONY : Tensor3D.s
+
+# target to generate assembly for a file
+Tensor3D.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/Tensor3D.cpp.s
+.PHONY : Tensor3D.cpp.s
+
 cp_als.o: cp_als.cpp.o
 
 .PHONY : cp_als.o
@@ -294,6 +321,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... tensor"
 	@echo "... edit_cache"
+	@echo "... Tensor3D.o"
+	@echo "... Tensor3D.i"
+	@echo "... Tensor3D.s"
 	@echo "... cp_als.o"
 	@echo "... cp_als.i"
 	@echo "... cp_als.s"

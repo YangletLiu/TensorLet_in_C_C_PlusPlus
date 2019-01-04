@@ -9,6 +9,8 @@
 #include "t_svd.cpp"
 
 #include "Tensor3D.h"
+#include "Tensor3D.cpp"
+
 #include <stdio.h>
 #include <mkl.h>
 
@@ -27,24 +29,35 @@ int main(){
 
     Tensor3D<double> b(aa); // int array
 
+    b = a;
+    b += a;
+    cout << b.getsize()[0] << endl;
+
+    cout << "element a: " << a(2,2,2) << endl;
     t1=gettime();
     cout << "time:" <<t1-t0 <<endl;
 
     cout << sizeof(a) << endl;
     cout << "n" << b.getsize()[2];
-    double *cc = (double*)mkl_calloc(100000,sizeof(double),64);  //返回成功为1
+    double *cc = (double*)mkl_calloc(10000,sizeof(double),64);  //返回成功为1
 
     cout << "sizeof(double)" << sizeof(double) << endl;
 
     cout << sizeof(cc) << endl;
     cout << cc << endl;
 
-
-    cout << a.getsize()[2];
+    cout << a.getsize()[2] << endl;
 
     Tensor3D<double> vd(a);
 
+    cout << "norm: " << a.frobenius_norm() << endl;
+
     cout << vd.getsize()[1];
+
+    MKL_INT k = 2;
+    b = k*a;
+
+    cout << "hello" << endl;
     return 0;
 }
 

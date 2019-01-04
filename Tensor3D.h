@@ -9,21 +9,25 @@
 
 template <class datatype>
 class Tensor3D{
-private:
+//private:
+public:
     MKL_INT *shape;
     datatype * pointer;
 public:
     Tensor3D();
 
-    Tensor3D(int []);
+    explicit Tensor3D(int []);
     Tensor3D(int, int, int);
     Tensor3D(const Tensor3D&);
     ~Tensor3D();
 
-    Tensor3D& operator=(const Tensor3D&);
-    Tensor3D& operator+=(const Tensor3D&);
-    Tensor3D& operator-=(const Tensor3D&);
-    Tensor3D& operator*=(const Tensor3D&);
+    Tensor3D<datatype>& operator=(const Tensor3D<datatype>&);
+    Tensor3D<datatype>& operator+=(const Tensor3D<datatype>&);
+    Tensor3D<datatype>& operator-=(const Tensor3D<datatype>&);
+    Tensor3D<datatype>& operator+(const Tensor3D<datatype>&);
+    Tensor3D<datatype>& operator-(const Tensor3D<datatype>&);
+//    Tensor3D<datatype>& operator*(datatype);
+
 
     inline datatype& operator()(MKL_INT i, MKL_INT j, MKL_INT k);
 
@@ -31,10 +35,11 @@ public:
 //    Tensor3D& cp_tensor(int rank);
 //    Tensor3D& tucker_tensor(int *);
 
-    int* getsize();
+    inline MKL_INT* getsize();
+    inline MKL_INT elements_number();
+    double frobenius_norm();
 
-    double frobenius_norm(const Tensor3D<datatype>&);
-
+//    friend Tensor3D<datatype>& operator*(MKL_INT k, Tensor3D<datatype> &a);  ???why
 
 //    Mat<datatype>& tens2mat(const Tensor3D<datatype>&, int mode);
 //    Tensor3D<datatype>& mat2tens(const Mat<datatype>&, int mode);
@@ -66,20 +71,10 @@ Tensor3D<datatype>::Tensor3D(MKL_INT n1, MKL_INT n2, MKL_INT n3){
 template <class datatype>
 Tensor3D<datatype>::Tensor3D(MKL_INT a[]){
     shape = new MKL_INT[3];
-    shape = a;
+    shape[0]= a[0];
+    shape[1]= a[1];
+    shape[2]= a[2];
     pointer = (datatype*)mkl_malloc(shape[0]*shape[1]*shape[2]*sizeof(datatype),64);
-}
-
-//Destructor
-template<class datatype>
-Tensor3D<datatype>::~Tensor3D() {
-    mkl_free(pointer);
-    delete shape;
-}
-
-template<class datatype>
-MKL_INT *Tensor3D<datatype>::getsize() {
-    return this->shape;
 }
 
 //Copy function
@@ -93,5 +88,60 @@ Tensor3D<datatype>::Tensor3D(const Tensor3D& a) {
     pointer = a.pointer;
 }
 
+//Destructor
+template<class datatype>
+Tensor3D<datatype>::~Tensor3D() {
+    mkl_free(pointer);
+    delete [] shape;
+}
+
+template<class datatype>
+MKL_INT* Tensor3D<datatype>::getsize() {
+    return this->shape;
+}
+
+template <class datatype>
+MKL_INT Tensor3D<datatype>::elements_number() {
+    return this->shape[0] * this->shape[1] * this->shape[2];
+}
+
+template<class datatype>
+double Tensor3D<datatype>::frobenius_norm() {
+    double result;
+    MKL_INT size = this->elements_number();
+    return cblas_dnrm2(size, this->pointer,1);
+}
+
+
+template<class datatype>
+datatype &Tensor3D<datatype>::operator()(MKL_INT i, MKL_INT j, MKL_INT k) {
+
+    return this->pointer[i-1+(j-1)*shape[0]+(k-1)*shape[0]*shape[1]];  // remain test
+//    1][(i-1)][(k-1)*shape[1]*shape[2]
+
+}
+
+template<class datatype>
+Tensor3D<datatype>& operator*(MKL_INT k, Tensor3D<datatype> &a); //why out of class?
+
+
+template<class datatype>
+Tensor3D<datatype>& operator*(datatype k, Tensor3D<datatype> &a); //why out of class?
+
+
 
 #endif //TENSOR_TENSOR3D_H
+
+//template<class datatype>
+//Tensor3D<datatype> &Tensor3D<datatype>::operator*(datatype k) {
+//    MKL_INT size = this->elements_number();
+//    cblas_dscal(size, k, this->pointer, 1);
+//    return *this;
+//}
+
+//template<class datatype>
+//Tensor3D<datatype>& operator*(datatype& k, Tensor3D<datatype>& a) {
+//    MKL_INT size = a.elements_number();
+//    cblas_dscal(size, k, a.pointer, 1);
+//    return a;
+//}

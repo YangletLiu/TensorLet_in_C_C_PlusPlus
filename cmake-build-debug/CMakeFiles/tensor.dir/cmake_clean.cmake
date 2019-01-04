@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/tensor.dir/t_svd.cpp.o"
   "CMakeFiles/tensor.dir/tucker_hosvd.cpp.o"
   "CMakeFiles/tensor.dir/cpgen.cpp.o"
+  "CMakeFiles/tensor.dir/Tensor3D.cpp.o"
   "tensor.pdb"
   "tensor"
 )
