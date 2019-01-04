@@ -18,15 +18,15 @@ int main(){
 
     MKL_INT n1,n2,n3;
     double t0,t1;
-    int aa[3]={10,10,10};
+    MKL_INT aa[3]={10,10,10};
 
     double ccc =0.05;
-    cout << "inhao" << endl;
 
     t0=gettime();
-    Tensor3D<double> a(100,100,100);
+    Tensor3D<double> a(100,100,100); //element
 
-    Tensor3D<double> b(aa);
+    Tensor3D<double> b(aa); // int array
+
     t1=gettime();
     cout << "time:" <<t1-t0 <<endl;
 
@@ -43,6 +43,7 @@ int main(){
     cout << a.getsize()[2];
 
     Tensor3D<double> vd(a);
+
     cout << vd.getsize()[1];
     return 0;
 }
