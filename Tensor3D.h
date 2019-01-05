@@ -15,7 +15,6 @@ public:
     datatype * pointer;
 public:
     Tensor3D();
-
     explicit Tensor3D(int []);
     Tensor3D(int, int, int);
     Tensor3D(const Tensor3D&);
@@ -43,10 +42,10 @@ public:
 
 //    friend Tensor3D<datatype>& operator*(MKL_INT k, Tensor3D<datatype> &a);  ???why
 
-//    Mat<datatype>& tens2mat(const Tensor3D<datatype>&, int mode);
-//    Tensor3D<datatype>& mat2tens(const Mat<datatype>&, int mode);
-//    Mat<datatype>& tens2vec(const Tensor3D<datatype>&, int mode);
-//    Tensor3D<datatype>& vec2tens(const Mat<datatype>&, int mode);
+    datatype* tens2mat(int mode);
+    Tensor3D<datatype>& mat2tens(datatype&, int mode);
+    datatype& tens2vec(const Tensor3D<datatype>&, int mode);
+    Tensor3D<datatype>& vec2tens(const datatype&, int mode);
 
 };
 
@@ -124,14 +123,20 @@ datatype &Tensor3D<datatype>::operator()(MKL_INT i, MKL_INT j, MKL_INT k) {
 }
 
 template<class datatype>
-Tensor3D<datatype>& operator*(MKL_INT k, Tensor3D<datatype> &a); //why out of class?
+Tensor3D<datatype> operator+(Tensor3D<datatype> &a, Tensor3D<datatype> &b);
 
+template<class datatype>
+Tensor3D<datatype> operator-(Tensor3D<datatype> &a, Tensor3D<datatype> &b);
+
+template<class datatype>
+Tensor3D<datatype> operator*(Tensor3D<datatype> &a, Tensor3D<datatype> &b);  //不加&， 返回局部变量？
+
+template<class datatype>
+Tensor3D<datatype>& operator*(MKL_INT k, Tensor3D<datatype> &a); //why out of class?
 
 template<class datatype>
 Tensor3D<datatype>& operator*(datatype k, Tensor3D<datatype> &a);
 
-template<class datatype>
-Tensor3D<datatype>& operator*(Tensor3D<datatype> &a, Tensor3D<datatype> &b);
 
 
 #endif //TENSOR_TENSOR3D_H
