@@ -46,3 +46,8 @@ Tensor3D<datatype> &operator*(datatype k, Tensor3D<datatype> &a) {
     cblas_dscal(size, k, a.pointer, 1);
     return a;
 }
+
+template<class datatype>
+Tensor3D<datatype> &operator*(Tensor3D<datatype> &a, Tensor3D<datatype> &b) {
+    return <#initializer#>;
+}

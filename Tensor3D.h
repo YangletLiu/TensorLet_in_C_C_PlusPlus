@@ -22,10 +22,12 @@ public:
     ~Tensor3D();
 
     Tensor3D<datatype>& operator=(const Tensor3D<datatype>&);
+//    Tensor3D<datatype>& operator+(const Tensor3D<datatype>&);
+//    Tensor3D<datatype>& operator-(const Tensor3D<datatype>&);
+//    Tensor3D<datatype>& operator*(const Tensor3D<datatype>&);
     Tensor3D<datatype>& operator+=(const Tensor3D<datatype>&);
     Tensor3D<datatype>& operator-=(const Tensor3D<datatype>&);
-    Tensor3D<datatype>& operator+(const Tensor3D<datatype>&);
-    Tensor3D<datatype>& operator-(const Tensor3D<datatype>&);
+
 //    Tensor3D<datatype>& operator*(datatype);
 
 
@@ -126,8 +128,10 @@ Tensor3D<datatype>& operator*(MKL_INT k, Tensor3D<datatype> &a); //why out of cl
 
 
 template<class datatype>
-Tensor3D<datatype>& operator*(datatype k, Tensor3D<datatype> &a); //why out of class?
+Tensor3D<datatype>& operator*(datatype k, Tensor3D<datatype> &a);
 
+template<class datatype>
+Tensor3D<datatype>& operator*(Tensor3D<datatype> &a, Tensor3D<datatype> &b);
 
 
 #endif //TENSOR_TENSOR3D_H
