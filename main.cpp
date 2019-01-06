@@ -51,8 +51,14 @@ int main(){
     b = k*a;
     b = a*b;
 //    b = a+b+a;
-    double * p;
-    p = a.tens2mat(1);
+
+    t0=gettime();
+    double * p = (double*)mkl_calloc(1000000,sizeof(double),64);
+
+    p = a.tens2mat(p,1);  //函数内声明后 调用
+    t1=gettime();
+    cout << "time:" <<t1-t0 <<endl;
+    free(p);
 
     cout << "hello" << endl;
 

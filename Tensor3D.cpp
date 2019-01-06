@@ -32,11 +32,10 @@ Tensor3D<datatype>& Tensor3D<datatype>::operator-=(const Tensor3D<datatype>& a) 
 }
 
 template<class datatype>
-datatype* Tensor3D<datatype>::tens2mat(int mode) {
+datatype* Tensor3D<datatype>::tens2mat(datatype* p, MKL_INT mode) {
     MKL_INT size = this->elements_number();
-    datatype * p = (datatype*)mkl_malloc(shape[0]*shape[1]*shape[2]*sizeof(datatype),64);
     if(mode == 1){
-        cblas_dcopy(size,p,1,this->pointer,1);
+        cblas_dcopy(size,this->pointer,1,p,1);
         return p;
     }
 }
@@ -88,6 +87,7 @@ Tensor3D<datatype>& operator*(datatype k, Tensor3D<datatype>& a) {
     cblas_dscal(size, k, a.pointer, 1);
     return a;
 }
+
 
 
 //template<class datatype>

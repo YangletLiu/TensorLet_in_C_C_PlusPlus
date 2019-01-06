@@ -42,7 +42,7 @@ public:
 
 //    friend Tensor3D<datatype>& operator*(MKL_INT k, Tensor3D<datatype> &a);  ???why
 
-    datatype* tens2mat(int mode);
+    datatype* tens2mat(datatype *, int mode);
     Tensor3D<datatype>& mat2tens(datatype&, int mode);
     datatype& tens2vec(const Tensor3D<datatype>&, int mode);
     Tensor3D<datatype>& vec2tens(const datatype&, int mode);
@@ -122,8 +122,8 @@ datatype &Tensor3D<datatype>::operator()(MKL_INT i, MKL_INT j, MKL_INT k) {
 
 }
 
-template<class datatype>
-Tensor3D<datatype> operator+(Tensor3D<datatype> &a, Tensor3D<datatype> &b);
+template <class datatype>
+Tensor3D<datatype> operator+(Tensor3D<datatype> &, Tensor3D<datatype> &);
 
 template<class datatype>
 Tensor3D<datatype> operator-(Tensor3D<datatype> &a, Tensor3D<datatype> &b);
