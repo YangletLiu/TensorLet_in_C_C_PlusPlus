@@ -50,8 +50,10 @@ int main(){
     MKL_INT k = 2;
     b = k*a;
     b = a*b;
+//    b = a+b+a;
+    double * p;
+    p = a.tens2mat(1);
 
-    a.tens2mat(1);
     cout << "hello" << endl;
 
     return 0;

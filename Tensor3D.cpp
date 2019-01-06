@@ -45,6 +45,7 @@ datatype* Tensor3D<datatype>::tens2mat(int mode) {
 template<class datatype>
 Tensor3D<datatype> operator+(Tensor3D<datatype>& a, Tensor3D<datatype>& b) {
     Tensor3D<datatype> result(a.shape);
+//    Tensor3D<datatype> *result = new Tensor3D<datatype>(a.shape);
     MKL_INT size;
     size = a.elements_number();
     vdAdd(size,a.pointer,b.pointer,result.pointer);

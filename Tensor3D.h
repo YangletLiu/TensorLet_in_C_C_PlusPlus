@@ -21,7 +21,7 @@ public:
     ~Tensor3D();
 
     Tensor3D<datatype>& operator=(const Tensor3D<datatype>&);
-//    Tensor3D<datatype>& operator+(const Tensor3D<datatype>&);
+    Tensor3D<datatype>& operator+(const Tensor3D<datatype>&);
 //    Tensor3D<datatype>& operator-(const Tensor3D<datatype>&);
 //    Tensor3D<datatype>& operator*(const Tensor3D<datatype>&);
     Tensor3D<datatype>& operator+=(const Tensor3D<datatype>&);
