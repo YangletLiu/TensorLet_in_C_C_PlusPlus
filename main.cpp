@@ -46,7 +46,6 @@ int main(){
     Tensor3D<double> vd(a);
     cout << vd.getsize()[1];
 
-
     MKL_INT k = 2;
     b = k*a;
     b = a*b;

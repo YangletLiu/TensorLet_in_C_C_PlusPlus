@@ -40,6 +40,11 @@ datatype* Tensor3D<datatype>::tens2mat(datatype* p, MKL_INT mode) {
     }
 }
 
+template<class datatype>
+bool Tensor3D<datatype>::operator==(const Tensor3D<datatype> &) {
+    return 0;
+}
+
 // element-wise add
 template<class datatype>
 Tensor3D<datatype> operator+(Tensor3D<datatype>& a, Tensor3D<datatype>& b) {

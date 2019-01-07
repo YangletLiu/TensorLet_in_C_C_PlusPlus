@@ -21,6 +21,8 @@ public:
     ~Tensor3D();
 
     Tensor3D<datatype>& operator=(const Tensor3D<datatype>&);
+    bool operator==(const Tensor3D<datatype>&);
+
     Tensor3D<datatype>& operator+(const Tensor3D<datatype>&);
 //    Tensor3D<datatype>& operator-(const Tensor3D<datatype>&);
 //    Tensor3D<datatype>& operator*(const Tensor3D<datatype>&);
@@ -43,9 +45,9 @@ public:
 //    friend Tensor3D<datatype>& operator*(MKL_INT k, Tensor3D<datatype> &a);  ???why
 
     datatype* tens2mat(datatype *, int mode);
-    Tensor3D<datatype>& mat2tens(datatype&, int mode);
-    datatype& tens2vec(const Tensor3D<datatype>&, int mode);
-    Tensor3D<datatype>& vec2tens(const datatype&, int mode);
+    Tensor3D<datatype>& mat2tens(datatype*, int mode);
+    datatype* tens2vec(const Tensor3D<datatype>&, int mode);
+    Tensor3D<datatype>& vec2tens(const datatype*, int mode);
 
 };
 
