@@ -42,9 +42,10 @@ int main(){
     double *cc = (double*)mkl_calloc(10000,sizeof(double),64);  //返回成功为1
     cout << sizeof(cc) << endl;
     cout << cc << endl;
+    mkl_free(cc);
 
     Tensor3D<double> vd(a);
-    cout << vd.getsize()[1];
+    cout << vd.getsize()[1] << endl;
 
     MKL_INT k = 2;
     b = k*a;
@@ -53,11 +54,10 @@ int main(){
 
     t0=gettime();
     double * p = (double*)mkl_calloc(1000000,sizeof(double),64);
-
     p = a.tens2mat(p,1);  //函数内声明后 调用
     t1=gettime();
     cout << "time:" <<t1-t0 <<endl;
-    free(p);
+    mkl_free(p);
 
     cout << "hello" << endl;
 

@@ -95,6 +95,8 @@ fftw3.h
 -
 mkl.h
 /home/jcfei/Desktop/TensorLet_C/mkl.h
+mkl_vsl.h
+/home/jcfei/Desktop/TensorLet_C/mkl_vsl.h
 time.h
 /home/jcfei/Desktop/TensorLet_C/time.h
 omp.h
