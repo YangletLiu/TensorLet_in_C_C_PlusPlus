@@ -93,12 +93,5 @@ Tensor3D<datatype>& operator*(datatype k, Tensor3D<datatype>& a) {
     return a;
 }
 
-
-
 //template<class datatype>
-//Tensor3D<datatype>& Tensor3D<datatype>::operator*(const Tensor3D<datatype>& a) {
-//    MKL_INT size;
-//    size = a.elements_number();
-//    vdMul(size,a.pointer,this->pointer,this->pointer);
-//    return *this;
-//}
+//Tensor3D<datatype>& Tensor3D<datatype>::operator*(const Tensor3D<datatype>& a)

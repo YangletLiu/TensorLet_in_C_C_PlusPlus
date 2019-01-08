@@ -144,15 +144,7 @@ Tensor3D<datatype>& operator*(datatype k, Tensor3D<datatype> &a);
 #endif //TENSOR_TENSOR3D_H
 
 //template<class datatype>
-//Tensor3D<datatype> &Tensor3D<datatype>::operator*(datatype k) {
-//    MKL_INT size = this->elements_number();
-//    cblas_dscal(size, k, this->pointer, 1);
-//    return *this;
-//}
+//Tensor3D<datatype> &Tensor3D<datatype>::operator*(datatype k)
 
 //template<class datatype>
-//Tensor3D<datatype>& operator*(datatype& k, Tensor3D<datatype>& a) {
-//    MKL_INT size = a.elements_number();
-//    cblas_dscal(size, k, a.pointer, 1);
-//    return a;
-//}
+//Tensor3D<datatype>& operator*(datatype& k, Tensor3D<datatype>& a)
