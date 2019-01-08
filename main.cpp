@@ -59,6 +59,16 @@ int main(){
     cout << "time:" <<t1-t0 <<endl;
     mkl_free(p);
 
+    //随机数生成
+    double * r;
+    VSLStreamStatePtr stream;
+    vslNewStream(&stream,VSL_BRNG_MCG31,4);
+    vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,10,r,0,1);
+    for (int i=0;i<=10;i++){
+        cout << r[i] << endl;
+    }
+    vslDeleteStream(&stream);
+
     cout << "hello" << endl;
 
     return 0;
