@@ -60,14 +60,33 @@ int main(){
     mkl_free(p);
 
     //随机数生成
-    double * r;
+    t0=gettime();
+    double r[1000000];
     VSLStreamStatePtr stream;
-    vslNewStream(&stream,VSL_BRNG_MCG31,4);
-    vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,10,r,0,1);
-    for (int i=0;i<=10;i++){
-        cout << r[i] << endl;
-    }
+    vslNewStream(&stream,VSL_BRNG_MCG31, 1);
+    vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,1000000,r,0,1);
+    cout << r[999999] << " " << r[1000000]<< endl;
+//    for (int i=1;i<2;i++){
+//        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,100,r,0,1);
+////        cout << r[0] << endl;
+//        printf("%e \n",r[0]);
+//    }
+
     vslDeleteStream(&stream);
+    t1=gettime();
+    cout << "time:" <<t1-t0 <<endl;
+
+//    MKLVersion Version;
+//    mkl_get_version(&Version);
+//    printf("Major version: %d\n",Version.MajorVersion);
+//    printf("Minor version: %d\n",Version.MinorVersion);
+//    printf("Update version: %d\n",Version.UpdateVersion);
+//    printf("Product status: %s\n",Version.ProductStatus);
+//    printf("Build: %s\n",Version.Build);
+//    printf("Platform: %s\n",Version.Platform);
+//    printf("Processor optimization: %s\n",Version.Processor);
+//    printf("================================================================\n");
+//    printf("\n");
 
     cout << "hello" << endl;
 

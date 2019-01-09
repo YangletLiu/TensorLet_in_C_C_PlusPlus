@@ -60,8 +60,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="63" column="39" selection-start-line="63" selection-start-column="25" selection-end-line="63" selection-end-column="39" />
+            <state relative-caret-position="308">
+              <caret line="71" column="31" lean-forward="true" selection-start-line="71" selection-start-column="31" selection-end-line="71" selection-end-column="31" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -115,8 +115,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="212" />
-    <option name="y" value="103" />
+    <option name="x" value="308" />
+    <option name="y" value="77" />
     <option name="width" value="1183" />
     <option name="height" value="909" />
   </component>
@@ -191,15 +191,15 @@
       <workItem from="1546916945933" duration="100000" />
       <workItem from="1546917061825" duration="126000" />
       <workItem from="1546917203445" duration="750000" />
-      <workItem from="1546922829592" duration="7635000" />
+      <workItem from="1546922829592" duration="18285000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83590000" />
+    <option name="totallyTimeSpent" value="94240000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="772" y="107" width="1183" height="909" extended-state="0" />
+    <frame x="615" y="84" width="1183" height="909" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30220264" />
@@ -207,14 +207,14 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32439336" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49955946" visible="true" weight="0.32439336" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39974457" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50044054" side_tool="true" weight="0.32439336" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="CMake" order="11" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32950193" />
@@ -368,8 +368,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="63" column="39" selection-start-line="63" selection-start-column="25" selection-end-line="63" selection-end-column="39" />
+        <state relative-caret-position="308">
+          <caret line="71" column="31" lean-forward="true" selection-start-line="71" selection-start-column="31" selection-end-line="71" selection-end-column="31" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
