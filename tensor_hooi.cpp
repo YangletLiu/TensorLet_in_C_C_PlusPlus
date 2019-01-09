@@ -11,7 +11,7 @@
 //};
 
 //template<class T>
-//tucker_core<T> hooi(Cube<T> &a, int r1, int r2, int r3) {
+//tucker_format<T> tucker_hooi(Cube<T> &a, int r1, int r2, int r3) {
 //    int n1=a.n_rows; int n2=a.n_cols; int n3=a.n_slices;
 //
 //    Mat<T> tmp(n1,n1);

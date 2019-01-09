@@ -11,8 +11,10 @@ class tucker_format{
     datatype* u1,u2,u3;
 };
 
-//template<class T>
-//tucker_core<T> hosvd(Cube<T> &a, int r1, int r2, int r3) {
+template<class datatype>
+tucker_format<datatype> tucker_hosvd(Tensor3D<datatype> &a, int r1, int r2, int r3) {
+
+}
 //
 //    int n1=a.n_rows; int n2=a.n_cols; int n3=a.n_slices;
 //
