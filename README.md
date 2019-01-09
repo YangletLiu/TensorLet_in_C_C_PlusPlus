@@ -157,7 +157,7 @@ You can call tensortrain decomposition like:
 	tol: float, optional  
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.  
 ### Returns:
-	cp_decomposition<type>: abstract data type（ADT） for the CP decomposition result.    
+	cp_format<type>: abstract data type（ADT） for the CP decomposition result.    
 	template<class type>  
 	class cp_format{  
 	    Mat<type> factor[3];  
