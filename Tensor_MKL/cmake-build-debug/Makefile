@@ -48,10 +48,10 @@ RM = /home/jcfei/opt/clion/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jcfei/Desktop/TensorLet_MKL
+CMAKE_SOURCE_DIR = /home/jcfei/Desktop/TensorLet_C
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jcfei/Desktop/TensorLet_MKL/cmake-build-debug
+CMAKE_BINARY_DIR = /home/jcfei/Desktop/TensorLet_C/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jcfei/Desktop/TensorLet_MKL/cmake-build-debug/CMakeFiles /home/jcfei/Desktop/TensorLet_MKL/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles /home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jcfei/Desktop/TensorLet_MKL/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,98 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named TensorLet_MKL
+# Target rules for targets named tensor
 
 # Build rule for target.
-TensorLet_MKL: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 TensorLet_MKL
-.PHONY : TensorLet_MKL
+tensor: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tensor
+.PHONY : tensor
 
 # fast build rule for target.
-TensorLet_MKL/fast:
-	$(MAKE) -f CMakeFiles/TensorLet_MKL.dir/build.make CMakeFiles/TensorLet_MKL.dir/build
-.PHONY : TensorLet_MKL/fast
+tensor/fast:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/build
+.PHONY : tensor/fast
+
+Tensor3D.o: Tensor3D.cpp.o
+
+.PHONY : Tensor3D.o
+
+# target to build an object file
+Tensor3D.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/Tensor3D.cpp.o
+.PHONY : Tensor3D.cpp.o
+
+Tensor3D.i: Tensor3D.cpp.i
+
+.PHONY : Tensor3D.i
+
+# target to preprocess a source file
+Tensor3D.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/Tensor3D.cpp.i
+.PHONY : Tensor3D.cpp.i
+
+Tensor3D.s: Tensor3D.cpp.s
+
+.PHONY : Tensor3D.s
+
+# target to generate assembly for a file
+Tensor3D.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/Tensor3D.cpp.s
+.PHONY : Tensor3D.cpp.s
+
+cp_als.o: cp_als.cpp.o
+
+.PHONY : cp_als.o
+
+# target to build an object file
+cp_als.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cp_als.cpp.o
+.PHONY : cp_als.cpp.o
+
+cp_als.i: cp_als.cpp.i
+
+.PHONY : cp_als.i
+
+# target to preprocess a source file
+cp_als.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cp_als.cpp.i
+.PHONY : cp_als.cpp.i
+
+cp_als.s: cp_als.cpp.s
+
+.PHONY : cp_als.s
+
+# target to generate assembly for a file
+cp_als.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cp_als.cpp.s
+.PHONY : cp_als.cpp.s
+
+cpgen.o: cpgen.cpp.o
+
+.PHONY : cpgen.o
+
+# target to build an object file
+cpgen.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cpgen.cpp.o
+.PHONY : cpgen.cpp.o
+
+cpgen.i: cpgen.cpp.i
+
+.PHONY : cpgen.i
+
+# target to preprocess a source file
+cpgen.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cpgen.cpp.i
+.PHONY : cpgen.cpp.i
+
+cpgen.s: cpgen.cpp.s
+
+.PHONY : cpgen.s
+
+# target to generate assembly for a file
+cpgen.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cpgen.cpp.s
+.PHONY : cpgen.cpp.s
 
 main.o: main.cpp.o
 
@@ -129,7 +210,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/TensorLet_MKL.dir/build.make CMakeFiles/TensorLet_MKL.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -138,7 +219,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/TensorLet_MKL.dir/build.make CMakeFiles/TensorLet_MKL.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -147,8 +228,116 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/TensorLet_MKL.dir/build.make CMakeFiles/TensorLet_MKL.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+t_svd.o: t_svd.cpp.o
+
+.PHONY : t_svd.o
+
+# target to build an object file
+t_svd.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/t_svd.cpp.o
+.PHONY : t_svd.cpp.o
+
+t_svd.i: t_svd.cpp.i
+
+.PHONY : t_svd.i
+
+# target to preprocess a source file
+t_svd.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/t_svd.cpp.i
+.PHONY : t_svd.cpp.i
+
+t_svd.s: t_svd.cpp.s
+
+.PHONY : t_svd.s
+
+# target to generate assembly for a file
+t_svd.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/t_svd.cpp.s
+.PHONY : t_svd.cpp.s
+
+tensor_hooi.o: tensor_hooi.cpp.o
+
+.PHONY : tensor_hooi.o
+
+# target to build an object file
+tensor_hooi.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tensor_hooi.cpp.o
+.PHONY : tensor_hooi.cpp.o
+
+tensor_hooi.i: tensor_hooi.cpp.i
+
+.PHONY : tensor_hooi.i
+
+# target to preprocess a source file
+tensor_hooi.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tensor_hooi.cpp.i
+.PHONY : tensor_hooi.cpp.i
+
+tensor_hooi.s: tensor_hooi.cpp.s
+
+.PHONY : tensor_hooi.s
+
+# target to generate assembly for a file
+tensor_hooi.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tensor_hooi.cpp.s
+.PHONY : tensor_hooi.cpp.s
+
+tensor_train.o: tensor_train.cpp.o
+
+.PHONY : tensor_train.o
+
+# target to build an object file
+tensor_train.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tensor_train.cpp.o
+.PHONY : tensor_train.cpp.o
+
+tensor_train.i: tensor_train.cpp.i
+
+.PHONY : tensor_train.i
+
+# target to preprocess a source file
+tensor_train.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tensor_train.cpp.i
+.PHONY : tensor_train.cpp.i
+
+tensor_train.s: tensor_train.cpp.s
+
+.PHONY : tensor_train.s
+
+# target to generate assembly for a file
+tensor_train.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tensor_train.cpp.s
+.PHONY : tensor_train.cpp.s
+
+tucker_hosvd.o: tucker_hosvd.cpp.o
+
+.PHONY : tucker_hosvd.o
+
+# target to build an object file
+tucker_hosvd.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tucker_hosvd.cpp.o
+.PHONY : tucker_hosvd.cpp.o
+
+tucker_hosvd.i: tucker_hosvd.cpp.i
+
+.PHONY : tucker_hosvd.i
+
+# target to preprocess a source file
+tucker_hosvd.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tucker_hosvd.cpp.i
+.PHONY : tucker_hosvd.cpp.i
+
+tucker_hosvd.s: tucker_hosvd.cpp.s
+
+.PHONY : tucker_hosvd.s
+
+# target to generate assembly for a file
+tucker_hosvd.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tucker_hosvd.cpp.s
+.PHONY : tucker_hosvd.cpp.s
 
 # Help Target
 help:
@@ -157,11 +346,32 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... TensorLet_MKL"
+	@echo "... tensor"
 	@echo "... edit_cache"
+	@echo "... Tensor3D.o"
+	@echo "... Tensor3D.i"
+	@echo "... Tensor3D.s"
+	@echo "... cp_als.o"
+	@echo "... cp_als.i"
+	@echo "... cp_als.s"
+	@echo "... cpgen.o"
+	@echo "... cpgen.i"
+	@echo "... cpgen.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... t_svd.o"
+	@echo "... t_svd.i"
+	@echo "... t_svd.s"
+	@echo "... tensor_hooi.o"
+	@echo "... tensor_hooi.i"
+	@echo "... tensor_hooi.s"
+	@echo "... tensor_train.o"
+	@echo "... tensor_train.i"
+	@echo "... tensor_train.s"
+	@echo "... tucker_hosvd.o"
+	@echo "... tucker_hosvd.i"
+	@echo "... tucker_hosvd.s"
 .PHONY : help
 
 

@@ -1,62 +1,94 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include "tensor.h"
+#include "runningtime.h"
 
-#include<mkl.h>
+#include "ten2mat.cpp"
+#include "cpgen.cpp"
+#include "cp_als.cpp"
+#include "tucker_hosvd.cpp"
+#include "tensor_hooi.cpp"
+#include "t_svd.cpp"
 
-int main()
-{
-    float *A, *B, *C;
-    int m = 100, n = 100, k = 100;//A维度2*3,B维度2*3(计算时候转置),C维度2*2
-    int a = 1, b = 1;//缩放因子
-    A = (float *)mkl_malloc(m*n*sizeof(float), 64);
-    B = (float *)mkl_malloc(k*n*sizeof(float), 64);
-    C = (float *)mkl_malloc(m*k*sizeof(float), 64);
+#include "Tensor3D.h"
+#include "Tensor3D.cpp"
 
-    printf("矩阵1为\n");
-    for (int i = 0; i < m*n; i++)
-    {
-        if (i != 0 && i%n == 0)
-            printf("\n");
-        A[i] = i + 1;
-        printf("%2.0f", A[i]);
-    }
-    printf("\n");
+#include <stdio.h>
+#include <mkl.h>
 
-    printf("矩阵2为\n");
-    for (int i = 0; i < k*n; i++)
-    {
-        if (i != 0 && i%n == 0)
-            printf("\n");
-        B[i] = 1;
-        printf("%2.0f", B[i]);
-    }
-    printf("\n");
+using namespace std;
 
-    printf("矩阵3为\n");
-    for (int i = 0; i < m*k; i++)
-    {
-        if (i != 0 && i%k == 0)
-            printf("\n");
-        C[i] = i;
-        printf("%2.0f", C[i]);
-    }
-    printf("\n");
+int main(){
+    MKL_INT n1,n2,n3;
+    MKL_INT aa[3]={10,10,10};
 
-    printf("结果矩阵\n");
+    double t0,t1;
 
-    cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasTrans, m, k, n, a, A, n, B, n, b, C, k);//注意mkn的顺序☆
-    for (int i = 0; i < m*k; i++)
-    {
-        if (i != 0 && i%k == 0)
-            printf("\n");
-        printf("%2.0f", C[i]);
-    }
-    printf("\n");
+    t0=gettime();
+    Tensor3D<double> a(100,100,100); //element
+    t1=gettime();
+    cout << "time:" <<t1-t0 <<endl;
 
-    mkl_free(A);
-    mkl_free(B);
-    mkl_free(C);
-    getchar();
+    cout << sizeof(a) << endl;
+    cout << a.getsize()[2] << endl;
+    cout << "element a: " << a(2,2,2) << endl;
+    cout << "norm: " << a.frobenius_norm() << endl;
+
+    Tensor3D<double> b(aa); // int array
+    b = a;
+    b += a;
+    cout << b.getsize()[0] << endl;
+
+    cout << "n" << b.getsize()[2];
+
+    double *cc = (double*)mkl_calloc(10000,sizeof(double),64);  //返回成功为1
+    cout << sizeof(cc) << endl;
+    cout << cc << endl;
+    mkl_free(cc);
+
+    Tensor3D<double> vd(a);
+    cout << vd.getsize()[1] << endl;
+
+    MKL_INT k = 2;
+    b = k*a;
+    b = a*b;
+//    b = a+b+a;
+
+    t0=gettime();
+    double * p = (double*)mkl_calloc(1000000,sizeof(double),64);
+    p = a.tens2mat(p,1);  //函数内声明后 调用
+    t1=gettime();
+    cout << "time:" <<t1-t0 <<endl;
+    mkl_free(p);
+
+    //随机数生成
+    t0=gettime();
+    double r[1000000];
+    VSLStreamStatePtr stream;
+    vslNewStream(&stream,VSL_BRNG_MCG31, 1);
+    vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,1000000,r,0,1);
+    cout << r[999999] << " " << r[1000000]<< endl;
+//    for (int i=1;i<2;i++){
+//        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,100,r,0,1);
+////        cout << r[0] << endl;
+//        printf("%e \n",r[0]);
+//    }
+
+    vslDeleteStream(&stream);
+    t1=gettime();
+    cout << "time:" <<t1-t0 <<endl;
+
+//    MKLVersion Version;
+//    mkl_get_version(&Version);
+//    printf("Major version: %d\n",Version.MajorVersion);
+//    printf("Minor version: %d\n",Version.MinorVersion);
+//    printf("Update version: %d\n",Version.UpdateVersion);
+//    printf("Product status: %s\n",Version.ProductStatus);
+//    printf("Build: %s\n",Version.Build);
+//    printf("Platform: %s\n",Version.Platform);
+//    printf("Processor optimization: %s\n",Version.Processor);
+//    printf("================================================================\n");
+//    printf("\n");
+
+    cout << "hello" << endl;
+
     return 0;
-
 }

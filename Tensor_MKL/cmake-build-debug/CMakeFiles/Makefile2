@@ -59,45 +59,45 @@ RM = /home/jcfei/opt/clion/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jcfei/Desktop/TensorLet_MKL
+CMAKE_SOURCE_DIR = /home/jcfei/Desktop/TensorLet_C
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jcfei/Desktop/TensorLet_MKL/cmake-build-debug
+CMAKE_BINARY_DIR = /home/jcfei/Desktop/TensorLet_C/cmake-build-debug
 
 #=============================================================================
-# Target rules for target CMakeFiles/TensorLet_MKL.dir
+# Target rules for target CMakeFiles/tensor.dir
 
 # All Build rule for target.
-CMakeFiles/TensorLet_MKL.dir/all:
-	$(MAKE) -f CMakeFiles/TensorLet_MKL.dir/build.make CMakeFiles/TensorLet_MKL.dir/depend
-	$(MAKE) -f CMakeFiles/TensorLet_MKL.dir/build.make CMakeFiles/TensorLet_MKL.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jcfei/Desktop/TensorLet_MKL/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target TensorLet_MKL"
-.PHONY : CMakeFiles/TensorLet_MKL.dir/all
+CMakeFiles/tensor.dir/all:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/depend
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target tensor"
+.PHONY : CMakeFiles/tensor.dir/all
 
 # Include target in all.
-all: CMakeFiles/TensorLet_MKL.dir/all
+all: CMakeFiles/tensor.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/TensorLet_MKL.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jcfei/Desktop/TensorLet_MKL/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/TensorLet_MKL.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jcfei/Desktop/TensorLet_MKL/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/TensorLet_MKL.dir/rule
+CMakeFiles/tensor.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles 9
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/tensor.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/tensor.dir/rule
 
 # Convenience name for target.
-TensorLet_MKL: CMakeFiles/TensorLet_MKL.dir/rule
+tensor: CMakeFiles/tensor.dir/rule
 
-.PHONY : TensorLet_MKL
-
-# clean rule for target.
-CMakeFiles/TensorLet_MKL.dir/clean:
-	$(MAKE) -f CMakeFiles/TensorLet_MKL.dir/build.make CMakeFiles/TensorLet_MKL.dir/clean
-.PHONY : CMakeFiles/TensorLet_MKL.dir/clean
+.PHONY : tensor
 
 # clean rule for target.
-clean: CMakeFiles/TensorLet_MKL.dir/clean
+CMakeFiles/tensor.dir/clean:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/clean
+.PHONY : CMakeFiles/tensor.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/tensor.dir/clean
 
 .PHONY : clean
 
