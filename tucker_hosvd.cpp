@@ -1,10 +1,16 @@
-////
-//// Created by jcfei on 18-9-26.
-////
 //
-//#include "tensor.h"
-//#include <omp.h>
+// Created by jcfei on 18-9-26.
 //
+
+#include "tensor.h"
+#include "Tensor3D.h"
+
+template<class datatype>
+class tucker_format{
+    Tensor3D<datatype> core;
+    datatype* u1,u2,u3;
+};
+
 //template<class T>
 //tucker_core<T> hosvd(Cube<T> &a, int r1, int r2, int r3) {
 //

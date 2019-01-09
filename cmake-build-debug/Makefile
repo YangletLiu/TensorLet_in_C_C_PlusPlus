@@ -285,6 +285,33 @@ tensor_hooi.cpp.s:
 	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tensor_hooi.cpp.s
 .PHONY : tensor_hooi.cpp.s
 
+tensor_train.o: tensor_train.cpp.o
+
+.PHONY : tensor_train.o
+
+# target to build an object file
+tensor_train.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tensor_train.cpp.o
+.PHONY : tensor_train.cpp.o
+
+tensor_train.i: tensor_train.cpp.i
+
+.PHONY : tensor_train.i
+
+# target to preprocess a source file
+tensor_train.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tensor_train.cpp.i
+.PHONY : tensor_train.cpp.i
+
+tensor_train.s: tensor_train.cpp.s
+
+.PHONY : tensor_train.s
+
+# target to generate assembly for a file
+tensor_train.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tensor_train.cpp.s
+.PHONY : tensor_train.cpp.s
+
 tucker_hosvd.o: tucker_hosvd.cpp.o
 
 .PHONY : tucker_hosvd.o
@@ -339,6 +366,9 @@ help:
 	@echo "... tensor_hooi.o"
 	@echo "... tensor_hooi.i"
 	@echo "... tensor_hooi.s"
+	@echo "... tensor_train.o"
+	@echo "... tensor_train.i"
+	@echo "... tensor_train.s"
 	@echo "... tucker_hosvd.o"
 	@echo "... tucker_hosvd.i"
 	@echo "... tucker_hosvd.s"

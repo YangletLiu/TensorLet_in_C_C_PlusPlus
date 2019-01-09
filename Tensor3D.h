@@ -20,35 +20,34 @@ public:
     Tensor3D(const Tensor3D&);
     ~Tensor3D();
 
+//operators
     Tensor3D<datatype>& operator=(const Tensor3D<datatype>&);
     bool operator==(const Tensor3D<datatype>&);
-
-    Tensor3D<datatype>& operator+(const Tensor3D<datatype>&);
-//    Tensor3D<datatype>& operator-(const Tensor3D<datatype>&);
-//    Tensor3D<datatype>& operator*(const Tensor3D<datatype>&);
     Tensor3D<datatype>& operator+=(const Tensor3D<datatype>&);
     Tensor3D<datatype>& operator-=(const Tensor3D<datatype>&);
 
-//    Tensor3D<datatype>& operator*(datatype);
-
-
     inline datatype& operator()(MKL_INT i, MKL_INT j, MKL_INT k);
-
-    Tensor3D& rand_tensor(MKL_INT *);
-//    Tensor3D& cp_tensor(int rank);
-//    Tensor3D& tucker_tensor(int *);
 
     inline MKL_INT* getsize();
     inline MKL_INT elements_number();
     double frobenius_norm();
 
-//    friend Tensor3D<datatype>& operator*(MKL_INT k, Tensor3D<datatype> &a);  ???why
+    Tensor3D<datatype> random_tensor(MKL_INT, MKL_INT, MKL_INT);
+
 
     datatype* tens2mat(datatype *, int mode);
     Tensor3D<datatype>& mat2tens(datatype*, int mode);
     datatype* tens2vec(const Tensor3D<datatype>&, int mode);
     Tensor3D<datatype>& vec2tens(const datatype*, int mode);
 
+//    Tensor3D<datatype>& operator+(const Tensor3D<datatype>&);
+//    Tensor3D<datatype>& operator-(const Tensor3D<datatype>&);
+//    Tensor3D<datatype>& operator*(const Tensor3D<datatype>&);
+//    Tensor3D<datatype>& operator*(datatype);
+//    friend Tensor3D<datatype>& operator*(MKL_INT k, Tensor3D<datatype> &a);  ???why
+
+//    Tensor3D& cp_tensor(int rank);
+//    Tensor3D& tucker_tensor(int *);
 };
 
 // Constructors
@@ -115,13 +114,10 @@ double Tensor3D<datatype>::frobenius_norm() {
     return cblas_dnrm2(size, this->pointer,1);
 }
 
-
 template<class datatype>
 datatype &Tensor3D<datatype>::operator()(MKL_INT i, MKL_INT j, MKL_INT k) {
-
     return this->pointer[i-1+(j-1)*shape[0]+(k-1)*shape[0]*shape[1]];  // remain test
 //    1][(i-1)][(k-1)*shape[1]*shape[2]
-
 }
 
 template <class datatype>
@@ -138,7 +134,6 @@ Tensor3D<datatype>& operator*(MKL_INT k, Tensor3D<datatype> &a); //why out of cl
 
 template<class datatype>
 Tensor3D<datatype>& operator*(datatype k, Tensor3D<datatype> &a);
-
 
 
 #endif //TENSOR_TENSOR3D_H

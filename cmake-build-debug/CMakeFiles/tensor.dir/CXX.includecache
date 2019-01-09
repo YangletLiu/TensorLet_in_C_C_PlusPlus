@@ -19,14 +19,14 @@ tensor.h
 /home/jcfei/Desktop/TensorLet_C/cp_als.cpp
 tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
+Tensor3D.h
+/home/jcfei/Desktop/TensorLet_C/Tensor3D.h
 
 /home/jcfei/Desktop/TensorLet_C/cpgen.cpp
 tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
-iostream
--
-cmath
--
+Tensor3D.h
+/home/jcfei/Desktop/TensorLet_C/Tensor3D.h
 
 /home/jcfei/Desktop/TensorLet_C/main.cpp
 tensor.h
@@ -61,10 +61,10 @@ sys/time.h
 /home/jcfei/Desktop/TensorLet_C/sys/time.h
 
 /home/jcfei/Desktop/TensorLet_C/t_svd.cpp
-fstream
--
 tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
+Tensor3D.h
+/home/jcfei/Desktop/TensorLet_C/Tensor3D.h
 
 /home/jcfei/Desktop/TensorLet_C/ten2mat.cpp
 tensor.h
@@ -103,8 +103,16 @@ omp.h
 -
 
 /home/jcfei/Desktop/TensorLet_C/tensor_hooi.cpp
+tensor.h
+/home/jcfei/Desktop/TensorLet_C/tensor.h
+Tensor3D.h
+/home/jcfei/Desktop/TensorLet_C/Tensor3D.h
 
 /home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp
+tensor.h
+/home/jcfei/Desktop/TensorLet_C/tensor.h
+Tensor3D.h
+/home/jcfei/Desktop/TensorLet_C/Tensor3D.h
 
 /opt/intel/mkl/include/mkl.h
 mkl_version.h

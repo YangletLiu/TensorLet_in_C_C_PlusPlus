@@ -3,8 +3,8 @@
 //
 
 #include "tensor.h"
-#include <iostream>
-#include <cmath>
+#include "Tensor3D.h"
+
 using namespace std;
 
 //template <class T>

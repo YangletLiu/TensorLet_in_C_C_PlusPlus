@@ -45,6 +45,13 @@ bool Tensor3D<datatype>::operator==(const Tensor3D<datatype> &) {
     return 0;
 }
 
+template<class datatype>
+Tensor3D<datatype> Tensor3D<datatype>::random_tensor(MKL_INT n1, MKL_INT n2, MKL_INT n3) {
+    Tensor3D<datatype> random(n1,n2,n3);
+
+    return random;
+}
+
 // element-wise add
 template<class datatype>
 Tensor3D<datatype> operator+(Tensor3D<datatype>& a, Tensor3D<datatype>& b) {

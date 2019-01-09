@@ -117,6 +117,9 @@
 		<Unit filename="/home/jcfei/Desktop/TensorLet_C/tensor_hooi.cpp">
 			<Option target="tensor"/>
 		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C/tensor_train.cpp">
+			<Option target="tensor"/>
+		</Unit>
 		<Unit filename="/home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp">
 			<Option target="tensor"/>
 		</Unit>

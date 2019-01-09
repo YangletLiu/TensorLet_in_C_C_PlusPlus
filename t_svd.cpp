@@ -2,9 +2,13 @@
 // Created by jcfei on 18-9-17.
 //
 
-#include <fstream>
 #include "tensor.h"
+#include "Tensor3D.h"
 
+template<class datatype>
+class tsvd_format{
+    Tensor3D<datatype> U,Theta,V;
+};
 
 //template <class T>
 //tsvd_core<T> tsvd(Cube<T> a){

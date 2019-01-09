@@ -1,13 +1,15 @@
-////
-//// Created by jcfei on 4/30/18.
-////
-////#include <stdexcept>
-//#include <iostream>
-//#include <cmath>
-//#include "tensor.h"
 //
-//using namespace std;
+// Created by jcfei on 4/30/18.
 //
+#include "tensor.h"
+#include "Tensor3D.h"
+
+//template<class datatype>
+//class tucker_format{
+//    Tensor3D<datatype> core;
+//    datatype* u1,u2,u3;
+//};
+
 //template<class T>
 //tucker_core<T> hooi(Cube<T> &a, int r1, int r2, int r3) {
 //    int n1=a.n_rows; int n2=a.n_cols; int n3=a.n_slices;
