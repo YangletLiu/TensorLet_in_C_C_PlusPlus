@@ -67,7 +67,7 @@ For example, you can link MKL in  CMakeLists.txt file like:
 
 The decomposition components of CP is defined as:  
 >template\<class type\>  
->class cp_decomposition{  
+>class cp_format{  
 >&emsp;&emsp;    Mat\<type\> factor[3];  
 >};  
 
@@ -77,7 +77,7 @@ The factor is the matrix list of the corresponding CP decomposition.
 You can call cp_als function like:   
 
 	Tensor3D<double> tensor = random(10,10,10);  
-	cp_decomposition<double> A = cp_decomposition(tensor, int rank = 3, int max_iter = 1，double tol = 1e-6);    
+	cp_format<double> A = cp_als(tensor, int rank = 3, int max_iter = 1，double tol = 1e-6);    
 
 where Tensor3D\<type\> represents the third-order tensor class.
 </details>
@@ -90,7 +90,7 @@ where Tensor3D\<type\> represents the third-order tensor class.
 
 The decomposition components of tucker is defined as:  
 >template\<class type\>    
->class tucker_decomposition{  
+>class tucker_format{  
 >&emsp;&emsp;  Tensor3D\<type\> core; Mat\<type\> factor[3];   
 >};  
 where factor is the matrix list of the corresponding Tucker decomposition.   
@@ -98,12 +98,12 @@ where factor is the matrix list of the corresponding Tucker decomposition.
 You can call hosvd function like: 
 	
 	Tensor3D<double> tensor = random(10,10,10);    
-	tucker_decomposition<double> A = tucker_hosvd(tensor, int ranks[3]);    
+	tucker_format<double> A = tucker_hosvd(tensor, int ranks[3]);    
 	
 You can call hooi function like:   
 
 	Tensor3D<double> tensor = random(10,10,10);    
-	tucker_decomposition<double> A = tucker_hooi(tensor, int ranks[3], double tol);      
+	tucker_format<double> A = tucker_hooi(tensor, int ranks[3], double tol);      
 
 </details>
 
@@ -114,14 +114,14 @@ You can call hooi function like:
 
 The decomposition components of t-SVD is defined as:  
 >template\<class type\>    
->class tsvd_decomposition{  
+>class tsvd_format{  
 >&emsp;&emsp;  Tensor3D\<type\> U, Sigma, V;  
 >};  
 
 You can call tsvd function like:   
 	
 	Tensor3D<double> tensor = random(10,10,10);  
-	tsvd_decomposition<double> A = tsvd_decomposition(tensor);      
+	tsvd_format<double> A = tsvd_decomposition(tensor);      
 </details>
 
 <details>	
@@ -131,7 +131,7 @@ You can call tsvd function like:
 
 The decomposition components of tensortrain is defined as:    
 >template\<class type\>    
->class tensortrain_decomposition{  
+>class tensortrain_format{  
 >&emsp;&emsp;  Tensor3D\<type\> U;  
 >&emsp;&emsp;  Mat<type> G1,G2;  
 >};  
@@ -139,7 +139,7 @@ The decomposition components of tensortrain is defined as:
 You can call tensortrain decomposition like:     
 	
 	Tensor3D<double> tensor = random(10,10,10);  
-	tensortrain_decomposition<double> A = tensortrain_decomposition(tensor, tol);      
+	tensortrain_format<double> A = tensortrain_decomposition(tensor, tol);      
 
 </details>
 
@@ -148,7 +148,7 @@ You can call tensortrain decomposition like:
 <details>	
 <summary> CANDECOMP/PARAFAC decomposition via alternating least squares (ALS) </summary>
 
-#### cp_decomposition\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter, type tol);    
+#### cp_format\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter, type tol);    
 ##### Source: CP decomposition is realized in cp_als.cpp.    
 ### Parameters: 
 	tensor: the address of tensor; 
@@ -159,7 +159,7 @@ You can call tensortrain decomposition like:
 ### Returns:
 	cp_decomposition<type>: abstract data type（ADT） for the CP decomposition result.    
 	template<class type>  
-	class cp_decomposition{  
+	class cp_format{  
 	    Mat<type> factor[3];  
 	};  
 	where factor is the matrix list of the corresponding CP decomposition.   
@@ -169,14 +169,14 @@ You can call tensortrain decomposition like:
 <details>	
 <summary> Tucker decomposition via High Order SVD (HOSVD) and High-Order Orthogonal Iteration (HOOI) </summary>
 	
-#### tucker_decomposition\<type\> tucker_hosvd(Tensor3D\<type\>& tensor, int ranks[3]);      
+#### tucker_format\<type\> tucker_hosvd(Tensor3D\<type\>& tensor, int ranks[3]);      
 ##### Source: Tucker decomposition is realized in tucker_hosvd.cpp and tucker_hooi.cpp.     
 
 ### Parameters:	
 	tensor: the address of tensor; 
 	ranks: int array; size of the core tensor, (len(ranks) == tensor.ndim);  
 	
-#### tucker_decomposition\<type\> tucker_hooi(Tensor3D\<type\>& tensor, int ranks[3], int max_iter, T tol);  
+#### tucker_format\<type\> tucker_hooi(Tensor3D\<type\>& tensor, int ranks[3], int max_iter, T tol);  
 ### Parameters:	
 	tensor: the address of tensor; 
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
@@ -185,9 +185,9 @@ You can call tensortrain decomposition like:
 	tolerance: the algorithm stops when the variation in the reconstruction error is less than the tolerance  
 
 ### Returns:
-	tucker_decomposition<type>: abstract data type（ADT） for the Tucker decomposition result.    
+	tucker_format<type>: abstract data type（ADT） for the Tucker decomposition result.    
 	template<class type>    
-	class tucker_decomposition{  
+	class tucker_format{  
 	   Tensor3D<type> core; Mat<type> factor[3];   
 	};  
 </details>
@@ -202,8 +202,8 @@ You can call tensortrain decomposition like:
 	tensor: the address of tensor; 
 	
 ### Returns:
-	tsvd_decomposition<type>: abstract data type（ADT） for the t-SVD decomposition result.    
-	class tsvd_decomposition{  
+	tsvd_format<type>: abstract data type（ADT） for the t-SVD decomposition result.    
+	class tsvd_format{  
 	   Tensor3D<type> U, Sigma, V;  
 	};  	
 
@@ -222,8 +222,8 @@ For more details, please refer to the corresponding source files, where all defi
 	tensor: the address of tensor; 
 	tol: tolerance;
 ### Returns:
-	tensortrain_decomposition<type>: abstract data type（ADT） for the Tensor Train decomposition result.    
-	class tensortrain_decomposition{  
+	tensortrain_format<type>: abstract data type（ADT） for the Tensor Train decomposition result.    
+	class tensortrain_format{  
 	   Tensor3D<type> U;    
 	   Mat<type> G1,G2;  
 	};  	
@@ -259,7 +259,7 @@ type * p; // a pointer point to tensor.
 
 <details>	
 <summary>
-cp_decomposition<type>
+cp_format<type>
 </summary>
 	
 ##### Public Member Functions  
@@ -274,7 +274,7 @@ cp_decomposition<type>
 
 <details>	
 <summary>
-tucker_decomposition<type>
+tucker_format<type>
 </summary>
 	
 ##### Public Member Functions  
@@ -288,7 +288,7 @@ tucker_decomposition<type>
 
 <details>	
 <summary>
-tsvd_decomposition<type>
+tsvd_format<type>
 </summary>
 	
 ##### Public Member Functions   
@@ -302,7 +302,7 @@ tsvd_decomposition<type>
 
 <details>	
 <summary>
-tensortrain_decomposition<type>
+tensortrain_format<type>
 </summary>
 	
 ##### Public Member Functions  
