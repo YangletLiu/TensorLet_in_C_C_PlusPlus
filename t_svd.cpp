@@ -10,8 +10,10 @@ class tsvd_format{
     Tensor3D<datatype> U,Theta,V;
 };
 
-template <class datatype>
-tsvd_format<datatype> tsvd(Tensor3D<datatype>& a) {
+namespace TensorLet_decomposition {
+
+    template<class datatype>
+    tsvd_format<datatype> tsvd(Tensor3D<datatype> &a) {
 //    int *shape = a.getsize();  //dimension
 //    int n1 = shape[0]; int n2 =shape[1]; int n3 = shape[2];
 //    int N0 = floor(n3/2.0)+1;
@@ -142,8 +144,10 @@ tsvd_format<datatype> tsvd(Tensor3D<datatype>& a) {
 //    c.V = V;
 //
 //    return c;
-}
+    }
 
+
+}
 
 
 

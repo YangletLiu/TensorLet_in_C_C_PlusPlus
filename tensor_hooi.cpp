@@ -4,6 +4,13 @@
 #include "tensor.h"
 #include "Tensor3D.h"
 
+
+namespace TensorLet_decomposition {
+
+
+
+}
+
 //template<class datatype>
 //class tucker_format{
 //    Tensor3D<datatype> core;

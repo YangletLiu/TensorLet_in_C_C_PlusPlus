@@ -12,8 +12,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0124bdfe-1649-499c-ac86-562eb01387b8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tensor3D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Tensor3D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tensor3D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Tensor3D.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/Tensor3D.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/Tensor3D.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/cp_als.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/cp_als.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/t_svd.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/t_svd.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/tensor_hooi.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/tensor_hooi.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/tensor_train.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/tensor_train.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/tucker_hosvd.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/tucker_hosvd.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/tensor" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/tensor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cp_als.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cp_als.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/t_svd.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/t_svd.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tensor_hooi.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tensor_hooi.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tensor_train.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tensor_train.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tucker_hosvd.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tucker_hosvd.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,20 +49,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tensor3D.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="106" column="36" selection-start-line="106" selection-start-column="36" selection-end-line="106" selection-end-column="36" />
+            <state relative-caret-position="143">
+              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Tensor3D.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+            <state relative-caret-position="294">
+              <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
               <folding>
                 <element signature="e#38#57#0" expanded="true" />
                 <element signature="e#89#105#0" expanded="true" />
@@ -62,8 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6">
-              <caret line="48" column="18" lean-forward="true" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+            <state relative-caret-position="525">
+              <caret line="68" column="7" selection-start-line="68" selection-start-column="7" selection-end-line="68" selection-end-column="7" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -74,8 +89,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cp_als.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="49" column="27" lean-forward="true" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
+            <state relative-caret-position="135">
+              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
               <folding>
                 <element signature="e#38#57#0" expanded="true" />
                 <element signature="e#146#162#0" expanded="true" />
@@ -87,8 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tensor_hooi.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+            <state relative-caret-position="90">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#38#57#0" expanded="true" />
               </folding>
@@ -99,8 +114,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/t_svd.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="51" lean-forward="true" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
+            <state relative-caret-position="339">
+              <caret line="149" column="1" selection-start-line="149" selection-start-column="1" selection-end-line="149" selection-end-column="1" />
               <folding>
                 <element signature="e#39#58#0" expanded="true" />
                 <element signature="e#173#189#0" expanded="true" />
@@ -110,38 +125,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tensor_train.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-              <folding>
-                <element signature="e#38#57#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tucker_hosvd.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="36" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="36" />
+            <state relative-caret-position="225">
+              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
               <folding>
                 <element signature="e#39#58#0" expanded="true" />
                 <element signature="e#193#209#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tensor.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
-              <folding>
-                <element signature="e#88#105#0" expanded="true" />
-                <element signature="e#360#377#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -160,22 +150,22 @@
         <option value="$PROJECT_DIR$/runningtime.h" />
         <option value="$PROJECT_DIR$/interface.h" />
         <option value="$PROJECT_DIR$/tensor.h" />
-        <option value="$PROJECT_DIR$/Tensor3D.cpp" />
         <option value="$PROJECT_DIR$/cpgen.cpp" />
         <option value="$PROJECT_DIR$/cp_als.cpp" />
-        <option value="$PROJECT_DIR$/Tensor3D.h" />
-        <option value="$PROJECT_DIR$/tucker_hosvd.cpp" />
         <option value="$PROJECT_DIR$/tensor_hooi.cpp" />
-        <option value="$PROJECT_DIR$/tensor_train.cpp" />
         <option value="$PROJECT_DIR$/t_svd.cpp" />
+        <option value="$PROJECT_DIR$/tucker_hosvd.cpp" />
+        <option value="$PROJECT_DIR$/tensor_train.cpp" />
+        <option value="$PROJECT_DIR$/Tensor3D.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/Tensor3D.cpp" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="217" />
-    <option name="y" value="83" />
-    <option name="width" value="1303" />
+    <option name="x" value="483" />
+    <option name="y" value="96" />
+    <option name="width" value="1100" />
     <option name="height" value="909" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -249,23 +239,22 @@
       <workItem from="1546916945933" duration="100000" />
       <workItem from="1546917061825" duration="126000" />
       <workItem from="1546917203445" duration="750000" />
-      <workItem from="1546922829592" duration="27692000" />
+      <workItem from="1546922829592" duration="35015000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103647000" />
+    <option name="totallyTimeSpent" value="110970000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="320" y="87" width="1303" height="909" extended-state="0" />
-    <editor active="true" />
+    <frame x="483" y="96" width="1100" height="909" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2733068" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2823194" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49955946" visible="true" weight="0.32439336" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49955946" weight="0.32439336" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39974457" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -359,6 +348,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/t_svd.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="149" column="1" selection-start-line="149" selection-start-column="1" selection-end-line="149" selection-end-column="1" />
+          <folding>
+            <element signature="e#39#58#0" expanded="true" />
+            <element signature="e#173#189#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensor_train.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+          <folding>
+            <element signature="e#38#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tensor.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -372,8 +382,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tucker_hosvd.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="36" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="36" />
+        <state relative-caret-position="225">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
           <folding>
             <element signature="e#39#58#0" expanded="true" />
             <element signature="e#193#209#0" expanded="true" />
@@ -381,31 +391,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tensor_train.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#38#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/t_svd.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="51" lean-forward="true" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
-          <folding>
-            <element signature="e#39#58#0" expanded="true" />
-            <element signature="e#173#189#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tensor_hooi.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
             <element signature="e#38#57#0" expanded="true" />
           </folding>
@@ -414,8 +403,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cp_als.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="49" column="27" lean-forward="true" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
+        <state relative-caret-position="135">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
           <folding>
             <element signature="e#38#57#0" expanded="true" />
             <element signature="e#146#162#0" expanded="true" />
@@ -423,10 +412,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Tensor3D.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="48" column="18" lean-forward="true" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+        <state relative-caret-position="525">
+          <caret line="68" column="7" selection-start-line="68" selection-start-column="7" selection-end-line="68" selection-end-column="7" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -435,8 +431,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Tensor3D.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+        <state relative-caret-position="294">
+          <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
           <folding>
             <element signature="e#38#57#0" expanded="true" />
             <element signature="e#89#105#0" expanded="true" />
@@ -444,13 +440,6 @@
             <element signature="e#1185#1201#0" expanded="true" />
             <element signature="e#1293#1309#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tensor3D.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="106" column="36" selection-start-line="106" selection-start-column="36" selection-end-line="106" selection-end-column="36" />
         </state>
       </provider>
     </entry>

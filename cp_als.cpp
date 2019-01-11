@@ -10,6 +10,7 @@ template <class datatype>
 class cp_format{
     datatype* A,B,C;
 };
+namespace TensorLet_decomposition{
 
 template<class datatype>
 cp_format<datatype> cp_als(Tensor3D<datatype> &a, int r, int max_iter = 1, datatype tolerance = 1e-6) {
@@ -90,4 +91,6 @@ cp_format<datatype> cp_als(Tensor3D<datatype> &a, int r, int max_iter = 1, datat
     result0.C = C;
 
     return result0;
+}
+
 }

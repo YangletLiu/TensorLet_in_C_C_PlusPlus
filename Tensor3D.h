@@ -32,7 +32,7 @@ public:
     inline MKL_INT elements_number();
     double frobenius_norm();
 
-    Tensor3D<datatype> random_tensor(MKL_INT, MKL_INT, MKL_INT);
+    Tensor3D<datatype>& random_tensor();
 
 
     datatype* tens2mat(datatype *, int mode);

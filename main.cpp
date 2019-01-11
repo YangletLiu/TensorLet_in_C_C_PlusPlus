@@ -59,22 +59,15 @@ int main(){
     cout << "time:" <<t1-t0 <<endl;
     mkl_free(p);
 
-//随机数生成
     t0=gettime();
-    double r[1000000];
-    VSLStreamStatePtr stream;
-    vslNewStream(&stream,VSL_BRNG_MCG31, 1);
-    vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,1000000,r,0,1);
-    cout << r[999999] << " " << r[1000000]<< endl;
-//    for (int i=1;i<2;i++){
-//        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,100,r,0,1);
-////        cout << r[0] << endl;
-//        printf("%e \n",r[0]);
+    a.random_tensor();
+    t1=gettime();
+    cout << "random time:" <<t1-t0 <<endl;
+
+//    for (int i = 0; i<n1*n2*n3; i++){
+//        cout << a.pointer[i] << endl;
 //    }
 
-    vslDeleteStream(&stream);
-    t1=gettime();
-    cout << "time:" <<t1-t0 <<endl;
 
 //    MKLVersion Version;
 //    mkl_get_version(&Version);
@@ -90,11 +83,28 @@ int main(){
 
     cout << "hello" << endl;
 
-// alloc memory
+//how to calloc memory
 //    double *cc = (double*)mkl_calloc(10000,sizeof(double),64);  //返回成功为1
 //    cout << sizeof(cc) << endl;
 //    cout << cc << endl;
 //    mkl_free(cc);
+
+
+//随机数生成
+//    t0=gettime();
+//    double r[12];
+//    VSLStreamStatePtr stream;
+//    vslNewStream(&stream,VSL_BRNG_MCG31, 1);
+//    vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,12,r,0,1);
+//    cout << r[11] << " " << r[1]<< endl;
+//    for (int i=1;i<2;i++){
+//        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,100,r,0,1);
+////        cout << r[0] << endl;
+//        printf("%e \n",r[0]);
+//    }
+//    vslDeleteStream(&stream);
+//    t1=gettime();
+//    cout << "time:" <<t1-t0 <<endl;
 
     return 0;
 }

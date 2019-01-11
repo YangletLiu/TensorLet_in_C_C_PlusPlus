@@ -11,8 +11,12 @@ class tucker_format{
     datatype* u1,u2,u3;
 };
 
-template<class datatype>
-tucker_format<datatype> tucker_hosvd(Tensor3D<datatype> &a, int r1, int r2, int r3) {
+namespace TensorLet_decomposition {
+
+    template<class datatype>
+    tucker_format<datatype> tucker_hosvd(Tensor3D<datatype> &a, int r1, int r2, int r3) {
+
+    }
 
 }
 //

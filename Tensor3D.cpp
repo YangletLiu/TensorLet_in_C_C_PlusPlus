@@ -46,10 +46,22 @@ bool Tensor3D<datatype>::operator==(const Tensor3D<datatype> &) {
 }
 
 template<class datatype>
-Tensor3D<datatype> Tensor3D<datatype>::random_tensor(MKL_INT n1, MKL_INT n2, MKL_INT n3) {
-    Tensor3D<datatype> random(n1,n2,n3);
+Tensor3D<datatype>& Tensor3D<datatype>::random_tensor() {
+    MKL_INT n1 = shape[0];
+    MKL_INT n2 = shape[1];
+    MKL_INT n3 = shape[2];
 
-    return random;
+    VSLStreamStatePtr stream;
+    vslNewStream(&stream,VSL_BRNG_MCG31, 1);
+
+// element initialize
+    for (int i =0; i<n1*n2*n3;i++){
+        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,2,pointer+i,0,1);
+//        pointer[i] = r[1];
+    }
+    vslDeleteStream(&stream);
+
+    return *this;
 }
 
 // element-wise add
