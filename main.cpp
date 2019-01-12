@@ -18,7 +18,7 @@ using namespace std;
 
 int main(){
     MKL_INT n1,n2,n3;
-    n1=n2=n3=100;
+    n1=n2=n3=1000;
 
     double t0,t1;
 
@@ -37,30 +37,29 @@ int main(){
 
     MKL_INT aa[3]={10,10,10};
     Tensor3D<double> b(aa); // int array
-    b = a;
-    b += a;
+//    b = a;
+//    b += a;
     cout << "shape: " << b.getsize()[2] << '\n';
     b.random_tensor();
     for (int i = 0; i<1000; i++){
         cout << b.pointer[i] << endl;
     }
 
-
     Tensor3D<double> vd(a);
     cout << "shape: " << vd.getsize()[1] << endl;
 
     MKL_INT k = 2;
-    b = k*a;
-    b = a*b;
+//    b = k*a;
+//    b = a*b;
 //    b = a+b+a;
 
 
-    t0=gettime();
-    double * p = (double*)mkl_calloc(1000000,sizeof(double),64);
-    p = a.tens2mat(p,1);  //函数内声明后 调用
-    t1=gettime();
-    cout << "time:" <<t1-t0 <<endl;
-    mkl_free(p);
+//    t0=gettime();
+//    double * p = (double*)mkl_calloc(1000000,sizeof(double),64);
+//    p = a.tens2mat(p,1);  //函数内声明后 调用
+//    t1=gettime();
+//    cout << "time:" <<t1-t0 <<endl;
+//    mkl_free(p);
 
     t0=gettime();
     a.random_tensor();
@@ -68,7 +67,10 @@ int main(){
     cout << "random time:" <<t1-t0 <<endl;
     cout << a.pointer[0] << endl;
     cout << a.pointer[1] << endl;
-    cout << a.pointer[2] << endl;
+    cout << a.pointer[997002998] << endl;
+    cout << a.pointer[999999999] << endl;
+    cout << a.pointer[1000000000] << endl;
+
     cout << "norm: " << a.frobenius_norm() << endl;
 
 //    for (int i = 0; i<n1*n2*n3; i++){
