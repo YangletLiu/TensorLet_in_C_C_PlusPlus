@@ -45,6 +45,8 @@ bool Tensor3D<datatype>::operator==(const Tensor3D<datatype> &) {
     return 0;
 }
 
+// element initialize  slow
+// need 1000000 judge NULL
 template<class datatype>
 Tensor3D<datatype>& Tensor3D<datatype>::random_tensor() {
     MKL_INT n1 = shape[0];
@@ -52,15 +54,23 @@ Tensor3D<datatype>& Tensor3D<datatype>::random_tensor() {
     MKL_INT n3 = shape[2];
 
     VSLStreamStatePtr stream;
-    vslNewStream(&stream,VSL_BRNG_MCG31, 1);
-
-// element initialize
-    for (int i =0; i<n1*n2*n3;i++){
-        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,2,pointer+i,0,1);
-//        pointer[i] = r[1];
+    vslNewStream(&stream,VSL_BRNG_MCG59, 1);
+    if(n1*n2*n3 <= 100000){
+        for (int i =0; i<n1*n2*n3;i++) {
+            vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,1000000,pointer,0,1);
+        }
     }
+    else{
+        MKL_INT J = n1*n2*n3/100000;
+        MKL_INT I = J*100000;
+        MKL_INT remainder = n1*n2*n3 -J * 100000;
+        for (int i =0; i<J; i++) {
+            vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,1000000,pointer+i,0,1);
+        }
+        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,remainder,pointer+I,0,1);
+    }
+    vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,1,pointer,0,1);
     vslDeleteStream(&stream);
-
     return *this;
 }
 

@@ -20,8 +20,6 @@ int main(){
     MKL_INT n1,n2,n3;
     n1=n2=n3=100;
 
-    MKL_INT aa[3]={10,10,10};
-
     double t0,t1;
 
     t0=gettime();
@@ -37,10 +35,15 @@ int main(){
     cout << "element a: " << a(2,2,2) << endl;
     cout << "norm: " << a.frobenius_norm() << endl;
 
+    MKL_INT aa[3]={10,10,10};
     Tensor3D<double> b(aa); // int array
     b = a;
     b += a;
     cout << "shape: " << b.getsize()[2] << '\n';
+    b.random_tensor();
+    for (int i = 0; i<1000; i++){
+        cout << b.pointer[i] << endl;
+    }
 
 
     Tensor3D<double> vd(a);
@@ -63,6 +66,10 @@ int main(){
     a.random_tensor();
     t1=gettime();
     cout << "random time:" <<t1-t0 <<endl;
+    cout << a.pointer[0] << endl;
+    cout << a.pointer[1] << endl;
+    cout << a.pointer[2] << endl;
+    cout << "norm: " << a.frobenius_norm() << endl;
 
 //    for (int i = 0; i<n1*n2*n3; i++){
 //        cout << a.pointer[i] << endl;
@@ -92,16 +99,16 @@ int main(){
 
 //随机数生成
 //    t0=gettime();
-//    double r[12];
+//    double r[10];
 //    VSLStreamStatePtr stream;
 //    vslNewStream(&stream,VSL_BRNG_MCG31, 1);
-//    vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,12,r,0,1);
+//    vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,10,r,0,1);
 //    cout << r[11] << " " << r[1]<< endl;
-//    for (int i=1;i<2;i++){
-//        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,100,r,0,1);
-////        cout << r[0] << endl;
-//        printf("%e \n",r[0]);
-//    }
+////    for (int i=1;i<2;i++){
+////        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,100,r,0,1);
+//////        cout << r[0] << endl;
+////        printf("%e \n",r[0]);
+////    }
 //    vslDeleteStream(&stream);
 //    t1=gettime();
 //    cout << "time:" <<t1-t0 <<endl;
