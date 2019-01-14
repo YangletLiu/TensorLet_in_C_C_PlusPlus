@@ -19,8 +19,7 @@ using namespace TensorLet_decomposition;
 
 int main(){
     MKL_INT n1,n2,n3;
-    n1=n2=n3=1;
-    n1=n2=2;
+    n1=n2=n3=200;
     double t0,t1;
     t0=gettime();
     Tensor3D<double> a(n1,n2,n3); //element
@@ -32,10 +31,11 @@ int main(){
     t1=gettime();
     cout << "Random initialize time:" <<t1-t0 <<endl;
 
-    double* tmp = (double*)mkl_malloc(n1*n1*sizeof(double),64);
-    cblas_dgemm(CblasColMajor,CblasNoTrans,CblasTrans,n1,n1,n2*n3,1,a.pointer,n1,a.pointer,n1,0,tmp,n1);
-
+    t0=gettime();
     cp_format<double> A = cp_als(a,10);
+    t1=gettime();
+    cout << "CP time:" <<t1-t0 <<endl;
+
     cout << "hello" << endl;
 
     return 0;
@@ -137,3 +137,16 @@ int main(){
 //    for (int i = 0; i<n1*n2*n3; i++){
 //        cout << a.pointer[i] << endl;
 //    }
+
+// 对称乘积
+//double* tmp = (double*)mkl_malloc(n1*n1*sizeof(double),64);
+//t0=gettime();
+////    cblas_dgemm(CblasColMajor,CblasNoTrans,CblasTrans,n1,n1,n2*n3,1,a.pointer,n1,a.pointer,n1,0,tmp,n1);
+//cblas_dsyrk(CblasColMajor,CblasUpper,CblasNoTrans,n1,n2*n3,1,a.pointer,n1,0,tmp,n1);
+//t1=gettime();
+//    cout << tmp[0] << endl;
+//    cout << tmp[1] << endl;
+//    cout << tmp[2] << endl;
+//    cout << tmp[n1] << endl;
+//    cout << tmp[n1+1] << endl;
+//cout << "Product time:" <<t1-t0 <<endl;
