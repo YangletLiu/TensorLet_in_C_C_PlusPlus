@@ -50,18 +50,7 @@ cp_format<datatype> cp_als(Tensor3D<datatype> &a, int r, int max_iter = 1, datat
     for(MKL_INT i=0;i<r;i++){
         cblas_dgemm(CblasColMajor,CblasNoTrans,CblasTrans,n2,n3,1,1,B+i*n2,n2,C+i*n3,n3,0,c_kr_b+i*n2*n3,n2*n3);  // kr(c,b)
     }
-//    for(int i=0;i<n2;i++){
-//        printf("B%f\n",B[i]);
-////        cout << c_kr_b[i] << endl;
-//    }
-//    for(int i=0;i<n3;i++){
-//        printf("C%f\n",C[i]);
-////        cout << c_kr_b[i] << endl;
-//    }
-//    for(int i=0;i<n2*n3;i++){
-//        printf("BC%f\n",c_kr_b[i]);
-////        cout << c_kr_b[i] << endl;
-//    }
+
     datatype* cal_a = (datatype*)mkl_malloc(n1*r*sizeof(datatype),64);
     cblas_dgemm(CblasColMajor,CblasNoTrans,CblasNoTrans,n1,r,n2*n3,1,a.pointer,n1,c_kr_b,n2*n3,0,cal_a,n1); // X(1) * kr(c,b)
     MKL_free(c_kr_b);
@@ -83,8 +72,6 @@ cp_format<datatype> cp_als(Tensor3D<datatype> &a, int r, int max_iter = 1, datat
 
 /*******update C********
  ***********************/
-
-
 
     cp_format<datatype> result0;
     result0.cp_A = A;
