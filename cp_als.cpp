@@ -42,8 +42,6 @@ cp_format<datatype> cp_als(Tensor3D<datatype> &a, int r, int max_iter = 1, datat
  ***********************/
     datatype* c_kr_b = (datatype*)mkl_malloc(n2*n3*r*sizeof(datatype),64);
 
-    MKL_INT i=0;
-
     for(MKL_INT i=0;i<r; i++){
         cblas_dgemm(CblasColMajor,CblasNoTrans,CblasTrans,n2,n3,1,1,B+i*n2,n2,C+i*n3,n3,0,c_kr_b+i*n2*n3,n2);  // kr(c,b)
     }
@@ -58,17 +56,21 @@ cp_format<datatype> cp_als(Tensor3D<datatype> &a, int r, int max_iter = 1, datat
     datatype* c_times_ct_times_b_times_bt = (datatype*)mkl_malloc(r*r*sizeof(datatype),64);
     datatype* c_times_ct_times_a_times_at = (datatype*)mkl_malloc(r*r*sizeof(datatype),64);
     datatype* b_times_bt_times_a_times_at = (datatype*)mkl_malloc(r*r*sizeof(datatype),64);
+
     cblas_dsyrk(CblasColMajor,CblasUpper,CblasTrans,r,r,n3,C,n3,0,c_times_ct,r);
     cblas_dsyrk(CblasColMajor,CblasUpper,CblasTrans,r,r,n2,B,n2,0,b_times_bt,r);
     vdMul(r*r,c_times_ct,b_times_bt,c_times_ct_times_b_times_bt);
-
     //pinv need test
-    int info = 0;
+    int info = -1;
     MKL_INT* ivpv=(MKL_INT*)mkl_malloc(r * sizeof(MKL_INT), 64);
-    datatype* work=(datatype*)mkl_malloc(r*sizeof(datatype),64);
-    dsytrf("U",&r,c_times_ct_times_b_times_bt,&r,ivpv,work,&r,&info);
-    dsytri("U", &r, c_times_ct_times_b_times_bt, &r, ivpv, work, &info);
-    cblas_dsymm(CblasColMajor, CblasRight, CblasUpper, n1, r, 1, cal_a, r, c_times_ct_times_b_times_bt,n1,0,A,n1);
+    datatype* work=(datatype*)mkl_malloc(r * sizeof(datatype),64);
+
+    MKL_INT order = r;
+    dsytrf("U",&order,c_times_ct_times_b_times_bt,&r,ivpv,work,&r,&info);
+    dsytri("U", &order, c_times_ct_times_b_times_bt, &r, ivpv, work, &info);
+
+//    cblas_dsymm(CblasColMajor, CblasRight, CblasUpper, n1, r, 1, cal_a, r, c_times_ct_times_b_times_bt,n1,0,A,n1);
+    cblas_dgemm(CblasColMajor,CblasNoTrans,CblasNoTrans,n1,r,r,1,cal_a,n1,c_times_ct_times_b_times_bt,r,0,A,n1);
 
     MKL_free(c_kr_b);
     MKL_free(cal_a);
@@ -88,8 +90,8 @@ cp_format<datatype> cp_als(Tensor3D<datatype> &a, int r, int max_iter = 1, datat
 
     dsytrf("U",&r,c_times_ct_times_a_times_at,&r,ivpv,work,&r,&info);
     dsytri("U", &r, c_times_ct_times_a_times_at, &r, ivpv, work, &info);
-    cblas_dsymm(CblasColMajor, CblasRight, CblasUpper, n2, r, 1, cal_b, r, c_times_ct_times_a_times_at,n2,0,B,n2);
 
+    cblas_dsymm(CblasColMajor, CblasRight, CblasUpper, n2, r, 1, cal_b, r, c_times_ct_times_a_times_at,n2,0,B,n2);
 
     MKL_free(c_kr_a);
     MKL_free(cal_b);
@@ -125,12 +127,12 @@ cp_format<datatype> cp_als(Tensor3D<datatype> &a, int r, int max_iter = 1, datat
     MKL_free(c_times_ct_times_a_times_at);
     MKL_free(b_times_bt_times_a_times_at);
 
-    cp_format<datatype> result0;
-    result0.cp_A = A;
-    result0.cp_B = B;
-    result0.cp_C = C;
+    cp_format<datatype> result;
+    result.cp_A = A;
+    result.cp_B = B;
+    result.cp_C = C;
 
-    return result0;
+    return result;
     }
 
 }

@@ -19,7 +19,9 @@ using namespace TensorLet_decomposition;
 
 int main(){
     MKL_INT n1,n2,n3;
-    n1=n2=n3=200;
+    n1=n2=n3=300;
+//    n1=100;
+//    n2=200;
     double t0,t1;
     t0=gettime();
     Tensor3D<double> a(n1,n2,n3); //element
@@ -31,12 +33,21 @@ int main(){
     t1=gettime();
     cout << "Random initialize time:" <<t1-t0 <<endl;
 
-
-
     t0=gettime();
-    cp_format<double> A = cp_als(a,40);
+    cp_format<double> A = cp_als(a,60);
     t1=gettime();
     cout << "CP time:" <<t1-t0 <<endl;
+
+    MKL_free(A.cp_A);
+    MKL_free(A.cp_B);
+    MKL_free(A.cp_C);
+
+    t0=gettime();
+    tucker_format<double> B = tucker_hosvd(a,60,60,60);
+    t1=gettime();
+    cout << "Tucker time:" <<t1-t0 <<endl;
+
+
 
     cout << "hello" << endl;
 
@@ -44,7 +55,6 @@ int main(){
 }
 
 //随机数生成
-
 //t0=gettime();
 //VSLStreamStatePtr stream;
 //vslNewStream(&stream,VSL_BRNG_MCG31, 1);
