@@ -116,6 +116,8 @@ cp_format<datatype> cp_als(Tensor3D<datatype> &a, int r, int max_iter = 1, datat
 
     MKL_free(cal_c);
 
+    MKL_free(ivpv);
+    MKL_free(work);
     MKL_free(a_times_at);
     MKL_free(b_times_bt);
     MKL_free(c_times_ct);
