@@ -31,8 +31,10 @@ int main(){
     t1=gettime();
     cout << "Random initialize time:" <<t1-t0 <<endl;
 
+
+
     t0=gettime();
-    cp_format<double> A = cp_als(a,10);
+    cp_format<double> A = cp_als(a,40);
     t1=gettime();
     cout << "CP time:" <<t1-t0 <<endl;
 
