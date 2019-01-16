@@ -11,15 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0124bdfe-1649-499c-ac86-562eb01387b8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/cp_als.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/cp_als.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/tensor" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/tensor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cp_als.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cp_als.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tucker_hosvd.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tucker_hosvd.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="0124bdfe-1649-499c-ac86-562eb01387b8" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -158,9 +150,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="226" />
-    <option name="y" value="76" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-3" />
+    <option name="y" value="90" />
     <option name="width" value="1516" />
     <option name="height" value="909" />
   </component>
@@ -238,12 +230,12 @@
       <workItem from="1546922829592" duration="35015000" />
       <workItem from="1547187258659" duration="1525000" />
       <workItem from="1547189741946" duration="8875000" />
-      <workItem from="1547282004942" duration="41708000" />
+      <workItem from="1547282004942" duration="42307000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163078000" />
+    <option name="totallyTimeSpent" value="163677000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="226" y="76" width="1516" height="909" extended-state="0" />
