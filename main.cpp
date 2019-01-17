@@ -19,7 +19,7 @@ using namespace TensorLet_decomposition;
 
 int main(){
     MKL_INT n1,n2,n3;
-    n1=n2=n3=300;
+    n1=n2=n3=400;
 //    n1=100;
 //    n2=200;
     double t0,t1;
@@ -34,7 +34,18 @@ int main(){
     cout << "Random initialize time:" <<t1-t0 <<endl;
 
     t0=gettime();
-    cp_format<double> A = cp_als(a,60);
+    tucker_format<double> B = tucker_hosvd(a,80,80,80);
+    t1=gettime();
+    cout << "Tucker time:" <<t1-t0 <<endl;
+
+    MKL_free(B.core);
+    MKL_free(B.u1);
+    MKL_free(B.u2);
+    MKL_free(B.u3);
+
+
+    t0=gettime();
+    cp_format<double> A = cp_als(a,80);
     t1=gettime();
     cout << "CP time:" <<t1-t0 <<endl;
 
@@ -43,9 +54,9 @@ int main(){
     MKL_free(A.cp_C);
 
     t0=gettime();
-    tucker_format<double> B = tucker_hosvd(a,60,60,60);
+    tsvd_format<double> C = tsvd(a);
     t1=gettime();
-    cout << "Tucker time:" <<t1-t0 <<endl;
+    cout << "tsvd time:" <<t1-t0 <<endl;
 
 //    t0=gettime();
 //    double* X1_times_X1T = (double*)mkl_malloc(n1*n1*sizeof(double),64);

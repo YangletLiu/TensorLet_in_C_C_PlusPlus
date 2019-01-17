@@ -7,8 +7,11 @@
 
 template<class datatype>
 class tucker_format{
-    Tensor3D<datatype>* core;
-    datatype* u1,u2,u3;
+public:
+    datatype* core;
+    datatype* u1;
+    datatype* u2;
+    datatype* u3;
 };
 
 namespace TensorLet_decomposition {
@@ -80,6 +83,11 @@ namespace TensorLet_decomposition {
         MKL_free( (void*)w3 );
 
         tucker_format<datatype> result;
+        result.core = g;
+        result.u1 = X1_times_X1T;
+        result.u2 = X2_times_X2T;
+        result.u3 = X3_times_X3T;
+
 
         return result;
 
