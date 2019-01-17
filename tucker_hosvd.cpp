@@ -31,7 +31,36 @@ namespace TensorLet_decomposition {
 
         cblas_dsyrk(CblasRowMajor,CblasUpper,CblasNoTrans,n3,n3,1,a.pointer,n1,0,X3_times_X3T,n1);  //x3*x3^t
 
+        int info1, info2, info3;
+        double* w1 = (double*)mkl_malloc(n1*sizeof(double),64);
+        double* w2 = (double*)mkl_malloc(n1*sizeof(double),64);
+        double* w3 = (double*)mkl_malloc(n1*sizeof(double),64);
 
+        /* Solve eigenproblem */
+        info1 = LAPACKE_dsyevd( LAPACK_COL_MAJOR, 'V', 'U', n1, X1_times_X1T, n1, w1 );
+
+        info2 = LAPACKE_dsyevd( LAPACK_COL_MAJOR, 'V', 'U', n2, X2_times_X2T, n2, w2 );
+
+        info3 = LAPACKE_dsyevd( LAPACK_ROW_MAJOR, 'V', 'U', n3, X3_times_X3T, n3, w3 );
+
+        /* print eigenvalue */
+//        for(int i = 0; i < n1*n1; i++ ) {
+//            printf( " %6.2f \n", X1_times_X1T[i] );
+//        }
+//        for(int i = 0; i < n1; i++ ) {
+//            printf( " %7.2f, %7.2f, %7.2f \n", w1[i], w2[i], w3[i]);
+//        }
+
+        /* Check for convergence */
+        if( info1 > 0 || info2 >0 || info3 >0) {
+            printf( "The algorithm failed to compute eigenvalues.\n" );
+            exit( 1 );
+        }
+
+        /* Free workspace */
+        MKL_free( (void*)w1 );
+        MKL_free( (void*)w2 );
+        MKL_free( (void*)w3 );
 
         tucker_format<datatype> result;
 //        result.tucker_u1 = A;
