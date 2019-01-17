@@ -47,7 +47,19 @@ int main(){
     t1=gettime();
     cout << "Tucker time:" <<t1-t0 <<endl;
 
-
+//    t0=gettime();
+//    double* X1_times_X1T = (double*)mkl_malloc(n1*n1*sizeof(double),64);
+//    double* X2_times_X2T = (double*)mkl_malloc(n1*n1*sizeof(double),64);
+//    double* X3_times_X3T = (double*)mkl_malloc(n1*n1*sizeof(double),64);
+//
+//    cblas_dsyrk(CblasColMajor,CblasUpper,CblasNoTrans,n1,n2*n3,1,a.pointer,n1,0,X1_times_X1T,n1);  //x1*x1^t
+//    for(MKL_INT i=0;i<n3;i++){
+//        cblas_dsyrk(CblasColMajor,CblasUpper,CblasTrans, n2, n1, 1, a.pointer+i*n1*n2, n1, 1, X2_times_X2T,n2);  // X(2) * X2^t rank update
+//    }
+//    cblas_dsyrk(CblasRowMajor,CblasUpper,CblasNoTrans,n3,n1*n2,1,a.pointer,n1*n2,0,X3_times_X3T,n3);  //x3*x3^t
+//
+//    t1=gettime();
+//    cout << "Tucker time:" <<t1-t0 <<endl;
 
     cout << "hello" << endl;
 
