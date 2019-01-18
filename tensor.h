@@ -21,6 +21,7 @@
 #include <fftw3.h>
 #include "mkl.h"
 #include "mkl_vsl.h"
+#include "mkl_dfti.h"
 
 //#include "mkl_service.h"
 #include "time.h"

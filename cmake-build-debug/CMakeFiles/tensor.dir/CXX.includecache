@@ -97,6 +97,8 @@ mkl.h
 /home/jcfei/Desktop/TensorLet_C/mkl.h
 mkl_vsl.h
 /home/jcfei/Desktop/TensorLet_C/mkl_vsl.h
+mkl_dfti.h
+/home/jcfei/Desktop/TensorLet_C/mkl_dfti.h
 time.h
 /home/jcfei/Desktop/TensorLet_C/time.h
 omp.h
