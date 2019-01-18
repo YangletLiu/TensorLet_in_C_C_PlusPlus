@@ -14,18 +14,18 @@ namespace TensorLet_decomposition {
 
     template<class datatype>
     tsvd_format<datatype> tsvd(Tensor3D<datatype> &a) {
-//        int *shape = a.getsize();  //dimension
-//        int n1 = shape[0]; int n2 =shape[1]; int n3 = shape[2];
-//
-//        int N0 = floor(n3/2.0)+1;
-//        cout << "N0 " << N0 <<endl;
-//
-//    Tensor3D<datatype> v_t(n1,n2,2*N0);
-//    fftw_complex out[N0]; //fftw_alloc_real()
-//    double *in = fftw_alloc_real(n3);
-//    fftw_plan p_fft;
-//    p_fft = fftw_plan_dft_r2c_1d(n3, in, out, FFTW_ESTIMATE);
-//    p_fft=fftw_plan_dft_r2c_1d(n3,in,out,FFTW_MEASURE);
+        int *shape = a.getsize();  //dimension
+        int n1 = shape[0]; int n2 =shape[1]; int n3 = shape[2];
+
+        int N0 = floor(n3/2.0)+1;
+        cout << "N0 " << N0 <<endl;
+
+    Tensor3D<datatype> v_t(n1,n2,2*N0);
+    fftw_complex out[N0]; //fftw_alloc_real()
+    double *in = fftw_alloc_real(n3);
+    fftw_plan p_fft;
+    p_fft = fftw_plan_dft_r2c_1d(n3, in, out, FFTW_ESTIMATE);
+    p_fft=fftw_plan_dft_r2c_1d(n3,in,out,FFTW_MEASURE);
 
 ////#pragma omp parallel for num_threads(8)
 //    datatype* vex;   // 长度 n3
