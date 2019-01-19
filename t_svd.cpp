@@ -41,7 +41,6 @@ namespace TensorLet_decomposition {
         }
 
         float _Complex y[32][100][10]; /* 10 = 19/2 + 1 */
-
         DFTI_DESCRIPTOR_HANDLE my_desc_handle;
         MKL_LONG status, l[3];
         MKL_LONG strides_out[4];
@@ -63,6 +62,8 @@ namespace TensorLet_decomposition {
         status = DftiCommitDescriptor(my_desc_handle);
         status = DftiComputeForward(my_desc_handle, x, y);
         status = DftiFreeDescriptor(&my_desc_handle);
+/* result is the complex value z(j,k,s) 0<=j<=31; 0<=k<=99, 0<=s<=9
+and is stored in complex matrix y in CCE format. */
 
         int count=0;
         for(int i=0;i<32;i++){
@@ -75,9 +76,6 @@ namespace TensorLet_decomposition {
             }
         }
         cout << count << endl;
-
-/* result is the complex value z(j,k,s) 0<=j<=31; 0<=k<=99, 0<=s<=9
-and is stored in complex matrix y in CCE format. */
 
 
 ////#pragma omp parallel for num_threads(8)
