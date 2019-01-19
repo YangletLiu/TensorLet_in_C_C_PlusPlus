@@ -54,7 +54,8 @@ For example, you can link MKL in  CMakeLists.txt file like:
 ##### TensorLet provides basic tensor algebraic operations, such as addition and different multiplication methods. In TensorLet, all third order tensors are objects of the Tensor3D template class and all matrix are objects of the Mat template class, which provided by the third party library Eigen/MKL. You can refer to Class list for more details.
 	
 #### Examples
-	Tensor3D<double> tensor = random(10,10,10);	// Creating a tensor
+	Tensor3D<double> tensor (10,10,10);	// Creating a tensor
+	tensor.random();                        // Random initialization
 	Mat<double> A = tensor.unfold(1);	// mode-1 unfolding  
 	Mat<double> B = tensor.unfold(2);	// mode-2 unfolding  
 	Mat<double> C = tensor.unfold(3);	// mode-3 unfolding  
