@@ -33,6 +33,11 @@ int main(){
     t1=gettime();
     cout << "Random initialize time:" <<t1-t0 <<endl;
 
+    VSLStreamStatePtr stream;
+    vslNewStream(&stream,VSL_BRNG_MCG59, 1);
+    vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,n1*n2*n3,a.pointer,0,1);
+    vslDeleteStream(&stream);
+
     t0=gettime();
     tucker_format<double> B = tucker_hosvd(a,80,80,80);
     t1=gettime();

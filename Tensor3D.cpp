@@ -55,41 +55,56 @@ Tensor3D<datatype>& Tensor3D<datatype>::random_tensor() {
 
     if(n1*n2*n3 <= 100000){
         srand((unsigned)time(NULL));
+
         MKL_INT SEED = rand();  //随机初始化
+
         VSLStreamStatePtr stream;
-        vslNewStream(&stream,VSL_BRNG_MCG59, SEED);
-        for (int i =0; i<n1*n2*n3;i++) {
-            vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,n1*n2*n3,pointer,0,1);
-        }
+
+        vslNewStream(&stream, VSL_BRNG_MCG59, SEED);
+
+        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD, stream, n1*n2*n3, pointer, 0, 1);
+
         vslDeleteStream(&stream);
+
     }
     else{
         MKL_INT J = n1*n2*n3/100000;
         MKL_INT I = J*100000;
         MKL_INT remainder = n1*n2*n3 - J * 100000;
+
         for (int i =0; i < J; i++) {
             srand((unsigned)time(NULL));
             MKL_INT SEED = rand();
+
             VSLStreamStatePtr stream;
-            vslNewStream(&stream,VSL_BRNG_MCG59, SEED);
+            vslNewStream(&stream, VSL_BRNG_MCG59, SEED);
+
             MKL_LONG I0 = i*100000;
             double* p = pointer + I0;
-            vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,100000,p,0,1);
+
+            vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD, stream, 100000, p, 0, 1);
+
             vslDeleteStream(&stream);
         }
+
         MKL_INT SEED = rand();
         srand((unsigned)time(NULL));
+
         VSLStreamStatePtr stream;
-        vslNewStream(&stream,VSL_BRNG_MCG59, SEED);
-        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,remainder,pointer+I,0,1);
+        vslNewStream(&stream, VSL_BRNG_MCG59, SEED);
+
+        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD, stream, remainder, pointer+I, 0, 1);
     }
+
     VSLStreamStatePtr stream;
     MKL_INT SEED = rand();  //随机初始化
     srand((unsigned)time(NULL));
+
     double p[2];
-    vslNewStream(&stream,VSL_BRNG_MCG59, SEED);
-    vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,2,p,0,1);
-    *pointer = p[1];
+    vslNewStream(&stream, VSL_BRNG_MCG59, SEED);
+    vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD, stream, 2, p, 0, 1);
+
+    pointer[0] = p[1];
     vslDeleteStream(&stream);
 
     return *this;

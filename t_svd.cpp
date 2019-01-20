@@ -7,7 +7,9 @@
 
 template<class datatype>
 class tsvd_format{
-    Tensor3D<datatype> U,Theta,V;
+    Tensor3D<datatype>* U;
+    Tensor3D<datatype>* Theta;
+    Tensor3D<datatype>* V;
 };
 
 namespace TensorLet_decomposition {
@@ -18,10 +20,15 @@ namespace TensorLet_decomposition {
         int n1 = shape[0]; int n2 =shape[1]; int n3 = shape[2];
 
         int N0 = floor(n3/2.0)+1;
-//        cout << n3 << n2 << n1 << " " << N0 <<endl;
+        cout << n3 << n2 << n1 << " " << N0 <<endl;
 
+// fft(a,[],3)  mkl fft r2c
+//      for(int i=0;i<n1*n2*n3;i++){
+//            a.pointer[i] = i;
+//        }
 
-        MKL_Complex16* fft_x = (MKL_Complex16*)MKL_malloc(n1*n2*n3*sizeof(MKL_Complex16),64);
+        MKL_Complex16* fft_x = (MKL_Complex16*)MKL_malloc(n1*n2*N0*sizeof(MKL_Complex16),64);
+
         DFTI_DESCRIPTOR_HANDLE desc_z;
 
         MKL_LONG strides_z[] = {0, n1*n2};
@@ -36,34 +43,57 @@ namespace TensorLet_decomposition {
         status = DftiSetValue( desc_z,
                 DFTI_CONJUGATE_EVEN_STORAGE, DFTI_COMPLEX_COMPLEX);
 
-        DftiSetValue(desc_z,
+        status = DftiSetValue(desc_z,
                 DFTI_INPUT_STRIDES,  strides_z);
-        DftiSetValue(desc_z,
+        status = DftiSetValue(desc_z,
                 DFTI_OUTPUT_STRIDES,  strides_z);
 
         status = DftiCommitDescriptor( desc_z );
-        status = DftiComputeForward(desc_z, a.pointer, fft_x );
 
         for(int i=0; i < n1*n2; i++){
             status = DftiComputeForward( desc_z, a.pointer+i, fft_x+i);
         }
 
+//        for(int i=0; i< n1*n2+10; i++){
+//            cout << i << " "  << fft_x[i].real << " " << fft_x[i].imag << endl;
+//        }
+
         status = DftiFreeDescriptor( &desc_z );
 
+        #define M 3
+        #define N 4
+        #define LDA M
+        #define LDU M
+        #define LDVT N
+        /* Locals */
+        MKL_INT m = M, n = N, lda = LDA, ldu = LDU, ldvt = LDVT, info;
+        /* Local arrays */
+        double s[M];
+        double superb[min(M,N)-1];
+        MKL_Complex16 u[LDU*M], vt[LDVT*N];
+        MKL_Complex16 x[LDA*N] = {
+                { 5.91, -5.69}, {-3.15, -4.08}, {-4.89,  4.20},
+                { 7.09,  2.72}, {-1.89,  3.27}, { 4.10, -6.70},
+                { 7.78, -4.06}, { 4.57, -2.07}, { 3.28, -3.84},
+                {-0.79, -7.21}, {-3.88, -3.30}, { 3.84,  1.19}
+        };
+        cout << x[0].imag << " " << x[0].real << endl;
 
-////#pragma omp parallel for num_threads(8)
-//    datatype* vex;   // 长度 n3
-//    for (int i = 0; i < n1; i++) {
-//        for (int j = 0; j < n2; j++) {
-//            vex = a.tube(i,j);   //第三维赋值
-//            in = vex;
-//            fftw_execute_dft_r2c(p_fft, in, out);
-//            for (int k = 0; k < N0; k++) {
-//                v_t(i,j,k) = out[k][0];
-//                v_t(i,j,N0+k) = out[k][1];
-//            }               //局部变量归零了？？
-//        }
-//    }
+        /* Executable statements */
+        printf( "LAPACKE_zgesvd (column-major, high-level) Example Program Results\n" );
+        /* Compute SVD */
+        info = LAPACKE_zgesvd( LAPACK_COL_MAJOR, 'A', 'A', m, n, x, lda, s,
+                               u, ldu, vt, ldvt, superb );
+
+//        cout << x[0].imag << " " << x[0].real << endl;
+//        cout << s[0] << endl;
+//        cout << u[0].imag << " " << u[0].real << endl;
+
+        /* Check for convergence */
+        if( info > 0 ) {
+            printf( "The algorithm computing SVD failed to converge.\n" );
+            exit( 1 );
+        }
 
 //    Tensor3D<datatype> uf(n1,n1,N0),uf1(n1,n1,N0);
 //    Tensor3D<datatype> theta(n1,n2,N0);
@@ -182,9 +212,7 @@ namespace TensorLet_decomposition {
 //
 //        MKL_Complex16* fft_x = (MKL_Complex16*)mkl_malloc(n1*n2*(n3/2+1)*sizeof(MKL_Complex16),64);
 //
-//
 
-//
 //        int count=0;
 //        for(int i=0;i<32;i++){
 //            for(int j=0;j<100;j++){
@@ -276,18 +304,18 @@ namespace TensorLet_decomposition {
 
 
 //一维fft变换
-//        float x_in[32];
-//        for(int i=0;i<32;i++){
-//            x_in[i] = 1;
+//        float x_in[35];
+//        for(int i=0;i<35;i++){
+//            x_in[i] = i;
 //        }
-//        MKL_Complex8 y_out[32];
+//        MKL_Complex8 y_out[35];
 //
 //        DFTI_DESCRIPTOR_HANDLE my_desc1_handle;
 //
-//        MKL_LONG strides_test[] = {0, 4};
+//        MKL_LONG strides_test[] = {0, 5};
 //        MKL_LONG status_test;
 //        status_test = DftiCreateDescriptor( &my_desc1_handle,
-//                DFTI_SINGLE, DFTI_REAL, 1, 8);
+//                DFTI_SINGLE, DFTI_REAL, 1, 7);
 //
 //        status_test = DftiSetValue( my_desc1_handle,
 //                DFTI_PLACEMENT, DFTI_NOT_INPLACE);
@@ -299,12 +327,81 @@ namespace TensorLet_decomposition {
 //        DftiSetValue(my_desc1_handle,  DFTI_OUTPUT_STRIDES,  strides_test);
 //
 //        status_test = DftiCommitDescriptor( my_desc1_handle );
-//        for(int i=0; i < 4; i++){
+//        for(int i=0; i < 5; i++){
 //            status_test = DftiComputeForward( my_desc1_handle, x_in + i, y_out+i);
 //        }
-////        status_test = DftiComputeForward( my_desc1_handle, x_in, y_out);
 //        status_test = DftiFreeDescriptor( &my_desc1_handle );
-
-//        for(int i=0;i<17;i++){
+//
+//        for(int i=0;i<35;i++){
 //            cout << y_out[i].real << " " << y_out[i].imag << endl;
 //        }
+
+
+//  1d fftw
+//        fftw_complex out1[N0]; //fftw_alloc_real()
+//        double *in = fftw_alloc_real(n3);
+//        for(int i=0;i<n3;i++){
+//            in[i] = 1;
+//        }
+//        fftw_plan p_fft1;
+//        p_fft1 = fftw_plan_dft_r2c_1d(n3, in, out1, FFTW_ESTIMATE);
+//        fftw_execute_dft_r2c(p_fft1, in, out1);
+//        for(int i=0;i<N0;i++){
+//            cout << out1[i][0] << " " << out1[i][1] << endl;
+//        }
+//        fftw_destroy_plan(p_fft1);
+
+// many fftws
+//  fftw_complex* fft_a  = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * n1*n2*N0 );
+//        int rank = 1;
+//        int * n = &n3;
+//        int howmany = n1*n2;
+//        int idist = 1;
+//        int odist = 1;
+//        int istride = n1*n2/2;
+//        int ostride = n1*n2/2;
+////        int * N0_p = &N0;
+//
+//        int *inembed = n, *onembed = n;
+//        fftw_plan p_fft;
+//        p_fft = fftw_plan_many_dft_r2c(rank, n, howmany, a.pointer, inembed, istride, idist,
+//                fft_a, onembed, ostride, odist, FFTW_ESTIMATE);
+//        fftw_execute(p_fft);
+//
+////        for(int i=0; i< n1*n2+10; i++){
+////            cout << i << " "  << fft_a[i][0] << " " << fft_a[i][1] << endl;
+////        }
+//
+//        fftw_destroy_plan(p_fft);
+
+// initialization
+//        VSLStreamStatePtr stream;
+//        vslNewStream(&stream,VSL_BRNG_MCG59, 1);
+//        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,n1*n2*n3,a.pointer,0,1);
+
+//        for(int i=0;i<n1*n2*n3;i++){
+//            a.pointer[i] = i;
+//        }
+
+// many dft_r2c
+//        fftw_complex* fft_a  = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * n1*n2*N0 );
+//        int rank = 1;
+//        int * n = &n3;
+//        int howmany = n1*n2;
+//        int idist = 1;
+//        int odist = 1;
+//        int istride = n1*n2/2;
+//        int ostride = n1*n2/2;
+////        int * N0_p = &N0;
+//
+//        int *inembed = n, *onembed = n;
+//        fftw_plan p_fft;
+//        p_fft = fftw_plan_many_dft_r2c(rank, n, howmany, a.pointer, inembed, istride, idist,
+//                fft_a, onembed, ostride, odist, FFTW_ESTIMATE);
+//        fftw_execute(p_fft);
+
+//        for(int i=0; i< n1*n2+10; i++){
+//            cout << i << " "  << fft_a[i][0] << " " << fft_a[i][1] << endl;
+//        }
+
+//        fftw_destroy_plan(p_fft);
