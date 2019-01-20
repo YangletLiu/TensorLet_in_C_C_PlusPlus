@@ -13,69 +13,42 @@ class tsvd_format{
 namespace TensorLet_decomposition {
 
     template<class datatype>
-    tsvd_format<datatype> tsvd(Tensor3D<datatype> &a) {
+    tsvd_format<datatype> tsvd(Tensor3D<datatype>& a) {
         int *shape = a.getsize();  //dimension
         int n1 = shape[0]; int n2 =shape[1]; int n3 = shape[2];
 
         int N0 = floor(n3/2.0)+1;
-        cout << "N0 " << N0 <<endl;
-
-        Tensor3D<datatype> v_t(n1,n2,2*N0);
-        fftw_complex out[N0]; //fftw_alloc_real()
-        double *in = fftw_alloc_real(n3);
-        fftw_plan p_fft;
-        p_fft = fftw_plan_dft_r2c_1d(n3, in, out, FFTW_ESTIMATE);
-        p_fft=fftw_plan_dft_r2c_1d(n3,in,out,FFTW_MEASURE);
+//        cout << n3 << n2 << n1 << " " << N0 <<endl;
 
 
-        MKL_Complex16* fft_x = (MKL_Complex16*)mkl_malloc(n1*n2*(n3/2+1)*sizeof(MKL_Complex16),64);
+        MKL_Complex16* fft_x = (MKL_Complex16*)MKL_malloc(n1*n2*n3*sizeof(MKL_Complex16),64);
+        DFTI_DESCRIPTOR_HANDLE desc_z;
 
+        MKL_LONG strides_z[] = {0, n1*n2};
+        MKL_LONG status;
 
-        float x[32][100][19];
-        for(int i=0;i<32;i++){
-            for(int j=0;j<100;j++){
-                for(int k=0;k<19;k++){
-                    x[i][j][k] = 1;
-                }
-            }
+        status = DftiCreateDescriptor( &desc_z,
+                DFTI_DOUBLE, DFTI_REAL, 1, n3);
+
+        status = DftiSetValue( desc_z,
+                DFTI_PLACEMENT, DFTI_NOT_INPLACE);
+
+        status = DftiSetValue( desc_z,
+                DFTI_CONJUGATE_EVEN_STORAGE, DFTI_COMPLEX_COMPLEX);
+
+        DftiSetValue(desc_z,
+                DFTI_INPUT_STRIDES,  strides_z);
+        DftiSetValue(desc_z,
+                DFTI_OUTPUT_STRIDES,  strides_z);
+
+        status = DftiCommitDescriptor( desc_z );
+        status = DftiComputeForward(desc_z, a.pointer, fft_x );
+
+        for(int i=0; i < n1*n2; i++){
+            status = DftiComputeForward( desc_z, a.pointer+i, fft_x+i);
         }
 
-        float _Complex y[32][100][10]; /* 10 = 19/2 + 1 */
-        DFTI_DESCRIPTOR_HANDLE my_desc_handle;
-        MKL_LONG status, l[3];
-        MKL_LONG strides_out[4];
-
-//...put input data into x[j][k][s] 0<=j<=31, 0<=k<=99, 0<=s<=18
-        l[0] = 32; l[1] = 100; l[2] = 19;
-
-        strides_out[0] = 0; strides_out[1] = 1000;
-        strides_out[2] = 10; strides_out[3] = 1;
-
-        status = DftiCreateDescriptor( &my_desc_handle, DFTI_SINGLE,
-                                       DFTI_REAL, 3, l );
-        status = DftiSetValue(my_desc_handle,
-                              DFTI_CONJUGATE_EVEN_STORAGE, DFTI_COMPLEX_COMPLEX);
-        status = DftiSetValue( my_desc_handle, DFTI_PLACEMENT, DFTI_NOT_INPLACE );
-        status = DftiSetValue(my_desc_handle,
-                              DFTI_OUTPUT_STRIDES, strides_out);
-
-        status = DftiCommitDescriptor(my_desc_handle);
-        status = DftiComputeForward(my_desc_handle, x, y);
-        status = DftiFreeDescriptor(&my_desc_handle);
-/* result is the complex value z(j,k,s) 0<=j<=31; 0<=k<=99, 0<=s<=9
-and is stored in complex matrix y in CCE format. */
-
-        int count=0;
-        for(int i=0;i<32;i++){
-            for(int j=0;j<100;j++){
-                for(int k=0;k<10;k++){
-                    if(y[i][j][k] == 0) {count++;}
-                    cout << y[i][j][k];
-                }
-                cout << endl;
-            }
-        }
-        cout << count << endl;
+        status = DftiFreeDescriptor( &desc_z );
 
 
 ////#pragma omp parallel for num_threads(8)
@@ -199,31 +172,139 @@ and is stored in complex matrix y in CCE format. */
 
 }
 
+//        Tensor3D<datatype> v_t(n1,n2,2*N0);
+//        fftw_complex out[N0]; //fftw_alloc_real()
+//        double *in = fftw_alloc_real(n3);
+//        fftw_plan p_fft;
+//        p_fft = fftw_plan_dft_r2c_1d(n3, in, out, FFTW_ESTIMATE);
+//        p_fft=fftw_plan_dft_r2c_1d(n3,in,out,FFTW_MEASURE);
+//
+//
+//        MKL_Complex16* fft_x = (MKL_Complex16*)mkl_malloc(n1*n2*(n3/2+1)*sizeof(MKL_Complex16),64);
+//
+//
+
+//
+//        int count=0;
+//        for(int i=0;i<32;i++){
+//            for(int j=0;j<100;j++){
+//                for(int k=0;k<10;k++){
+//                    if(y[i][j][k] == 0) {count++;}
+//                    cout << y[i][j][k];
+//                }
+//                cout << endl;
+//            }
+//        }
+//        cout << count << endl;
+
+// ifft
+
+//        for(int i=0;i<32;i++){
+//            x_in[i] = 1000;
+//        }
+//
+//        status_test = DftiCommitDescriptor( my_desc1_handle );
+//        status_test = DftiComputeBackward( my_desc1_handle, x_in);
+//
+//        status_test = DftiFreeDescriptor(&my_desc1_handle);
+
+//        DFTI_DESCRIPTOR_HANDLE my_desc2_handle;
+//        status_test = DftiCreateDescriptor( &my_desc2_handle, DFTI_SINGLE,
+//                                            DFTI_REAL, 1, 3);
+//        status_test = DftiSetValue( my_desc2_handle, DFTI_PLACEMENT, DFTI_NOT_INPLACE);
+//        status_test = DftiSetValue(my_desc2_handle,
+//                                   DFTI_CONJUGATE_EVEN_STORAGE, DFTI_COMPLEX_COMPLEX);
+//        status_test = DftiSetValue(my_desc2_handle,
+//                              DFTI_PACKED_FORMAT, DFTI_CCE_FORMAT);
+//        DftiSetValue(my_desc2_handle,  DFTI_INPUT_STRIDES,  strides_test);
+//        DftiSetValue(my_desc2_handle,  DFTI_OUTPUT_STRIDES,  strides_test);
+//
+//        status_test = DftiCommitDescriptor( my_desc2_handle );
+//        status_test = DftiComputeBackward( my_desc2_handle, y_out, x_in);
+//        status_test = DftiFreeDescriptor(&my_desc2_handle);
+//        for(int i=0;i<17;i++){
+//            cout << x_in[i] << endl;
+//        }
+
+//3d fft cce format
+//        float x[10][11][12];
+//        for(int i=0;i<10;i++){
+//            for(int j=0;j<11;j++){
+//                for(int k=0;k<12;k++){
+//                    x[i][j][k] = 1;
+//                }
+//            }
+//        }
+//
+//        MKL_Complex8 y[10][11][12];
+//        DFTI_DESCRIPTOR_HANDLE my_desc_handle;
+//        MKL_LONG status, l[3];
+//        MKL_LONG strides_out[4];
+//
+//        l[0] = 10; l[1] = 11; l[2] = 12;
+//
+//        strides_out[0] = 0; strides_out[1] = 132;
+//        strides_out[2] = 12; strides_out[3] = 1;
+//
+//        status = DftiCreateDescriptor( &my_desc_handle,
+//                DFTI_SINGLE, DFTI_REAL, 3, l );
+//
+//        status = DftiSetValue( my_desc_handle,
+//                DFTI_PLACEMENT, DFTI_NOT_INPLACE );
+//
+//        status = DftiSetValue(my_desc_handle,
+//                DFTI_OUTPUT_STRIDES, strides_out);
+//
+//        status = DftiSetValue(my_desc_handle,
+//                DFTI_INPUT_STRIDES, strides_out);
+//
+//        status = DftiCommitDescriptor(my_desc_handle);
+//
+//        status = DftiComputeForward(my_desc_handle, x, y);
+//
+//        status = DftiFreeDescriptor(&my_desc_handle);
+//
+//        for(int i=0;i<10;i++){
+//            for(int j=0;j<11;j++){
+//                for(int k=0;k<12;k++){
+//                    cout << y[i][j][k].real << " " << y[i][j][k].imag << " ";
+//                }
+//                cout << endl;
+//            }
+//            cout << endl;
+//        }
 
 
-////一维fft变换
+//一维fft变换
 //        float x_in[32];
 //        for(int i=0;i<32;i++){
-//            x_in[i] = i;
+//            x_in[i] = 1;
 //        }
-//        float y_out[34];
+//        MKL_Complex8 y_out[32];
+//
 //        DFTI_DESCRIPTOR_HANDLE my_desc1_handle;
-//        DFTI_DESCRIPTOR_HANDLE my_desc2_handle;
-//        MKL_LONG status;
-////...put input data into x_in[0],...,x_in[31]; y_in[0],...,y_in[31]
-//        status = DftiCreateDescriptor( &my_desc1_handle, DFTI_SINGLE,
-//                                       DFTI_REAL, 1, 32);
-//        status = DftiSetValue( my_desc1_handle, DFTI_PLACEMENT, DFTI_NOT_INPLACE);
-//        status = DftiSetValue(my_desc1_handle,
-//                              DFTI_CONJUGATE_EVEN_STORAGE, DFTI_COMPLEX_COMPLEX);
-//        status = DftiCommitDescriptor( my_desc1_handle );
-//        status = DftiComputeForward( my_desc1_handle, x_in,y_out);
-//        status = DftiFreeDescriptor(&my_desc1_handle);
 //
+//        MKL_LONG strides_test[] = {0, 4};
+//        MKL_LONG status_test;
+//        status_test = DftiCreateDescriptor( &my_desc1_handle,
+//                DFTI_SINGLE, DFTI_REAL, 1, 8);
 //
-//        for(int i=0;i<32;i++){
-//            cout << y_out[i] << endl;
+//        status_test = DftiSetValue( my_desc1_handle,
+//                DFTI_PLACEMENT, DFTI_NOT_INPLACE);
+//
+//        status_test = DftiSetValue(my_desc1_handle,
+//                DFTI_CONJUGATE_EVEN_STORAGE, DFTI_COMPLEX_COMPLEX);
+//
+//        DftiSetValue(my_desc1_handle,  DFTI_INPUT_STRIDES,  strides_test);
+//        DftiSetValue(my_desc1_handle,  DFTI_OUTPUT_STRIDES,  strides_test);
+//
+//        status_test = DftiCommitDescriptor( my_desc1_handle );
+//        for(int i=0; i < 4; i++){
+//            status_test = DftiComputeForward( my_desc1_handle, x_in + i, y_out+i);
 //        }
+////        status_test = DftiComputeForward( my_desc1_handle, x_in, y_out);
+//        status_test = DftiFreeDescriptor( &my_desc1_handle );
 
-
-///* result is given by y_out in CCS format*/
+//        for(int i=0;i<17;i++){
+//            cout << y_out[i].real << " " << y_out[i].imag << endl;
+//        }

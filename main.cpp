@@ -19,7 +19,7 @@ using namespace TensorLet_decomposition;
 
 int main(){
     MKL_INT n1,n2,n3;
-    n1=n2=n3=400;
+    n1=n2=n3=200;
 //    n1=100;
 //    n2=200;
     double t0,t1;
