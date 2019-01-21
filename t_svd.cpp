@@ -17,15 +17,16 @@ namespace TensorLet_decomposition {
     template<class datatype>
     tsvd_format<datatype> tsvd(Tensor3D<datatype>& a) {
         int *shape = a.getsize();  //dimension
+
         int n1 = shape[0]; int n2 =shape[1]; int n3 = shape[2];
 
         int N0 = floor(n3/2.0)+1;
-        cout << n3 << n2 << n1 << " " << N0 <<endl;
+//        cout << n3 << n2 << n1 << " " << N0 <<endl;
 
 // fft(a,[],3)  mkl fft r2c
-      for(int i=0;i<n1*n2*n3;i++){
-            a.pointer[i] = 1;
-        }
+//        for(int i=0;i<n1*n2*n3;i++){
+//            a.pointer[i] = i;
+//        }
 
         MKL_Complex16* fft_x = (MKL_Complex16*)MKL_malloc(n1*n2*N0*sizeof(MKL_Complex16),64);
 
@@ -54,177 +55,105 @@ namespace TensorLet_decomposition {
             status = DftiComputeForward( desc_z, a.pointer+i, fft_x+i);
         }
 
-//        for(int i=0; i< n1*n2+10; i++){
+//        for(int i=0; i< 100; i++){
 //            cout << i << " "  << fft_x[i].real << " " << fft_x[i].imag << endl;
 //        }
 
         status = DftiFreeDescriptor( &desc_z );
 
+        /* malloc memory */
+        MKL_Complex16* fft_u = (MKL_Complex16*)MKL_malloc(n1*n1*N0*sizeof(MKL_Complex16),64);
+        MKL_Complex16* fft_vt = (MKL_Complex16*)MKL_malloc(n2*n2*N0*sizeof(MKL_Complex16),64);
+        MKL_INT min_n1_n2 = min(n1,n2);
+        double* fft_s = (double*)MKL_malloc(2*min_n1_n2*N0*sizeof(double),64);
 
-// many  ifft x
-//        double* ifft_x  = (double*) fftw_malloc(sizeof(double) * n1*n2*N0 );
-//        int rank = 1;
-//        int * n = &N0;
-//        int howmany = n1*n2;
-//        int idist = 1;
-//        int odist = 1;
-//        int istride = n1*n2;
-//        int ostride = n1*n2;
-////        int * N0_p = &N0;
-//        fftw_complex* in =reinterpret_cast<fftw_complex *> (fft_x);
-//        int *inembed = n, *onembed = n;
-//        fftw_plan p_fft;
-//        p_fft = fftw_plan_many_dft_c2r(rank, n, howmany, in, inembed, istride, idist,
-//                                       ifft_x, onembed, ostride, odist, FFTW_ESTIMATE);
-//        fftw_execute(p_fft);
-//
-//        for(int i=0; i< n1*n2+10; i++){
-//            cout << i << " "  << ifft_x[i] << endl;
+        double super[min_n1_n2-1];
+
+        /* Compute SVD */
+
+        MKL_INT info;
+        for(int i = 0; i < N0; i++){
+            info = LAPACKE_zgesvd( LAPACK_COL_MAJOR, 'A', 'A', n1, n2, fft_x+i*n1*n2, n1, fft_s + i*min_n1_n2,
+                                   fft_u + i*n1*n1 , n1, fft_vt + i*n2*n2, n2, super );
+        }
+
+        /* Check for convergence */
+
+        if( info > 0 ) {
+            printf( "The algorithm computing SVD failed to converge.\n" );
+            exit( 1 );
+        }
+
+        /* cast mkl_complex to fftw_complex */
+
+        fftw_complex* in_fft_u =reinterpret_cast<fftw_complex *> (fft_u);  // right
+        fftw_complex* in_fft_vt =reinterpret_cast<fftw_complex *> (fft_vt);  // right
+
+
+// many  ifft_u
+        int rank = 1;
+        int *n = &n3;
+        int howmany = n1*n1;
+        int idist = 1;
+        int odist = 1;
+        int istride = n1*n1;
+        int ostride = n1*n1;
+        int *inembed = n, *onembed = n;
+
+        double* u = (double*)MKL_malloc(n1*n1*n3*sizeof(double),64);
+
+        fftw_plan p_fft;
+        p_fft = fftw_plan_many_dft_c2r(rank, n, howmany, in_fft_u, inembed, istride, idist,
+                                       u, onembed, ostride, odist, FFTW_ESTIMATE);
+        fftw_execute(p_fft);
+
+// many  ifft_u
+
+        double* vt = (double*)MKL_malloc(n2*n2*n3*sizeof(double),64);
+        howmany = n2*n2;
+        istride = n2*n2;
+        ostride = n2*n2;
+        p_fft = fftw_plan_many_dft_c2r(rank, n, howmany, in_fft_vt, inembed, istride, idist,
+                                       vt, onembed, ostride, odist, FFTW_ESTIMATE);
+        fftw_execute(p_fft);
+
+
+
+// many  ifft_s
+
+        fftw_complex* fft_s_complex = (fftw_complex*)fftw_malloc(sizeof(fftw_complex) * min_n1_n2 * N0);  // right
+        double* s = (double*)MKL_malloc(min_n1_n2*n3*sizeof(double),64);
+
+
+        for(int i=0; i< min_n1_n2 * N0; i++){
+            fft_s_complex[i][0] = fft_s[i];
+            fft_s_complex[i][1] = 0;
+        }
+        MKL_free(fft_s);
+
+//        for(int i=0; i< min_n1_n2 * N0; i++){
+//            cout << fft_s_complex[i][0] << " ";
+//            cout << fft_s_complex[i][1] << endl;
 //        }
-//
-//        fftw_destroy_plan(p_fft);
+
+        howmany = min_n1_n2;
+        istride = n3;
+        ostride = n3;
+
+        p_fft = fftw_plan_many_dft_c2r(rank, n, howmany, fft_s_complex, inembed, istride, idist,
+                                       s, onembed, ostride, odist, FFTW_ESTIMATE);
+
+        fftw_execute(p_fft);
+        fftw_destroy_plan(p_fft);
+//        MKL_free(fft_vt);
+//        MKL_free(fft_u);
+//        fftw_free(fft_s_complex);
 
 
-//        #define M 3
-//        #define N 4
-//        #define LDA M
-//        #define LDU M
-//        #define LDVT N
-//        /* Locals */
-//        MKL_INT m = M, n = N, lda = LDA, ldu = LDU, ldvt = LDVT, info;
-//        /* Local arrays */
-//        double s[M];
-//        double superb[min(M,N)-1];
-//        MKL_Complex16 u[LDU*M], vt[LDVT*N];
-//        MKL_Complex16 x[LDA*N] = {
-//                { 5.91, -5.69}, {-3.15, -4.08}, {-4.89,  4.20},
-//                { 7.09,  2.72}, {-1.89,  3.27}, { 4.10, -6.70},
-//                { 7.78, -4.06}, { 4.57, -2.07}, { 3.28, -3.84},
-//                {-0.79, -7.21}, {-3.88, -3.30}, { 3.84,  1.19}
-//        };
-//        cout << x[0].imag << " " << x[0].real << endl;
-//
-//        /* Executable statements */
-//        printf( "LAPACKE_zgesvd (column-major, high-level) Example Program Results\n" );
-//        /* Compute SVD */
-//        info = LAPACKE_zgesvd( LAPACK_COL_MAJOR, 'A', 'A', m, n, x, lda, s,
-//                               u, ldu, vt, ldvt, superb );
-//
-////        cout << x[0].imag << " " << x[0].real << endl;
-////        cout << s[0] << endl;
-////        cout << u[0].imag << " " << u[0].real << endl;
-//
-//        /* Check for convergence */
-//        if( info > 0 ) {
-//            printf( "The algorithm computing SVD failed to converge.\n" );
-//            exit( 1 );
+//        for(int i=0; i< n1; i++){
+//            cout << i << " " << s[i] << endl;
 //        }
 
-
-
-
-//    Tensor3D<datatype> uf(n1,n1,N0),uf1(n1,n1,N0);
-//    Tensor3D<datatype> theta(n1,n2,N0);
-//    Tensor3D<datatype> vf(n2,n2,N0), vf1(n2,n2,N0);
-//
-////    cx_mat TMP = zeros<cx_mat>(n1, n2);
-////    cx_mat TMPU = zeros<cx_mat>(n1, n1);
-////    cx_mat TMPV = zeros<cx_mat>(n2, n2);
-////    colvec TMPT;
-//
-////    for (int k = 0; k < N0; k++) {
-////        for (int i = 0; i < n1; i++) {
-////            for (int j = 0; j < n2; j++) {
-////                TMP(i, j).real(v_t(i,j,k));
-////                TMP(i, j).imag(v_t(i,j,N0+k));
-////            }
-////        }
-////
-////        svd(TMPU, TMPT, TMPV, TMP, "dc");
-////        svd(TMPU,TMPT,TMPV,TMP,"std");
-////
-////        for (int i = 0; i < n1; i++) {
-////            for (int j = 0; j < n1; j++) {
-////                uf(i,j,k) = TMPU(i, j).real();
-////                uf1(i,j,k) = TMPU(i, j).imag();
-////            }
-////        }
-////        for (int i = 0; i < n2; i++) {
-////            for (int j = 0; j < n2; j++) {
-////                vf(i,j,k) = TMPV(i, j).real();
-////                vf1(i,j,k) = TMPV(i, j).imag();
-////            }
-////        }
-////        if (n1 <= n2) {
-////            for (int i = 0; i < n1; i++) {
-////                theta(i,i,k) = TMPT(i);
-////            }
-////        } else {
-////            for (int i = 0; i < n2; i++) {
-////                theta(i,i,k) = TMPT(i);
-////            }
-////        }
-////    }
-//    v_t.reset();
-//
-//
-//    fftw_complex out1[N0]; //fftw_alloc_real()
-//    double *in1 = fftw_alloc_real(n3);
-//    p_fft = fftw_plan_dft_c2r_1d(n3, out1, in1, FFTW_ESTIMATE);
-//
-//    Tensor3D<datatype> U(n1,n1,n3);
-//    for (int i = 0; i < n1; i++) {
-//        for (int j = 0; j < n1; j++) {
-//            for (int k = 0; k < N0; k++) {
-//                out1[k][0] = uf(i,j,k);
-//                out1[k][1] = uf1(i,j,k);
-//            }
-//            fftw_execute_dft_c2r(p_fft, out1, in1);
-//            for (int k = 0; k < n3; k++) {
-//                U(i,j,k) = 1.0 / n3 * in1[k];
-//            }
-//        }
-//    }
-//    uf.reset();
-//    uf1.reset();
-//
-//    Tensor3D<datatype> V(n1,n1,n3);
-//    for (int i = 0; i < n1; i++) {
-//        for (int j = 0; j < n1; j++) {
-//            for (int k = 0; k < N0; k++) {
-//                out1[k][0] = vf(i,j,k);
-//                out1[k][1] = vf1(i,j,k);
-//            }
-//            fftw_execute_dft_c2r(p_fft, out1, in1);
-//            for (int k = 0; k < n3; k++) {
-//                V(i,j,k) = 1.0 / n3 * in1[k];
-//            }
-//        }
-//    }
-//    uf.reset();
-//    uf1.reset();
-//
-//    Tensor3D<datatype> Theta(n1,n2,n3);
-//    for (int i = 0; i < n1; i++) {
-//        for (int j = 0; j < n2; j++) {
-//            for (int k = 0; k < N0; k++) {
-//                out1[k][0] = theta(i,j,k);
-//                out1[k][1] = 0;
-//            }
-//            fftw_execute_dft_c2r(p_fft, out1, in1);
-//            for (int k = 0; k < n3; k++) {
-//                Theta(i,j,k) = 1.0 / n3 * in1[k];
-//            }
-//        }
-//    }
-//    theta.reset();
-//    fftw_destroy_plan(p_fft);
-//
-//    tsvd_format<datatype> c;
-//    c.U = U;
-//    c.Theta = Theta;
-//    c.V = V;
-//
 //    return c;
     }
 
@@ -433,3 +362,55 @@ namespace TensorLet_decomposition {
 //        }
 
 //        fftw_destroy_plan(p_fft);
+
+
+// many  ifft x
+//        double* ifft_x  = (double*) fftw_malloc(sizeof(double) * n1*n2*n3 );
+//        int rank = 1;
+//        int * n = &n3;
+//        int howmany = n1*n2;
+//        int idist = 1;
+//        int odist = 1;
+//        int istride = n1*n2;
+//        int ostride = n1*n2;
+//
+//        fftw_complex* in =reinterpret_cast<fftw_complex *> (fft_x);  // right
+//
+//        int *inembed = n, *onembed = n;
+//
+//        fftw_plan p_fft;
+//        p_fft = fftw_plan_many_dft_c2r(rank, n, howmany, in, inembed, istride, idist,
+//                                       ifft_x, onembed, ostride, odist, FFTW_ESTIMATE);
+//        fftw_execute(p_fft);
+//
+//        for(int i=0; i< 100; i++){
+//            cout << i << " "  << ifft_x[i] << endl;
+//        }
+//
+//        fftw_destroy_plan(p_fft);
+
+
+// gesvd
+//        const MKL_INT M = 3;
+//        const MKL_INT N = 4;
+////        M = 3; N = 4;
+//
+//        /* Locals */
+//        MKL_INT m = M, n = N, lda = M, ldu = M, ldvt = N, info;
+//        /* Local arrays */
+//        double s[M];
+//        double superb[min(M,N)-1];
+//        MKL_Complex16 u[M*M], vt[N*N];
+//        MKL_Complex16 x[M*N] = {
+//                { 5.91, -5.69}, {-3.15, -4.08}, {-4.89,  4.20},
+//                { 7.09,  2.72}, {-1.89,  3.27}, { 4.10, -6.70},
+//                { 7.78, -4.06}, { 4.57, -2.07}, { 3.28, -3.84},
+//                {-0.79, -7.21}, {-3.88, -3.30}, { 3.84,  1.19}
+//        };
+//        cout << x[0].imag << " " << x[0].real << endl;
+//
+//        /* Compute SVD */
+//        info = LAPACKE_zgesvd( LAPACK_COL_MAJOR, 'A', 'A', m, n, x, lda, s,
+//                               u, ldu, vt, ldvt, superb );
+//
+//        cout << x[0].imag << " " << x[0].real << endl;

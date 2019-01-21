@@ -22,6 +22,7 @@ int main(){
     n1=n2=n3=200;
 //    n1=100;
 //    n2=200;
+//    n3=300;
     double t0,t1;
     t0=gettime();
     Tensor3D<double> a(n1,n2,n3); //element
@@ -33,10 +34,14 @@ int main(){
     t1=gettime();
     cout << "Random initialize time:" <<t1-t0 <<endl;
 
-    VSLStreamStatePtr stream;
-    vslNewStream(&stream,VSL_BRNG_MCG59, 1);
-    vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,n1*n2*n3,a.pointer,0,1);
-    vslDeleteStream(&stream);
+    t0=gettime();
+    cp_format<double> A = cp_als(a, 40);
+    t1=gettime();
+    cout << "CP time:" <<t1-t0 <<endl;
+
+    MKL_free(A.cp_A);
+    MKL_free(A.cp_B);
+    MKL_free(A.cp_C);
 
     t0=gettime();
     tucker_format<double> B = tucker_hosvd(a,80,80,80);
@@ -50,18 +55,12 @@ int main(){
 
 
     t0=gettime();
-    cp_format<double> A = cp_als(a,80);
-    t1=gettime();
-    cout << "CP time:" <<t1-t0 <<endl;
-
-    MKL_free(A.cp_A);
-    MKL_free(A.cp_B);
-    MKL_free(A.cp_C);
-
-    t0=gettime();
     tsvd_format<double> C = tsvd(a);
     t1=gettime();
     cout << "tsvd time:" <<t1-t0 <<endl;
+
+
+
 
 //    t0=gettime();
 //    double* X1_times_X1T = (double*)mkl_malloc(n1*n1*sizeof(double),64);

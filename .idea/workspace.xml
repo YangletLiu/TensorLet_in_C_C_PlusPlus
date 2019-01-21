@@ -15,8 +15,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/t_svd.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/t_svd.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/tucker_hosvd.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/tucker_hosvd.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/tensor" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/tensor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/t_svd.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/t_svd.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tucker_hosvd.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tucker_hosvd.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="467">
+              <caret line="59" column="40" lean-forward="true" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -65,22 +68,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cp_als.cpp">
+        <entry file="file://$PROJECT_DIR$/tucker_hosvd.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="20" column="71" selection-start-line="20" selection-start-column="71" selection-end-line="20" selection-end-column="71" />
+            <state relative-caret-position="1545">
+              <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
               <folding>
-                <element signature="e#38#57#0" expanded="true" />
+                <element signature="e#39#58#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tucker_hosvd.cpp">
+        <entry file="file://$PROJECT_DIR$/t_svd.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="19" column="62" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="62" />
+            <state relative-caret-position="345">
+              <caret line="23" column="53" lean-forward="true" selection-start-line="23" selection-end-line="24" />
               <folding>
                 <element signature="e#39#58#0" expanded="true" />
               </folding>
@@ -88,13 +91,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/t_svd.cpp">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cp_als.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="60" column="46" lean-forward="true" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
+            <state relative-caret-position="259">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
-                <element signature="e#39#58#0" expanded="true" />
+                <element signature="e#38#57#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -134,20 +137,20 @@
         <option value="$PROJECT_DIR$/tensor_hooi.cpp" />
         <option value="$PROJECT_DIR$/tensor_train.cpp" />
         <option value="$PROJECT_DIR$/Tensor3D.h" />
-        <option value="$PROJECT_DIR$/tucker_hosvd.cpp" />
         <option value="$PROJECT_DIR$/Tensor_Armadillo/tensor.h" />
         <option value="$PROJECT_DIR$/tensor.h" />
-        <option value="$PROJECT_DIR$/cp_als.cpp" />
         <option value="$PROJECT_DIR$/Tensor3D.cpp" />
-        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/cp_als.cpp" />
+        <option value="$PROJECT_DIR$/tucker_hosvd.cpp" />
         <option value="$PROJECT_DIR$/t_svd.cpp" />
+        <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="411" />
-    <option name="y" value="89" />
-    <option name="width" value="1160" />
+    <option name="x" value="543" />
+    <option name="y" value="55" />
+    <option name="width" value="1282" />
     <option name="height" value="964" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -241,23 +244,22 @@
       <workItem from="1547881437545" duration="18284000" />
       <workItem from="1547903085225" duration="5388000" />
       <workItem from="1547959835288" duration="9532000" />
-      <workItem from="1547969397058" duration="11069000" />
+      <workItem from="1547969397058" duration="28576000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270470000" />
+    <option name="totallyTimeSpent" value="287977000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="411" y="89" width="1160" height="964" extended-state="0" />
-    <editor active="true" />
+    <frame x="543" y="55" width="1282" height="964" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24280575" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21880065" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.44937694" visible="true" weight="0.21599045" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.44937694" weight="0.21599045" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4947623" weight="0.2673031" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -417,16 +419,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cp_als.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="20" column="71" selection-start-line="20" selection-start-column="71" selection-end-line="20" selection-end-column="71" />
-          <folding>
-            <element signature="e#38#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tensor3D.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="409">
@@ -440,10 +432,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cp_als.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#38#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tucker_hosvd.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="19" column="62" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="62" />
+        <state relative-caret-position="1545">
+          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
+          <folding>
+            <element signature="e#39#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/t_svd.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="53" lean-forward="true" selection-start-line="23" selection-end-line="24" />
           <folding>
             <element signature="e#39#58#0" expanded="true" />
           </folding>
@@ -452,20 +464,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="467">
+          <caret line="59" column="40" lean-forward="true" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/t_svd.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="60" column="46" lean-forward="true" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
-          <folding>
-            <element signature="e#39#58#0" expanded="true" />
           </folding>
         </state>
       </provider>
