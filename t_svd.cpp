@@ -23,9 +23,9 @@ namespace TensorLet_decomposition {
         cout << n3 << n2 << n1 << " " << N0 <<endl;
 
 // fft(a,[],3)  mkl fft r2c
-//      for(int i=0;i<n1*n2*n3;i++){
-//            a.pointer[i] = i;
-//        }
+      for(int i=0;i<n1*n2*n3;i++){
+            a.pointer[i] = 1;
+        }
 
         MKL_Complex16* fft_x = (MKL_Complex16*)MKL_malloc(n1*n2*N0*sizeof(MKL_Complex16),64);
 
@@ -60,40 +60,68 @@ namespace TensorLet_decomposition {
 
         status = DftiFreeDescriptor( &desc_z );
 
-        #define M 3
-        #define N 4
-        #define LDA M
-        #define LDU M
-        #define LDVT N
-        /* Locals */
-        MKL_INT m = M, n = N, lda = LDA, ldu = LDU, ldvt = LDVT, info;
-        /* Local arrays */
-        double s[M];
-        double superb[min(M,N)-1];
-        MKL_Complex16 u[LDU*M], vt[LDVT*N];
-        MKL_Complex16 x[LDA*N] = {
-                { 5.91, -5.69}, {-3.15, -4.08}, {-4.89,  4.20},
-                { 7.09,  2.72}, {-1.89,  3.27}, { 4.10, -6.70},
-                { 7.78, -4.06}, { 4.57, -2.07}, { 3.28, -3.84},
-                {-0.79, -7.21}, {-3.88, -3.30}, { 3.84,  1.19}
-        };
-        cout << x[0].imag << " " << x[0].real << endl;
 
-        /* Executable statements */
-        printf( "LAPACKE_zgesvd (column-major, high-level) Example Program Results\n" );
-        /* Compute SVD */
-        info = LAPACKE_zgesvd( LAPACK_COL_MAJOR, 'A', 'A', m, n, x, lda, s,
-                               u, ldu, vt, ldvt, superb );
+// many  ifft x
+//        double* ifft_x  = (double*) fftw_malloc(sizeof(double) * n1*n2*N0 );
+//        int rank = 1;
+//        int * n = &N0;
+//        int howmany = n1*n2;
+//        int idist = 1;
+//        int odist = 1;
+//        int istride = n1*n2;
+//        int ostride = n1*n2;
+////        int * N0_p = &N0;
+//        fftw_complex* in =reinterpret_cast<fftw_complex *> (fft_x);
+//        int *inembed = n, *onembed = n;
+//        fftw_plan p_fft;
+//        p_fft = fftw_plan_many_dft_c2r(rank, n, howmany, in, inembed, istride, idist,
+//                                       ifft_x, onembed, ostride, odist, FFTW_ESTIMATE);
+//        fftw_execute(p_fft);
+//
+//        for(int i=0; i< n1*n2+10; i++){
+//            cout << i << " "  << ifft_x[i] << endl;
+//        }
+//
+//        fftw_destroy_plan(p_fft);
 
+
+//        #define M 3
+//        #define N 4
+//        #define LDA M
+//        #define LDU M
+//        #define LDVT N
+//        /* Locals */
+//        MKL_INT m = M, n = N, lda = LDA, ldu = LDU, ldvt = LDVT, info;
+//        /* Local arrays */
+//        double s[M];
+//        double superb[min(M,N)-1];
+//        MKL_Complex16 u[LDU*M], vt[LDVT*N];
+//        MKL_Complex16 x[LDA*N] = {
+//                { 5.91, -5.69}, {-3.15, -4.08}, {-4.89,  4.20},
+//                { 7.09,  2.72}, {-1.89,  3.27}, { 4.10, -6.70},
+//                { 7.78, -4.06}, { 4.57, -2.07}, { 3.28, -3.84},
+//                {-0.79, -7.21}, {-3.88, -3.30}, { 3.84,  1.19}
+//        };
 //        cout << x[0].imag << " " << x[0].real << endl;
-//        cout << s[0] << endl;
-//        cout << u[0].imag << " " << u[0].real << endl;
+//
+//        /* Executable statements */
+//        printf( "LAPACKE_zgesvd (column-major, high-level) Example Program Results\n" );
+//        /* Compute SVD */
+//        info = LAPACKE_zgesvd( LAPACK_COL_MAJOR, 'A', 'A', m, n, x, lda, s,
+//                               u, ldu, vt, ldvt, superb );
+//
+////        cout << x[0].imag << " " << x[0].real << endl;
+////        cout << s[0] << endl;
+////        cout << u[0].imag << " " << u[0].real << endl;
+//
+//        /* Check for convergence */
+//        if( info > 0 ) {
+//            printf( "The algorithm computing SVD failed to converge.\n" );
+//            exit( 1 );
+//        }
 
-        /* Check for convergence */
-        if( info > 0 ) {
-            printf( "The algorithm computing SVD failed to converge.\n" );
-            exit( 1 );
-        }
+
+
 
 //    Tensor3D<datatype> uf(n1,n1,N0),uf1(n1,n1,N0);
 //    Tensor3D<datatype> theta(n1,n2,N0);
