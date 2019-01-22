@@ -140,6 +140,7 @@ CMakeFiles/tensor.dir/main.cpp.o: ../t_svd.cpp
 CMakeFiles/tensor.dir/main.cpp.o: ../ten2mat.cpp
 CMakeFiles/tensor.dir/main.cpp.o: ../tensor.h
 CMakeFiles/tensor.dir/main.cpp.o: ../tensor_hooi.cpp
+CMakeFiles/tensor.dir/main.cpp.o: ../tensor_train.cpp
 CMakeFiles/tensor.dir/main.cpp.o: ../tucker_hosvd.cpp
 CMakeFiles/tensor.dir/main.cpp.o: /opt/intel/mkl/include/mkl.h
 CMakeFiles/tensor.dir/main.cpp.o: /opt/intel/mkl/include/mkl_blas.h

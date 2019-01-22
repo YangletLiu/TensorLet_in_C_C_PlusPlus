@@ -7,9 +7,10 @@
 
 template<class datatype>
 class tsvd_format{
-    Tensor3D<datatype>* U;
-    Tensor3D<datatype>* Theta;
-    Tensor3D<datatype>* V;
+public:
+    datatype* U;
+    datatype* Theta;
+    datatype* V;
 };
 
 namespace TensorLet_decomposition {
@@ -28,11 +29,11 @@ namespace TensorLet_decomposition {
 //            a.pointer[i] = i;
 //        }
 
-        MKL_Complex16* fft_x = (MKL_Complex16*)MKL_malloc(n1*n2*N0*sizeof(MKL_Complex16),64);
+        MKL_Complex16* fft_x = (MKL_Complex16*)MKL_malloc(n1 * n2 * N0 * sizeof(MKL_Complex16), 64);
 
         DFTI_DESCRIPTOR_HANDLE desc_z;
 
-        MKL_LONG strides_z[] = {0, n1*n2};
+        MKL_LONG strides_z[] = {0, n1 * n2};
         MKL_LONG status;
 
         status = DftiCreateDescriptor( &desc_z,
@@ -51,7 +52,7 @@ namespace TensorLet_decomposition {
 
         status = DftiCommitDescriptor( desc_z );
 
-        for(int i=0; i < n1*n2; i++){
+        for(int i = 0; i < n1 * n2; i++){
             status = DftiComputeForward( desc_z, a.pointer+i, fft_x+i);
         }
 
@@ -62,10 +63,11 @@ namespace TensorLet_decomposition {
         status = DftiFreeDescriptor( &desc_z );
 
         /* malloc memory */
-        MKL_Complex16* fft_u = (MKL_Complex16*)MKL_malloc(n1*n1*N0*sizeof(MKL_Complex16),64);
-        MKL_Complex16* fft_vt = (MKL_Complex16*)MKL_malloc(n2*n2*N0*sizeof(MKL_Complex16),64);
-        MKL_INT min_n1_n2 = min(n1,n2);
-        double* fft_s = (double*)MKL_malloc(2*min_n1_n2*N0*sizeof(double),64);
+        MKL_Complex16* fft_u = (MKL_Complex16*)MKL_malloc( n1 * n1 * N0 * sizeof(MKL_Complex16), 64);
+        MKL_Complex16* fft_vt = (MKL_Complex16*)MKL_malloc(n2 * n2 * N0 * sizeof(MKL_Complex16), 64);
+
+        MKL_INT min_n1_n2 = min(n1, n2);
+        double* fft_s = (double*)MKL_malloc(min_n1_n2 * N0 * sizeof(double), 64);
 
         double super[min_n1_n2-1];
 
@@ -73,8 +75,8 @@ namespace TensorLet_decomposition {
 
         MKL_INT info;
         for(int i = 0; i < N0; i++){
-            info = LAPACKE_zgesvd( LAPACK_COL_MAJOR, 'A', 'A', n1, n2, fft_x+i*n1*n2, n1, fft_s + i*min_n1_n2,
-                                   fft_u + i*n1*n1 , n1, fft_vt + i*n2*n2, n2, super );
+            info = LAPACKE_zgesvd( LAPACK_COL_MAJOR, 'A', 'A', n1, n2, fft_x + i * n1 * n2, n1, fft_s + i * min_n1_n2,
+                                   fft_u + i * n1 * n1 , n1, fft_vt + i * n2 * n2, n2, super );
         }
 
         /* Check for convergence */
@@ -145,42 +147,26 @@ namespace TensorLet_decomposition {
 
         fftw_execute(p_fft);
         fftw_destroy_plan(p_fft);
-//        MKL_free(fft_vt);
-//        MKL_free(fft_u);
-//        fftw_free(fft_s_complex);
+        MKL_free(fft_vt);
+        MKL_free(fft_u);
+        fftw_free(fft_s_complex);
 
 
 //        for(int i=0; i< n1; i++){
 //            cout << i << " " << s[i] << endl;
 //        }
+//        MKL_INT u_dimension[] = {n1,n1,n3};
+//        MKL_INT v_dimension[] = {n2,n2,n3};
 
-//    return c;
+        tsvd_format<datatype> result;
+        result.U = u;
+        result.V = vt;
+        result.Theta = s;
+        return result;
+
     }
 
 }
-
-//        Tensor3D<datatype> v_t(n1,n2,2*N0);
-//        fftw_complex out[N0]; //fftw_alloc_real()
-//        double *in = fftw_alloc_real(n3);
-//        fftw_plan p_fft;
-//        p_fft = fftw_plan_dft_r2c_1d(n3, in, out, FFTW_ESTIMATE);
-//        p_fft=fftw_plan_dft_r2c_1d(n3,in,out,FFTW_MEASURE);
-//
-//
-//        MKL_Complex16* fft_x = (MKL_Complex16*)mkl_malloc(n1*n2*(n3/2+1)*sizeof(MKL_Complex16),64);
-//
-
-//        int count=0;
-//        for(int i=0;i<32;i++){
-//            for(int j=0;j<100;j++){
-//                for(int k=0;k<10;k++){
-//                    if(y[i][j][k] == 0) {count++;}
-//                    cout << y[i][j][k];
-//                }
-//                cout << endl;
-//            }
-//        }
-//        cout << count << endl;
 
 // ifft
 

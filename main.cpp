@@ -7,6 +7,7 @@
 #include "tucker_hosvd.cpp"
 #include "tensor_hooi.cpp"
 #include "t_svd.cpp"
+#include "tensor_train.cpp"
 
 #include "Tensor3D.h"
 #include "Tensor3D.cpp"
@@ -18,63 +19,65 @@ using namespace std;
 using namespace TensorLet_decomposition;
 
 int main(){
-    MKL_INT n1,n2,n3;
-    n1=n2=n3=200;
-//    n1=100;
+    MKL_INT n1, n2, n3;
+    n1 = n2 = n3 = 200;
+
+    //    n1=100;
 //    n2=200;
-//    n3=300;
+//    n3 = 256;
+
     double t0,t1;
     t0=gettime();
-    Tensor3D<double> a(n1,n2,n3); //element
+    Tensor3D<double> a( n1, n2, n3 ); //element
     t1=gettime();
-    cout << "Memory malloc time:" <<t1-t0 <<endl;
+
+    cout << "Memory malloc time:" << t1 - t0 << endl;
 
     t0=gettime();
     a.random_tensor();
     t1=gettime();
-    cout << "Random initialize time:" <<t1-t0 <<endl;
+    cout << "Random initialize time:" << t1 - t0 << endl;
+
+    MKL_INT rank = 0.2*n1;
+    cout << rank << endl;
 
     t0=gettime();
-    cp_format<double> A = cp_als(a, 40);
+    cp_format<double> A = cp_als( a, 40 );
     t1=gettime();
-    cout << "CP time:" <<t1-t0 <<endl;
+    cout << "CP time:" << t1 - t0 << endl;
 
-    MKL_free(A.cp_A);
-    MKL_free(A.cp_B);
-    MKL_free(A.cp_C);
+    MKL_free( A.cp_A );
+    MKL_free( A.cp_B );
+    MKL_free( A.cp_C );
+
+    MKL_INT ranks[3] = {rank, rank, rank};
 
     t0=gettime();
-    tucker_format<double> B = tucker_hosvd(a,80,80,80);
+    tucker_format<double> B = tucker_hosvd( a, rank, rank, rank );
     t1=gettime();
-    cout << "Tucker time:" <<t1-t0 <<endl;
+    cout << "Tucker time:" << t1 - t0 << endl;
 
-    MKL_free(B.core);
-    MKL_free(B.u1);
-    MKL_free(B.u2);
-    MKL_free(B.u3);
+//    t0=gettime();
+//    tucker_format<double> B1 = tucker_hosvd( a, ranks );
+//    t1=gettime();
+//    cout << "Tucker time:" << t1 - t0 << endl;
 
-
-    t0=gettime();
-    tsvd_format<double> C = tsvd(a);
-    t1=gettime();
-    cout << "tsvd time:" <<t1-t0 <<endl;
-
-
+    MKL_free( B.core );
+    MKL_free( B.u1 );
+    MKL_free( B.u2 );
+    MKL_free( B.u3 );
 
 
 //    t0=gettime();
-//    double* X1_times_X1T = (double*)mkl_malloc(n1*n1*sizeof(double),64);
-//    double* X2_times_X2T = (double*)mkl_malloc(n1*n1*sizeof(double),64);
-//    double* X3_times_X3T = (double*)mkl_malloc(n1*n1*sizeof(double),64);
-//
-//    cblas_dsyrk(CblasColMajor,CblasUpper,CblasNoTrans,n1,n2*n3,1,a.pointer,n1,0,X1_times_X1T,n1);  //x1*x1^t
-//    for(MKL_INT i=0;i<n3;i++){
-//        cblas_dsyrk(CblasColMajor,CblasUpper,CblasTrans, n2, n1, 1, a.pointer+i*n1*n2, n1, 1, X2_times_X2T,n2);  // X(2) * X2^t rank update
-//    }
-//    cblas_dsyrk(CblasRowMajor,CblasUpper,CblasNoTrans,n3,n1*n2,1,a.pointer,n1*n2,0,X3_times_X3T,n3);  //x3*x3^t
-//
+//    tsvd_format<double> C = tsvd( a );
 //    t1=gettime();
-//    cout << "Tucker time:" <<t1-t0 <<endl;
+//    cout << "tsvd time:" << t1-t0 <<endl;
+
+
+    t0=gettime();
+    tt_format<double> D = tensor_train( a );
+    t1=gettime();
+    cout << "tensor-train time:" << t1-t0 <<endl;
 
     cout << "hello" << endl;
 
@@ -189,3 +192,19 @@ int main(){
 //    cout << tmp[n1] << endl;
 //    cout << tmp[n1+1] << endl;
 //cout << "Product time:" <<t1-t0 <<endl;
+
+
+// test x1 * x1t
+//    t0=gettime();
+//    double* X1_times_X1T = (double*)mkl_malloc(n1*n1*sizeof(double),64);
+//    double* X2_times_X2T = (double*)mkl_malloc(n1*n1*sizeof(double),64);
+//    double* X3_times_X3T = (double*)mkl_malloc(n1*n1*sizeof(double),64);
+//
+//    cblas_dsyrk(CblasColMajor,CblasUpper,CblasNoTrans,n1,n2*n3,1,a.pointer,n1,0,X1_times_X1T,n1);  //x1*x1^t
+//    for(MKL_INT i=0;i<n3;i++){
+//        cblas_dsyrk(CblasColMajor,CblasUpper,CblasTrans, n2, n1, 1, a.pointer+i*n1*n2, n1, 1, X2_times_X2T,n2);  // X(2) * X2^t rank update
+//    }
+//    cblas_dsyrk(CblasRowMajor,CblasUpper,CblasNoTrans,n3,n1*n2,1,a.pointer,n1*n2,0,X3_times_X3T,n3);  //x3*x3^t
+//
+//    t1=gettime();
+//    cout << "Tucker time:" <<t1-t0 <<endl;

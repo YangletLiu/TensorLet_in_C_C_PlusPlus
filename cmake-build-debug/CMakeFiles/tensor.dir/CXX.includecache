@@ -45,6 +45,8 @@ tensor_hooi.cpp
 /home/jcfei/Desktop/TensorLet_C/tensor_hooi.cpp
 t_svd.cpp
 /home/jcfei/Desktop/TensorLet_C/t_svd.cpp
+tensor_train.cpp
+/home/jcfei/Desktop/TensorLet_C/tensor_train.cpp
 Tensor3D.h
 /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
 Tensor3D.cpp
@@ -105,6 +107,12 @@ omp.h
 -
 
 /home/jcfei/Desktop/TensorLet_C/tensor_hooi.cpp
+tensor.h
+/home/jcfei/Desktop/TensorLet_C/tensor.h
+Tensor3D.h
+/home/jcfei/Desktop/TensorLet_C/Tensor3D.h
+
+/home/jcfei/Desktop/TensorLet_C/tensor_train.cpp
 tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 Tensor3D.h
