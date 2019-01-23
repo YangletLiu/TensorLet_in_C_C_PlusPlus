@@ -19,19 +19,28 @@ using namespace std;
 using namespace TensorLet_decomposition;
 
 int main(){
-    MKL_INT n1, n2, n3;
-    n1 = n2 = n3 = 200;
 
-    //    n1=100;
-//    n2=200;
-//    n3 = 256;
+    cout << "max " << mkl_get_max_threads() << endl;
+
+    MKL_INT n1, n2, n3;
+
+    n1 = n2 = n3 = 3;
+    //    n1=100; n2=200; n3 = 256;
+
+//    cout << "thread " << mkl_get_dynamic() << endl;
 
     double t0,t1;
     t0=gettime();
     Tensor3D<double> a( n1, n2, n3 ); //element
     t1=gettime();
 
+
+    double norm_tmp = cblas_dnrm2( n1*n2*n3, a.pointer, 1);
+    cout << "norm "<< norm_tmp << endl;
+
+
     cout << "Memory malloc time:" << t1 - t0 << endl;
+
 
     t0=gettime();
     a.random_tensor();
@@ -39,10 +48,12 @@ int main(){
     cout << "Random initialize time:" << t1 - t0 << endl;
 
     MKL_INT rank = 0.2*n1;
-    cout << rank << endl;
+    cout << "rank: " << rank << endl;
+
+    rank = 1;
 
     t0=gettime();
-    cp_format<double> A = cp_als( a, 40 );
+    cp_format<double> A = cp_als( a, 2 );
     t1=gettime();
     cout << "CP time:" << t1 - t0 << endl;
 
@@ -57,27 +68,26 @@ int main(){
     t1=gettime();
     cout << "Tucker time:" << t1 - t0 << endl;
 
-//    t0=gettime();
-//    tucker_format<double> B1 = tucker_hosvd( a, ranks );
-//    t1=gettime();
-//    cout << "Tucker time:" << t1 - t0 << endl;
+    t0=gettime();
+    tucker_format<double> B1 = tucker_hosvd( a, ranks );
+    t1=gettime();
+    cout << "Tucker time:" << t1 - t0 << endl;
 
     MKL_free( B.core );
     MKL_free( B.u1 );
     MKL_free( B.u2 );
     MKL_free( B.u3 );
-
-
+//
 //    t0=gettime();
 //    tsvd_format<double> C = tsvd( a );
 //    t1=gettime();
 //    cout << "tsvd time:" << t1-t0 <<endl;
-
-
-    t0=gettime();
-    tt_format<double> D = tensor_train( a );
-    t1=gettime();
-    cout << "tensor-train time:" << t1-t0 <<endl;
+//
+//
+//    t0=gettime();
+//    tt_format<double> D = tensor_train( a );
+//    t1=gettime();
+//    cout << "tensor-train time:" << t1-t0 <<endl;
 
     cout << "hello" << endl;
 

@@ -74,6 +74,7 @@ namespace TensorLet_decomposition {
         /* Compute SVD */
 
         MKL_INT info;
+
         for(int i = 0; i < N0; i++){
             info = LAPACKE_zgesvd( LAPACK_COL_MAJOR, 'A', 'A', n1, n2, fft_x + i * n1 * n2, n1, fft_s + i * min_n1_n2,
                                    fft_u + i * n1 * n1 , n1, fft_vt + i * n2 * n2, n2, super );
