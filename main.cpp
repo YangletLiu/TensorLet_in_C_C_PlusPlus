@@ -53,7 +53,7 @@ int main(){
     rank = 1;
 
     t0=gettime();
-    cp_format<double> A = cp_als( a, 2 );
+    cp_format<double> A = cp_als( a, 25 );
     t1=gettime();
     cout << "CP time:" << t1 - t0 << endl;
 
@@ -77,7 +77,7 @@ int main(){
     MKL_free( B.u1 );
     MKL_free( B.u2 );
     MKL_free( B.u3 );
-//
+
 //    t0=gettime();
 //    tsvd_format<double> C = tsvd( a );
 //    t1=gettime();

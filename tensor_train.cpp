@@ -23,7 +23,6 @@ namespace TensorLet_decomposition {
 
         int n1 = shape[0]; int n2 =shape[1]; int n3 = shape[2];
 
-
         MKL_INT info;
 
         MKL_INT row = n1;
@@ -133,6 +132,8 @@ namespace TensorLet_decomposition {
         return result;
 
     }
+
+
 }
 
 //

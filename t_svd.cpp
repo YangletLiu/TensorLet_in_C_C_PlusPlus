@@ -17,6 +17,7 @@ namespace TensorLet_decomposition {
 
     template<class datatype>
     tsvd_format<datatype> tsvd(Tensor3D<datatype>& a) {
+
         int *shape = a.getsize();  //dimension
 
         int n1 = shape[0]; int n2 =shape[1]; int n3 = shape[2];
