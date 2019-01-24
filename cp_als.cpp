@@ -29,16 +29,19 @@ namespace TensorLet_decomposition{
 
         double norm_a = cblas_dnrm2(n1 * n2 * n3, a.pointer, 1);
 
+        double tolerance_times_norm_a = (1 - tolerance) * norm_a;
+
 /*****************************
 ******* Allocate memory ******
 ******************************/
 
+        // a col-major, b col-major, c row-major
         datatype* A = (datatype*)mkl_malloc(n1 * r * sizeof(datatype), 64);
         datatype* B = (datatype*)mkl_malloc(n2 * r * sizeof(datatype), 64);
         datatype* C = (datatype*)mkl_malloc(n3 * r * sizeof(datatype), 64);
+        datatype* Ct = (datatype*)mkl_malloc(n3 * r * sizeof(datatype), 64);
 
-
-        if( A == NULL || B == NULL || C == NULL ){
+        if( A == NULL || B == NULL || C == NULL || Ct == NULL ){
             printf("Cannot allocate enough memory for A, B, C.");
             exit(1);
         }
@@ -104,6 +107,7 @@ namespace TensorLet_decomposition{
         }
 
         while(max_iter < 2){
+
             max_iter++;
 
             /************************
@@ -117,66 +121,53 @@ namespace TensorLet_decomposition{
                 exit(1);
             }
 
-            // c_kr_b tested: right
+            // c_kr_b tested: right, c col-major  b col-major
             for(MKL_INT i = 0; i < r; i++){
                 cblas_dgemm(CblasColMajor, CblasNoTrans, CblasTrans,
                             n2, n3, 1, 1, B + i * n2, n2, C + i * n3, n3,
                             0, c_kr_b + i * n2 * n3, n2);
             }
-            //        for(int i = 0; i < 6; i++){
-            //            cout << C[i] << " ";
-            //        }
-            //        cout << endl;
-            //        for(int i = 0; i < 6; i++){
-            //            cout << B[i] << " ";
-            //        }
-            //        cout << endl;
-            //        for(int i = 0; i < 18; i++){
-            //            cout << c_kr_b[i] << " ";
-            //        }
-            //        cout << endl;
-            //
-            //        for(int i = 0; i < 27; i++){
-            //            cout << a.pointer[i] << " ";
-            //        }
-            //        cout << endl;
 
             // tested: right
             cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
                         n1, r, n2*n3, 1, a.pointer, n1, c_kr_b, n2 * n3,
                         0, x1_times_c_kr_b, n1); // X(1) * kr(c,b)
 
-//            cblas_dgemm(CblasColMajor, CblasTrans, CblasNoTrans,
-//                        r, r, n3, 1, C, n3, C, r,
-//                        0, ct_times_c, r); // c^t * c
-//
-//            cblas_dgemm(CblasColMajor, CblasTrans, CblasNoTrans,
-//                        r, r, n2, 1, B, n2, B, r,
-//                        0, bt_times_b, r); // b^t * b
-// 对称性
-            cblas_dsyrk(CblasColMajor, CblasUpper, CblasTrans,
-                        r, n3, 1, C, n3,
-                        0, ct_times_c, r);
-            cblas_dsyrk(CblasColMajor, CblasUpper, CblasTrans,
-                        r, n2, 1, B, n2,
-                        0, bt_times_b, r);
+            // tested: right
+            cblas_dgemm(CblasColMajor, CblasTrans, CblasNoTrans,
+                        r, r, n3, 1, C, n3, C, n3,
+                        0, ct_times_c, r); // c^t * c
 
+            // tested: right
+            cblas_dgemm(CblasColMajor, CblasTrans, CblasNoTrans,
+                        r, r, n2, 1, B, n2, B, n2,
+                        0, bt_times_b, r); // b^t * b
+
+// 对称性
+//            cblas_dsyrk(CblasColMajor, CblasUpper, CblasTrans,
+//                        r, n3, 1, C, n3,
+//                        0, ct_times_c, r);
+//            cblas_dsyrk(CblasColMajor, CblasUpper, CblasTrans,
+//                        r, n2, 1, B, n2,
+//                        0, bt_times_b, r);
+
+            // tested right
             vdMul(r * r, ct_times_c, bt_times_b, ct_times_c_times_bt_times_b);
 
-            //pinv need test
-            int info = -1;
-            MKL_INT* ivpv=(MKL_INT*)mkl_malloc(r * sizeof(MKL_INT), 64);
-            datatype* work=(datatype*)mkl_malloc(r * sizeof(datatype),64);
 
-            MKL_INT order = r;
-            dsytrf("U", &order, ct_times_c_times_bt_times_b, &r, ivpv, work, &r, &info);
+            for(int i = 0; i < 6; i++){
+                cout << A[i] << " ";
+            }
+            cout << endl;
 
-            dsytri("U", &order, ct_times_c_times_bt_times_b, &r, ivpv, work, &info);
+//            cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
+//                        n1, r, r, 1, x1_times_c_kr_b, n1, ct_times_c_times_bt_times_b, r,
+//                        0, A, n1);
 
-    //    cblas_dsymm(CblasColMajor, CblasRight, CblasUpper, n1, r, 1, cal_a, r, c_times_ct_times_b_times_bt,n1,0,A,n1);
-            cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
-                        n1, r, r, 1, x1_times_c_kr_b, n1, ct_times_c_times_bt_times_b, r,
-                        0, A, n1);
+            for(MKL_INT i = 0; i < r; i++){
+                double norm = cblas_dnrm2(n1, A + i * n1, 1);
+                cblas_dscal(n1, 1/norm, A + i * n1, 1);  //normalize
+            }
 
             MKL_free(c_kr_b);
             MKL_free(x1_times_c_kr_b);
@@ -196,7 +187,7 @@ namespace TensorLet_decomposition{
             for(MKL_INT i = 0; i < r; i++){
                 cblas_dgemm(CblasColMajor, CblasNoTrans, CblasTrans,
                             n1, n3, 1, 1, A + i * n1, n1, C + i * n3, n3,
-                            0, c_kr_a + i * n3 * n1, n1);  // kr(c,a)
+                            0, c_kr_a + i * n1 * n3, n1);  // kr(c,a)
             }
 
             for(MKL_INT i = 0; i < n3; i++){
@@ -205,19 +196,29 @@ namespace TensorLet_decomposition{
                             1, x2_times_c_kr_a, n2);  // X(2) * kr(c,a) rank update
             }
 
-            cblas_dsyrk(CblasColMajor, CblasUpper, CblasTrans,
-                        r, n1, 1, A, n1,
-                        0, at_times_a, r);
+            cblas_dgemm(CblasColMajor, CblasTrans, CblasNoTrans,
+                        r, r, n1, 1, A, n1, A, n1,
+                        0, at_times_a, r); // a^t * a
 
+//            cblas_dsyrk(CblasColMajor, CblasUpper, CblasTrans,
+//                        r, n1, 1, A, n1,
+//                        0, at_times_a, r);
 
             vdMul(r * r, ct_times_c, at_times_a, ct_times_c_times_at_times_a);
 
-            dsytrf( "U", &r, ct_times_c_times_at_times_a, &r, ivpv, work, &r, &info );
-            dsytri( "U", &r, ct_times_c_times_at_times_a, &r, ivpv, work, &info );
 
-            cblas_dsymm( CblasColMajor, CblasRight, CblasUpper,
-                         n2, r, 1, x2_times_c_kr_a, r, ct_times_c_times_at_times_a, n2,
-                         0, B, n2 );
+//            cblas_dsymm( CblasColMajor, CblasRight, CblasUpper,
+//                         n2, r, 1, x2_times_c_kr_a, r, ct_times_c_times_at_times_a, n2,
+//                         0, B, n2 );
+
+            cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
+                    n2, r, r, 1, x2_times_c_kr_a, n2, ct_times_c_times_at_times_a, r,
+                    1, B, n2);
+
+            for(MKL_INT i = 0; i < r; i++){
+                double norm = cblas_dnrm2(n2, B + i * n2, 1);
+                cblas_dscal(n2, 1/norm, B + i * n2, 1);  //normalize
+            }
 
             MKL_free( c_kr_a );
             MKL_free( x2_times_c_kr_a );
@@ -241,46 +242,60 @@ namespace TensorLet_decomposition{
 //        cblas_dgemm(CblasColMajor,CblasNoTrans,CblasTrans,n2,n1,1,1,B+i*n2,n2,A+i*n1,n1,0,b_kr_a+i*n1*n2,n2);  // kr(a,b)
             }
 
-
             cblas_dgemm( CblasRowMajor, CblasNoTrans, CblasTrans,
                          n3, r, n1 * n2, 1, a.pointer, n1 * n2, b_kr_a, n1 * n2,
                          0, x3_times_b_kr_a, r ); //  X(3) * kr(b,a) CblasRowMajor
 
+//            cblas_dsyrk( CblasColMajor, CblasUpper, CblasTrans,
+//                         r, n2, 1, B, n2,
+//                         0, bt_times_b, r);
 
-            cblas_dsyrk( CblasColMajor, CblasUpper, CblasTrans,
-                         r, n2, 1, B, n2,
-                         0, bt_times_b, r);
+            cblas_dgemm(CblasColMajor, CblasTrans, CblasNoTrans,
+                        r, r, n2, 1, B, n2, B, n2,
+                        0, bt_times_b, r); // b^t * b
 
             vdMul( r * r, bt_times_b, at_times_a, bt_times_b_times_at_times_a );
 
-            dsytrf( "U", &r, bt_times_b_times_at_times_a, &r, ivpv, work, &r, &info );
-            dsytri( "U", &r, bt_times_b_times_at_times_a, &r, ivpv, work, &info );
+//
+//            cblas_dsymm( CblasRowMajor, CblasRight, CblasUpper,
+//                         n3, r, 1, x3_times_b_kr_a, r, bt_times_b_times_at_times_a, r,
+//                         0, C, r );
 
-            cblas_dsymm( CblasRowMajor, CblasRight, CblasUpper,
-                         n3, r, 1, x3_times_b_kr_a, r, bt_times_b_times_at_times_a, r,
-                         0, C, r );
+            cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
+                        n3, r, r, 1, x3_times_b_kr_a, r, ct_times_c_times_at_times_a, r,
+                        1, Ct, r);
+
+            for(MKL_INT i = 0; i < r; i++){
+                cblas_dcopy(n3, Ct + i, r, C + i * n3, 1);  //tranpose
+            }
+
+            for(MKL_INT i = 0; i < r; i++){
+                double norm = cblas_dnrm2(n3, C + i * n3, 1);
+                cblas_dscal(n3, 1/norm, C + i * n3, 1);  //normalize
+            }
 
             datatype* a_con = (datatype*)mkl_malloc(n1 * n2 * n3 * sizeof(datatype), 64);
 
             cblas_dgemm( CblasColMajor, CblasNoTrans, CblasNoTrans,
-                         n1 * n2, n3, r, 1, b_kr_a, n1 * n2, C, r,
+                         n1 * n2, n3, r, 1, b_kr_a, n1 * n2, Ct, r,
                          0, a_con, n1 * n2 ); //  X(3) * kr(b,a) CblasRowMajor
-
-
             cblas_daxpy(n1 * n2 * n3, -1, a.pointer, 1, a_con, 1);
             double norm_s = cblas_dnrm2(n1 * n2 * n3, a_con, 1);
 
-//            cout << "norm: " << norm_a << endl;
-//            cout << "norm error: " << norm_s << endl;
+//            cout << "norm s: " << norm_s << endl;
+//            cout << "norm error: " << norm_s / norm_a << endl;
+
+            if( norm_s > tolerance_times_norm_a - norm_a || norm_s < tolerance_times_norm_a + norm_a){
+                break;
+            }
 
             /* clean up */
             MKL_free(b_kr_a);
             MKL_free( x3_times_b_kr_a );
-            MKL_free( ivpv );
-            MKL_free( work );
+            MKL_free(a_con);
 
         }
-
+        MKL_free( Ct );
         MKL_free( at_times_a );
         MKL_free( bt_times_b );
         MKL_free( ct_times_c );
@@ -540,3 +555,42 @@ namespace TensorLet_decomposition{
 //    }
 
 }
+
+
+//            //pinv need test
+//            int info[] = {-1, -1};
+//
+//            MKL_INT* ivpv = (MKL_INT*)mkl_malloc(r * sizeof(MKL_INT), 64);
+//            datatype* work = (datatype*)mkl_malloc(r * sizeof(datatype),64);
+//
+//            MKL_INT order = r;
+//
+//            // 计算对称矩阵的伪逆矩阵， 仅计算上半部分 //不稳定。。。 修改
+//            dsytrf("U", &order, ct_times_c_times_bt_times_b, &r, ivpv, work, &r, &info[0]);
+//            dsytri("U", &order, ct_times_c_times_bt_times_b, &r, ivpv, work, &info[1]);
+//
+//            if(info[0] + info[1] != 0){
+//                printf("Compute inverse failed during update A.");
+//            }
+//
+//            cblas_dsymm(CblasColMajor, CblasRight, CblasUpper,
+//                    n1, r, 1, ct_times_c_times_bt_times_b, r, x1_times_c_kr_b, n1,
+//                    0, A, n1);
+
+
+//            dsytrf( "U", &r, ct_times_c_times_at_times_a, &r, ivpv, work, &r, &info[0] );
+//            dsytri( "U", &r, ct_times_c_times_at_times_a, &r, ivpv, work, &info[1] );
+//
+//            if(info[0] + info[1] != 0){
+//                printf("Compute inverse failed during update B.");
+//            }
+
+//dsytrf( "U", &r, bt_times_b_times_at_times_a, &r, ivpv, work, &r, &info[0] );
+//            dsytri( "U", &r, bt_times_b_times_at_times_a, &r, ivpv, work, &info[1] );
+//            if(info[0] + info[1] != 0){
+//                printf("Compute inverse failed during update C.");
+//            }
+
+
+//            MKL_free( ivpv );
+//            MKL_free( work );

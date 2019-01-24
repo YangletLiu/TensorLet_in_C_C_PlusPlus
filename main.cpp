@@ -33,12 +33,6 @@ int main(){
     t0=gettime();
     Tensor3D<double> a( n1, n2, n3 ); //element
     t1=gettime();
-
-
-    double norm_tmp = cblas_dnrm2( n1*n2*n3, a.pointer, 1);
-    cout << "norm "<< norm_tmp << endl;
-
-
     cout << "Memory malloc time:" << t1 - t0 << endl;
 
 
@@ -53,7 +47,7 @@ int main(){
     rank = 1;
 
     t0=gettime();
-    cp_format<double> A = cp_als( a, 25 );
+    cp_format<double> A = cp_als( a, 2 );
     t1=gettime();
     cout << "CP time:" << t1 - t0 << endl;
 
@@ -61,22 +55,22 @@ int main(){
     MKL_free( A.cp_B );
     MKL_free( A.cp_C );
 
-    MKL_INT ranks[3] = {rank, rank, rank};
+//    MKL_INT ranks[3] = {rank, rank, rank};
 
-    t0=gettime();
-    tucker_format<double> B = tucker_hosvd( a, rank, rank, rank );
-    t1=gettime();
-    cout << "Tucker time:" << t1 - t0 << endl;
-
-    t0=gettime();
-    tucker_format<double> B1 = tucker_hosvd( a, ranks );
-    t1=gettime();
-    cout << "Tucker time:" << t1 - t0 << endl;
-
-    MKL_free( B.core );
-    MKL_free( B.u1 );
-    MKL_free( B.u2 );
-    MKL_free( B.u3 );
+//    t0=gettime();
+//    tucker_format<double> B = tucker_hosvd( a, rank, rank, rank );
+//    t1=gettime();
+//    cout << "Tucker time:" << t1 - t0 << endl;
+//
+//    t0=gettime();
+//    tucker_format<double> B1 = tucker_hosvd( a, ranks );
+//    t1=gettime();
+//    cout << "Tucker time:" << t1 - t0 << endl;
+//
+//    MKL_free( B.core );
+//    MKL_free( B.u1 );
+//    MKL_free( B.u2 );
+//    MKL_free( B.u3 );
 
 //    t0=gettime();
 //    tsvd_format<double> C = tsvd( a );
