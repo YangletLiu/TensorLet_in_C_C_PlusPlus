@@ -47,7 +47,7 @@ int main(){
     rank = 1;
 
     t0=gettime();
-    cp_format<double> A = cp_als( a, 2 );
+    cp_format<double> A = cp_als( a, 25 );
     t1=gettime();
     cout << "CP time:" << t1 - t0 << endl;
 

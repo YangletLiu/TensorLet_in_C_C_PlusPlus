@@ -12,6 +12,7 @@ public:
     datatype* cp_A;
     datatype* cp_B;
     datatype* cp_C;
+    datatype* cp_lamda;
 };
 namespace TensorLet_decomposition{
 
@@ -40,6 +41,7 @@ namespace TensorLet_decomposition{
         datatype* B = (datatype*)mkl_malloc(n2 * r * sizeof(datatype), 64);
         datatype* C = (datatype*)mkl_malloc(n3 * r * sizeof(datatype), 64);
         datatype* Ct = (datatype*)mkl_malloc(n3 * r * sizeof(datatype), 64);
+        datatype* lamda = (datatype*)MKL_malloc(r * sizeof(datatype), 64);
 
         if( A == NULL || B == NULL || C == NULL || Ct == NULL ){
             printf("Cannot allocate enough memory for A, B, C.");
@@ -106,9 +108,15 @@ namespace TensorLet_decomposition{
             exit(1);
         }
 
-        while(max_iter < 2){
+        while(max_iter < 100){
 
             max_iter++;
+
+            double normA = cblas_dnrm2(n1*r, A, 1);
+            double normB = cblas_dnrm2(n2*r, B, 1);
+            double normC = cblas_dnrm2(n3*r, C, 1);
+            double normCt = cblas_dnrm2(n3*r, Ct, 1);
+            cout << normA << " " << normB << " " << normC << " " << normCt << endl;
 
             /************************
             ******* update A ********
@@ -154,19 +162,53 @@ namespace TensorLet_decomposition{
             // tested right
             vdMul(r * r, ct_times_c, bt_times_b, ct_times_c_times_bt_times_b);
 
+            MKL_INT info;
 
-            for(int i = 0; i < 6; i++){
-                cout << A[i] << " ";
+            double* s = (double*)MKL_malloc(r * sizeof(double), 64);
+            double* u = (double*)MKL_malloc( r * r * sizeof(double), 64);
+            double* vt = (double*)MKL_malloc(r * r * sizeof(double), 64);
+
+            double super[r-1];
+
+            info = LAPACKE_dgesvd( LAPACK_COL_MAJOR, 'A', 'A', r, r, ct_times_c_times_bt_times_b, r, s,
+                                   u, r, vt, r, super );  // min_row_column row-wise
+
+            if( info > 0 ) {
+                printf( "Compute inverse failed: the algorithm computing SVD failed to converge.\n" );
+                exit( 1 );
             }
-            cout << endl;
 
-//            cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
-//                        n1, r, r, 1, x1_times_c_kr_b, n1, ct_times_c_times_bt_times_b, r,
-//                        0, A, n1);
+            // u * sigma^-1
+//            #pragma omp parallel for
+            for(int i = 0; i < r; i++){
+                double ss;
+                if(s[i] > 1.0e-6){
+                    ss=1.0/s[i];
+                    cblas_dscal(r, ss, u + i * r, 1);
+                }
+            }
+
+            cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
+                        r, r, r, 1, u, r, vt, r,
+                        0, ct_times_c_times_bt_times_b, r);
+
+//            for(int i = 0; i < 4; i++){
+//                cout << ct_times_c_times_bt_times_b[i] << " ";
+//            }
+//            cout << endl;
+
+            cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
+                        n1, r, r, 1, x1_times_c_kr_b, n1, ct_times_c_times_bt_times_b, r,
+                        0, A, n1);
 
             for(MKL_INT i = 0; i < r; i++){
                 double norm = cblas_dnrm2(n1, A + i * n1, 1);
-                cblas_dscal(n1, 1/norm, A + i * n1, 1);  //normalize
+                if (norm > 1e-9){
+                    cblas_dscal(n1, 1/norm, A + i * n1, 1);  //normalize
+                }
+//                else{
+//                    cblas_dscal(n1, norm, A + i * n1, 1);  //normalize
+//                }
             }
 
             MKL_free(c_kr_b);
@@ -207,9 +249,27 @@ namespace TensorLet_decomposition{
             vdMul(r * r, ct_times_c, at_times_a, ct_times_c_times_at_times_a);
 
 
-//            cblas_dsymm( CblasColMajor, CblasRight, CblasUpper,
-//                         n2, r, 1, x2_times_c_kr_a, r, ct_times_c_times_at_times_a, n2,
-//                         0, B, n2 );
+            info = LAPACKE_dgesvd( LAPACK_COL_MAJOR, 'A', 'A', r, r, ct_times_c_times_at_times_a, r, s,
+                                   u, r, vt, r, super );  // min_row_column row-wise
+
+            if( info > 0 ) {
+                printf( "Compute inverse failed: the algorithm computing SVD failed to converge.\n" );
+                exit( 1 );
+            }
+
+            // u * sigma^-1
+//            #pragma omp parallel for
+            for(int i = 0; i < r; i++){
+                double ss;
+                if(s[i] > 1.0e-6){
+                    ss=1.0/s[i];
+                    cblas_dscal(r, ss, u + i * r, 1);
+                }
+            }
+
+            cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
+                        r, r, r, 1, u, r, vt, r,
+                        0, ct_times_c_times_at_times_a, r);
 
             cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
                     n2, r, r, 1, x2_times_c_kr_a, n2, ct_times_c_times_at_times_a, r,
@@ -217,7 +277,9 @@ namespace TensorLet_decomposition{
 
             for(MKL_INT i = 0; i < r; i++){
                 double norm = cblas_dnrm2(n2, B + i * n2, 1);
-                cblas_dscal(n2, 1/norm, B + i * n2, 1);  //normalize
+                if (norm > 1e-9){
+                    cblas_dscal(n2, 1/norm, B + i * n2, 1);  //normalize
+                }
             }
 
             MKL_free( c_kr_a );
@@ -256,13 +318,33 @@ namespace TensorLet_decomposition{
 
             vdMul( r * r, bt_times_b, at_times_a, bt_times_b_times_at_times_a );
 
-//
-//            cblas_dsymm( CblasRowMajor, CblasRight, CblasUpper,
-//                         n3, r, 1, x3_times_b_kr_a, r, bt_times_b_times_at_times_a, r,
-//                         0, C, r );
+            info = LAPACKE_dgesvd( LAPACK_COL_MAJOR, 'A', 'A', r, r, bt_times_b_times_at_times_a, r, s,
+                                   u, r, vt, r, super );  // min_row_column row-wise
+
+            if( info > 0 ) {
+                printf( "Compute inverse failed: the algorithm computing SVD failed to converge.\n" );
+                exit( 1 );
+            }
+
+            // u * sigma^-1
+//            #pragma omp parallel for
+            for(int i = 0; i < r; i++){
+                double ss;
+                if(s[i] > 1.0e-6){
+                    ss=1.0/s[i];
+                    cblas_dscal(r, ss, u + i * r, 1);
+                }
+            }
+
+            cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
+                        r, r, r, 1, u, r, vt, r,
+                        0, bt_times_b_times_at_times_a, r); // pinv finish
+
+//            double norm = cblas_dnrm2(r*r, bt_times_b_times_at_times_a, 1);
+//            cout << norm << endl;
 
             cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
-                        n3, r, r, 1, x3_times_b_kr_a, r, ct_times_c_times_at_times_a, r,
+                        n3, r, r, 1, x3_times_b_kr_a, r, bt_times_b_times_at_times_a, r,
                         1, Ct, r);
 
             for(MKL_INT i = 0; i < r; i++){
@@ -270,8 +352,10 @@ namespace TensorLet_decomposition{
             }
 
             for(MKL_INT i = 0; i < r; i++){
-                double norm = cblas_dnrm2(n3, C + i * n3, 1);
-                cblas_dscal(n3, 1/norm, C + i * n3, 1);  //normalize
+                lamda[i] = cblas_dnrm2(n3, C + i * n3, 1);
+                if (lamda[i] > 1e-9){
+                    cblas_dscal(n3, 1/lamda[i], C + i * n3, 1);  //normalize
+                }
             }
 
             datatype* a_con = (datatype*)mkl_malloc(n1 * n2 * n3 * sizeof(datatype), 64);
@@ -279,13 +363,15 @@ namespace TensorLet_decomposition{
             cblas_dgemm( CblasColMajor, CblasNoTrans, CblasNoTrans,
                          n1 * n2, n3, r, 1, b_kr_a, n1 * n2, Ct, r,
                          0, a_con, n1 * n2 ); //  X(3) * kr(b,a) CblasRowMajor
+
             cblas_daxpy(n1 * n2 * n3, -1, a.pointer, 1, a_con, 1);
             double norm_s = cblas_dnrm2(n1 * n2 * n3, a_con, 1);
+            double epision = norm_s / norm_a;
 
-//            cout << "norm s: " << norm_s << endl;
-//            cout << "norm error: " << norm_s / norm_a << endl;
+            cout << "norm s: " << norm_s << endl;
+            cout << "norm error: " << epision << endl;
 
-            if( norm_s > tolerance_times_norm_a - norm_a || norm_s < tolerance_times_norm_a + norm_a){
+            if( epision < tolerance){
                 break;
             }
 
@@ -307,6 +393,7 @@ namespace TensorLet_decomposition{
         result.cp_A = A;
         result.cp_B = B;
         result.cp_C = C;
+        result.cp_lamda = lamda;
 
         return result;
 
