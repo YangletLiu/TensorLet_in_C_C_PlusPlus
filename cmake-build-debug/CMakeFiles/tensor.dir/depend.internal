@@ -87,9 +87,9 @@ CMakeFiles/tensor.dir/cp_als.cpp.o
  /opt/intel/mkl/include/mkl_vsl_functions.h
  /opt/intel/mkl/include/mkl_vsl_types.h
  /usr/local/fftw/include/fftw3.h
-CMakeFiles/tensor.dir/cpgen.cpp.o
+CMakeFiles/tensor.dir/cp_gen.cpp.o
  /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
- /home/jcfei/Desktop/TensorLet_C/cpgen.cpp
+ /home/jcfei/Desktop/TensorLet_C/cp_gen.cpp
  /home/jcfei/Desktop/TensorLet_C/tensor.h
  /opt/intel/mkl/include/mkl.h
  /opt/intel/mkl/include/mkl_blas.h
@@ -134,7 +134,7 @@ CMakeFiles/tensor.dir/main.cpp.o
  /home/jcfei/Desktop/TensorLet_C/Tensor3D.cpp
  /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
  /home/jcfei/Desktop/TensorLet_C/cp_als.cpp
- /home/jcfei/Desktop/TensorLet_C/cpgen.cpp
+ /home/jcfei/Desktop/TensorLet_C/cp_gen.cpp
  /home/jcfei/Desktop/TensorLet_C/main.cpp
  /home/jcfei/Desktop/TensorLet_C/runningtime.h
  /home/jcfei/Desktop/TensorLet_C/t_svd.cpp

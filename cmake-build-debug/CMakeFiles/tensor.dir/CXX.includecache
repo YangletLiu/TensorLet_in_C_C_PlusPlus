@@ -22,7 +22,7 @@ tensor.h
 Tensor3D.h
 /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
 
-/home/jcfei/Desktop/TensorLet_C/cpgen.cpp
+/home/jcfei/Desktop/TensorLet_C/cp_gen.cpp
 tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 Tensor3D.h
@@ -35,8 +35,6 @@ runningtime.h
 /home/jcfei/Desktop/TensorLet_C/runningtime.h
 ten2mat.cpp
 /home/jcfei/Desktop/TensorLet_C/ten2mat.cpp
-cpgen.cpp
-/home/jcfei/Desktop/TensorLet_C/cpgen.cpp
 cp_als.cpp
 /home/jcfei/Desktop/TensorLet_C/cp_als.cpp
 tucker_hosvd.cpp
@@ -47,6 +45,8 @@ t_svd.cpp
 /home/jcfei/Desktop/TensorLet_C/t_svd.cpp
 tensor_train.cpp
 /home/jcfei/Desktop/TensorLet_C/tensor_train.cpp
+cp_gen.cpp
+/home/jcfei/Desktop/TensorLet_C/cp_gen.cpp
 Tensor3D.h
 /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
 Tensor3D.cpp

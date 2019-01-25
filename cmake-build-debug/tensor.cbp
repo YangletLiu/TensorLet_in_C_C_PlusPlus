@@ -99,7 +99,7 @@
 		<Unit filename="/home/jcfei/Desktop/TensorLet_C/cp_als.cpp">
 			<Option target="tensor"/>
 		</Unit>
-		<Unit filename="/home/jcfei/Desktop/TensorLet_C/cpgen.cpp">
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C/cp_gen.cpp">
 			<Option target="tensor"/>
 		</Unit>
 		<Unit filename="/home/jcfei/Desktop/TensorLet_C/main.cpp">

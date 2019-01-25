@@ -2,12 +2,13 @@
 #include "runningtime.h"
 
 #include "ten2mat.cpp"
-#include "cpgen.cpp"
 #include "cp_als.cpp"
 #include "tucker_hosvd.cpp"
 #include "tensor_hooi.cpp"
 #include "t_svd.cpp"
 #include "tensor_train.cpp"
+
+#include "cp_gen.cpp"
 
 #include "Tensor3D.h"
 #include "Tensor3D.cpp"
@@ -24,7 +25,7 @@ int main(){
 
     MKL_INT n1, n2, n3;
 
-    n1 = n2 = n3 = 3;
+    n1 = n2 = n3 = 100;
     //    n1=100; n2=200; n3 = 256;
 
 //    cout << "thread " << mkl_get_dynamic() << endl;
@@ -41,19 +42,24 @@ int main(){
     t1=gettime();
     cout << "Random initialize time:" << t1 - t0 << endl;
 
+    a.cp_gen(20);
+
     MKL_INT rank = 0.2*n1;
     cout << "rank: " << rank << endl;
 
     rank = 1;
 
     t0=gettime();
-    cp_format<double> A = cp_als( a, 25 );
+    cp_format<double> A = cp_als( a, 20 );
     t1=gettime();
     cout << "CP time:" << t1 - t0 << endl;
 
     MKL_free( A.cp_A );
     MKL_free( A.cp_B );
     MKL_free( A.cp_C );
+
+//    Tensor3D<double> aaaa(2,2,2);
+//    aaaa.cp_gen(1);
 
 //    MKL_INT ranks[3] = {rank, rank, rank};
 

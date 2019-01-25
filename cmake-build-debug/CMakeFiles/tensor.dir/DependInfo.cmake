@@ -6,7 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/jcfei/Desktop/TensorLet_C/Tensor3D.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/Tensor3D.cpp.o"
   "/home/jcfei/Desktop/TensorLet_C/cp_als.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/cp_als.cpp.o"
-  "/home/jcfei/Desktop/TensorLet_C/cpgen.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/cpgen.cpp.o"
+  "/home/jcfei/Desktop/TensorLet_C/cp_gen.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/cp_gen.cpp.o"
   "/home/jcfei/Desktop/TensorLet_C/main.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o"
   "/home/jcfei/Desktop/TensorLet_C/t_svd.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/t_svd.cpp.o"
   "/home/jcfei/Desktop/TensorLet_C/tensor_hooi.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/tensor_hooi.cpp.o"

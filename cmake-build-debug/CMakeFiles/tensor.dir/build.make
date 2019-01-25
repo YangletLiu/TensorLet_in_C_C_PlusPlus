@@ -122,18 +122,18 @@ CMakeFiles/tensor.dir/tucker_hosvd.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tensor.dir/tucker_hosvd.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp -o CMakeFiles/tensor.dir/tucker_hosvd.cpp.s
 
-CMakeFiles/tensor.dir/cpgen.cpp.o: CMakeFiles/tensor.dir/flags.make
-CMakeFiles/tensor.dir/cpgen.cpp.o: ../cpgen.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/tensor.dir/cpgen.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tensor.dir/cpgen.cpp.o -c /home/jcfei/Desktop/TensorLet_C/cpgen.cpp
+CMakeFiles/tensor.dir/cp_gen.cpp.o: CMakeFiles/tensor.dir/flags.make
+CMakeFiles/tensor.dir/cp_gen.cpp.o: ../cp_gen.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/tensor.dir/cp_gen.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tensor.dir/cp_gen.cpp.o -c /home/jcfei/Desktop/TensorLet_C/cp_gen.cpp
 
-CMakeFiles/tensor.dir/cpgen.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tensor.dir/cpgen.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jcfei/Desktop/TensorLet_C/cpgen.cpp > CMakeFiles/tensor.dir/cpgen.cpp.i
+CMakeFiles/tensor.dir/cp_gen.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tensor.dir/cp_gen.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jcfei/Desktop/TensorLet_C/cp_gen.cpp > CMakeFiles/tensor.dir/cp_gen.cpp.i
 
-CMakeFiles/tensor.dir/cpgen.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tensor.dir/cpgen.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jcfei/Desktop/TensorLet_C/cpgen.cpp -o CMakeFiles/tensor.dir/cpgen.cpp.s
+CMakeFiles/tensor.dir/cp_gen.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tensor.dir/cp_gen.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jcfei/Desktop/TensorLet_C/cp_gen.cpp -o CMakeFiles/tensor.dir/cp_gen.cpp.s
 
 CMakeFiles/tensor.dir/Tensor3D.cpp.o: CMakeFiles/tensor.dir/flags.make
 CMakeFiles/tensor.dir/Tensor3D.cpp.o: ../Tensor3D.cpp
@@ -168,7 +168,7 @@ tensor_OBJECTS = \
 "CMakeFiles/tensor.dir/cp_als.cpp.o" \
 "CMakeFiles/tensor.dir/t_svd.cpp.o" \
 "CMakeFiles/tensor.dir/tucker_hosvd.cpp.o" \
-"CMakeFiles/tensor.dir/cpgen.cpp.o" \
+"CMakeFiles/tensor.dir/cp_gen.cpp.o" \
 "CMakeFiles/tensor.dir/Tensor3D.cpp.o" \
 "CMakeFiles/tensor.dir/tensor_train.cpp.o"
 
@@ -180,7 +180,7 @@ tensor: CMakeFiles/tensor.dir/tensor_hooi.cpp.o
 tensor: CMakeFiles/tensor.dir/cp_als.cpp.o
 tensor: CMakeFiles/tensor.dir/t_svd.cpp.o
 tensor: CMakeFiles/tensor.dir/tucker_hosvd.cpp.o
-tensor: CMakeFiles/tensor.dir/cpgen.cpp.o
+tensor: CMakeFiles/tensor.dir/cp_gen.cpp.o
 tensor: CMakeFiles/tensor.dir/Tensor3D.cpp.o
 tensor: CMakeFiles/tensor.dir/tensor_train.cpp.o
 tensor: CMakeFiles/tensor.dir/build.make

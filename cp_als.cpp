@@ -17,7 +17,7 @@ public:
 namespace TensorLet_decomposition{
 
     template<class datatype>
-    cp_format<datatype> cp_als( Tensor3D<datatype> &a, int r, int max_iter = 1, datatype tolerance = 1e-6) {
+    cp_format<datatype> cp_als( Tensor3D<datatype> &a, int r, int max_iter = 100, datatype tolerance = 1e-6) {
 
         if( r == 0 ){
             printf("CP decomposition rank cannot be zero.");
@@ -63,12 +63,8 @@ namespace TensorLet_decomposition{
         vslNewStream(&stream,VSL_BRNG_MCG31, SEED);
         status[0] = vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD, stream, n1 * r, A, 0, 1);
 
-//        srand((unsigned)time(NULL));
-//        SEED = rand();
         status[1] = vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD, stream, n2 * r, B, 0, 1);
 
-//        srand((unsigned)time(NULL));
-//        SEED = rand();
         status[2] = vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD, stream, n3 * r, C, 0, 1);
 
         vslDeleteStream(&stream);
@@ -77,21 +73,6 @@ namespace TensorLet_decomposition{
             printf("Random initialization failed for A, B, C.");
             exit(1);
         }
-
-//        for(int i = 0; i < 10; i++){
-//            cout << A[i] << " ";
-//        }
-//        cout << endl;
-
-//        for(int i = 0; i < 10; i++){
-//            cout << B[i] << " ";
-//        }
-//        cout << endl;
-
-//        for(int i = 0; i < 10; i++){
-//            cout << C[i] << " ";
-//        }
-//        cout << endl;
 
         datatype* at_times_a = (datatype*)mkl_malloc(r * r * sizeof(datatype), 64); //A^t * A
         datatype* bt_times_b = (datatype*)mkl_malloc(r * r * sizeof(datatype), 64); //B^t * B
@@ -108,9 +89,8 @@ namespace TensorLet_decomposition{
             exit(1);
         }
 
-        while(max_iter < 100){
-
-            max_iter++;
+        int turn = 0;
+        while(turn < max_iter){
 
             double normA = cblas_dnrm2(n1*r, A, 1);
             double normB = cblas_dnrm2(n2*r, B, 1);
@@ -180,10 +160,21 @@ namespace TensorLet_decomposition{
 
             // u * sigma^-1
 //            #pragma omp parallel for
-            for(int i = 0; i < r; i++){
-                double ss;
-                if(s[i] > 1.0e-6){
-                    ss=1.0/s[i];
+            double scale = s[0] * 1.0e-5;
+            if(scale > 1.0e-9){
+                for(int i = 0; i < r; i++){
+                    double ss = 0;
+                    if(s[i] > scale){
+                        ss = 1.0 / s[i];
+                    } else{
+                        ss = 0;
+                    }
+                    cblas_dscal(r, ss, u + i * r, 1);
+                }
+            }
+            else{
+                for(int i = 0; i < r; i++) {
+                    double ss = 0;
                     cblas_dscal(r, ss, u + i * r, 1);
                 }
             }
@@ -259,10 +250,21 @@ namespace TensorLet_decomposition{
 
             // u * sigma^-1
 //            #pragma omp parallel for
-            for(int i = 0; i < r; i++){
-                double ss;
-                if(s[i] > 1.0e-6){
-                    ss=1.0/s[i];
+            scale = s[0] * 1.0e-5;
+            if(scale > 1.0e-9){
+                for(int i = 0; i < r; i++){
+                    double ss = 0;
+                    if(s[i] > scale){
+                        ss = 1.0 / s[i];
+                    } else{
+                        ss = 0;
+                    }
+                    cblas_dscal(r, ss, u + i * r, 1);
+                }
+            }
+            else{
+                for(int i = 0; i < r; i++) {
+                    double ss = 0;
                     cblas_dscal(r, ss, u + i * r, 1);
                 }
             }
@@ -328,10 +330,21 @@ namespace TensorLet_decomposition{
 
             // u * sigma^-1
 //            #pragma omp parallel for
-            for(int i = 0; i < r; i++){
-                double ss;
-                if(s[i] > 1.0e-6){
-                    ss=1.0/s[i];
+            scale = s[0] * 1.0e-5;
+            if(scale > 1.0e-9){
+                for(int i = 0; i < r; i++){
+                    double ss = 0;
+                    if(s[i] > scale){
+                        ss = 1.0 / s[i];
+                    } else{
+                        ss = 0;
+                    }
+                    cblas_dscal(r, ss, u + i * r, 1);
+                }
+            }
+            else{
+                for(int i = 0; i < r; i++) {
+                    double ss = 0;
                     cblas_dscal(r, ss, u + i * r, 1);
                 }
             }
@@ -351,10 +364,18 @@ namespace TensorLet_decomposition{
                 cblas_dcopy(n3, Ct + i, r, C + i * n3, 1);  //tranpose
             }
 
+//            lamda[0] = cblas_dnrm2(n3, C, 1);
+//            for(MKL_INT i = 1; i < r; i++){
+//                lamda[i] = cblas_dnrm2(n3, C + i * n3, 1);
+//                if (lamda[i] > lamda[0] * 1e-5){
+//                    cblas_dscal(n3, 1/lamda[i], C + i * n3, 1);  //normalize
+//                }
+//            }
+
             for(MKL_INT i = 0; i < r; i++){
-                lamda[i] = cblas_dnrm2(n3, C + i * n3, 1);
-                if (lamda[i] > 1e-9){
-                    cblas_dscal(n3, 1/lamda[i], C + i * n3, 1);  //normalize
+                double norm = cblas_dnrm2(n3, C + i * n3, 1);
+                if (norm > 1e-9){
+                    cblas_dscal(n3, 1 / norm, C + i * n3, 1);  //normalize
                 }
             }
 
@@ -364,12 +385,12 @@ namespace TensorLet_decomposition{
                          n1 * n2, n3, r, 1, b_kr_a, n1 * n2, Ct, r,
                          0, a_con, n1 * n2 ); //  X(3) * kr(b,a) CblasRowMajor
 
-            cblas_daxpy(n1 * n2 * n3, -1, a.pointer, 1, a_con, 1);
+            cblas_daxpy(n1 * n2 * n3, -1.0, a.pointer, 1, a_con, 1);
             double norm_s = cblas_dnrm2(n1 * n2 * n3, a_con, 1);
             double epision = norm_s / norm_a;
 
-            cout << "norm s: " << norm_s << endl;
-            cout << "norm error: " << epision << endl;
+//            cout << "norm s: " << norm_s << endl;
+//            cout << "norm error: " << epision << endl;
 
             if( epision < tolerance){
                 break;
@@ -379,6 +400,8 @@ namespace TensorLet_decomposition{
             MKL_free(b_kr_a);
             MKL_free( x3_times_b_kr_a );
             MKL_free(a_con);
+
+            turn++;
 
         }
         MKL_free( Ct );

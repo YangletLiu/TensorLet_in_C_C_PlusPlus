@@ -177,32 +177,32 @@ cp_als.cpp.s:
 	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cp_als.cpp.s
 .PHONY : cp_als.cpp.s
 
-cpgen.o: cpgen.cpp.o
+cp_gen.o: cp_gen.cpp.o
 
-.PHONY : cpgen.o
+.PHONY : cp_gen.o
 
 # target to build an object file
-cpgen.cpp.o:
-	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cpgen.cpp.o
-.PHONY : cpgen.cpp.o
+cp_gen.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cp_gen.cpp.o
+.PHONY : cp_gen.cpp.o
 
-cpgen.i: cpgen.cpp.i
+cp_gen.i: cp_gen.cpp.i
 
-.PHONY : cpgen.i
+.PHONY : cp_gen.i
 
 # target to preprocess a source file
-cpgen.cpp.i:
-	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cpgen.cpp.i
-.PHONY : cpgen.cpp.i
+cp_gen.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cp_gen.cpp.i
+.PHONY : cp_gen.cpp.i
 
-cpgen.s: cpgen.cpp.s
+cp_gen.s: cp_gen.cpp.s
 
-.PHONY : cpgen.s
+.PHONY : cp_gen.s
 
 # target to generate assembly for a file
-cpgen.cpp.s:
-	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cpgen.cpp.s
-.PHONY : cpgen.cpp.s
+cp_gen.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cp_gen.cpp.s
+.PHONY : cp_gen.cpp.s
 
 main.o: main.cpp.o
 
@@ -354,9 +354,9 @@ help:
 	@echo "... cp_als.o"
 	@echo "... cp_als.i"
 	@echo "... cp_als.s"
-	@echo "... cpgen.o"
-	@echo "... cpgen.i"
-	@echo "... cpgen.s"
+	@echo "... cp_gen.o"
+	@echo "... cp_gen.i"
+	@echo "... cp_gen.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

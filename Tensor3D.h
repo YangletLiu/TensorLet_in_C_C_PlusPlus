@@ -33,7 +33,7 @@ public:
     double frobenius_norm();
 
     Tensor3D<datatype>& random_tensor();
-
+    Tensor3D<datatype>& cp_gen(int r);
 
     datatype* tens2mat(datatype *, int mode);
     Tensor3D<datatype>& mat2tens(datatype*, int mode);
