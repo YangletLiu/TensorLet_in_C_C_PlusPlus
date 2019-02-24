@@ -20,9 +20,9 @@ datatype* mode_n_product(Tensor3D<datatype> &tensor, datatype *matrix, datatype 
 
     if(mode == 2){
         for(MKL_INT i = 0; i < n3; i++){
-            cblas_dgemm(CblasColMajor, CblasTrans, CblasTrans, n2, n1, n2,
+            cblas_dgemm(CblasColMajor, CblasNoTrans, CblasTrans, n2, n1, n2,
                         1, matrix, n2, tensor.pointer + i * n1 * n2, n2,
-                        0, result + i * n1 * n2, n1);  // U2 * X(2)
+                        0, result + i * n1 * n2, n1);  // X(2) * U2^T
         }
     }
 
