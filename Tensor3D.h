@@ -36,9 +36,12 @@ public:
     Tensor3D<datatype>& cp_gen(int r);
 
     datatype* tens2mat(datatype *, int mode);
+    datatype* mode_n_product(datatype *matrix, datatype *result, int mode);
+
     Tensor3D<datatype>& mat2tens(datatype*, int mode);
     datatype* tens2vec(const Tensor3D<datatype>&, int mode);
     Tensor3D<datatype>& vec2tens(const datatype*, int mode);
+
 
 //    Tensor3D<datatype>& operator+(const Tensor3D<datatype>&);
 //    Tensor3D<datatype>& operator-(const Tensor3D<datatype>&);
@@ -134,6 +137,7 @@ Tensor3D<datatype>& operator*(MKL_INT k, Tensor3D<datatype> &a); //why out of cl
 
 template<class datatype>
 Tensor3D<datatype>& operator*(datatype k, Tensor3D<datatype> &a);
+
 
 
 #endif //TENSOR_TENSOR3D_H

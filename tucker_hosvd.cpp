@@ -32,8 +32,6 @@ namespace TensorLet_decomposition {
         datatype* X2_times_X2T = (datatype*)mkl_malloc(n2 * n2 * sizeof(datatype), 64);
         datatype* X3_times_X3T = (datatype*)mkl_malloc(n3 * n3 * sizeof(datatype), 64);
 
-//        cblas_dgemm(CblasColMajor,CblasNoTrans,CblasTrans,n1,n1,n2*n3,1,a.pointer,n1,a.pointer,n1,0,X1_times_X1T,n1);
-
         cblas_dsyrk( CblasColMajor, CblasUpper, CblasNoTrans,
                 n1,n2 * n3, 1, a.pointer, n1,
                 0, X1_times_X1T, n1 );  //x1*x1^t
@@ -54,8 +52,8 @@ namespace TensorLet_decomposition {
         double* w2 = (double*)mkl_malloc(n2 * sizeof(double), 64);
         double* w3 = (double*)mkl_malloc(n3 * sizeof(double), 64);
 
-//        for (int i=0;i<20;i++){
-//            for (int j=0;j<20;j++){
+//        for (int i=0;i<3;i++){
+//            for (int j=0;j<3;j++){
 //                cout << X3_times_X3T[j+i*n1] << " ";
 //            }
 //            cout << endl;
@@ -73,6 +71,11 @@ namespace TensorLet_decomposition {
             printf( "The algorithm failed to compute eigenvalues.\n" );
             exit( 1 );
         }
+
+        /* Free workspace */
+        MKL_free( (void*)w1 );
+        MKL_free( (void*)w2 );
+        MKL_free( (void*)w3 );
 
         double* u1t_times_x1 = (double*)mkl_malloc(r1 * n2 * n3 * sizeof(double), 64);
         double* u2t_times_u1t_times_x1 = (double*)mkl_malloc(r1 * r2 * n3 * sizeof(double), 64);
@@ -100,11 +103,6 @@ namespace TensorLet_decomposition {
                     1, X3_times_X3T + (n3 - r3) * n3, r3, u2t_times_u1t_times_x1, r1 * r2,
                     0, g, r1 * r2); // g
 
-        /* Free workspace */
-        MKL_free( (void*)w1 );
-        MKL_free( (void*)w2 );
-        MKL_free( (void*)w3 );
-
         MKL_free(u2t_times_u1t_times_x1);
 
         tucker_format<datatype> result;
@@ -115,31 +113,6 @@ namespace TensorLet_decomposition {
 
         return result;
 
-//        result.tucker_u1 = A;
-//        result.tucker_u2 = B;
-//        result.tucker_u3 = C;
-
-//        int count = 0;
-//        for (int i=0;i<n1*n1;i++){
-//            if(X2_times_X2T[i] == 0){ count++; }
-//        }
-
-//        cout << " count " << count << " " << n1*n1<< endl;
-
-//        for (int i=0;i<20;i++){
-//            for (int j=0;j<20;j++){
-//                cout << X3_times_X3T[j+i*n1] << " ";
-//            }
-//            cout << endl;
-//        }
-
-        /* print eigenvalue */
-//        for(int i = 0; i < n1*n1; i++ ) {
-//            printf( " %6.5f \n", X3_times_X3T[i] );
-//        }
-//        for(int i = 0; i < n1; i++ ) {
-//            printf( " %7.2f, %7.2f, %7.2f \n", w1[i], w2[i], w3[i]);
-//        }
     }
 
     template<class datatype>
@@ -161,8 +134,6 @@ namespace TensorLet_decomposition {
         datatype* X1_times_X1T = (datatype*)mkl_malloc(n1 * n1 * sizeof(datatype), 64);
         datatype* X2_times_X2T = (datatype*)mkl_malloc(n2 * n2 * sizeof(datatype), 64);
         datatype* X3_times_X3T = (datatype*)mkl_malloc(n3 * n3 * sizeof(datatype), 64);
-
-//        cblas_dgemm(CblasColMajor,CblasNoTrans,CblasTrans,n1,n1,n2*n3,1,a.pointer,n1,a.pointer,n1,0,X1_times_X1T,n1);
 
         cblas_dsyrk( CblasColMajor, CblasUpper, CblasNoTrans,
                      n1,n2 * n3, 1, a.pointer, n1,
@@ -243,36 +214,7 @@ namespace TensorLet_decomposition {
 
         return result;
 
-//        result.tucker_u1 = A;
-//        result.tucker_u2 = B;
-//        result.tucker_u3 = C;
-
-
-//        int count = 0;
-//        for (int i=0;i<n1*n1;i++){
-//            if(X2_times_X2T[i] == 0){ count++; }
-//        }
-
-//        cout << " count " << count << " " << n1*n1<< endl;
-
-//        for (int i=0;i<20;i++){
-//            for (int j=0;j<20;j++){
-//                cout << X3_times_X3T[j+i*n1] << " ";
-//            }
-//            cout << endl;
-//        }
-
-        /* print eigenvalue */
-//        for(int i = 0; i < n1*n1; i++ ) {
-//            printf( " %6.5f \n", X3_times_X3T[i] );
-//        }
-//        for(int i = 0; i < n1; i++ ) {
-//            printf( " %7.2f, %7.2f, %7.2f \n", w1[i], w2[i], w3[i]);
-//        }
     }
-
 }
 
-//    datatype* X1_times_X1T = (datatype*)mkl_malloc(n1*n1*sizeof(datatype),64);
-//    cblas_dgemm(CblasColMajor,CblasNoTrans,CblasTrans,n1,n1,n2*n3,1,a.pointer,n1,a.pointer,n1,0,X1_times_X1T,n1);
-//    cout << "A_times_B: " << X1_times_X1T[0] << endl;
+

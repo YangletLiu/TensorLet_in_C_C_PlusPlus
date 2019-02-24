@@ -23,7 +23,6 @@ namespace TensorLet_decomposition {
         int n1 = shape[0]; int n2 =shape[1]; int n3 = shape[2];
 
         int N0 = floor(n3/2.0)+1;
-//        cout << n3 << n2 << n1 << " " << N0 <<endl;
 
 // fft(a,[],3)  mkl fft r2c
 //        for(int i=0;i<n1*n2*n3;i++){
@@ -147,18 +146,15 @@ namespace TensorLet_decomposition {
         p_fft = fftw_plan_many_dft_c2r(rank, n, howmany, fft_s_complex, inembed, istride, idist,
                                        s, onembed, ostride, odist, FFTW_ESTIMATE);
 
+
         fftw_execute(p_fft);
-        fftw_destroy_plan(p_fft);
+//        cout << n3 << n2 << n1 << " " << N0 <<endl;
         MKL_free(fft_vt);
         MKL_free(fft_u);
-        fftw_free(fft_s_complex);
 
+//        fftw_destroy_plan(p_fft);
+//        fftw_free(fft_s_complex);
 
-//        for(int i=0; i< n1; i++){
-//            cout << i << " " << s[i] << endl;
-//        }
-//        MKL_INT u_dimension[] = {n1,n1,n3};
-//        MKL_INT v_dimension[] = {n2,n2,n3};
 
         tsvd_format<datatype> result;
         result.U = u;

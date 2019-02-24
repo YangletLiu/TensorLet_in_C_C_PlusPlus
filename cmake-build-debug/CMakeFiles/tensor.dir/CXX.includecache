@@ -21,6 +21,8 @@ tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 Tensor3D.h
 /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
+pinv.h
+/home/jcfei/Desktop/TensorLet_C/pinv.h
 
 /home/jcfei/Desktop/TensorLet_C/cp_gen.cpp
 tensor.h
@@ -47,6 +49,8 @@ tensor_train.cpp
 /home/jcfei/Desktop/TensorLet_C/tensor_train.cpp
 cp_gen.cpp
 /home/jcfei/Desktop/TensorLet_C/cp_gen.cpp
+mode_n_product.cpp
+/home/jcfei/Desktop/TensorLet_C/mode_n_product.cpp
 Tensor3D.h
 /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
 Tensor3D.cpp
@@ -55,6 +59,14 @@ stdio.h
 -
 mkl.h
 -
+
+/home/jcfei/Desktop/TensorLet_C/mode_n_product.cpp
+tensor.h
+/home/jcfei/Desktop/TensorLet_C/tensor.h
+Tensor3D.h
+/home/jcfei/Desktop/TensorLet_C/Tensor3D.h
+
+/home/jcfei/Desktop/TensorLet_C/pinv.h
 
 /home/jcfei/Desktop/TensorLet_C/runningtime.h
 time.h
@@ -71,6 +83,8 @@ Tensor3D.h
 /home/jcfei/Desktop/TensorLet_C/ten2mat.cpp
 tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
+Tensor3D.h
+/home/jcfei/Desktop/TensorLet_C/Tensor3D.h
 
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 string
@@ -117,6 +131,8 @@ tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 Tensor3D.h
 /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
+
+/home/jcfei/Desktop/TensorLet_C/test_program_case.cpp
 
 /home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp
 tensor.h

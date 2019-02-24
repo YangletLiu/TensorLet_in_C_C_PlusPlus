@@ -231,6 +231,60 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+mode_n_product.o: mode_n_product.cpp.o
+
+.PHONY : mode_n_product.o
+
+# target to build an object file
+mode_n_product.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/mode_n_product.cpp.o
+.PHONY : mode_n_product.cpp.o
+
+mode_n_product.i: mode_n_product.cpp.i
+
+.PHONY : mode_n_product.i
+
+# target to preprocess a source file
+mode_n_product.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/mode_n_product.cpp.i
+.PHONY : mode_n_product.cpp.i
+
+mode_n_product.s: mode_n_product.cpp.s
+
+.PHONY : mode_n_product.s
+
+# target to generate assembly for a file
+mode_n_product.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/mode_n_product.cpp.s
+.PHONY : mode_n_product.cpp.s
+
+pinv.o: pinv.cpp.o
+
+.PHONY : pinv.o
+
+# target to build an object file
+pinv.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/pinv.cpp.o
+.PHONY : pinv.cpp.o
+
+pinv.i: pinv.cpp.i
+
+.PHONY : pinv.i
+
+# target to preprocess a source file
+pinv.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/pinv.cpp.i
+.PHONY : pinv.cpp.i
+
+pinv.s: pinv.cpp.s
+
+.PHONY : pinv.s
+
+# target to generate assembly for a file
+pinv.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/pinv.cpp.s
+.PHONY : pinv.cpp.s
+
 t_svd.o: t_svd.cpp.o
 
 .PHONY : t_svd.o
@@ -312,6 +366,33 @@ tensor_train.cpp.s:
 	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tensor_train.cpp.s
 .PHONY : tensor_train.cpp.s
 
+test_program_case.o: test_program_case.cpp.o
+
+.PHONY : test_program_case.o
+
+# target to build an object file
+test_program_case.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/test_program_case.cpp.o
+.PHONY : test_program_case.cpp.o
+
+test_program_case.i: test_program_case.cpp.i
+
+.PHONY : test_program_case.i
+
+# target to preprocess a source file
+test_program_case.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/test_program_case.cpp.i
+.PHONY : test_program_case.cpp.i
+
+test_program_case.s: test_program_case.cpp.s
+
+.PHONY : test_program_case.s
+
+# target to generate assembly for a file
+test_program_case.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/test_program_case.cpp.s
+.PHONY : test_program_case.cpp.s
+
 tucker_hosvd.o: tucker_hosvd.cpp.o
 
 .PHONY : tucker_hosvd.o
@@ -360,6 +441,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... mode_n_product.o"
+	@echo "... mode_n_product.i"
+	@echo "... mode_n_product.s"
+	@echo "... pinv.o"
+	@echo "... pinv.i"
+	@echo "... pinv.s"
 	@echo "... t_svd.o"
 	@echo "... t_svd.i"
 	@echo "... t_svd.s"
@@ -369,6 +456,9 @@ help:
 	@echo "... tensor_train.o"
 	@echo "... tensor_train.i"
 	@echo "... tensor_train.s"
+	@echo "... test_program_case.o"
+	@echo "... test_program_case.i"
+	@echo "... test_program_case.s"
 	@echo "... tucker_hosvd.o"
 	@echo "... tucker_hosvd.i"
 	@echo "... tucker_hosvd.s"

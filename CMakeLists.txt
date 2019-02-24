@@ -26,4 +26,4 @@ endif()
 add_executable(tensor
         main.cpp
         tensor_hooi.cpp
-        cp_als.cpp t_svd.cpp tucker_hosvd.cpp cp_gen.cpp tensor.h runningtime.h Tensor3D.h Tensor3D.cpp tensor_train.cpp)
+        cp_als.cpp t_svd.cpp tucker_hosvd.cpp cp_gen.cpp tensor.h runningtime.h Tensor3D.h Tensor3D.cpp tensor_train.cpp mode_n_product.cpp pinv.cpp pinv.h test_program_case.cpp)

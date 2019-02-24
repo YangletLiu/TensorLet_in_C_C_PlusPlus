@@ -18,7 +18,7 @@ namespace TensorLet_decomposition {
     template<class datatype>
     tt_format<datatype> tensor_train( Tensor3D<datatype>& a, datatype epsilon = 1e-6 ) {
 
-        //dimension
+        // dimension
         int *shape = a.getsize();
 
         int n1 = shape[0]; int n2 =shape[1]; int n3 = shape[2];
@@ -126,7 +126,6 @@ namespace TensorLet_decomposition {
         result.g2 = u_1;
         result.G3 = g3;
 
-
         // need clean up and rename;
 
         return result;
@@ -135,24 +134,3 @@ namespace TensorLet_decomposition {
 
 
 }
-
-//
-//        double* C_1 = (double*)MKL_malloc(rank_1 * column * sizeof(double), 64);
-//
-//        for( int i = 0; i < rank_1; i++ ){
-//            cblas_daxpy( column, s[i], vt + rank_1 * i, 1, C_1 + i, rank_1 );
-//        }
-//
-//
-//        row = rank_1 * n2;
-//        column = n3;
-//        min_row_column = min( row, column );
-//
-//        double* s_1 = (double*)MKL_malloc(min_row_column * sizeof(double), 64);
-//        double* u_1 = (double*)MKL_malloc( min_row_column * row * sizeof(double), 64);  // 分配 检测
-//        double* vt_1 = (double*)MKL_malloc(column * column * sizeof(double), 64);
-//
-//        double super_1[min_row_column - 1];
-//
-//        info = LAPACKE_dgesvd( LAPACK_COL_MAJOR, 'S', 'A', row, column, C_1, row, s_1,
-//                               u_1, row, vt_1, min_row_column, super_1 );  // min_row_column row-wise

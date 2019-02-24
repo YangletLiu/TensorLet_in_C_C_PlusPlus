@@ -105,6 +105,15 @@
 		<Unit filename="/home/jcfei/Desktop/TensorLet_C/main.cpp">
 			<Option target="tensor"/>
 		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C/mode_n_product.cpp">
+			<Option target="tensor"/>
+		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C/pinv.cpp">
+			<Option target="tensor"/>
+		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C/pinv.h">
+			<Option target="tensor"/>
+		</Unit>
 		<Unit filename="/home/jcfei/Desktop/TensorLet_C/runningtime.h">
 			<Option target="tensor"/>
 		</Unit>
@@ -118,6 +127,9 @@
 			<Option target="tensor"/>
 		</Unit>
 		<Unit filename="/home/jcfei/Desktop/TensorLet_C/tensor_train.cpp">
+			<Option target="tensor"/>
+		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C/test_program_case.cpp">
 			<Option target="tensor"/>
 		</Unit>
 		<Unit filename="/home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp">

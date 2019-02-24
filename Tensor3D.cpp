@@ -41,6 +41,35 @@ datatype* Tensor3D<datatype>::tens2mat(datatype* p, MKL_INT mode) {
 }
 
 template<class datatype>
+datatype* Tensor3D<datatype>::mode_n_product(datatype *matrix, datatype *result, int mode) {
+    MKL_INT *shape = this->getsize();  //dimension
+    MKL_INT n1 = shape[0]; MKL_INT n2 =shape[1]; MKL_INT n3 = shape[2];
+
+    if(mode == 1){
+        cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans, n1, n2 * n3, n1,
+                1, matrix , n1, this->pointer, n1,
+                0, result, n1); // U1 * X(1)
+    }
+
+    if(mode == 2){
+        for(MKL_INT i = 0; i < n3; i++){
+            cblas_dgemm(CblasColMajor, CblasTrans, CblasTrans, n2, n1, n2,
+                    1, matrix, n2, this->pointer + i * n1 * n2, n2,
+                    0, result + i * n1 * n2, n1);  // U2 * X(2)
+        }
+    }
+
+//    if(mode == 3){
+//        cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, n3, n1 * n2, n1,
+//                    1, matrix , n1, this->pointer, n1,
+//                    0, result, n1); // U1 * X(1)
+//    }
+
+    return result;
+}
+
+
+template<class datatype>
 bool Tensor3D<datatype>::operator==(const Tensor3D<datatype> &) {
     return 0;
 }
@@ -111,6 +140,7 @@ Tensor3D<datatype>& Tensor3D<datatype>::random_tensor() {
 
 }
 
+
 // element-wise add
 template<class datatype>
 Tensor3D<datatype> operator+(Tensor3D<datatype>& a, Tensor3D<datatype>& b) {
@@ -158,6 +188,7 @@ Tensor3D<datatype>& operator*(datatype k, Tensor3D<datatype>& a) {
     cblas_dscal(size, k, a.pointer, 1);
     return a;
 }
+
 
 //template<class datatype>
 //Tensor3D<datatype>& Tensor3D<datatype>::operator*(const Tensor3D<datatype>& a)
