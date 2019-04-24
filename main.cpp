@@ -25,7 +25,7 @@ int main(){
 
     MKL_INT n1, n2, n3;
 //    n1=7; n2=8; n3 = 9;
-    n1 = n2 = n3 = 3;
+    n1 = n2 = n3 = 500;
 //    n3 = 256;
 
     double t0,t1;
@@ -44,7 +44,7 @@ int main(){
 //    }
 //    cout << endl;
 
-    MKL_INT rank = 0.2*n1;
+    MKL_INT rank = 0.05*n1;
     cout << "rank: " << rank << endl;
 
 //    rank = 4;
@@ -70,7 +70,7 @@ int main(){
 /*******************************
             Tucker
 *******************************/
-    rank = 3;
+//    rank = 3;
     MKL_INT ranks[3] = {rank, rank, rank};
 
     t0=gettime();

@@ -301,7 +301,7 @@ namespace TensorLet_decomposition{
 
             double epision = norm_s / norm_a;
 
-            cout << "norm error: " << epision << endl;
+//            cout << "norm error: " << epision << endl;
 
             if( epision < tolerance){
                 break;
