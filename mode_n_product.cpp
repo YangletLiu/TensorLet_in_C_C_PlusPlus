@@ -27,8 +27,8 @@ datatype* mode_n_product(Tensor3D<datatype> &tensor, datatype *matrix, int colum
     }
 
     if(mode == 3){
-        cblas_dgemm(CblasColMajor, CblasNoTrans, CblasTrans, n1 * n2, n3, row,
-                    1, tensor.pointer, n1 * n2, matrix , row,
+        cblas_dgemm(CblasColMajor, CblasNoTrans, CblasTrans, n1 * n2, n3, cloumn,
+                    1, tensor.pointer, n1 * n2, matrix , cloumn,
                     0, result, n1 * n2 ); // U3 * X(3)
     }
 
