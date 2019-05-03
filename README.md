@@ -1,8 +1,8 @@
-## TensorLet: A C++ library for popular tensor decompositions
+## TenDeC++: Tensor Decomposition Library in C++
 
-#### In TensorLet, we implement four popular tensor decomposition methods, CANDECOMP/PARAFAC (CP) decomposition, Tucker decomposition, t-SVD, and Tensor-Train (TT) decomposition.  
+#### In TenDeC++, we implement four popular tensor decomposition methods, CANDECOMP/PARAFAC (CP) decomposition, Tucker decomposition, t-SVD, and Tensor-Train (TT) decomposition.  
 
-* [TensorLet](#readme)
+* [TenDeC++](#readme)
 	* [Installation](#Installation)
 	* [User guide](#user-guide)
 	* [API reference](#api-reference)
@@ -15,23 +15,20 @@
 
 Users need the following packages:   
 	
-1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
+1. Intel Math Kernel Library (MKL): https://software.intel.com/en-us/mkl  
 
-2. Intel Math Kernel Library (MKL): https://software.intel.com/en-us/mkl  
+2. Fastest Fourier Transform in the West (FFTW): http://www.fftw.org/   
 
 3. OpenMP: https://www.openmp.org/  
 
 4. cmake version 3.12 or greater: https://cmake.org/     
 
-We use MKL as basic matrix library for high performance and test our code on Ubuntu.  
-
-Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized specifically for Intel processors. Core math functions include BLAS, LAPACK, ScaLAPACK, sparse solvers, fast Fourier transforms, and vector math.    
 </details>
 
 <details>	
 <summary> Instructions </summary>  
 
-We recommend users use TensorLet on Ubuntu and you can refer to the installation instructions in TensorLet_Installation folder.     
+We recommend users use TenDeC++ on Ubuntu and you can refer to the installation instructions in TenDeC++_Installation folder.     
 
 You need to add them to specific paths according to your CMakeLists.txt file.    
 For example, you can link MKL in  CMakeLists.txt file like:      
@@ -41,8 +38,11 @@ For example, you can link MKL in  CMakeLists.txt file like:
 	link_libraries(libmkl_core.a libmkl_blas95_ilp64.a libmkl_rt.so)  
 
 <!--
-4. Fastest Fourier Transform in the West (FFTW): http://www.fftw.org/    
+We use MKL as basic matrix library for high performance and test our code on Ubuntu.  
+Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized specifically for Intel processors. Core math functions include BLAS, LAPACK, ScaLAPACK, sparse solvers, fast Fourier transforms, and vector math.  
+1. Basic matrix library, Eigen: https://eigen.tuxfamily.org/dox/   
 -->
+
 [//]: # (This may be the most platform independent comment)  
 
 </details>
@@ -50,8 +50,8 @@ For example, you can link MKL in  CMakeLists.txt file like:
 ## User guide
 <details>	
 <summary> Tensor basics </summary>
-	
-##### TensorLet provides basic tensor algebraic operations, such as addition and different multiplication methods. In TensorLet, all third order tensors are objects of the Tensor3D template class and all matrix are objects of the Mat template class, which provided by the third party library Eigen/MKL. You can refer to Class list for more details.
+
+##### TenDeC++ provides basic tensor algebraic operations, such as addition and different multiplication methods. In TenDeC++, all third order tensors are objects of the Tensor3D template class and all matrix are objects of the Mat template class, which provided by the third party library Eigen/MKL. You can refer to Class list for more details.
 	
 #### Examples
 	Tensor3D<double> tensor (10,10,10);	// Creating a tensor
@@ -238,7 +238,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
 <summary>
 Tensor3D<type>
 </summary>
-In TensorLet, all third order tensors are objects of the Tensor3D template class. You can refer to Tensor3D.h file.
+In TenDeC++, all third order tensors are objects of the Tensor3D template class. You can refer to Tensor3D.h file.
 	
 ##### Data Members
 
