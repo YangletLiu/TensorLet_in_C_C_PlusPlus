@@ -54,8 +54,8 @@ Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized speci
 ##### TenDeC++ provides basic tensor algebraic operations, such as addition and different multiplication methods. In TenDeC++, all third order tensors are objects of the Tensor3D template class. You can refer to Class list for more details. All matrix and vectors operations are provided by the third party library MKL. 
 	
 #### Examples
-	Tensor3D<double> X(10,10,10);	// Creating a tensor
-	X.random();                        // Random initialization
+	Tensor3D<double> X(10,10,10);	// Create a tensor that all elements set to zero
+	X.random();                     // Random initialization
 	double* A = X.unfold(1);	// mode-1 unfolding  
 	double* B = X.unfold(2);	// mode-2 unfolding  
 	double* C = X.unfold(3);	// mode-3 unfolding  
@@ -77,8 +77,10 @@ The factor is the matrix list of the corresponding CP decomposition.
 
 You can call cp_als function like:   
 
-	Tensor3D<double> X = random(10,10,10);  
-	cp_format<double> A = cp_als(X, int rank = 3, int max_iter = 1，double tol = 1e-6);    
+	Tensor3D<double> X = X.random(10,10,10);
+	int rank = 3, max_iter = 1;
+	double tol = 1e-6
+	cp_format<double> A = cp_als(X, rank, max_iter，tol);    
 
 where Tensor3D\<datatype\> represents the third-order tensor class.
 </details>
@@ -99,12 +101,15 @@ where factor is the matrix list of the corresponding Tucker decomposition.
 You can call hosvd function like: 
 	
 	Tensor3D<double> X = random(10,10,10);    
-	tucker_format<double> A = tucker_hosvd(X, int ranks[3]);    
+	int ranks[3] = {2,2,2};
+	tucker_format<double> A = tucker_hosvd(X, ranks);    
 	
 You can call hooi function like:   
 
 	Tensor3D<double> X = random(10,10,10);    
-	tucker_format<double> A = tucker_hooi(X, int ranks[3], double tol);      
+	int ranks[3] = {2,2,2};
+	double tol = 1e-6;
+	tucker_format<double> A = tucker_hooi(X, ranks, tol);      
 
 </details>
 
@@ -140,6 +145,7 @@ The decomposition components of tensortrain is defined as:
 You can call tensortrain decomposition like:     
 	
 	Tensor3D<double> X = random(10,10,10);  
+	double tol = 1e-6;
 	tensortrain_format<double> A = tensortrain_decomposition(X, tol);      
 
 </details>
@@ -337,7 +343,7 @@ Functions of Tensors
 <summary>
 Main references
 </summary>
-[1] Kolda T G, Bader B W. Tensor decompositions and applications[J]. SIAM review, 2009, 51(3): 455-500.  
+[1] Kolda T G, Bader B W. Tensor decompositions and applications[J]. SIAM review, 2009, 51(3): 455-500.    
 
 [2] Kilmer, M. E., Braman, K., Hao, N., & Hoover, R. C. (2013). Third-order tensors as operators on matrices: A theoretical and computational framework with applications in imaging. SIAM Journal on Matrix Analysis and Applications, 34(1), 148-172.  
 
