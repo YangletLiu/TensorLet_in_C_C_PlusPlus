@@ -51,14 +51,14 @@ Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized speci
 <details>	
 <summary> Tensor basics </summary>
 
-##### TenDeC++ provides basic tensor algebraic operations, such as addition and different multiplication methods. In TenDeC++, all third order tensors are objects of the Tensor3D template class and all matrix are objects of the Mat template class, which provided by the third party library Eigen/MKL. You can refer to Class list for more details.
+##### TenDeC++ provides basic tensor algebraic operations, such as addition and different multiplication methods. In TenDeC++, all third order tensors are objects of the Tensor3D template class. You can refer to Class list for more details. All matrix and vectors operations are provided by the third party library MKL. 
 	
 #### Examples
-	Tensor3D<double> tensor (10,10,10);	// Creating a tensor
-	tensor.random();                        // Random initialization
-	Mat<double> A = tensor.unfold(1);	// mode-1 unfolding  
-	Mat<double> B = tensor.unfold(2);	// mode-2 unfolding  
-	Mat<double> C = tensor.unfold(3);	// mode-3 unfolding  
+	Tensor3D<double> X(10,10,10);	// Creating a tensor
+	X.random();                        // Random initialization
+	double* A = X.unfold(1);	// mode-1 unfolding  
+	double* B = X.unfold(2);	// mode-2 unfolding  
+	double* C = X.unfold(3);	// mode-3 unfolding  
 </details>
 
 <details>	
@@ -67,20 +67,20 @@ Intel Math Kernel Library (Intel MKL) is a library which is hand-optimized speci
 ##### CP decomposition via alternating least squares (ALS), which is realized in cp_als.cpp.    
 
 The decomposition components of CP is defined as:  
->template\<class type\>  
+>template\<class datatype\>  
 >class cp_format{  
->&emsp;&emsp;    Mat\<type\> factor[3];  
+>&emsp;&emsp;    datatype* factor[3];  
 >};  
 
-The template parameter "type" represents the data type of tensor and be "double" and "float";  
+The template parameter "datatype" represents the data type of tensor and be "double" and "float";  
 The factor is the matrix list of the corresponding CP decomposition.   
 
 You can call cp_als function like:   
 
-	Tensor3D<double> tensor = random(10,10,10);  
-	cp_format<double> A = cp_als(tensor, int rank = 3, int max_iter = 1，double tol = 1e-6);    
+	Tensor3D<double> X = random(10,10,10);  
+	cp_format<double> A = cp_als(X, int rank = 3, int max_iter = 1，double tol = 1e-6);    
 
-where Tensor3D\<type\> represents the third-order tensor class.
+where Tensor3D\<datatype\> represents the third-order tensor class.
 </details>
 
 <details>	
@@ -90,21 +90,21 @@ where Tensor3D\<type\> represents the third-order tensor class.
 ##### Tucker decomposition via Higher Order Orthogonal Iteration (HOOI), which is realized in tucker_hooi.cpp.    
 
 The decomposition components of tucker is defined as:  
->template\<class type\>    
+>template\<class datatype\>    
 >class tucker_format{  
->&emsp;&emsp;  Tensor3D\<type\> core; Mat\<type\> factor[3];   
+>&emsp;&emsp;  Tensor3D\<datatype\> core; datatype* factor[3];   
 >};  
 where factor is the matrix list of the corresponding Tucker decomposition.   
 
 You can call hosvd function like: 
 	
-	Tensor3D<double> tensor = random(10,10,10);    
-	tucker_format<double> A = tucker_hosvd(tensor, int ranks[3]);    
+	Tensor3D<double> X = random(10,10,10);    
+	tucker_format<double> A = tucker_hosvd(X, int ranks[3]);    
 	
 You can call hooi function like:   
 
-	Tensor3D<double> tensor = random(10,10,10);    
-	tucker_format<double> A = tucker_hooi(tensor, int ranks[3], double tol);      
+	Tensor3D<double> X = random(10,10,10);    
+	tucker_format<double> A = tucker_hooi(X, int ranks[3], double tol);      
 
 </details>
 
@@ -114,15 +114,15 @@ You can call hooi function like:
 ##### t-SVD algorithm is implemented in t-SVD.cpp.
 
 The decomposition components of t-SVD is defined as:  
->template\<class type\>    
+>template\<class datatype\>    
 >class tsvd_format{  
->&emsp;&emsp;  Tensor3D\<type\> U, Sigma, V;  
+>&emsp;&emsp;  Tensor3D\<datatype\> U, Sigma, V;  
 >};  
 
 You can call tsvd function like:   
 	
-	Tensor3D<double> tensor = random(10,10,10);  
-	tsvd_format<double> A = tsvd_decomposition(tensor);      
+	Tensor3D<double> X = random(10,10,10);  
+	tsvd_format<double> A = tsvd_decomposition(X);      
 </details>
 
 <details>	
@@ -133,14 +133,14 @@ You can call tsvd function like:
 The decomposition components of tensortrain is defined as:    
 >template\<class type\>    
 >class tensortrain_format{  
->&emsp;&emsp;  Tensor3D\<type\> U;  
->&emsp;&emsp;  Mat<type> G1,G2;  
+>&emsp;&emsp;  Tensor3D\<datatype\> U;  
+>&emsp;&emsp;  datatype* G1; datatype* G2;  
 >};  
 
 You can call tensortrain decomposition like:     
 	
-	Tensor3D<double> tensor = random(10,10,10);  
-	tensortrain_format<double> A = tensortrain_decomposition(tensor, tol);      
+	Tensor3D<double> X = random(10,10,10);  
+	tensortrain_format<double> A = tensortrain_decomposition(X, tol);      
 
 </details>
 
@@ -149,7 +149,7 @@ You can call tensortrain decomposition like:
 <details>	
 <summary> CANDECOMP/PARAFAC decomposition via alternating least squares (ALS) </summary>
 
-#### cp_format\<type\> cp_decomposition(Tensor3D\<type\>& tensor, int rank, int max_iter, type tol);    
+#### cp_format\<datatype\> cp_decomposition(Tensor3D\<datatype\>& tensor, int rank, int max_iter, datatype tol);    
 ##### Source: CP decomposition is realized in cp_als.cpp.    
 ### Parameters: 
 	tensor: the address of tensor; 
@@ -158,10 +158,10 @@ You can call tensortrain decomposition like:
 	tol: float, optional  
 	(Default: 1e-6) Relative reconstruction error tolerance. The algorithm is considered to have found the global minimum when the reconstruction error is less than tol.  
 ### Returns:
-	cp_format<type>: abstract data type（ADT） for the CP decomposition result.    
-	template<class type>  
+	cp_format<datatype>: abstract data type（ADT） for the CP decomposition result.    
+	template<class datatype>  
 	class cp_format{  
-	    Mat<type> factor[3];  
+	    datatype* factor[3];  
 	};  
 	where factor is the matrix list of the corresponding CP decomposition.   
 
@@ -170,14 +170,14 @@ You can call tensortrain decomposition like:
 <details>	
 <summary> Tucker decomposition via High Order SVD (HOSVD) and High-Order Orthogonal Iteration (HOOI) </summary>
 	
-#### tucker_format\<type\> tucker_hosvd(Tensor3D\<type\>& tensor, int ranks[3]);      
+#### tucker_format\<datatype\> tucker_hosvd(Tensor3D\<datatype\>& tensor, int ranks[3]);      
 ##### Source: Tucker decomposition is realized in tucker_hosvd.cpp and tucker_hooi.cpp.     
 
 ### Parameters:	
 	tensor: the address of tensor; 
 	ranks: int array; size of the core tensor, (len(ranks) == tensor.ndim);  
 	
-#### tucker_format\<type\> tucker_hooi(Tensor3D\<type\>& tensor, int ranks[3], int max_iter, T tol);  
+#### tucker_format\<datatype\> tucker_hooi(Tensor3D\<datatype\>& tensor, int ranks[3], int max_iter, datatype tol);  
 ### Parameters:	
 	tensor: the address of tensor; 
 	int ranks[3]: size of the core tensor, (len(ranks) == tensor.ndim);  
@@ -186,17 +186,17 @@ You can call tensortrain decomposition like:
 	tolerance: the algorithm stops when the variation in the reconstruction error is less than the tolerance  
 
 ### Returns:
-	tucker_format<type>: abstract data type（ADT） for the Tucker decomposition result.    
-	template<class type>    
+	tucker_format<datatype>: abstract data type（ADT） for the Tucker decomposition result.    
+	template<class datatype>    
 	class tucker_format{  
-	   Tensor3D<type> core; Mat<type> factor[3];   
+	   Tensor3D<datatype> core; datatype* factor[3];   
 	};  
 </details>
 
 <details>	
 <summary> t-SVD decomposition </summary>
 	
-#### tsvd_decomposition\<type\> tsvd(Tensor3D\<type\>& tensor);      
+#### tsvd_decomposition\<datatype\> tsvd(Tensor3D\<datatype\>& tensor);      
 ##### Source: t-SVD is realized in t-SVD.cpp.     
 
 ### Parameters:	
@@ -205,7 +205,7 @@ You can call tensortrain decomposition like:
 ### Returns:
 	tsvd_format<type>: abstract data type（ADT） for the t-SVD decomposition result.    
 	class tsvd_format{  
-	   Tensor3D<type> U, Sigma, V;  
+	   Tensor3D<datatype> U, Sigma, V;  
 	};  	
 
 For more details, please refer to the corresponding source files, where all definitations and corresponding illustrations is provied therein.
@@ -214,7 +214,7 @@ For more details, please refer to the corresponding source files, where all defi
 <details>	
 <summary> Tensor Train decomposition  </summary>
 	
-#### tensortrain_decomposition\<type\> tensortrain_decomposition(Tensor3D\<type\>& tensor, double tol);      
+#### tensortrain_decomposition\<datatype\> tensortrain_decomposition(Tensor3D\<datatype\>& tensor, datatype tol);      
 
 ##### Source: Tensor Train decomposition is realized in Tensor-Train/train.h.    
 
@@ -223,10 +223,11 @@ For more details, please refer to the corresponding source files, where all defi
 	tensor: the address of tensor; 
 	tol: tolerance;
 ### Returns:
-	tensortrain_format<type>: abstract data type（ADT） for the Tensor Train decomposition result.    
+	tensortrain_format<datatype>: abstract data type（ADT） for the Tensor Train decomposition result.    
 	class tensortrain_format{  
-	   Tensor3D<type> U;    
-	   Mat<type> G1,G2;  
+	   Tensor3D<datatype> U;    
+	   datatype* G1;
+	   datatype* G2;  
 	};  	
 
 </details>
@@ -236,14 +237,14 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
 
 <details>	
 <summary>
-Tensor3D<type>
+Tensor3D<datatype>
 </summary>
 In TenDeC++, all third order tensors are objects of the Tensor3D template class. You can refer to Tensor3D.h file.
 	
 ##### Data Members
 
 int shape[3]; // the dimension of the third order tensor;  
-type * p; // a pointer point to tensor.  
+datatype * p; // a pointer point to tensor.  
 
 ##### Public Member Functions
 | Member Functions  | Description |
@@ -260,7 +261,7 @@ type * p; // a pointer point to tensor.
 
 <details>	
 <summary>
-cp_format<type>
+cp_format<datatype>
 </summary>
 	
 ##### Public Member Functions  
@@ -275,7 +276,7 @@ cp_format<type>
 
 <details>	
 <summary>
-tucker_format<type>
+tucker_format<datatype>
 </summary>
 	
 ##### Public Member Functions  
@@ -289,7 +290,7 @@ tucker_format<type>
 
 <details>	
 <summary>
-tsvd_format<type>
+tsvd_format<datatype>
 </summary>
 	
 ##### Public Member Functions   
@@ -303,7 +304,7 @@ tsvd_format<type>
 
 <details>	
 <summary>
-tensortrain_format<type>
+tensortrain_format<datatype>
 </summary>
 	
 ##### Public Member Functions  
