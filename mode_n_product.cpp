@@ -2,7 +2,6 @@
 // Created by jcfei on 19-2-17.
 //
 
-
 #include "tensor.h"
 #include "Tensor3D.h"
 
