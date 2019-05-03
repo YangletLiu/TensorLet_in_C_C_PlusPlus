@@ -238,6 +238,20 @@ For more details, please refer to the corresponding source files, where all defi
 
 </details>
 
+<details>	
+<summary>
+Functions of Tensors
+</summary>
+
+| Functions  | Description |
+| ------------- | ------------- |
+| inner  | Generalised inner products between tensors |
+|  element_wise | Generalised element-wise products between tensors |
+| n_mode_prod  | n-mode product of a tensor and a matrix or vector at the specified mode |
+| t_prod  | t-product between tensors |
+
+</details>
+
 ## Class list
 Here are the classes, structs, unions and interfaces with brief descriptions:
 
@@ -320,21 +334,6 @@ tensortrain_format<datatype>
 | tt_to_tensor  | Converts the TT tensor into a full tensor |
 | tt_to_unfolded  | Converts the TT decomposition into an unfolded tensor |
 | tt_to_vec  | Converts a TT decomposition into a vectorised tensor |
-
-</details>
-
-
-<details>	
-<summary>
-Functions of Tensors
-</summary>
-
-| Functions  | Description |
-| ------------- | ------------- |
-| inner  | Generalised inner products between tensors |
-|  element_wise | Generalised element-wise products between tensors |
-| n_mode_prod  | n-mode product of a tensor and a matrix or vector at the specified mode |
-| t_prod  | t-product between tensors |
 
 </details>
 
