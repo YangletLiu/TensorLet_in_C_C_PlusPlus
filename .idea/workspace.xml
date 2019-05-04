@@ -13,21 +13,12 @@
   <component name="ChangeListManager">
     <list default="true" id="0124bdfe-1649-499c-ac86-562eb01387b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/mode_n_product.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/mode_n_product.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/tensor" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/tensor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cp_als.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cp_als.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mode_n_product.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/mode_n_product.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tucker_hosvd.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tucker_hosvd.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="626">
+              <caret line="197" column="2" selection-start-line="197" selection-start-column="2" selection-end-line="197" selection-end-column="2" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -63,13 +54,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cp_als.cpp">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tucker_hosvd.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4545">
-              <caret line="303" column="46" selection-start-line="303" selection-end-line="304" />
+            <state relative-caret-position="189">
+              <caret line="89" column="81" selection-start-line="89" selection-start-column="81" selection-end-line="89" selection-end-column="81" />
               <folding>
-                <element signature="e#38#57#0" expanded="true" />
+                <element signature="e#39#58#0" expanded="true" />
+                <element signature="e#263#279#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,12 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mode_n_product.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="50" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
-              <folding>
-                <element signature="e#40#59#0" expanded="true" />
-                <element signature="e#91#107#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="450">
+              <caret line="30" column="54" selection-start-line="30" selection-end-line="31" />
             </state>
           </provider>
         </entry>
@@ -119,20 +107,20 @@
         <option value="$PROJECT_DIR$/pinv.h" />
         <option value="$PROJECT_DIR$/pinv.cpp" />
         <option value="$PROJECT_DIR$/t_svd.cpp" />
-        <option value="$PROJECT_DIR$/tucker_hosvd.cpp" />
         <option value="$PROJECT_DIR$/tensor_hooi.cpp" />
         <option value="$PROJECT_DIR$/test_program_case.cpp" />
         <option value="$PROJECT_DIR$/tensor_train.cpp" />
-        <option value="$PROJECT_DIR$/mode_n_product.cpp" />
         <option value="$PROJECT_DIR$/cp_als.cpp" />
+        <option value="$PROJECT_DIR$/mode_n_product.cpp" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/tucker_hosvd.cpp" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="415" />
-    <option name="y" value="62" />
-    <option name="width" value="1095" />
+    <option name="x" value="362" />
+    <option name="y" value="51" />
+    <option name="width" value="1152" />
     <option name="height" value="964" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -143,7 +131,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -155,6 +142,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -253,32 +241,36 @@
       <workItem from="1555649034693" duration="599000" />
       <workItem from="1555745810578" duration="2794000" />
       <workItem from="1555939416633" duration="42000" />
+      <workItem from="1556092877049" duration="617000" />
+      <workItem from="1556109015084" duration="27000" />
+      <workItem from="1556938078669" duration="8087000" />
+      <workItem from="1556946268550" duration="382000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="431723000" />
+    <option name="totallyTimeSpent" value="440836000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="415" y="62" width="1095" height="964" extended-state="0" />
+    <frame x="705" y="52" width="1152" height="964" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2712512" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22644928" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3293556" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.51862466" weight="0.2947494" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7137681" visible="true" weight="0.2947494" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4947623" weight="0.2673031" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.48137537" side_tool="true" visible="true" weight="0.3293556" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.28623188" side_tool="true" visible="true" weight="0.2947494" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.3293556" />
       <window_info anchor="bottom" id="CMake" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.50143266" weight="0.3293556" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4728261" weight="0.3293556" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -324,17 +316,7 @@
     <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tensor_Dynamic_Array/tensor.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
-          <folding>
-            <element signature="e#87#105#0" expanded="true" />
-            <element signature="e#1955#1964#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Tensor_Dynamic_Array/tensor.h" />
     <entry file="file:///opt/intel/mkl/include/mkl_vml_functions.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
@@ -342,17 +324,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tensor_Dynamic_Array/tensor.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="45" column="17" selection-start-line="45" selection-end-line="46" />
-          <folding>
-            <element signature="e#61#80#0" expanded="true" />
-            <element signature="e#978#987#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Tensor_Dynamic_Array/tensor.cpp" />
     <entry file="file://$PROJECT_DIR$/interface.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -360,38 +332,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tensor_Armadillo/cp_als.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3942" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tensor_Armadillo/cpgen.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tensor_Armadillo/tsvd.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1632" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tensor_Armadillo/tensor_train.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tensor_Armadillo/tensor_hooi.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-732" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tensor_Armadillo/tensor.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#88#105#0" expanded="true" />
-            <element signature="e#338#355#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Tensor_Armadillo/cp_als.cpp" />
+    <entry file="file://$PROJECT_DIR$/Tensor_Armadillo/cpgen.cpp" />
+    <entry file="file://$PROJECT_DIR$/Tensor_Armadillo/tsvd.cpp" />
+    <entry file="file://$PROJECT_DIR$/Tensor_Armadillo/tensor_train.cpp" />
+    <entry file="file://$PROJECT_DIR$/Tensor_Armadillo/tensor_hooi.cpp" />
+    <entry file="file://$PROJECT_DIR$/Tensor_Armadillo/tensor.h" />
     <entry file="file://$PROJECT_DIR$/tensor.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -497,13 +443,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tucker_hosvd.cpp">
+    <entry file="file://$PROJECT_DIR$/cp_als.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="79" column="54" lean-forward="true" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
+        <state relative-caret-position="477">
+          <caret line="303" column="46" selection-start-line="303" selection-end-line="304" />
           <folding>
-            <element signature="e#39#58#0" expanded="true" />
-            <element signature="e#263#279#0" expanded="true" />
+            <element signature="e#38#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -515,33 +460,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cp_als.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4545">
-          <caret line="303" column="46" selection-start-line="303" selection-end-line="304" />
-          <folding>
-            <element signature="e#38#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mode_n_product.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="50" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
-          <folding>
-            <element signature="e#40#59#0" expanded="true" />
-            <element signature="e#91#107#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="450">
+          <caret line="30" column="54" selection-start-line="30" selection-end-line="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="626">
+          <caret line="197" column="2" selection-start-line="197" selection-start-column="2" selection-end-line="197" selection-end-column="2" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tucker_hosvd.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="89" column="81" selection-start-line="89" selection-start-column="81" selection-end-line="89" selection-end-column="81" />
+          <folding>
+            <element signature="e#39#58#0" expanded="true" />
+            <element signature="e#263#279#0" expanded="true" />
           </folding>
         </state>
       </provider>

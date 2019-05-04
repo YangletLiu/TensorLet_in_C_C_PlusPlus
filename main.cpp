@@ -20,13 +20,11 @@ using namespace std;
 using namespace TensorLet_decomposition;
 
 
-
 int main(){
 
     MKL_INT n1, n2, n3;
 //    n1=7; n2=8; n3 = 9;
-    n1 = n2 = n3 = 500;
-//    n3 = 256;
+    n1 = n2 = n3 = 3;
 
     double t0,t1;
     t0=gettime();
@@ -44,13 +42,15 @@ int main(){
 //    }
 //    cout << endl;
 
-    MKL_INT rank = 0.05*n1;
+    MKL_INT rank = 0.1*n1+2;
     cout << "rank: " << rank << endl;
 
 //    rank = 4;
 //    a.cp_gen(rank);
 
-
+    MKL_INT r1 = 0.1*n1+2;
+    MKL_INT r2 = 0.1*n1+2;
+    MKL_INT r3 = 0.1*n1+2;
 
 /*******************************
              CP
@@ -64,19 +64,16 @@ int main(){
 //    MKL_free( A.cp_B );
 //    MKL_free( A.cp_C );
 
-
-
-
 /*******************************
             Tucker
 *******************************/
 //    rank = 3;
-    MKL_INT ranks[3] = {rank, rank, rank};
-
-    t0=gettime();
-    tucker_format<double> B = tucker_hosvd( a, rank, rank, rank );
-    t1=gettime();
-    cout << "Tucker time:" << t1 - t0 << endl;
+//    MKL_INT ranks[3] = {rank, rank, rank};
+//
+//    t0=gettime();
+//    tucker_format<double> B = tucker_hosvd( a, rank, rank, rank );
+//    t1=gettime();
+//    cout << "Tucker time:" << t1 - t0 << endl;
 
 
 //    t0=gettime();
@@ -90,8 +87,6 @@ int main(){
 //    MKL_free( B.u3 );
 
 
-
-
 /*******************************
         t-SVD
 *******************************/
@@ -101,7 +96,6 @@ int main(){
 //    cout << "tsvd time:" << t1-t0 <<endl;
 
 
-
 /*******************************
         tensor-train
 *******************************/
@@ -109,7 +103,6 @@ int main(){
 //    tt_format<double> D = tensor_train( a );
 //    t1=gettime();
 //    cout << "tensor-train time:" << t1-t0 <<endl;
-
 
 
 /*******************************
@@ -132,7 +125,71 @@ int main(){
 //
 //    vslDeleteStream(&stream);
 //
-//    double* u1t_times_x1 = (double*)mkl_malloc(n1 * n2 * n3 * sizeof(double), 64);
+//    double* u1t_times_x1 = (double*)mkl_malloc(r1 * n2 * n3 * sizeof(double), 64);
+//
+//    for(int i = 0; i < 27; i++){
+//        cout << a.pointer[i] << " " ;
+//    }
+//    cout << endl;
+//
+//    for(int i = 0; i < 9; i++){
+//        cout << X1_times_X1T[i] << " " ;
+//    }
+//    cout << endl;
+//
+//    cblas_dgemm(CblasColMajor, CblasTrans, CblasNoTrans, r1, n2 * n3, n1,
+//                1, X1_times_X1T + (n1 - r1) * n1, n1, a.pointer, n1,
+//                0, u1t_times_x1, r1); // U1^t * X(1)
+//
+//    for(int i = 0; i < 18; i++){
+//        cout << u1t_times_x1[i] << " " ;
+//    }
+//    cout << endl;
+//
+//    for(int i = 0; i < 9; i++){
+//        cout << X2_times_X2T[i] << " " ;
+//    }
+//    cout << endl;
+//
+//    double* u2t_times_u1t_times_x1 = (double*)mkl_malloc(r1 * r2 * n3 * sizeof(double), 64);
+//
+//    for(MKL_INT i = 0; i < n3; i++){
+//        cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans, r1, r2, n2,
+//                    1, u1t_times_x1 + i * r1 * n2, r1, X2_times_X2T + (n2 - r2) * n2, n2,
+//                    0, u2t_times_u1t_times_x1 + i * r1 * r2, r1);  // U2^t * ( U1^t * X(1) )_(2)
+//    }
+//
+//    MKL_free(u1t_times_x1);
+//
+//    for(int i = 0; i < 12; i++){
+//        cout << u2t_times_u1t_times_x1[i] << " " ;
+//    }
+//    cout << endl;
+//
+//
+//    for(int i = 0; i < 9; i++){
+//        cout << X3_times_X3T[i] << " " ;
+//    }
+//    cout << endl;
+//
+//    double* g = (double*)mkl_malloc(r1 * r2 * r3 * sizeof(double), 64);
+//
+//    cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans, r1 * r2, r3, n3,
+//                1, u2t_times_u1t_times_x1, r1 * r2, X3_times_X3T + (n3 - r3) * n3, n3,
+//                0, g, r1 * r2); // g
+//
+//    for(int i = 0; i < 8; i++){
+//        cout << g[i] << " " ;
+//    }
+//    cout << endl;
+
+
+    cout << "hello" << endl;
+
+    return 0;
+}
+
+
 //    t0=gettime();
 //    a.mode_n_product(a.pointer, u1t_times_x1, 1);
 //    t1=gettime();
@@ -160,8 +217,3 @@ int main(){
 //    double norm_a = cblas_dnrm2(n1 * n2 * n3, a.pointer, 1);
 //    double norm_u = cblas_dnrm2(n1 * n2 , X2_times_X2T, 1);
 //    cout << norm_a << " " << norm_u << endl;
-
-    cout << "hello" << endl;
-
-    return 0;
-}

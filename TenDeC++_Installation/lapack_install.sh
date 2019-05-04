@@ -11,12 +11,5 @@ make
 
 sudo make install
 
-g++ example1.cpp -o example1 -O2 -larmadillo
-
-
-
-
-
-
 
 
