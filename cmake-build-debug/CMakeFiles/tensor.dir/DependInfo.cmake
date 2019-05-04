@@ -13,7 +13,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/jcfei/Desktop/TensorLet_C/t_svd.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/t_svd.cpp.o"
   "/home/jcfei/Desktop/TensorLet_C/tensor_hooi.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/tensor_hooi.cpp.o"
   "/home/jcfei/Desktop/TensorLet_C/tensor_train.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/tensor_train.cpp.o"
-  "/home/jcfei/Desktop/TensorLet_C/test_program_case.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/test_program_case.cpp.o"
   "/home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/tucker_hosvd.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

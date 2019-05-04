@@ -366,33 +366,6 @@ tensor_train.cpp.s:
 	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/tensor_train.cpp.s
 .PHONY : tensor_train.cpp.s
 
-test_program_case.o: test_program_case.cpp.o
-
-.PHONY : test_program_case.o
-
-# target to build an object file
-test_program_case.cpp.o:
-	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/test_program_case.cpp.o
-.PHONY : test_program_case.cpp.o
-
-test_program_case.i: test_program_case.cpp.i
-
-.PHONY : test_program_case.i
-
-# target to preprocess a source file
-test_program_case.cpp.i:
-	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/test_program_case.cpp.i
-.PHONY : test_program_case.cpp.i
-
-test_program_case.s: test_program_case.cpp.s
-
-.PHONY : test_program_case.s
-
-# target to generate assembly for a file
-test_program_case.cpp.s:
-	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/test_program_case.cpp.s
-.PHONY : test_program_case.cpp.s
-
 tucker_hosvd.o: tucker_hosvd.cpp.o
 
 .PHONY : tucker_hosvd.o
@@ -456,9 +429,6 @@ help:
 	@echo "... tensor_train.o"
 	@echo "... tensor_train.i"
 	@echo "... tensor_train.s"
-	@echo "... test_program_case.o"
-	@echo "... test_program_case.i"
-	@echo "... test_program_case.s"
 	@echo "... tucker_hosvd.o"
 	@echo "... tucker_hosvd.i"
 	@echo "... tucker_hosvd.s"

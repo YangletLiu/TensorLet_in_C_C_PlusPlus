@@ -12,7 +12,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0124bdfe-1649-499c-ac86-562eb01387b8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/tucker_hosvd.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tucker_hosvd.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/test_program_case.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/tensor" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/tensor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/tensor.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/tensor.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_program_case.cpp" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,17 +49,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" selection-start-line="16" selection-end-line="22" selection-end-column="7" />
+            <state relative-caret-position="360">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="626">
-              <caret line="197" column="2" selection-start-line="197" selection-start-column="2" selection-end-line="197" selection-end-column="2" />
+            <state relative-caret-position="-735">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -48,11 +67,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_mode_n.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="83" column="25" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tucker_hosvd.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="83" column="67" lean-forward="true" selection-start-line="83" selection-start-column="67" selection-end-line="83" selection-end-column="67" />
+            <state relative-caret-position="-261">
+              <caret line="83" column="67" selection-start-line="83" selection-start-column="67" selection-end-line="83" selection-end-column="67" />
               <folding>
                 <element signature="e#39#58#0" expanded="true" />
                 <element signature="e#263#279#0" expanded="true" />
@@ -94,7 +122,6 @@
         <option value="$PROJECT_DIR$/Tensor_Armadillo/tensor.h" />
         <option value="$PROJECT_DIR$/cp_gen.cpp" />
         <option value="$PROJECT_DIR$/tensor.h" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/ten2mat.cpp" />
         <option value="$PROJECT_DIR$/Tensor3D.cpp" />
         <option value="$PROJECT_DIR$/Tensor3D.h" />
@@ -106,8 +133,10 @@
         <option value="$PROJECT_DIR$/tensor_train.cpp" />
         <option value="$PROJECT_DIR$/cp_als.cpp" />
         <option value="$PROJECT_DIR$/mode_n_product.cpp" />
-        <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/tucker_hosvd.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/test_mode_n.cpp" />
       </list>
     </option>
   </component>
@@ -238,12 +267,12 @@
       <workItem from="1556092877049" duration="617000" />
       <workItem from="1556109015084" duration="27000" />
       <workItem from="1556938078669" duration="8087000" />
-      <workItem from="1556946268550" duration="924000" />
+      <workItem from="1556946268550" duration="1195000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="441378000" />
+    <option name="totallyTimeSpent" value="441649000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="362" y="51" width="1152" height="964" extended-state="0" />
@@ -254,17 +283,17 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3293556" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7137681" visible="true" weight="0.2947494" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7119565" visible="true" weight="0.2947494" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4947623" weight="0.2673031" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.28623188" side_tool="true" visible="true" weight="0.2947494" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.28804347" side_tool="true" visible="true" weight="0.2947494" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.3293556" />
-      <window_info anchor="bottom" id="CMake" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4728261" weight="0.3293556" />
+      <window_info anchor="bottom" id="CMake" order="11" sideWeight="0.4990942" weight="0.3293556" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4710145" weight="0.3293556" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -447,13 +476,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="22" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mode_n_product.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -461,23 +483,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
+    <entry file="file://$PROJECT_DIR$/tucker_hosvd.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="197" column="2" selection-start-line="197" selection-start-column="2" selection-end-line="197" selection-end-column="2" />
+        <state relative-caret-position="-261">
+          <caret line="83" column="67" selection-start-line="83" selection-start-column="67" selection-end-line="83" selection-end-column="67" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#39#58#0" expanded="true" />
+            <element signature="e#263#279#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tucker_hosvd.cpp">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="83" column="67" lean-forward="true" selection-start-line="83" selection-start-column="67" selection-end-line="83" selection-end-column="67" />
+        <state relative-caret-position="360">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_mode_n.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="83" column="25" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-735">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
           <folding>
-            <element signature="e#39#58#0" expanded="true" />
-            <element signature="e#263#279#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>

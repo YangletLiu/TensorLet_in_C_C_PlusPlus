@@ -9,7 +9,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/tensor.dir/tensor_train.cpp.o"
   "CMakeFiles/tensor.dir/mode_n_product.cpp.o"
   "CMakeFiles/tensor.dir/pinv.cpp.o"
-  "CMakeFiles/tensor.dir/test_program_case.cpp.o"
   "tensor.pdb"
   "tensor"
 )

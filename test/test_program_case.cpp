@@ -2,11 +2,8 @@
 // Created by jcfei on 19-2-24.
 //
 
-
-
 //cout << "dynamic thread " << mkl_get_dynamic() << endl;
 //cout << "max thread " << mkl_get_max_threads() << endl;
-
 
 //随机数生成
 //t0=gettime();

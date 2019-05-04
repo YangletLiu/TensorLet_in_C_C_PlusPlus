@@ -400,8 +400,6 @@ CMakeFiles/tensor.dir/tensor_train.cpp.o: /opt/intel/mkl/include/mkl_vsl_functio
 CMakeFiles/tensor.dir/tensor_train.cpp.o: /opt/intel/mkl/include/mkl_vsl_types.h
 CMakeFiles/tensor.dir/tensor_train.cpp.o: /usr/local/fftw/include/fftw3.h
 
-CMakeFiles/tensor.dir/test_program_case.cpp.o: ../test_program_case.cpp
-
 CMakeFiles/tensor.dir/tucker_hosvd.cpp.o: ../Tensor3D.h
 CMakeFiles/tensor.dir/tucker_hosvd.cpp.o: ../tensor.h
 CMakeFiles/tensor.dir/tucker_hosvd.cpp.o: ../tucker_hosvd.cpp
