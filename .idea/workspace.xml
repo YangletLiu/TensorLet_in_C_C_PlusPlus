@@ -12,12 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0124bdfe-1649-499c-ac86-562eb01387b8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/mode_n_product.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tensor.dir/mode_n_product.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/tensor" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/tensor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mode_n_product.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/mode_n_product.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tucker_hosvd.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tucker_hosvd.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -57,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tucker_hosvd.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="89" column="81" selection-start-line="89" selection-start-column="81" selection-end-line="89" selection-end-column="81" />
+            <state relative-caret-position="99">
+              <caret line="83" column="67" lean-forward="true" selection-start-line="83" selection-start-column="67" selection-end-line="83" selection-end-column="67" />
               <folding>
                 <element signature="e#39#58#0" expanded="true" />
                 <element signature="e#263#279#0" expanded="true" />
@@ -117,7 +111,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="362" />
     <option name="y" value="51" />
     <option name="width" value="1152" />
@@ -244,15 +238,15 @@
       <workItem from="1556092877049" duration="617000" />
       <workItem from="1556109015084" duration="27000" />
       <workItem from="1556938078669" duration="8087000" />
-      <workItem from="1556946268550" duration="382000" />
+      <workItem from="1556946268550" duration="924000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="440836000" />
+    <option name="totallyTimeSpent" value="441378000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="705" y="52" width="1152" height="964" extended-state="0" />
+    <frame x="362" y="51" width="1152" height="964" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22644928" />
@@ -479,8 +473,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tucker_hosvd.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="89" column="81" selection-start-line="89" selection-start-column="81" selection-end-line="89" selection-end-column="81" />
+        <state relative-caret-position="99">
+          <caret line="83" column="67" lean-forward="true" selection-start-line="83" selection-start-column="67" selection-end-line="83" selection-end-column="67" />
           <folding>
             <element signature="e#39#58#0" expanded="true" />
             <element signature="e#263#279#0" expanded="true" />

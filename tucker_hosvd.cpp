@@ -84,7 +84,7 @@ namespace TensorLet_decomposition {
                     1, X1_times_X1T + (n1 - r1) * n1, n1, a.pointer, n1,
                     0, u1t_times_x1, r1); // U1^t * X(1)
 
-        for(MKL_INT i = 0; i < n3; i++){
+        for(MKL_INT i = 0; i < n3; ++i){
             cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans, r1, r2, n2,
                         1, u1t_times_x1 + i * r1 * n2, r1, X2_times_X2T + (n2 - r2) * n2, n2,
                         0, u2t_times_u1t_times_x1 + i * r1 * r2, r1);  // ( U1^t * X(1) )_(1) * U2
@@ -184,10 +184,10 @@ namespace TensorLet_decomposition {
 
         double* u2t_times_u1t_times_x1 = (double*)mkl_malloc(r1 * r2 * n3 * sizeof(double), 64);
 
-        for(MKL_INT i = 0; i < n3; i++){
-            cblas_dgemm(CblasColMajor, CblasTrans, CblasTrans, r2, r1, n2,
-                        1, X2_times_X2T + (n2 - r2) * n2, n2, u1t_times_x1 + i * r1 * n2, r1,
-                        0, u2t_times_u1t_times_x1 + i * r1 * r2, r1);  // U2^t * U1^t * X(1)
+        for(MKL_INT i = 0; i < n3; ++i){
+            cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans, r1, r2, n2,
+                        1, u1t_times_x1 + i * r1 * n2, r1, X2_times_X2T + (n2 - r2) * n2, n2,
+                        0, u2t_times_u1t_times_x1 + i * r1 * r2, r1);  // ( U1^t * X(1) )_(1) * U2
         }
 
         MKL_free(u1t_times_x1);
@@ -195,9 +195,9 @@ namespace TensorLet_decomposition {
 
         double* g = (double*)mkl_malloc(r1 * r2 * r3 * sizeof(double), 64);
 
-        cblas_dgemm(CblasRowMajor, CblasTrans, CblasNoTrans, r3, r1 * r2, n3,
-                    1, X3_times_X3T + (n3 - r3) * n3, r3, u2t_times_u1t_times_x1, r1 * r2,
-                    0, g, r1 * r2); // g
+        cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans, r1 * r2, r3, n3,
+                    1, u2t_times_u1t_times_x1, r1 * r2, X3_times_X3T + (n3 - r3) * n3, n3,
+                    0, g, r1 * r2); // g = x3 * u3
 
         MKL_free(u2t_times_u1t_times_x1);
 
