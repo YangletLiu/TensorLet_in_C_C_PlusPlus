@@ -24,7 +24,7 @@ int main(){
 
     MKL_INT n1, n2, n3;
 //    n1=7; n2=8; n3 = 9;
-    n1 = n2 = n3 = 3;
+    n1 = n2 = n3 = 10;
 
     double t0,t1;
     t0=gettime();
@@ -42,27 +42,27 @@ int main(){
 //    }
 //    cout << endl;
 
-    MKL_INT rank = 0.1*n1+2;
+    MKL_INT rank = 0.2*n1;
     cout << "rank: " << rank << endl;
 
 //    rank = 4;
 //    a.cp_gen(rank);
 
-    MKL_INT r1 = 0.1*n1+2;
-    MKL_INT r2 = 0.1*n1+2;
-    MKL_INT r3 = 0.1*n1+2;
+//    MKL_INT r1 = 0.1*n1+2;
+//    MKL_INT r2 = 0.1*n1+2;
+//    MKL_INT r3 = 0.1*n1+2;
 
 /*******************************
              CP
 *******************************/
-//    t0=gettime();
-//    cp_format<double> A = cp_als( a, rank , 1);
-//    t1=gettime();
-//    cout << "CP time:" << t1 - t0 << endl;
-//
-//    MKL_free( A.cp_A );
-//    MKL_free( A.cp_B );
-//    MKL_free( A.cp_C );
+    t0=gettime();
+    cp_format<double> A = cp_als( a, rank , 1);
+    t1=gettime();
+    cout << "CP time:" << t1 - t0 << endl;
+
+    MKL_free( A.cp_A );
+    MKL_free( A.cp_B );
+    MKL_free( A.cp_C );
 
 /*******************************
             Tucker

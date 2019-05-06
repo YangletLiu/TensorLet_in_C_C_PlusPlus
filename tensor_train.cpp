@@ -19,7 +19,7 @@ namespace TensorLet_decomposition {
     tt_format<datatype> tensor_train( Tensor3D<datatype>& a, datatype epsilon = 1e-6 ) {
 
         // dimension
-        int *shape = a.getsize();
+        int *shape = a.size();
 
         int n1 = shape[0]; int n2 =shape[1]; int n3 = shape[2];
 

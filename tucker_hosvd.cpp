@@ -24,7 +24,7 @@ namespace TensorLet_decomposition {
             exit(1);
         }
 
-        int *shape = a.getsize();  //dimension
+        int *shape = a.size();  //dimension
 
         int n1 = shape[0]; int n2 =shape[1]; int n3 = shape[2];
 
@@ -127,7 +127,7 @@ namespace TensorLet_decomposition {
         int r2 = rank[1];
         int r3 = rank[2];
 
-        int *shape = a.getsize();  //dimension
+        int *shape = a.size();  //dimension
 
         int n1 = shape[0]; int n2 =shape[1]; int n3 = shape[2];
 

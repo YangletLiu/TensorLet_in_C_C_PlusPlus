@@ -14,7 +14,7 @@
 //template<class datatype>
 //datatype *mode_n_product(Tensor3D<datatype> &tensor, datatype *matrix, datatype *result, int mode) {
 //
-//    MKL_INT *shape = tensor.getsize();  //dimension
+//    MKL_INT *shape = tensor.size();  //dimension
 //    MKL_INT n1 = shape[0]; MKL_INT n2 =shape[1]; MKL_INT n3 = shape[2];
 //
 //    if(mode == 2){
