@@ -69,7 +69,7 @@ Tensor3D<datatype>& Tensor3D<datatype>::random_tensor() {
         MKL_INT I = J*100000;
         MKL_INT remainder = n1*n2*n3 - J * 100000;
 
-        for (int i =0; i < J; i++) {
+        for (int i =0; i < J; ++i) {
             srand((unsigned)time(NULL));
             MKL_INT SEED = rand();
 
@@ -231,12 +231,35 @@ template<class datatype>
 datatype* Tensor3D<datatype>::tens2mat(datatype* p, MKL_INT mode) {
     MKL_INT size = this->elements_number();
     if(mode == 1){
-        cblas_dcopy(size,this->pointer,1,p,1);
+        cblas_dcopy(size, this -> pointer, 1, p, 1);
         return p;
     }
 }
 
-////000
+template<class datatype>
+datatype* Tensor3D<datatype>::tens2vec(datatype* p, MKL_INT mode){
+    MKL_INT size = this -> elements_number();
+    if(mode == 1){
+        cblas_dcopy(size, this -> pointer, 1, p, 1);
+        return p;
+    }
+}
+
+template<class datatype>
+Tensor3D<datatype> mat2tens(datatype*, MKL_INT mode, MKL_INT shape[]){
+
+}
+
+template<class datatype>
+Tensor3D<datatype> mat2tens(datatype*, MKL_INT mode, MKL_INT n1, MKL_INT n2, MKL_INT n3){
+
+}
+
+//template<class datatype>
+//Tensor3D<datatype> vec2tens(datatype*, MKL_INT mode, MKL_INT shape[]){
+//
+//}
+
 //template<class datatype>
 //datatype* Tensor3D<datatype>::mode_n_product(datatype *matrix, datatype *result, int mode) {
 //    MKL_INT *shape = this->size();  //dimension
@@ -249,7 +272,7 @@ datatype* Tensor3D<datatype>::tens2mat(datatype* p, MKL_INT mode) {
 //    }
 //
 //    if(mode == 2){
-//        for(MKL_INT i = 0; i < n3; i++){
+//        for(MKL_INT i = 0; i < n3; ++i){
 //            cblas_dgemm(CblasColMajor, CblasTrans, CblasTrans, n2, n1, n2,
 //                        1, matrix, n2, this->pointer + i * n1 * n2, n2,
 //                        0, result + i * n1 * n2, n1);  // U2 * X(2)
@@ -264,6 +287,3 @@ datatype* Tensor3D<datatype>::tens2mat(datatype* p, MKL_INT mode) {
 //
 //    return result;
 //}
-//
-
-

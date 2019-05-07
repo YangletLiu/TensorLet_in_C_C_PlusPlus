@@ -235,6 +235,9 @@ ProcessorCount_cmd_getconf:FILEPATH=/usr/bin/getconf
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/sbin/sysctl
 
+//The directory containing a CMake configuration file for fftw.
+fftw_DIR:PATH=fftw_DIR-NOTFOUND
+
 //Value Computed by CMake
 tensor_BINARY_DIR:STATIC=/home/jcfei/Desktop/TensorLet_C/cmake-build-debug
 

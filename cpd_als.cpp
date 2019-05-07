@@ -2,26 +2,14 @@
 // Created by jcfei on 18-9-9.
 //
 
-#include "tensor.h"
-#include "Tensor3D.h"
+
 #include "pinv.h"
-
-#define min(a, b) ((a) < (b) ? (a) : (b))
-#define max(a, b) ((a) > (b) ? (a) : (b))
-
-template <class datatype>
-class cp_format{
-public:
-    datatype* cp_A;
-    datatype* cp_B;
-    datatype* cp_C;
-    datatype* cp_lamda;
-};
+#include "cpd.h"
 
 namespace TensorLet_decomposition{
 
     template<class datatype>
-    cp_format<datatype> cp_als( Tensor3D<datatype> &a, int r, int max_iter = 500, datatype tolerance = 1e-6) {
+    cp_format<datatype> cp_als(Tensor3D<datatype> &a, int r, int max_iter = 500, double tolerance = 1e-6) {
 
         if( r == 0 ){
             printf("CP decomposition rank cannot be zero.");
@@ -30,7 +18,7 @@ namespace TensorLet_decomposition{
 
         MKL_INT *shape = a.size();  //dimension
 
-        MKL_INT n1 = shape[0]; MKL_INT n2 =shape[1]; MKL_INT n3 = shape[2];
+        MKL_INT n1 = shape[0]; MKL_INT n2 = shape[1]; MKL_INT n3 = shape[2];
 
         double norm_a = cblas_dnrm2(n1 * n2 * n3, a.pointer, 1);
         double tolerance_times_norm_a = (1 - tolerance) * norm_a;
@@ -118,7 +106,7 @@ namespace TensorLet_decomposition{
             }
 
             // c_kr_b tested: right, c col-major  b col-major
-            for(MKL_INT i = 0; i < r; i++){
+            for(MKL_INT i = 0; i < r; ++i){
                 cblas_dgemm(CblasColMajor, CblasNoTrans, CblasTrans,
                             n2, n3, 1, 1, B + i * n2, n2, C + i * n3, n3,
                             0, c_kr_b + i * n2 * n3, n2);
@@ -160,7 +148,7 @@ namespace TensorLet_decomposition{
                         0, A, n1);
 
 //            //normalize A
-//            for(MKL_INT i = 0; i < r; i++){
+//            for(MKL_INT i = 0; i < r; ++i){
 //                double norm = cblas_dnrm2(n1, A + i * n1, 1);
 //                if (norm > 1){
 //                    cblas_dscal(n1, 1.0 / norm, A + i * n1, 1);
@@ -182,13 +170,13 @@ namespace TensorLet_decomposition{
                 exit(1);
             }
 
-            for(MKL_INT i = 0; i < r; i++){
+            for(MKL_INT i = 0; i < r; ++i){
                 cblas_dgemm(CblasColMajor, CblasNoTrans, CblasTrans,
                             n1, n3, 1, 1, A + i * n1, n1, C + i * n3, n3,
                             0, c_kr_a + i * n1 * n3, n1);  // kr(c,a)
             }
 
-            for(MKL_INT i = 0; i < n3; i++){
+            for(MKL_INT i = 0; i < n3; ++i){
                 cblas_dgemm(CblasColMajor, CblasTrans, CblasNoTrans,
                             n2, r, n1, 1, a.pointer + i * n1 * n2, n1, c_kr_a + i * n2, n1,
                             1, x2_times_c_kr_a, n2);  // X(2) * kr(c,a), rank update
@@ -209,14 +197,14 @@ namespace TensorLet_decomposition{
 
             // update B
             cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
-                    n2, r, r, 1, x2_times_c_kr_a, n2, inverse_b, r,
-                    1, B, n2);
+                        n2, r, r, 1, x2_times_c_kr_a, n2, inverse_b, r,
+                        1, B, n2);
 
 //            normA = cblas_dnrm2(n1*r, inverse_b, 1);
 //            cout << "inverse_a " << normA << endl;
 
             //normalize B
-//            for(MKL_INT i = 0; i < r; i++){
+//            for(MKL_INT i = 0; i < r; ++i){
 //                double norm = cblas_dnrm2(n2, B + i * n2, 1);
 //                if (norm > 1){
 //                    cblas_dscal(n2, 1.0 / norm, B + i * n2, 1);
@@ -238,7 +226,7 @@ namespace TensorLet_decomposition{
                 exit(1);
             }
 
-            for( MKL_INT i = 0; i < r; i++ ){
+            for( MKL_INT i = 0; i < r; ++i ){
                 cblas_dgemm( CblasColMajor, CblasNoTrans, CblasTrans,
                              n1, n2, 1, 1, A + i * n1, n1, B + i * n2, n2,
                              0, b_kr_a + i * n1 * n2, n1 );  // kr(b,a)
@@ -267,12 +255,12 @@ namespace TensorLet_decomposition{
                         n3, r, r, 1, x3_times_b_kr_a, r, inverse_c, r,
                         1, Ct, r);
 
-            for(MKL_INT i = 0; i < r; i++){
+            for(MKL_INT i = 0; i < r; ++i){
                 cblas_dcopy(n3, Ct + i, r, C + i * n3, 1);  //tranpose
             }
 
 //            lamda[0] = cblas_dnrm2(n3, C, 1);
-//            for(MKL_INT i = 1; i < r; i++){
+//            for(MKL_INT i = 1; i < r; ++i){
 //                lamda[i] = cblas_dnrm2(n3, C + i * n3, 1);
 //                if (lamda[i] > lamda[0] * 1e-5){
 //                    cblas_dscal(n3, 1/lamda[i], C + i * n3, 1);  //normalize
@@ -280,7 +268,7 @@ namespace TensorLet_decomposition{
 //            }
 
             //normalize C
-//            for(MKL_INT i = 0; i < r; i++){
+//            for(MKL_INT i = 0; i < r; ++i){
 //                double norm = cblas_dnrm2(n3, C + i * n3, 1);
 //                if (norm > 1e-1){
 //                    cblas_dscal(n3, 1 / norm, C + i * n3, 1);  //normalize
@@ -332,9 +320,8 @@ namespace TensorLet_decomposition{
 
     }
 
-
     template<class datatype>
-    cp_format<datatype> cp_als( Tensor3D<datatype> &a, int &r, datatype tolerance = 1e-6) {
+    cp_format<datatype> cp_als( Tensor3D<datatype> &a, int r, double tolerance = 1e-6) {
 
         int max_iter = 1;
         MKL_INT *shape = a.size();  //dimension
@@ -381,17 +368,17 @@ namespace TensorLet_decomposition{
             exit(1);
         }
 
-//        for(int i = 0; i < 10; i++){
+//        for(int i = 0; i < 10; ++i){
 //            cout << A[i] << " ";
 //        }
 //        cout << endl;
 
-//        for(int i = 0; i < 10; i++){
+//        for(int i = 0; i < 10; ++i){
 //            cout << B[i] << " ";
 //        }
 //        cout << endl;
 
-//        for(int i = 0; i < 10; i++){
+//        for(int i = 0; i < 10; ++i){
 //            cout << C[i] << " ";
 //        }
 //        cout << endl;
@@ -409,25 +396,25 @@ namespace TensorLet_decomposition{
         }
 
         // c_kr_b tested: right
-        for(MKL_INT i = 0; i < r; i++){
+        for(MKL_INT i = 0; i < r; ++i){
             cblas_dgemm(CblasColMajor, CblasNoTrans, CblasTrans,
                         n2, n3, 1, 1, B + i * n2, n2, C + i * n3, n3,
                         0, c_kr_b + i * n2 * n3, n2);
         }
-//        for(int i = 0; i < 6; i++){
+//        for(int i = 0; i < 6; ++i){
 //            cout << C[i] << " ";
 //        }
 //        cout << endl;
-//        for(int i = 0; i < 6; i++){
+//        for(int i = 0; i < 6; ++i){
 //            cout << B[i] << " ";
 //        }
 //        cout << endl;
-//        for(int i = 0; i < 18; i++){
+//        for(int i = 0; i < 18; ++i){
 //            cout << c_kr_b[i] << " ";
 //        }
 //        cout << endl;
 //
-//        for(int i = 0; i < 27; i++){
+//        for(int i = 0; i < 27; ++i){
 //            cout << a.pointer[i] << " ";
 //        }
 //        cout << endl;
@@ -436,7 +423,7 @@ namespace TensorLet_decomposition{
                     n1, r, n2*n3, 1, a.pointer, n1, c_kr_b, n2 * n3,
                     0, x1_times_c_kr_b, n1); // X(1) * kr(c,b)
 
-//        for(int i = 0; i < 6; i++){
+//        for(int i = 0; i < 6; ++i){
 //            cout << x1_times_c_kr_b[i] << " ";
 //        }
 
@@ -494,13 +481,13 @@ namespace TensorLet_decomposition{
             exit(1);
         }
 
-        for(MKL_INT i = 0; i < r; i++){
+        for(MKL_INT i = 0; i < r; ++i){
             cblas_dgemm(CblasColMajor, CblasNoTrans, CblasTrans,
                         n1, n3, 1, 1, A + i * n1, n1, C + i * n3, n3,
                         0, c_kr_a + i * n3 * n1, n1);  // kr(c,a)
         }
 
-        for(MKL_INT i = 0; i < n3; i++){
+        for(MKL_INT i = 0; i < n3; ++i){
             cblas_dgemm(CblasColMajor, CblasTrans, CblasNoTrans,
                         n2, r, n1, 1, a.pointer + i * n1 * n2, n1, c_kr_a + i * n2, n1,
                         1, x2_times_c_kr_a, n2);  // X(2) * kr(c,a) rank update
@@ -529,7 +516,7 @@ namespace TensorLet_decomposition{
         datatype* b_kr_a = ( datatype* )mkl_malloc( n1 * n2 * r * sizeof( datatype ), 64 );
         datatype* x3_times_b_kr_a = ( datatype* )mkl_malloc( n3 * r * sizeof(datatype), 64 );
 
-        for( MKL_INT i = 0; i < r; i++ ){
+        for( MKL_INT i = 0; i < r; ++i ){
             cblas_dgemm( CblasColMajor, CblasNoTrans, CblasTrans,
                          n1, n2, 1, 1, A + i * n1, n1, B + i * n2, n2,
                          0, b_kr_a + i * n1 * n2, n1 );  // kr(b,a)

@@ -3,6 +3,7 @@
 //
 #include "tensor.h"
 #include "Tensor3D.h"
+#include "tucker.h"
 
 
 namespace TensorLet_decomposition {

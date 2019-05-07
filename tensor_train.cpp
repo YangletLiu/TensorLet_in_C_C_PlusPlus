@@ -4,14 +4,7 @@
 
 #include "tensor.h"
 #include "Tensor3D.h"
-
-template<class datatype>
-class tt_format{
-public:
-    datatype* g2;
-    datatype* G1;
-    datatype* G3;
-};
+#include "tensor_train.h"
 
 namespace TensorLet_decomposition {
 
@@ -54,7 +47,7 @@ namespace TensorLet_decomposition {
 
         int rank_1 = 0;
 
-        for( int i = 1; i < min_row_column; i++ ){
+        for( int i = 1; i < min_row_column; ++i ){
             norm_tmp = cblas_dnrm2( i, s, 1);
 
             ratio = norm_tmp / norm_s;
@@ -69,14 +62,14 @@ namespace TensorLet_decomposition {
         }
 
 //        double sum = 0;
-//        for (int i = 0; i < min_row_column; i++){
+//        for (int i = 0; i < min_row_column; ++i){
 //            sum = sum + s[i] * s[i];
 //        }
 //        sum = sqrt( sum );
 
         double* C_1 = (double*)MKL_malloc(rank_1 * column * sizeof(double), 64);
 
-        for( int i = 0; i < rank_1; i++ ){
+        for( int i = 0; i < rank_1; ++i ){
             cblas_daxpy( column, s[i], vt + rank_1 * i, 1, C_1 + i, rank_1 );
         }
 
@@ -100,7 +93,7 @@ namespace TensorLet_decomposition {
 //        deta = 1 - deta;
 
         int rank_2 = 0;
-        for( int i = 1; i < min_row_column; i++ ){
+        for( int i = 1; i < min_row_column; ++i ){
             norm_tmp = cblas_dnrm2( i, s_1, 1);
 
             ratio = norm_tmp / norm_s;
@@ -116,7 +109,7 @@ namespace TensorLet_decomposition {
 
         double* g3 = (double*)MKL_malloc(rank_2 * column * sizeof(double), 64);
 
-        for( int i = 0; i < rank_2; i++ ){
+        for( int i = 0; i < rank_2; ++i ){
             cblas_daxpy( column, s_1[i], vt_1 + rank_2 * i, 1, g3 + i, rank_2 );
         }
 

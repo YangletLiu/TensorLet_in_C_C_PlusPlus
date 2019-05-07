@@ -4,15 +4,7 @@
 
 #include "tensor.h"
 #include "Tensor3D.h"
-
-template<class datatype>
-class tucker_format{
-public:
-    datatype* core;
-    datatype* u1;
-    datatype* u2;
-    datatype* u3;
-};
+#include "tucker.h"
 
 namespace TensorLet_decomposition {
 
@@ -139,7 +131,7 @@ namespace TensorLet_decomposition {
                      n1,n2 * n3, 1, a.pointer, n1,
                      0, X1_times_X1T, n1 );  //x1*x1^t
 
-        for(MKL_INT i = 0; i < n3; i++){
+        for(MKL_INT i = 0; i < n3; ++i){
             cblas_dsyrk(CblasColMajor, CblasUpper, CblasTrans,
                         n2, n1, 1, a.pointer + i * n1 * n2, n1,
                         1, X2_times_X2T, n2);  // X(2) * X2^t rank update
@@ -155,7 +147,7 @@ namespace TensorLet_decomposition {
         double* w2 = (double*)mkl_malloc(n2 * sizeof(double), 64);
         double* w3 = (double*)mkl_malloc(n3 * sizeof(double), 64);
 
-//        for (int i=0;i<20;i++){
+//        for (int i=0;i<20;++i){
 //            for (int j=0;j<20;j++){
 //                cout << X3_times_X3T[j+i*n1] << " ";
 //            }

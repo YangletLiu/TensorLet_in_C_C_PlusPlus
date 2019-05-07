@@ -5,8 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/jcfei/Desktop/TensorLet_C/Tensor3D.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/Tensor3D.cpp.o"
-  "/home/jcfei/Desktop/TensorLet_C/cp_als.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/cp_als.cpp.o"
-  "/home/jcfei/Desktop/TensorLet_C/cp_gen.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/cp_gen.cpp.o"
+  "/home/jcfei/Desktop/TensorLet_C/cpd_als.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/cpd_als.cpp.o"
+  "/home/jcfei/Desktop/TensorLet_C/cpd_gen.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/cpd_gen.cpp.o"
   "/home/jcfei/Desktop/TensorLet_C/main.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/main.cpp.o"
   "/home/jcfei/Desktop/TensorLet_C/mode_n_product.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/mode_n_product.cpp.o"
   "/home/jcfei/Desktop/TensorLet_C/pinv.cpp" "/home/jcfei/Desktop/TensorLet_C/cmake-build-debug/CMakeFiles/tensor.dir/pinv.cpp.o"

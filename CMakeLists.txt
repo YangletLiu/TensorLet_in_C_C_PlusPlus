@@ -13,6 +13,14 @@ include_directories(/usr/local/fftw/include)
 link_directories(/usr/local/fftw/lib)
 link_libraries(libfftw3.a libfftw3f.a)
 
+#FIND_PACKAGE(fftw REQUIRED)
+#if(fftw_FOUND)
+#    message("fftw FOUND")
+#    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${fftw_C_FLAGS}")
+#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${fftw_CXX_FLAGS}")
+#    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${fftw_EXE_LINKER_FLAGS}")
+#endif()
+
 
 FIND_PACKAGE(OpenMP REQUIRED)
 if(OPENMP_FOUND)
@@ -26,4 +34,4 @@ endif()
 add_executable(tensor
         main.cpp
         tensor_hooi.cpp
-        cp_als.cpp t_svd.cpp tucker_hosvd.cpp cp_gen.cpp tensor.h runningtime.h Tensor3D.h Tensor3D.cpp tensor_train.cpp mode_n_product.cpp pinv.cpp pinv.h)
+        cpd.h cpd_als.cpp t_svd.cpp tucker_hosvd.cpp cpd_gen.cpp tensor.h runningtime.h Tensor3D.h Tensor3D.cpp tensor_train.cpp mode_n_product.cpp pinv.cpp pinv.h)

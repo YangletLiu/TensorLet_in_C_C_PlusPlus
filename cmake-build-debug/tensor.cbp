@@ -96,10 +96,13 @@
 		<Unit filename="/home/jcfei/Desktop/TensorLet_C/Tensor3D.h">
 			<Option target="tensor"/>
 		</Unit>
-		<Unit filename="/home/jcfei/Desktop/TensorLet_C/cp_als.cpp">
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C/cpd.h">
 			<Option target="tensor"/>
 		</Unit>
-		<Unit filename="/home/jcfei/Desktop/TensorLet_C/cp_gen.cpp">
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C/cpd_als.cpp">
+			<Option target="tensor"/>
+		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C/cpd_gen.cpp">
 			<Option target="tensor"/>
 		</Unit>
 		<Unit filename="/home/jcfei/Desktop/TensorLet_C/main.cpp">
@@ -127,6 +130,9 @@
 			<Option target="tensor"/>
 		</Unit>
 		<Unit filename="/home/jcfei/Desktop/TensorLet_C/tensor_train.cpp">
+			<Option target="tensor"/>
+		</Unit>
+		<Unit filename="/home/jcfei/Desktop/TensorLet_C/tensor_train.h">
 			<Option target="tensor"/>
 		</Unit>
 		<Unit filename="/home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp">

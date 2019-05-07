@@ -16,15 +16,19 @@ Tensor3D.h
 tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 
-/home/jcfei/Desktop/TensorLet_C/cp_als.cpp
+/home/jcfei/Desktop/TensorLet_C/cpd.h
 tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 Tensor3D.h
 /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
+
+/home/jcfei/Desktop/TensorLet_C/cpd_als.cpp
 pinv.h
 /home/jcfei/Desktop/TensorLet_C/pinv.h
+cpd.h
+/home/jcfei/Desktop/TensorLet_C/cpd.h
 
-/home/jcfei/Desktop/TensorLet_C/cp_gen.cpp
+/home/jcfei/Desktop/TensorLet_C/cpd_gen.cpp
 tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 Tensor3D.h
@@ -35,10 +39,12 @@ tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 runningtime.h
 /home/jcfei/Desktop/TensorLet_C/runningtime.h
-ten2mat.cpp
-/home/jcfei/Desktop/TensorLet_C/ten2mat.cpp
-cp_als.cpp
-/home/jcfei/Desktop/TensorLet_C/cp_als.cpp
+Tensor3D.h
+/home/jcfei/Desktop/TensorLet_C/Tensor3D.h
+Tensor3D.cpp
+/home/jcfei/Desktop/TensorLet_C/Tensor3D.cpp
+cpd_als.cpp
+/home/jcfei/Desktop/TensorLet_C/cpd_als.cpp
 tucker_hosvd.cpp
 /home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp
 tensor_hooi.cpp
@@ -47,14 +53,10 @@ t_svd.cpp
 /home/jcfei/Desktop/TensorLet_C/t_svd.cpp
 tensor_train.cpp
 /home/jcfei/Desktop/TensorLet_C/tensor_train.cpp
-cp_gen.cpp
-/home/jcfei/Desktop/TensorLet_C/cp_gen.cpp
+cpd_gen.cpp
+/home/jcfei/Desktop/TensorLet_C/cpd_gen.cpp
 mode_n_product.cpp
 /home/jcfei/Desktop/TensorLet_C/mode_n_product.cpp
-Tensor3D.h
-/home/jcfei/Desktop/TensorLet_C/Tensor3D.h
-Tensor3D.cpp
-/home/jcfei/Desktop/TensorLet_C/Tensor3D.cpp
 stdio.h
 -
 mkl.h
@@ -79,12 +81,8 @@ tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 Tensor3D.h
 /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
-
-/home/jcfei/Desktop/TensorLet_C/ten2mat.cpp
-tensor.h
-/home/jcfei/Desktop/TensorLet_C/tensor.h
-Tensor3D.h
-/home/jcfei/Desktop/TensorLet_C/Tensor3D.h
+tsvd.h
+/home/jcfei/Desktop/TensorLet_C/tsvd.h
 
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 string
@@ -125,18 +123,30 @@ tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 Tensor3D.h
 /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
+tucker.h
+/home/jcfei/Desktop/TensorLet_C/tucker.h
 
 /home/jcfei/Desktop/TensorLet_C/tensor_train.cpp
 tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 Tensor3D.h
 /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
+tensor_train.h
+/home/jcfei/Desktop/TensorLet_C/tensor_train.h
+
+/home/jcfei/Desktop/TensorLet_C/tensor_train.h
+
+/home/jcfei/Desktop/TensorLet_C/tsvd.h
+
+/home/jcfei/Desktop/TensorLet_C/tucker.h
 
 /home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp
 tensor.h
 /home/jcfei/Desktop/TensorLet_C/tensor.h
 Tensor3D.h
 /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
+tucker.h
+/home/jcfei/Desktop/TensorLet_C/tucker.h
 
 /opt/intel/mkl/include/mkl.h
 mkl_version.h

@@ -44,9 +44,10 @@ CMakeFiles/tensor.dir/Tensor3D.cpp.o
  /opt/intel/mkl/include/mkl_vsl_functions.h
  /opt/intel/mkl/include/mkl_vsl_types.h
  /usr/local/fftw/include/fftw3.h
-CMakeFiles/tensor.dir/cp_als.cpp.o
+CMakeFiles/tensor.dir/cpd_als.cpp.o
  /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
- /home/jcfei/Desktop/TensorLet_C/cp_als.cpp
+ /home/jcfei/Desktop/TensorLet_C/cpd.h
+ /home/jcfei/Desktop/TensorLet_C/cpd_als.cpp
  /home/jcfei/Desktop/TensorLet_C/pinv.h
  /home/jcfei/Desktop/TensorLet_C/tensor.h
  /opt/intel/mkl/include/mkl.h
@@ -88,9 +89,9 @@ CMakeFiles/tensor.dir/cp_als.cpp.o
  /opt/intel/mkl/include/mkl_vsl_functions.h
  /opt/intel/mkl/include/mkl_vsl_types.h
  /usr/local/fftw/include/fftw3.h
-CMakeFiles/tensor.dir/cp_gen.cpp.o
+CMakeFiles/tensor.dir/cpd_gen.cpp.o
  /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
- /home/jcfei/Desktop/TensorLet_C/cp_gen.cpp
+ /home/jcfei/Desktop/TensorLet_C/cpd_gen.cpp
  /home/jcfei/Desktop/TensorLet_C/tensor.h
  /opt/intel/mkl/include/mkl.h
  /opt/intel/mkl/include/mkl_blas.h
@@ -134,17 +135,20 @@ CMakeFiles/tensor.dir/cp_gen.cpp.o
 CMakeFiles/tensor.dir/main.cpp.o
  /home/jcfei/Desktop/TensorLet_C/Tensor3D.cpp
  /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
- /home/jcfei/Desktop/TensorLet_C/cp_als.cpp
- /home/jcfei/Desktop/TensorLet_C/cp_gen.cpp
+ /home/jcfei/Desktop/TensorLet_C/cpd.h
+ /home/jcfei/Desktop/TensorLet_C/cpd_als.cpp
+ /home/jcfei/Desktop/TensorLet_C/cpd_gen.cpp
  /home/jcfei/Desktop/TensorLet_C/main.cpp
  /home/jcfei/Desktop/TensorLet_C/mode_n_product.cpp
  /home/jcfei/Desktop/TensorLet_C/pinv.h
  /home/jcfei/Desktop/TensorLet_C/runningtime.h
  /home/jcfei/Desktop/TensorLet_C/t_svd.cpp
- /home/jcfei/Desktop/TensorLet_C/ten2mat.cpp
  /home/jcfei/Desktop/TensorLet_C/tensor.h
  /home/jcfei/Desktop/TensorLet_C/tensor_hooi.cpp
  /home/jcfei/Desktop/TensorLet_C/tensor_train.cpp
+ /home/jcfei/Desktop/TensorLet_C/tensor_train.h
+ /home/jcfei/Desktop/TensorLet_C/tsvd.h
+ /home/jcfei/Desktop/TensorLet_C/tucker.h
  /home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp
  /opt/intel/mkl/include/mkl.h
  /opt/intel/mkl/include/mkl_blas.h
@@ -275,6 +279,7 @@ CMakeFiles/tensor.dir/t_svd.cpp.o
  /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
  /home/jcfei/Desktop/TensorLet_C/t_svd.cpp
  /home/jcfei/Desktop/TensorLet_C/tensor.h
+ /home/jcfei/Desktop/TensorLet_C/tsvd.h
  /opt/intel/mkl/include/mkl.h
  /opt/intel/mkl/include/mkl_blas.h
  /opt/intel/mkl/include/mkl_cblas.h
@@ -318,6 +323,7 @@ CMakeFiles/tensor.dir/tensor_hooi.cpp.o
  /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
  /home/jcfei/Desktop/TensorLet_C/tensor.h
  /home/jcfei/Desktop/TensorLet_C/tensor_hooi.cpp
+ /home/jcfei/Desktop/TensorLet_C/tucker.h
  /opt/intel/mkl/include/mkl.h
  /opt/intel/mkl/include/mkl_blas.h
  /opt/intel/mkl/include/mkl_cblas.h
@@ -361,6 +367,7 @@ CMakeFiles/tensor.dir/tensor_train.cpp.o
  /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
  /home/jcfei/Desktop/TensorLet_C/tensor.h
  /home/jcfei/Desktop/TensorLet_C/tensor_train.cpp
+ /home/jcfei/Desktop/TensorLet_C/tensor_train.h
  /opt/intel/mkl/include/mkl.h
  /opt/intel/mkl/include/mkl_blas.h
  /opt/intel/mkl/include/mkl_cblas.h
@@ -403,6 +410,7 @@ CMakeFiles/tensor.dir/tensor_train.cpp.o
 CMakeFiles/tensor.dir/tucker_hosvd.cpp.o
  /home/jcfei/Desktop/TensorLet_C/Tensor3D.h
  /home/jcfei/Desktop/TensorLet_C/tensor.h
+ /home/jcfei/Desktop/TensorLet_C/tucker.h
  /home/jcfei/Desktop/TensorLet_C/tucker_hosvd.cpp
  /opt/intel/mkl/include/mkl.h
  /opt/intel/mkl/include/mkl_blas.h

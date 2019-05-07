@@ -29,6 +29,4 @@
 
 using namespace std;
 
-
-
 #endif //TENSOR_TENSOR_H

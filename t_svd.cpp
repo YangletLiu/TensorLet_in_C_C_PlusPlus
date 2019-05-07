@@ -4,14 +4,7 @@
 
 #include "tensor.h"
 #include "Tensor3D.h"
-
-template<class datatype>
-class tsvd_format{
-public:
-    datatype* U;
-    datatype* Theta;
-    datatype* V;
-};
+#include "tsvd.h"
 
 namespace TensorLet_decomposition {
 
@@ -25,7 +18,7 @@ namespace TensorLet_decomposition {
         int N0 = floor(n3/2.0)+1;
 
 // fft(a,[],3)  mkl fft r2c
-//        for(int i=0;i<n1*n2*n3;i++){
+//        for(int i=0;i<n1*n2*n3;++i){
 //            a.pointer[i] = i;
 //        }
 
@@ -52,11 +45,11 @@ namespace TensorLet_decomposition {
 
         status = DftiCommitDescriptor( desc_z );
 
-        for(int i = 0; i < n1 * n2; i++){
+        for(int i = 0; i < n1 * n2; ++i){
             status = DftiComputeForward( desc_z, a.pointer+i, fft_x+i);
         }
 
-//        for(int i=0; i< 100; i++){
+//        for(int i=0; i< 100; ++i){
 //            cout << i << " "  << fft_x[i].real << " " << fft_x[i].imag << endl;
 //        }
 
@@ -75,7 +68,7 @@ namespace TensorLet_decomposition {
 
         MKL_INT info;
 
-        for(int i = 0; i < N0; i++){
+        for(int i = 0; i < N0; ++i){
             info = LAPACKE_zgesvd( LAPACK_COL_MAJOR, 'A', 'A', n1, n2, fft_x + i * n1 * n2, n1, fft_s + i * min_n1_n2,
                                    fft_u + i * n1 * n1 , n1, fft_vt + i * n2 * n2, n2, super );
         }
@@ -128,13 +121,13 @@ namespace TensorLet_decomposition {
         double* s = (double*)MKL_malloc(min_n1_n2*n3*sizeof(double),64);
 
 
-        for(int i=0; i< min_n1_n2 * N0; i++){
+        for(int i=0; i< min_n1_n2 * N0; ++i){
             fft_s_complex[i][0] = fft_s[i];
             fft_s_complex[i][1] = 0;
         }
         MKL_free(fft_s);
 
-//        for(int i=0; i< min_n1_n2 * N0; i++){
+//        for(int i=0; i< min_n1_n2 * N0; ++i){
 //            cout << fft_s_complex[i][0] << " ";
 //            cout << fft_s_complex[i][1] << endl;
 //        }

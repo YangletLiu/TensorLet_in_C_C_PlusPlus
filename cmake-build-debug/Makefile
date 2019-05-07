@@ -150,59 +150,59 @@ Tensor3D.cpp.s:
 	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/Tensor3D.cpp.s
 .PHONY : Tensor3D.cpp.s
 
-cp_als.o: cp_als.cpp.o
+cpd_als.o: cpd_als.cpp.o
 
-.PHONY : cp_als.o
-
-# target to build an object file
-cp_als.cpp.o:
-	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cp_als.cpp.o
-.PHONY : cp_als.cpp.o
-
-cp_als.i: cp_als.cpp.i
-
-.PHONY : cp_als.i
-
-# target to preprocess a source file
-cp_als.cpp.i:
-	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cp_als.cpp.i
-.PHONY : cp_als.cpp.i
-
-cp_als.s: cp_als.cpp.s
-
-.PHONY : cp_als.s
-
-# target to generate assembly for a file
-cp_als.cpp.s:
-	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cp_als.cpp.s
-.PHONY : cp_als.cpp.s
-
-cp_gen.o: cp_gen.cpp.o
-
-.PHONY : cp_gen.o
+.PHONY : cpd_als.o
 
 # target to build an object file
-cp_gen.cpp.o:
-	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cp_gen.cpp.o
-.PHONY : cp_gen.cpp.o
+cpd_als.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cpd_als.cpp.o
+.PHONY : cpd_als.cpp.o
 
-cp_gen.i: cp_gen.cpp.i
+cpd_als.i: cpd_als.cpp.i
 
-.PHONY : cp_gen.i
+.PHONY : cpd_als.i
 
 # target to preprocess a source file
-cp_gen.cpp.i:
-	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cp_gen.cpp.i
-.PHONY : cp_gen.cpp.i
+cpd_als.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cpd_als.cpp.i
+.PHONY : cpd_als.cpp.i
 
-cp_gen.s: cp_gen.cpp.s
+cpd_als.s: cpd_als.cpp.s
 
-.PHONY : cp_gen.s
+.PHONY : cpd_als.s
 
 # target to generate assembly for a file
-cp_gen.cpp.s:
-	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cp_gen.cpp.s
-.PHONY : cp_gen.cpp.s
+cpd_als.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cpd_als.cpp.s
+.PHONY : cpd_als.cpp.s
+
+cpd_gen.o: cpd_gen.cpp.o
+
+.PHONY : cpd_gen.o
+
+# target to build an object file
+cpd_gen.cpp.o:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cpd_gen.cpp.o
+.PHONY : cpd_gen.cpp.o
+
+cpd_gen.i: cpd_gen.cpp.i
+
+.PHONY : cpd_gen.i
+
+# target to preprocess a source file
+cpd_gen.cpp.i:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cpd_gen.cpp.i
+.PHONY : cpd_gen.cpp.i
+
+cpd_gen.s: cpd_gen.cpp.s
+
+.PHONY : cpd_gen.s
+
+# target to generate assembly for a file
+cpd_gen.cpp.s:
+	$(MAKE) -f CMakeFiles/tensor.dir/build.make CMakeFiles/tensor.dir/cpd_gen.cpp.s
+.PHONY : cpd_gen.cpp.s
 
 main.o: main.cpp.o
 
@@ -405,12 +405,12 @@ help:
 	@echo "... Tensor3D.o"
 	@echo "... Tensor3D.i"
 	@echo "... Tensor3D.s"
-	@echo "... cp_als.o"
-	@echo "... cp_als.i"
-	@echo "... cp_als.s"
-	@echo "... cp_gen.o"
-	@echo "... cp_gen.i"
-	@echo "... cp_gen.s"
+	@echo "... cpd_als.o"
+	@echo "... cpd_als.i"
+	@echo "... cpd_als.s"
+	@echo "... cpd_gen.o"
+	@echo "... cpd_gen.i"
+	@echo "... cpd_gen.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

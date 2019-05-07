@@ -4,7 +4,6 @@
 #include "tensor.h"
 #include "pinv.h"
 
-
 double *pinv(double *a, double *result, int r) {
     MKL_INT  m = r;
     MKL_INT  n = r;

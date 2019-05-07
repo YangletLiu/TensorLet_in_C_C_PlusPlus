@@ -1,17 +1,20 @@
 #include "tensor.h"
 #include "runningtime.h"
 
-#include "ten2mat.cpp"
-#include "cp_als.cpp"
+#include "Tensor3D.h"
+#include "Tensor3D.cpp"
+
+
+//#include "cp_decomposition.h"
+#include "cpd_als.cpp"
+
 #include "tucker_hosvd.cpp"
 #include "tensor_hooi.cpp"
 #include "t_svd.cpp"
 #include "tensor_train.cpp"
-#include "cp_gen.cpp"
+#include "cpd_gen.cpp"
 #include "mode_n_product.cpp"
 
-#include "Tensor3D.h"
-#include "Tensor3D.cpp"
 
 #include <stdio.h>
 #include <mkl.h>
@@ -37,7 +40,7 @@ int main(){
     t1=gettime();
     cout << "Random initialize time:" << t1 - t0 << endl;
 
-//    for(int i = 0; i < 27; i++){
+//    for(int i = 0; i < 27; ++i){
 //        cout << a.pointer[i] << "," ;
 //    }
 //    cout << endl;
@@ -56,7 +59,7 @@ int main(){
              CP
 *******************************/
     t0=gettime();
-    cp_format<double> A = cp_als( a, rank , 1);
+    cp_format<double> A = cp_als( a, rank , 1, 1);
     t1=gettime();
     cout << "CP time:" << t1 - t0 << endl;
 
@@ -85,7 +88,6 @@ int main(){
 //    MKL_free( B.u1 );
 //    MKL_free( B.u2 );
 //    MKL_free( B.u3 );
-
 
 /*******************************
         t-SVD

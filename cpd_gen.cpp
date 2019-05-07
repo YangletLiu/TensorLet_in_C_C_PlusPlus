@@ -53,7 +53,7 @@ Tensor3D<datatype>& Tensor3D<datatype>::cp_gen(int r) {
         exit(1);
     }
 
-    for( MKL_INT i = 0; i < r; i++ ){
+    for( MKL_INT i = 0; i < r; ++i ){
         cblas_dgemm( CblasColMajor, CblasNoTrans, CblasTrans,
                      n1, n2, 1, 1, A + i * n1, n1, B + i * n2, n2,
                      0, b_kr_a + i * n1 * n2, n1 );  // kr(b,a)
