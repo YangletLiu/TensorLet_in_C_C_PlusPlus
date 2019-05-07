@@ -2,9 +2,9 @@
 // Created by jcfei on 18-9-9.
 //
 
-
 #include "pinv.h"
 #include "cpd.h"
+
 
 namespace TensorLet_decomposition{
 
@@ -564,5 +564,6 @@ namespace TensorLet_decomposition{
     }
 
 }
+
 
 

@@ -6,6 +6,9 @@
 #include "Tensor3D.h"
 #include "tensor_train.h"
 
+#define min(a, b) ((a) < (b) ? (a) : (b))
+#define max(a, b) ((a) > (b) ? (a) : (b))
+
 namespace TensorLet_decomposition {
 
     template<class datatype>

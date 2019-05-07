@@ -18,7 +18,7 @@
 #include <complex>
 #include <string>
 
-#include <fftw3.h>
+#include "fftw3.h"
 #include "mkl.h"
 #include "mkl_vsl.h"
 #include "mkl_dfti.h"
@@ -27,6 +27,6 @@
 #include "time.h"
 #include <omp.h>
 
-using namespace std;
+
 
 #endif //TENSOR_TENSOR_H

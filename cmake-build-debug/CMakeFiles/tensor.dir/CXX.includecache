@@ -57,8 +57,6 @@ cpd_gen.cpp
 /home/jcfei/Desktop/TensorLet_C/cpd_gen.cpp
 mode_n_product.cpp
 /home/jcfei/Desktop/TensorLet_C/mode_n_product.cpp
-stdio.h
--
 mkl.h
 -
 
@@ -106,7 +104,7 @@ complex
 string
 -
 fftw3.h
--
+/home/jcfei/Desktop/TensorLet_C/fftw3.h
 mkl.h
 /home/jcfei/Desktop/TensorLet_C/mkl.h
 mkl_vsl.h

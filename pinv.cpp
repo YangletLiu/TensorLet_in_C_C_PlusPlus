@@ -4,6 +4,9 @@
 #include "tensor.h"
 #include "pinv.h"
 
+#define min(a, b) ((a) < (b) ? (a) : (b))
+#define max(a, b) ((a) > (b) ? (a) : (b))
+
 double *pinv(double *a, double *result, int r) {
     MKL_INT  m = r;
     MKL_INT  n = r;

@@ -7,7 +7,6 @@
 
 //#include "cp_decomposition.h"
 #include "cpd_als.cpp"
-
 #include "tucker_hosvd.cpp"
 #include "tensor_hooi.cpp"
 #include "t_svd.cpp"
@@ -15,8 +14,6 @@
 #include "cpd_gen.cpp"
 #include "mode_n_product.cpp"
 
-
-#include <stdio.h>
 #include <mkl.h>
 
 using namespace std;
@@ -31,7 +28,7 @@ int main(){
 
     double t0,t1;
     t0=gettime();
-    Tensor3D<double> a( n1, n2, n3 ); //element
+    Tensor3D<double> a(n1, n2, n3); //element
     t1=gettime();
     cout << "Memory malloc time:" << t1 - t0 << endl;
 

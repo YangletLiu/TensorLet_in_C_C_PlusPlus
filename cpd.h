@@ -8,8 +8,6 @@
 #include "tensor.h"
 #include "Tensor3D.h"
 
-#define min(a, b) ((a) < (b) ? (a) : (b))
-#define max(a, b) ((a) > (b) ? (a) : (b))
 
 template <class datatype>
 class cp_format{
